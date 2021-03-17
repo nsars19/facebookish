@@ -32,31 +32,6 @@ const StyledNav = styled.div`
       color: ${black};
     }
   }
-
-  .toggle {
-    cursor: pointer;
-    position: relative;
-  }
-  .rail {
-    background: ${({ light }) => (light ? gray : white)};
-    width: 35px;
-    height: 12px;
-    border-radius: 25px;
-    transition: background 0.6s ease ${({ light }) => (light ? "0.5s" : "0.3s")};
-  }
-  .ball {
-    background: ${({ light }) => (light ? white : gray)};
-    height: 18px;
-    width: 18px;
-    border-radius: 50%;
-    // Box shadow prevents choppiness while transitioning
-    box-shadow: 0px 0px 0px transparent;
-    position: absolute;
-    top: -3px;
-    left: ${({ light }) => (light ? "20px" : "-2px")};
-    transition: left 0.6s cubic-bezier(1, -0.45, 0, 1),
-      background 0.6s ease 0.5s, box-shadow 0.3s ease 0.3s;
-  }
 `;
 
 function Nav(props) {
