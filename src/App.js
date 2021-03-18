@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import colors from "./colors";
 import styled from "styled-components";
 import Nav from "./components/nav/nav";
