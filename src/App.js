@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import colors from "./colors";
 import styled from "styled-components";
 import Nav from "./components/nav/nav";
+import UserProfile from "./components/userProfile/UserProfile";
+import Users from "./components/users/Users";
 
 const { black, gray, white, yellow } = colors;
 
