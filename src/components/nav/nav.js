@@ -13,8 +13,8 @@ const StyledNav = styled.div`
   height: 60px;
   background: ${red};
   transition: background 0.4s ease, color 0.4s ease;
-  color: ${white};
-  font-weight: 500;
+  color: ${({ light }) => (light ? black : white)};
+  font-weight: 600;
   letter-spacing: 1.2px;
 
   a {
@@ -28,8 +28,11 @@ const StyledNav = styled.div`
 
     &:hover,
     &:active {
-      background: ${white};
-      color: ${black};
+      background: ${({ light }) => (light ? black : white)};
+      color: ${({ light }) => (light ? white : black)};
+      // box-shadow: -4px 4px 0 ${({ light }) => (light ? white : black)};
+      transition: color 0.5s ease, box-shadow 0.2s ease;
+      font-weight: 600;
     }
   }
 `;
