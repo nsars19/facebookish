@@ -34,29 +34,6 @@ function App() {
 
 export default App;
 
-function Users() {
-  const [users, setUsers] = useState(null);
-  const userJson = useRef(null);
-
-  useEffect(() => {
-    (async function fetchUsers() {
-      const users = await fetch("http://localhost:3000/users");
-      const userData = await users.json();
-
-      // userJson.current = userData;
-      // console.log(userJson.current);
-      setUsers(userData);
-    })();
-  }, []);
-
-  return (
-    <div>
-      {users.map((user) => {
-        return user?.firstName + user?.lastName;
-      })}
-    </div>
-  );
-}
 function Profile() {
   return (
     <div>
