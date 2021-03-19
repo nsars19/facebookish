@@ -4,7 +4,7 @@ import styled from "styled-components";
 import colors from "../../colors";
 import Toggle from "./components/toggle";
 
-const { black, white, red } = colors;
+const { black, white, blue } = colors;
 
 const StyledNav = styled.div`
   display: flex;
