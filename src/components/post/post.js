@@ -19,12 +19,10 @@ const StyledPost = styled.div`
 function Post({ post }) {
   return (
     <StyledPost>
-      <div key={post._id}>
-        <Link to={`/user/${post.author._id}`} className="user">
-          {post.author.firstName} {post.author.lastName}
-        </Link>
-        <p>{post.text}</p>
-      </div>
+      <Link to={`/user/${post.author._id}`} className="user">
+        {post.author.firstName} {post.author.lastName}
+      </Link>
+      <p>{post.text}</p>
       {post.comments.map((comment) => (
         <div key={comment._id}>
           <Comment comment={comment} />
