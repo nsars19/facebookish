@@ -4,6 +4,9 @@ const StyledToggle = styled.div`
   .toggle {
     cursor: pointer;
     position: relative;
+    height: 40px;
+    display: flex;
+    align-items: center;
   }
   .rail {
     background: ${({ light, gray, white }) => (light ? gray : white)};
@@ -22,7 +25,7 @@ const StyledToggle = styled.div`
     // Box shadow prevents choppiness while transitioning
     box-shadow: 0px 0px 0px transparent;
     position: absolute;
-    top: -3px;
+    top: 11px;
     left: ${({ light }) => (light ? "20px" : "-2px")};
     transition: left 0.1s cubic-bezier(0.08, 0.82, 0.66, 1.2),
       background 0.4s ease 0s;
