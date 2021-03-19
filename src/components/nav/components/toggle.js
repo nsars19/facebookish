@@ -11,12 +11,14 @@ const StyledToggle = styled.div`
     height: 12px;
     border-radius: 25px;
     transition: background 0.4s ease 0s;
+    border: 1px solid ${({ white }) => white}22;
   }
   .ball {
     background: ${({ light, gray, white }) => (light ? white : gray)};
     height: 18px;
     width: 18px;
     border-radius: 50%;
+    border: 1px solid ${({ white }) => white}22;
     // Box shadow prevents choppiness while transitioning
     box-shadow: 0px 0px 0px transparent;
     position: absolute;
