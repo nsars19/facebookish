@@ -6,6 +6,8 @@ import Nav from "./components/nav/nav";
 import UserProfile from "./components/userProfile/UserProfile";
 import Users from "./components/users/Users";
 import Cookies from "universal-cookie";
+import HomePage from "./components/homepage/homepage";
+import Profile from "./components/profile/profile";
 
 const { black, gray, white, yellow } = colors;
 
