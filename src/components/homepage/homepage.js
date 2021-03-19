@@ -3,6 +3,8 @@ import styled from "styled-components";
 import StatusForm from "./statusForm/statusForm";
 import colors from "./../../colors";
 import { Link } from "react-router-dom";
+import Post from "./../post/post";
+import Feed from "./../feed/feed";
 
 const StyledHomePage = styled.div`
   color: black;
@@ -25,15 +27,7 @@ function HomePage(props) {
   return (
     <StyledHomePage>
       <StatusForm colors={colors} currentUser={currentUser}></StatusForm>
-      {(feed && (
-        <div>
-          {feed.map((post) => (
-            <div key={post._id}>
-              <Post post={post} />
-            </div>
-          ))}
-        </div>
-      )) || <h2>Loading...</h2>}
+      {(feed && <Feed posts={feed} />) || <h2>Loading...</h2>}
     </StyledHomePage>
   );
 }
