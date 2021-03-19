@@ -44,11 +44,3 @@ function App() {
 }
 
 export default App;
-
-function Profile() {
-  return (
-    <div>
-      <p>In profile</p>
-    </div>
-  );
-}
