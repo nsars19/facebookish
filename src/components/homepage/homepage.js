@@ -29,7 +29,7 @@ function HomePage(props) {
         <div>
           {feed.map((post) => (
             <div key={post._id}>
-              <Link to={`/user/${post.author._id}`}>
+              <Link to={`/user/${post.author._id}`} className="user">
                 {post.author.firstName} {post.author.lastName}
               </Link>
               <p>{post.text}</p>

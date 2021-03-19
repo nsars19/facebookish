@@ -20,7 +20,7 @@ function Users() {
         {users.map((user) => {
           return (
             <h2 key={user._id}>
-              <Link to={`/user/${user._id}`}>
+              <Link to={`/user/${user._id}`} className="user">
                 {user.firstName + " " + user.lastName}
               </Link>
             </h2>
