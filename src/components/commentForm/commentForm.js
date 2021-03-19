@@ -9,8 +9,8 @@ function CommentForm({ postId, setFeed }) {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const text = e.target.firstElementChild.value;
-
+    const input = e.target.firstElementChild;
+    const text = input.value;
     // Prevent sending empty comments
     if (!text) return;
 
@@ -34,6 +34,8 @@ function CommentForm({ postId, setFeed }) {
     );
     const data = await response.json();
     setFeed(data);
+
+    input.value = "";
   }
 
   return (
