@@ -21,6 +21,7 @@ function App() {
   cookies.set("light", cookies.get("light"));
   const isLight = cookies.get("light") === "true" ? true : false;
   const [lightMode, setLightMode] = useState(isLight);
+  const [currentUser, setCurrentUser] = useState("60524b11581676421e9c7302");
 
   useEffect(() => {
     cookies.set("light", lightMode);
