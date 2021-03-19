@@ -9,12 +9,18 @@ function UserProfile(props) {
 
   useEffect(() => {
     (async function fetchUserInfo() {
-      const response = await fetch(`http://localhost:3000/users/${userId}`);
-      const userData = await response.json();
+      const userResponse = await fetch(`http://localhost:3000/users/${userId}`);
+      const userData = await userResponse.json();
+
+      const postsResponse = await fetch(
+        `http://localhost:3000/posts/byuser/${userId}`
+      );
+      const postsData = await postsResponse.json();
 
       setUser(userData);
+      setPosts(postsData);
     })();
-  }, []);
+  }, [userId]);
 
   return (user && <div>{user.firstName}</div>) || <h1>Loading</h1>;
 }
