@@ -34,6 +34,9 @@ function App() {
           <Route path="/users">
             <Users />
           </Route>
+          <Route path="/user/:userId">
+            <UserProfile />
+          </Route>
           <Route path="/profile">
             <Profile user={currentUser} />
           </Route>
