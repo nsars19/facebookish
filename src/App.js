@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import colors from "./colors";
-import styled from "styled-components";
 import Nav from "./components/nav/nav";
 import UserProfile from "./components/userProfile/UserProfile";
 import Users from "./components/users/Users";
 import Cookies from "universal-cookie";
 import HomePage from "./components/homepage/homepage";
 import Profile from "./components/profile/profile";
+import { createGlobalStyle } from "styled-components";
 
-const { black, gray, white, yellow } = colors;
-
-const StyledApp = styled.div`
-  background: ${({ light }) => (light ? white : black)};
-  color: ${({ light }) => (light ? black : white)};
-  height: 100vh;
+const GlobalStyle = createGlobalStyle`
+  body {
+    background: ${({ light }) => (light ? white : black)};
+    color: ${({ light }) => (light ? black : white)};
+  }
 `;
 
 const cookies = new Cookies();
@@ -30,7 +29,8 @@ function App() {
   }, [lightMode]);
 
   return (
-    <StyledApp light={lightMode}>
+    <>
+      <GlobalStyle light={lightMode} />
       <Router>
         <Nav setLightMode={setLightMode} lightMode={lightMode} />
         <Switch>
@@ -48,7 +48,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
-    </StyledApp>
+    </>
   );
 }
 
