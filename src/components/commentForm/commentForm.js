@@ -10,6 +10,10 @@ function CommentForm({ postId }) {
     e.preventDefault();
 
     const text = e.target.firstElementChild.value;
+
+    // Prevent sending empty comments
+    if (!text) return;
+
     const currentUser = cookies.get("currentUser");
     const bodyData = {
       text,
