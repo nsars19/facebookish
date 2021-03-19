@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 function UserProfile(props) {
   const [user, setUser] = useState(null);
+  const [posts, setPosts] = useState(null);
   const match = useRouteMatch();
   const { userId } = match.params;
 
