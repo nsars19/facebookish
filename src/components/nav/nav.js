@@ -11,9 +11,9 @@ const StyledNav = styled.div`
   justify-content: space-around;
   align-items: center;
   height: 60px;
-  background: ${red};
+  background: ${blue};
   transition: background 0.4s ease, color 0.4s ease;
-  color: ${({ light }) => (light ? black : white)};
+  color: ${white};
   font-weight: 600;
   letter-spacing: 1.2px;
 
