@@ -16,7 +16,7 @@ const StyledPost = styled.div`
   }
 `;
 
-function Post({ post }) {
+function Post({ post, setFeed, currentUser }) {
   return (
     <StyledPost>
       <Link to={`/user/${post.author._id}`} className="user">
@@ -28,7 +28,7 @@ function Post({ post }) {
           <Comment comment={comment} />
         </div>
       ))}
-      <CommentForm postId={post._id} />
+      <CommentForm postId={post._id} setFeed={setFeed} />
     </StyledPost>
   );
 }

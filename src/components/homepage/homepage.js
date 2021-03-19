@@ -27,7 +27,7 @@ function HomePage(props) {
   return (
     <StyledHomePage>
       <StatusForm colors={colors} currentUser={currentUser}></StatusForm>
-      {(feed && <Feed posts={feed} />) || <h2>Loading...</h2>}
+      {(feed && <Feed posts={feed} setFeed={setFeed} />) || <h2>Loading...</h2>}
     </StyledHomePage>
   );
 }

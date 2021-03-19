@@ -5,7 +5,7 @@ const cookies = new Cookies();
 
 const StyledForm = styled.form``;
 
-function CommentForm({ postId }) {
+function CommentForm({ postId, setFeed }) {
   async function handleSubmit(e) {
     e.preventDefault();
 

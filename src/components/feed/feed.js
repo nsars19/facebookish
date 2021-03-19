@@ -1,11 +1,11 @@
 import Post from "./../post/post";
 
-function Feed({ posts }) {
+function Feed({ posts, setFeed }) {
   return (
     <div>
       {posts.map((post) => (
         <div key={post._id}>
-          <Post post={post} />
+          <Post post={post} setFeed={setFeed} />
         </div>
       ))}
     </div>
