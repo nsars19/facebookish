@@ -15,6 +15,14 @@ const GlobalStyle = createGlobalStyle`
     transition: background 0.2s ease, color 0.2s ease;
     font-family: 'Poppins', Courier, Arial, sans-serif;
   }
+    
+  a.user {
+    text-decoration: none;
+    font-weight: 600;
+    &:visited {
+      color: black;
+    }
+  }
 `;
 
 ReactDOM.render(
