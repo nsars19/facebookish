@@ -28,6 +28,12 @@ function CommentForm({ postId, setFeed }) {
       headers: { "Content-Type": "application/json" },
       body: requestBody,
     });
+
+    const response = await fetch(
+      `http://localhost:3000/posts/feed/${currentUser}`
+    );
+    const data = await response.json();
+    setFeed(data);
   }
 
   return (
