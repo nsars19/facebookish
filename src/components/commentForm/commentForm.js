@@ -5,7 +5,7 @@ const cookies = new Cookies();
 
 const StyledForm = styled.form``;
 
-function CommentForm({ postId, setFeed }) {
+function CommentForm({ postId, setFeed, homeFeed }) {
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -29,9 +29,14 @@ function CommentForm({ postId, setFeed }) {
       body: requestBody,
     });
 
-    const response = await fetch(
-      `http://localhost:3000/posts/feed/${currentUser}`
-    );
+    let response;
+    if (homeFeed) {
+      response = await fetch(`http://localhost:3000/posts/feed/${currentUser}`);
+    } else {
+      response = await fetch(
+        `http://localhost:3000/posts/byuser/${currentUser}`
+      );
+    }
     const data = await response.json();
     setFeed(data);
 
