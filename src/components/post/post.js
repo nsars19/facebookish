@@ -74,7 +74,7 @@ function Post({ post, setFeed }) {
       </div>
       {post.comments.map((comment) => (
         <div key={comment._id}>
-          <Comment comment={comment} />
+          <Comment comment={comment} currentUser={currentUser} />
         </div>
       ))}
       <CommentForm postId={post._id} setFeed={setFeed} />
