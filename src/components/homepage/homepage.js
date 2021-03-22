@@ -7,9 +7,7 @@ const StyledHomePage = styled.div`
   // color: black;
 `;
 
-function HomePage(props) {
-  const { currentUser } = props;
-
+function HomePage({ currentUser }) {
   return (
     <StyledHomePage>
       <StatusForm colors={colors} currentUser={currentUser}></StatusForm>
