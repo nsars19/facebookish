@@ -62,13 +62,13 @@ function SettingsModal(props) {
     ];
     const reqBody = JSON.stringify({ post, author, commentId });
 
-    // await fetch("http://localhost:3000/comments/delete", {
-    //   method: "delete",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: reqBody,
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => console.log(data));
+    await fetch("http://localhost:3000/comments/delete", {
+      method: "delete",
+      headers: { "Content-Type": "application/json" },
+      body: reqBody,
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
 
     toggleModal();
   }
