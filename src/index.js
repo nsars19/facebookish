@@ -19,9 +19,6 @@ const GlobalStyle = createGlobalStyle`
   a.user {
     text-decoration: none;
     font-weight: 600;
-    &:visited {
-      color: black;
-    }
   }
 `;
 
