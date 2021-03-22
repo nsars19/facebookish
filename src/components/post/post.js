@@ -19,10 +19,12 @@ const StyledPost = styled.div`
 function Post({ post, setFeed, currentUser }) {
   return (
     <StyledPost>
-      <Link to={`/user/${post.author._id}`} className="user">
-        {post.author.firstName} {post.author.lastName}
-      </Link>
-      <p>{post.text}</p>
+      <div>
+        <Link to={`/user/${post.author._id}`} className="user">
+          {post.author.firstName} {post.author.lastName}
+        </Link>
+        <p>{post.text}</p>
+      </div>
       {post.comments.map((comment) => (
         <div key={comment._id}>
           <Comment comment={comment} />
