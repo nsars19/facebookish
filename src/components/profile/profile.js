@@ -21,9 +21,7 @@ function Profile({ user }) {
 
   return (
     <StyledProfile>
-      {(posts && posts.map((post) => <h2 key={post._id}>{post.text}</h2>)) || (
-        <h2>Loading...</h2>
-      )}
+      {(posts && <Feed posts={posts} setFeed={setPosts} />) || <h1>Loading</h1>}
     </StyledProfile>
   );
 }
