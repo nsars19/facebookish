@@ -1,5 +1,6 @@
 import Post from "./../post/post";
 import { useState, useEffect } from "react";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 function Feed({ user, homeFeed }) {
   const [posts, setPosts] = useState(null);
