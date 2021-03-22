@@ -6,15 +6,15 @@ function Feed({ user, homeFeed }) {
 
   useEffect(() => {
     (async function fetchPosts() {
+      let response;
       if (homeFeed) {
-        await fetch(`http://localhost:3000/posts/feed/${user}`)
-          .then((data) => data.json())
-          .then((data) => setPosts(data));
+        response = await fetch(`http://localhost:3000/posts/feed/${user}`);
       } else {
-        await fetch(`http://localhost:3000/posts/byuser/${user}`)
-          .then((data) => data.json())
-          .then((data) => setPosts(data));
+        response = await fetch(`http://localhost:3000/posts/byuser/${user}`);
       }
+
+      const data = await response.json();
+      setPosts(data);
     })();
   }, [user, homeFeed]);
 
