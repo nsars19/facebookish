@@ -22,7 +22,7 @@ function CommentForm({ postId, setFeed }) {
     };
     const requestBody = JSON.stringify(bodyData);
 
-    await fetch(`http://localhost:3000/comment/new`, {
+    await fetch(`http://localhost:3000/comments/new`, {
       method: "POST",
       type: "cors",
       headers: { "Content-Type": "application/json" },
