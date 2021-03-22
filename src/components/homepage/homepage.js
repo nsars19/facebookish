@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import StatusForm from "./statusForm/statusForm";
 import colors from "./../../colors";
-import { Link } from "react-router-dom";
-import Post from "./../post/post";
 import Feed from "./../feed/feed";
 
 const StyledHomePage = styled.div`
