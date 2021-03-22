@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouteMatch } from "react-router-dom";
 import styled from "styled-components";
+import Feed from "./../feed/feed";
 
 function UserProfile(props) {
   const [user, setUser] = useState(null);
@@ -23,7 +24,9 @@ function UserProfile(props) {
     })();
   }, [userId]);
 
-  return (user && <div>{user.firstName}</div>) || <h1>Loading</h1>;
+  return (
+    (posts && <Feed posts={posts} setFeed={setPosts} />) || <h1>Loading</h1>
+  );
 }
 
 export default UserProfile;
