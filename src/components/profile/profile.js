@@ -7,22 +7,9 @@ const StyledProfile = styled.div`
 `;
 
 function Profile({ user }) {
-  const [posts, setPosts] = useState(null);
-
-  useEffect(() => {
-    (async function fetchPosts() {
-      const response = await fetch(
-        `http://localhost:3000/posts/byuser/${user}`
-      );
-      const data = await response.json();
-
-      setPosts(data);
-    })();
-  }, [user]);
-
   return (
     <StyledProfile>
-      {(posts && <Feed posts={posts} setFeed={setPosts} />) || <h1>Loading</h1>}
+      <Feed user={user} />
     </StyledProfile>
   );
 }
