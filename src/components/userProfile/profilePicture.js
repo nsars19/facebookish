@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import styled from "styled-components";
-import defaultPfp from "./static/default.jpg";
 
 const StyledProfile = styled.div`
   max-width: fit-content;
