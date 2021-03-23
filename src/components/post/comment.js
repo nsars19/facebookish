@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AiFillSetting } from "react-icons/ai";
 import Settings from "./../modals/settingsModal";
 import { useState } from "react";
+import ProfilePicture from "./../userProfile/profilePicture";
 
 const StyledComment = styled.div`
   padding-top: 5px;
