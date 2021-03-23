@@ -24,7 +24,6 @@ function UserProfile({ colors, lightMode, user }) {
   const match = useRouteMatch();
   const userId = user || match.params.userId;
   const [userName, setUserName] = useState(null);
-  const [photoSrc, setPhotoSrc] = useState(null);
   const { white, black, gray, blue } = colors;
   useEffect(() => {
     (async function fetchUserData() {
@@ -40,9 +39,8 @@ function UserProfile({ colors, lightMode, user }) {
         <ProfilePicture
           lightMode={lightMode}
           black={black}
-          src={photoSrc}
-          setSrc={setPhotoSrc}
           userId={userId}
+          size={"250px"}
         />
         <div className="name-wrap">
           <h3>{userName || <Skeleton width={150} />}</h3>
