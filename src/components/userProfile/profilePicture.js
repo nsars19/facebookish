@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const StyledProfile = styled.div`
@@ -17,26 +17,29 @@ const StyledProfile = styled.div`
     width: ${({ size }) => size};
     border-radius: 50%;
     overflow: hidden;
+    background-color: #eee;
   }
   img {
     height: ${({ size }) => size};
   }
 `;
 
-function ProfilePicture({ lightMode, black, src, setSrc, userId, size }) {
+function ProfilePicture({ lightMode, black, userId, size }) {
+  const [photoSrc, setPhotoSrc] = useState(null);
+
   useEffect(() => {
     (async function fetchProfilePicture() {
       const photoResponse = await fetch(
         `http://localhost:3000/profiledata/${userId}`
       );
-      setSrc(photoResponse.url);
+      setPhotoSrc(photoResponse.url);
     })();
-  }, [setSrc, userId]);
+  }, [setPhotoSrc, userId]);
 
   return (
     <StyledProfile lm={lightMode} black={black} size={size}>
       <div className="frame">
-        <img src={src} alt="profile" />
+        <img src={photoSrc} alt="profile" />
       </div>
     </StyledProfile>
   );
