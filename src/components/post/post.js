@@ -82,10 +82,16 @@ function Post({ post, setFeed, homeFeed }) {
             currentUser={currentUser}
             setFeed={setFeed}
             homeFeed={homeFeed}
+            postAuthor={post.author._id}
           />
         </div>
       ))}
-      <CommentForm postId={post._id} setFeed={setFeed} homeFeed={homeFeed} />
+      <CommentForm
+        postId={post._id}
+        postAuthor={post.author._id}
+        setFeed={setFeed}
+        homeFeed={homeFeed}
+      />
     </StyledPost>
   );
 }

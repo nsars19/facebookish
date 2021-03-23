@@ -60,6 +60,7 @@ function SettingsModal(props) {
     setFeed,
     homeFeed,
     user,
+    postAuthor,
   } = props;
 
   async function refreshFeed() {
@@ -67,7 +68,9 @@ function SettingsModal(props) {
     if (homeFeed) {
       response = await fetch(`http://localhost:3000/posts/feed/${user}`);
     } else {
-      response = await fetch(`http://localhost:3000/posts/byuser/${user}`);
+      response = await fetch(
+        `http://localhost:3000/posts/byuser/${postAuthor}`
+      );
     }
     const data = await response.json();
     toggleModal();

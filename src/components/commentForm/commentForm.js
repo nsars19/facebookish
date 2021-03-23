@@ -5,7 +5,7 @@ const cookies = new Cookies();
 
 const StyledForm = styled.form``;
 
-function CommentForm({ postId, setFeed, homeFeed }) {
+function CommentForm({ postId, setFeed, homeFeed, postAuthor }) {
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -34,7 +34,7 @@ function CommentForm({ postId, setFeed, homeFeed }) {
       response = await fetch(`http://localhost:3000/posts/feed/${currentUser}`);
     } else {
       response = await fetch(
-        `http://localhost:3000/posts/byuser/${currentUser}`
+        `http://localhost:3000/posts/byuser/${postAuthor}`
       );
     }
     const data = await response.json();
