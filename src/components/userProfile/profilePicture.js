@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import Cookies from "universal-cookie";
+import colors from "./../../colors";
+const { black } = colors;
 
 const StyledProfile = styled.div`
   max-width: fit-content;
@@ -24,7 +27,10 @@ const StyledProfile = styled.div`
   }
 `;
 
-function ProfilePicture({ lightMode, black, userId, size }) {
+const cookies = new Cookies();
+const lightMode = cookies.get("light");
+
+function ProfilePicture({ userId, size }) {
   const [photoSrc, setPhotoSrc] = useState(null);
 
   useEffect(() => {
