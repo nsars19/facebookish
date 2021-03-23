@@ -6,21 +6,45 @@ import Cookies from "universal-cookie";
 import { AiFillSetting } from "react-icons/ai";
 import Settings from "./../modals/settingsModal";
 import { useState } from "react";
+import ProfilePicture from "./../userProfile/profilePicture";
 
 const StyledPost = styled.div`
   padding: 10px;
-  border: 2px solid black;
+  border-radius: 5px;
   margin: 10px;
+  box-shadow: 0 0.1px 0.8px rgba(0, 0, 0, 0.02),
+    0 0.1px 1.9px rgba(0, 0, 0, 0.028), 0 0.3px 3.5px rgba(0, 0, 0, 0.035),
+    0 0.4px 6.3px rgba(0, 0, 0, 0.042), 0 0.8px 11.7px rgba(0, 0, 0, 0.05),
+    0 2px 28px rgba(0, 0, 0, 0.07);
 
-  p {
-    padding-bottom: 5px;
-    border-bottom: 2px solid black;
-    margin-top: 5px;
-    margin-bottom: 10px;
+  &:hover {
+    transition: box-shadow 0.05s ease;
+    box-shadow: 0 -0.4px 1.1px rgba(0, 0, 0, 0.047),
+      0 -0.7px 2.5px rgba(0, 0, 0, 0.063), 0 -0.9px 4.5px rgba(0, 0, 0, 0.067),
+      0 -0.8px 7.4px rgba(0, 0, 0, 0.067), 0 0.4px 12.2px rgba(0, 0, 0, 0.066),
+      0 4.9px 21.3px rgba(0, 0, 0, 0.066), 0 21px 46px rgba(0, 0, 0, 0.07);
   }
-
   .post {
+    padding: 5px;
+    border-bottom: 1px solid gray;
+    margin: 10px 0;
     position: relative;
+    display: grid;
+    grid-template-columns: 60px auto;
+    grid-template-rows: 1fr auto 1px;
+    gap: 10px;
+
+    .pfp-link {
+      height: 100%;
+      grid-column: 1 / 2;
+      grid-row: 1 / -1;
+      justify-self: center;
+    }
+
+    & a,
+    & p {
+      grid-column: 2 / 3;
+    }
   }
   .post-settings {
     display: none;
@@ -51,7 +75,7 @@ function Post({ post, setFeed, homeFeed }) {
   }
 
   return (
-    <StyledPost>
+    <StyledPost className="postItem">
       <div className="post">
         <div className="pfp-link">
           <Link to={`/user/${post.author._id}`} className="user">
