@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useRouteMatch } from "react-router-dom";
 import styled from "styled-components";
 import Feed from "./../feed/feed";
@@ -36,9 +36,34 @@ const StyledUserProfile = styled.div`
 
 function UserProfile({ colors, lightMode, user }) {
   const match = useRouteMatch();
-  const { userId } = match.params;
+  const userId = user || match.params.userId;
+  const [userName, setUserName] = useState(null);
+  const [photoSrc, setPhotoSrc] = useState(null);
+  const { white, black, gray, blue } = colors;
+  useEffect(() => {
+    (async function fetchUserData() {
+      const dataResponse = await fetch(`http://localhost:3000/users/${userId}`);
+      const data = await dataResponse.json();
 
-  return <Feed user={userId} />;
+      setPhotoSrc(data.profilePhotoSrc);
+      setUserName(data.firstName + " " + data.lastName);
+    })();
+  }, [userId]);
+
+  return (
+    <StyledUserProfile black={black} white={white} gray={gray} lm={lightMode}>
+      <div className="profile-desc">
+        <div className="img-wrap">
+          <img src={defaultPfp} alt="Profile" />
+        </div>
+        <div className="name-wrap">
+          <h3>{userName || <Skeleton width={150} />}</h3>
+        </div>
+        <button>Become Friends</button>
+      </div>
+      <Feed user={userId} />
+    </StyledUserProfile>
+  );
 }
 
 export default UserProfile;
