@@ -53,6 +53,11 @@ function Post({ post, setFeed, homeFeed }) {
   return (
     <StyledPost>
       <div className="post">
+        <div className="pfp-link">
+          <Link to={`/user/${post.author._id}`} className="user">
+            <ProfilePicture userId={post.author._id} size={"50px"} />
+          </Link>
+        </div>
         <Link to={`/user/${post.author._id}`} className="user">
           {post.author.firstName} {post.author.lastName}
         </Link>
