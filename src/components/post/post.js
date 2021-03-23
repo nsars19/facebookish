@@ -71,6 +71,7 @@ function Post({ post, setFeed, homeFeed }) {
           postItem={post}
           user={currentUser}
           setFeed={setFeed}
+          homeFeed={homeFeed}
           isPost
         />
       </div>
