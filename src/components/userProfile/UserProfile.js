@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Skeleton from "react-loading-skeleton";
 import { useRouteMatch } from "react-router-dom";
 import styled from "styled-components";
 import Feed from "./../feed/feed";
