@@ -14,7 +14,11 @@ const GlobalStyle = createGlobalStyle`
   body {
     background: ${({ light }) => (light ? white : black)};
     color: ${({ light }) => (light ? black : white)};
-  }
+
+    a,
+    a:visited {
+      color: ${({ light }) => (light ? black : white)};
+    }
   }
 
   button,
