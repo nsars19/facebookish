@@ -36,12 +36,7 @@ function UserProfile({ colors, lightMode, user }) {
   return (
     <StyledUserProfile black={black} white={white} gray={gray} lm={lightMode}>
       <div className="profile-desc">
-        <ProfilePicture
-          lightMode={lightMode}
-          black={black}
-          userId={userId}
-          size={"250px"}
-        />
+        <ProfilePicture userId={userId} size={"250px"} />
         <div className="name-wrap">
           <h3>{userName || <Skeleton width={150} />}</h3>
         </div>
