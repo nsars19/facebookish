@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const StyledProfile = styled.div`
   max-width: fit-content;
-  max-height: 250px;
+  max-height: ${({ size }) => size};
   border-radius: 50%;
   box-shadow: 0 0.4px 1.5px -3px ${({ lm, black }) => (lm ? black + "33" : "transparent")},
     0 0.9px 3.6px -3px ${({ lm, black }) => (lm ? black + "25" : "transparent")},
@@ -13,28 +13,28 @@ const StyledProfile = styled.div`
     0 14px 54px -3px ${({ lm, black }) => (lm ? black + "11" : "transparent")};
 
   .frame {
-    height: 250px;
-    width: 250px;
+    height: ${({ size }) => size};
+    width: ${({ size }) => size};
     border-radius: 50%;
     overflow: hidden;
   }
   img {
-    height: 250px;
+    height: ${({ size }) => size};
   }
 `;
 
-function ProfilePicture({ lightMode, black, src, setSrc, userId }) {
+function ProfilePicture({ lightMode, black, src, setSrc, userId, size }) {
   useEffect(() => {
     (async function fetchProfilePicture() {
       const photoResponse = await fetch(
-        `http://localhost:3000/profile-data/${userId}`
+        `http://localhost:3000/profiledata/${userId}`
       );
       setSrc(photoResponse.url);
     })();
   }, [setSrc, userId]);
 
   return (
-    <StyledProfile lm={lightMode} black={black}>
+    <StyledProfile lm={lightMode} black={black} size={size}>
       <div className="frame">
         <img src={src} alt="profile" />
       </div>
