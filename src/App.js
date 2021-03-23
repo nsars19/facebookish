@@ -38,10 +38,10 @@ function App() {
             <Users />
           </Route>
           <Route path="/user/:userId">
-            <UserProfile />
+            <UserProfile colors={colors} lightMode={lightMode} />
           </Route>
           <Route path="/profile">
-            <Profile user={currentUser} />
+            <Profile user={currentUser} colors={colors} lightMode={lightMode} />
           </Route>
           <Route path="/">
             <HomePage currentUser={currentUser} />

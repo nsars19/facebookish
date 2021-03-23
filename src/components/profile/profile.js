@@ -1,14 +1,14 @@
 import styled from "styled-components";
-import Feed from "./../feed/feed";
+import UserProfile from "./../userProfile/UserProfile";
 
 const StyledProfile = styled.div`
   // color: black:
 `;
 
-function Profile({ user }) {
+function Profile({ user, lightMode, colors }) {
   return (
     <StyledProfile>
-      <Feed user={user} />
+      <UserProfile user={user} colors={colors} lightMode={lightMode} />
     </StyledProfile>
   );
 }
