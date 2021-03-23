@@ -9,6 +9,7 @@ import HomePage from "./components/homepage/homepage";
 import Profile from "./components/profile/profile";
 import { createGlobalStyle } from "styled-components";
 
+const { black, gray, white, yellow, blue } = colors;
 const GlobalStyle = createGlobalStyle`
   body {
     background: ${({ light }) => (light ? white : black)};
