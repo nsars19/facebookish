@@ -24,7 +24,7 @@ function Feed({ user, homeFeed }) {
       <div>
         {posts.map((post) => (
           <div key={post._id}>
-            <Post post={post} setFeed={setPosts} />
+            <Post post={post} setFeed={setPosts} homeFeed={homeFeed} />
           </div>
         ))}
       </div>

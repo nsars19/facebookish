@@ -51,8 +51,41 @@ const StyledModal = styled.div`
 `;
 
 function SettingsModal(props) {
-  const [deleted, setDeleteStatus] = useState(false);
-  const { modalVisible, isPost, postItem, commentItem, toggleModal } = props;
+  const {
+    modalVisible,
+    isPost,
+    postItem,
+    commentItem,
+    toggleModal,
+    setFeed,
+    homeFeed,
+    user,
+  } = props;
+
+  async function refreshFeed() {
+    let response;
+    if (homeFeed) {
+      response = await fetch(`http://localhost:3000/posts/feed/${user}`);
+    } else {
+      response = await fetch(`http://localhost:3000/posts/byuser/${user}`);
+    }
+    const data = await response.json();
+    toggleModal();
+    setFeed(data);
+  }
+
+  async function deletePost() {
+    const [postId, userId] = [postItem._id, user];
+    const reqBody = JSON.stringify({ postId, userId });
+
+    await fetch(`http://localhost:3000/posts/delete`, {
+      method: "delete",
+      headers: { "Content-Type": "application/json" },
+      body: reqBody,
+    });
+
+    refreshFeed();
+  }
 
   async function deleteComment(e) {
     const [post, author, commentId] = [
@@ -66,11 +99,9 @@ function SettingsModal(props) {
       method: "delete",
       headers: { "Content-Type": "application/json" },
       body: reqBody,
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data));
+    });
 
-    toggleModal();
+    refreshFeed();
   }
 
   return (
@@ -78,12 +109,10 @@ function SettingsModal(props) {
       <ul className="menu">
         <li
           onClick={(e) => {
-            isPost ? toggleModal() : deleteComment(e);
+            isPost ? deletePost() : deleteComment(e);
           }}
         >
-          <button disabled={deleted}>
-            Delete {isPost ? "post" : "comment"}
-          </button>
+          <button>Delete {isPost ? "post" : "comment"}</button>
         </li>
         <li>
           <button>Edit {isPost ? "post" : "comment"}</button>

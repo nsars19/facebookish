@@ -41,7 +41,7 @@ const StyledPost = styled.div`
 
 const cookies = new Cookies();
 
-function Post({ post, setFeed }) {
+function Post({ post, setFeed, homeFeed }) {
   const [modalVisible, setModalVisible] = useState(false);
   const currentUser = cookies.get("currentUser");
   const isAuthor = post.author._id === currentUser;
@@ -69,15 +69,22 @@ function Post({ post, setFeed }) {
           modalVisible={modalVisible}
           toggleModal={setModalVisible}
           postItem={post}
+          user={currentUser}
+          setFeed={setFeed}
           isPost
         />
       </div>
       {post.comments.map((comment) => (
         <div key={comment._id}>
-          <Comment comment={comment} currentUser={currentUser} />
+          <Comment
+            comment={comment}
+            currentUser={currentUser}
+            setFeed={setFeed}
+            homeFeed={homeFeed}
+          />
         </div>
       ))}
-      <CommentForm postId={post._id} setFeed={setFeed} />
+      <CommentForm postId={post._id} setFeed={setFeed} homeFeed={homeFeed} />
     </StyledPost>
   );
 }

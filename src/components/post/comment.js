@@ -27,7 +27,7 @@ const StyledComment = styled.div`
   }
 `;
 
-function Comment({ comment, currentUser, setPostItem, id }) {
+function Comment({ comment, currentUser, setFeed, homeFeed }) {
   const [modalVisible, setModalVisible] = useState(false);
   const commentAuthor =
     comment.author.firstName + " " + comment.author.lastName;
@@ -55,7 +55,9 @@ function Comment({ comment, currentUser, setPostItem, id }) {
         modalVisible={modalVisible}
         toggleModal={setModalVisible}
         commentItem={comment}
-        setPostItem={setPostItem}
+        setFeed={setFeed}
+        homeFeed={homeFeed}
+        user={currentUser}
       />
     </StyledComment>
   );
