@@ -28,7 +28,7 @@ const StyledProfile = styled.div`
 `;
 
 const cookies = new Cookies();
-const lightMode = cookies.get("light");
+const lightMode = cookies.get("light") === "true" ? true : false;
 
 function ProfilePicture({ userId, size }) {
   const [photoSrc, setPhotoSrc] = useState(null);
