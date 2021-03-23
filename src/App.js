@@ -15,6 +15,26 @@ const GlobalStyle = createGlobalStyle`
     background: ${({ light }) => (light ? white : black)};
     color: ${({ light }) => (light ? black : white)};
   }
+  }
+
+  button,
+  input[type="submit"] {
+    padding: 8px;
+    border-style: none;
+    border-radius: 5px;
+    background: ${({ light }) => (light ? blue : gray)};
+    color: ${white};
+
+    &:hover,
+    &:active {
+      background: ${({ light }) => (light ? blue : yellow)}cc;
+      color: ${({ light }) => (light ? white : black)};
+    }
+
+    &:active {
+
+    }
+  }
 `;
 
 const cookies = new Cookies();
