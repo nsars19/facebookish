@@ -19,6 +19,9 @@ const GlobalStyle = createGlobalStyle`
     a:visited {
       color: ${({ light }) => (light ? black : white)};
     }
+    div.postItem {
+      background: ${({ light }) => (light ? white : gray)};
+    }
   }
 
   button,
