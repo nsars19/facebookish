@@ -39,6 +39,11 @@ function Comment({ comment, currentUser, setFeed, homeFeed, postAuthor }) {
 
   return (
     <StyledComment className="comment">
+      <div className="pfp-link">
+        <Link to={`/user/${comment.author._id}`} className="user">
+          <ProfilePicture userId={comment.author._id} size={"35px"} />
+        </Link>
+      </div>
       <Link to={`/user/${comment.author._id}`} className="user">
         {commentAuthor}
       </Link>
