@@ -20,7 +20,11 @@ function LikeAction({ user, post, setLikeCount }) {
     setLikeCount(likeCount);
   }
 
-  return <StyledAction onClick={processLike}>Like</StyledAction>;
+  return (
+    <StyledAction onClick={processLike} className="util">
+      Like
+    </StyledAction>
+  );
 }
 
 export default LikeAction;

@@ -14,12 +14,13 @@ const StyledUtils = styled.div`
     font-size: 14px;
   }
 
-  & > button {
-    color: #ccc;
-  }
-  & > button:hover {
-    background: #707070aa;
-    // color: #eee;
+  button.util {
+    background: none;
+    color: #aaa;
+    &:hover {
+      background: #707070aa;
+      color: #ccc;
+    }
   }
 `;
 
@@ -27,7 +28,9 @@ function PostUtils({ currentUser, post, setLikeCount, focusRef }) {
   return (
     <StyledUtils>
       <LikeAction user={currentUser} post={post} setLikeCount={setLikeCount} />
-      <button onClick={focusRef}>Comment</button>
+      <button onClick={focusRef} className="util">
+        Comment
+      </button>
     </StyledUtils>
   );
 }
