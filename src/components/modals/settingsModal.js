@@ -6,7 +6,7 @@ const StyledModal = styled.div`
   color: ${({ vis }) => (vis ? "red" : "blue")};
   position: absolute;
   top: 0;
-  right: 0;
+  right: 10px;
   color: black;
   margin-right: 20px;
   animation: comeFromRight 0.3s ease;
