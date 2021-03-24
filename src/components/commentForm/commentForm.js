@@ -53,8 +53,16 @@ function CommentForm({
 
   return (
     <StyledForm onSubmit={handleSubmit}>
-      <input type="text" ref={inputRef} />
-      <input type="submit" value="submit comment" />
+      <Link to="/profile">
+        <ProfilePicture userId={currentUser} size={"35px"} />
+      </Link>
+      <input
+        type="text"
+        ref={inputRef}
+        id="comment-input"
+        placeholder="Write a comment..."
+      />
+      <input type="submit" value="submit comment" id="comment-submit" />
     </StyledForm>
   );
 }
