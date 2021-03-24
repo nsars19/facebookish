@@ -85,6 +85,15 @@ const StyledPost = styled.div`
     margin-left: 9px;
   }
 
+  .post-utils {
+    display: grid;
+    justify-items: stretch;
+    grid-auto-flow: column;
+    column-gap: 4px;
+    border-bottom: 1px solid gray;
+    padding: 4px 0;
+  }
+
   .post-settings {
     display: none;
   }
