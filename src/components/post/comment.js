@@ -43,8 +43,8 @@ const StyledComment = styled.div`
   .comment-settings {
     display: none;
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 5px;
+    right: 10px;
     cursor: pointer;
   }
 
