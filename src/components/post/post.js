@@ -180,6 +180,7 @@ function Post({ post, setFeed, homeFeed }) {
         setFeed={setFeed}
         homeFeed={homeFeed}
         inputRef={inputRef}
+        setCommentCount={setCommentCount}
       />
     </StyledPost>
   );
