@@ -58,7 +58,14 @@ const StyledComment = styled.div`
   }
 `;
 
-function Comment({ comment, currentUser, setFeed, homeFeed, postAuthor }) {
+function Comment({
+  comment,
+  currentUser,
+  setFeed,
+  homeFeed,
+  postAuthor,
+  setCommentCount,
+}) {
   const [modalVisible, setModalVisible] = useState(false);
   const commentAuthor =
     comment.author.firstName + " " + comment.author.lastName;
