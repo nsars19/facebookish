@@ -1,6 +1,12 @@
 import Post from "./../post/post";
 import { useState, useEffect } from "react";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import styled from "styled-components";
+
+const StyledFeed = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 function Feed({ user, homeFeed }) {
   const [posts, setPosts] = useState(null);
