@@ -199,6 +199,14 @@ function Post({ post, setFeed, homeFeed }) {
           isPost
         />
       </div>
+      <div className="post-utils">
+        <LikeAction
+          user={currentUser}
+          post={post._id}
+          setLikeCount={setLikeCount}
+        />
+        <button onClick={() => inputRef.current.focus()}>Comment</button>
+      </div>
       {post.comments.map((comment) => (
         <div key={comment._id}>
           <Comment
