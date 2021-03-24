@@ -14,6 +14,7 @@ import LikeAction from "./likeAction";
 const StyledPost = styled.div`
   min-width: 340px;
   max-width: 750px;
+  transition: width 0.2s ease-in-out;
   padding: 10px;
   border-radius: 5px;
   margin: 20px 10px;
