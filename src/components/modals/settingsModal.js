@@ -47,6 +47,7 @@ function SettingsModal(props) {
     homeFeed,
     user,
     postAuthor,
+    setCommentCount,
   } = props;
 
   async function refreshFeed() {
@@ -84,12 +85,14 @@ function SettingsModal(props) {
     ];
     const reqBody = JSON.stringify({ post, author, commentId });
 
-    await fetch("http://localhost:3000/comments/delete", {
+    const res = await fetch("http://localhost:3000/comments/delete", {
       method: "delete",
       headers: { "Content-Type": "application/json" },
       body: reqBody,
     });
+    const data = await res.json();
 
+    setCommentCount(data.comments.length);
     refreshFeed();
   }
 
