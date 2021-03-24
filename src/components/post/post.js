@@ -232,6 +232,7 @@ function Post({ post, setFeed, homeFeed }) {
         </div>
       ))}
       <CommentForm
+        currentUser={currentUser}
         postId={post._id}
         postAuthor={post.author._id}
         setFeed={setFeed}

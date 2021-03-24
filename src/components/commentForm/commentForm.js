@@ -11,6 +11,7 @@ function CommentForm({
   homeFeed,
   postAuthor,
   inputRef,
+  currentUser,
   setCommentCount,
 }) {
   async function handleSubmit(e) {
@@ -21,7 +22,6 @@ function CommentForm({
     // Prevent sending empty comments
     if (!text) return;
 
-    const currentUser = cookies.get("currentUser");
     const bodyData = {
       text,
       post: postId,
