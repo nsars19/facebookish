@@ -43,10 +43,16 @@ const StyledPost = styled.div`
       font-weight: bold;
       color: #aaa;
     }
+
     a,
     p {
       width: fit-content;
     }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  }
 
   .post {
     padding: 5px 0;
