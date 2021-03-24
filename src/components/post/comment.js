@@ -21,6 +21,7 @@ const StyledComment = styled.div`
   }
 
   .comment-body {
+    position: relative;
     min-width: 250px;
     max-width: fit-content;
     padding: 8px 14px;
