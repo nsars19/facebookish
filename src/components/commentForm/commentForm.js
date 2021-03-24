@@ -1,9 +1,30 @@
 import styled from "styled-components";
-import Cookies from "universal-cookie";
+import colors from "./../../colors";
+import ProfilePicture from "./../userProfile/profilePicture";
+import { Link } from "react-router-dom";
 
-const cookies = new Cookies();
+const StyledForm = styled.form`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
 
-const StyledForm = styled.form``;
+  input[type="text"] {
+    flex: 1;
+    height: 35px;
+    padding-left: 10px;
+    border-style: none;
+    border-radius: 18px;
+    background: #707070;
+    color: ${colors.white};
+    font-size: 16px;
+    margin: 0 7px;
+  }
+
+  input[type="submit"] {
+    background: none;
+    font-weight: bold;
+  }
+`;
 
 function CommentForm({
   postId,
