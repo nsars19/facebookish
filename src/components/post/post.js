@@ -104,6 +104,20 @@ function Post({ post, setFeed, homeFeed }) {
           <p>{moment(post.createdAt).fromNow()}</p>
         </div>
         <p className="content">{post.text}</p>
+        <div className="metrics">
+          <div className="likes">
+            {/* {post.likes.length > 0 ? post.likes.length + " Likes" : <div />} */}
+            <AiFillLike className="like" />
+            {post.likes.length}
+          </div>
+          <div className="post-comments">
+            {post.comments.length > 0 ? (
+              post.comments.length + " Comments"
+            ) : (
+              <div />
+            )}
+          </div>
+        </div>
         {isAuthor ? (
           <AiFillSetting
             className="post-settings"
