@@ -106,6 +106,8 @@ const cookies = new Cookies();
 
 function Post({ post, setFeed, homeFeed }) {
   const [modalVisible, setModalVisible] = useState(false);
+  const [likeCount, setLikeCount] = useState(post.likes.length);
+  const [commentCount, setCommentCount] = useState(post.comments.length);
   const currentUser = cookies.get("currentUser");
   const isAuthor = post.author._id === currentUser;
   const inputRef = useRef(null);
