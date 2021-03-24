@@ -8,9 +8,8 @@ import Settings from "./../modals/settingsModal";
 import { useState, useRef } from "react";
 import ProfilePicture from "./../userProfile/profilePicture";
 import moment from "moment";
-import { AiFillLike } from "react-icons/ai";
-import LikeAction from "./likeAction";
 import PostUtils from "./postUtils";
+import PostMetrics from "./metricsDisplay";
 
 const StyledPost = styled.div`
   min-width: 340px;
@@ -73,30 +72,6 @@ const StyledPost = styled.div`
       line-height: 23px;
       font-size: 15px;
     }
-  }
-
-  .metrics {
-    font-size: 15px;
-    color: #aaa;
-    display: flex;
-    margin-top: 5px;
-  }
-
-  .likes,
-  .post-comments {
-    margin-top: 5px;
-    flex: 1;
-    display: flex;
-    justify-content: start;
-  }
-  .post-comments {
-    justify-content: end;
-    margin-right: 4px;
-  }
-  .like {
-    margin: 1px;
-    margin-right: 5px;
-    margin-left: 9px;
   }
 
   .post-settings {
@@ -169,16 +144,7 @@ function Post({ post, setFeed, homeFeed }) {
           <p>{moment(post.createdAt).fromNow()}</p>
         </div>
         <p className="content">{post.text}</p>
-        <div className="metrics">
-          <div className="likes">
-            {/* {likeCount > 0 ? likeCount + " Likes" : <div />} */}
-            <AiFillLike className="like" />
-            {likeCount}
-          </div>
-          <div className="post-comments">
-            {commentCount > 0 ? commentCount + " Comments" : <div />}
-          </div>
-        </div>
+        <PostMetrics likeCount={likeCount} commentCount={commentCount} />
         {isAuthor ? (
           <AiFillSetting
             className="post-settings"
