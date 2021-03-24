@@ -77,6 +77,7 @@ const StyledPost = styled.div`
   }
   .post-comments {
     justify-content: end;
+    margin-right: 4px;
   }
   .like {
     margin: 1px;
