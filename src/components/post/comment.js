@@ -42,7 +42,6 @@ const StyledComment = styled.div`
   }
 
   .comment-settings {
-    display: none;
     position: absolute;
     top: 5px;
     right: 10px;
@@ -55,6 +54,12 @@ const StyledComment = styled.div`
     &:active {
       transition: transform 0.3s ease-in-out;
       transform: rotate(90deg);
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .comment-settings {
+      display: none;
     }
   }
 `;
