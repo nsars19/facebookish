@@ -63,10 +63,12 @@ function Comment({ comment, currentUser, setFeed, homeFeed, postAuthor }) {
           <ProfilePicture userId={comment.author._id} size={"35px"} />
         </Link>
       </div>
-      <Link to={`/user/${comment.author._id}`} className="user">
-        {commentAuthor}
-      </Link>
-      <p>{comment.text}</p>
+      <div className="comment-body">
+        <Link to={`/user/${comment.author._id}`} className="user">
+          {commentAuthor}
+        </Link>
+        <p className="content">{comment.text}</p>
+      </div>
       {isAuthor ? (
         <AiFillSetting
           className="comment-settings"
