@@ -39,7 +39,7 @@ function CommentForm({
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const input = e.target.firstElementChild;
+    const input = e.target[0];
     const text = input.value;
     // Prevent sending empty comments
     if (!text) return;
