@@ -5,7 +5,14 @@ const cookies = new Cookies();
 
 const StyledForm = styled.form``;
 
-function CommentForm({ postId, setFeed, homeFeed, postAuthor }) {
+function CommentForm({
+  postId,
+  setFeed,
+  homeFeed,
+  postAuthor,
+  inputRef,
+  setCommentCount,
+}) {
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -22,12 +29,13 @@ function CommentForm({ postId, setFeed, homeFeed, postAuthor }) {
     };
     const requestBody = JSON.stringify(bodyData);
 
-    await fetch(`http://localhost:3000/comments/new`, {
+    const commentRes = await fetch(`http://localhost:3000/comments/new`, {
       method: "POST",
       type: "cors",
       headers: { "Content-Type": "application/json" },
       body: requestBody,
     });
+    const commentData = await commentRes.json();
 
     let response;
     if (homeFeed) {
@@ -39,13 +47,13 @@ function CommentForm({ postId, setFeed, homeFeed, postAuthor }) {
     }
     const data = await response.json();
     setFeed(data);
-
+    setCommentCount(commentData.comments.length);
     input.value = "";
   }
 
   return (
     <StyledForm onSubmit={handleSubmit}>
-      <input type="text" />
+      <input type="text" ref={inputRef} />
       <input type="submit" value="submit comment" />
     </StyledForm>
   );
