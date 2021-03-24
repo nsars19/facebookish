@@ -26,7 +26,8 @@ const GlobalStyle = createGlobalStyle`
       background: ${({ light }) => (light ? "#d8d8d8" : "#707070")}
     }
     ul.menu {
-      background: ${({ light }) => (light ? "#d8d8d8" : gray)}
+      background: ${({ light }) => (light ? "#d8d8d8" : gray)};
+      color: ${({ light }) => (light ? black : white)};
     }
   }
 
