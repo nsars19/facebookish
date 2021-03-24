@@ -55,6 +55,7 @@ const StyledPost = styled.div`
   }
 
   .post {
+    position: relative;
     padding: 5px 0;
     padding-bottom: 10px;
     border-bottom: 1px solid gray;
