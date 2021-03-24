@@ -42,6 +42,8 @@ const StyledModal = styled.div`
       border-style: none;
       background: transparent;
       color: inherit;
+      font-weight: bold;
+      font-size: 14px;
     }
   }
 `;
