@@ -9,7 +9,7 @@ import { useState, useRef } from "react";
 import ProfilePicture from "./../userProfile/profilePicture";
 import moment from "moment";
 import PostUtils from "./postUtils";
-import PostMetrics from "./metricsDisplay";
+import PostMetrics from "./postMetrics";
 
 const StyledPost = styled.div`
   min-width: 340px;
