@@ -90,6 +90,15 @@ const StyledPost = styled.div`
     }
   }
 
+  @media (max-width: 420px) {
+    & {
+      width: 340px;
+    }
+    .post-settings {
+      display: block;
+    }
+  }
+
   @media (min-width: 480px) {
     & {
       width: 420px;
@@ -111,6 +120,12 @@ const StyledPost = styled.div`
   @media (min-width: 1080px) {
     & {
       width: 750px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .post-settings {
+      display: none;
     }
   }
 `;
