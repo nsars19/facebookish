@@ -83,7 +83,7 @@ function CommentForm({
         id="comment-input"
         placeholder="Write a comment..."
       />
-      <input type="submit" value="submit comment" id="comment-submit" />
+      <input type="submit" value="submit" id="comment-submit" />
     </StyledForm>
   );
 }
