@@ -77,14 +77,15 @@ function Post({ post, setFeed, homeFeed }) {
   return (
     <StyledPost className="postItem">
       <div className="post">
+        <div className="user-info">
         <div className="pfp-link">
           <Link to={`/user/${post.author._id}`} className="user">
-            <ProfilePicture userId={post.author._id} size={"50px"} />
+              <ProfilePicture userId={post.author._id} size={"40px"} />
+            </Link>
+          </div>
+          <Link to={`/user/${post.author._id}`} className="user">
+            {post.author.firstName} {post.author.lastName}
           </Link>
-        </div>
-        <Link to={`/user/${post.author._id}`} className="user">
-          {post.author.firstName} {post.author.lastName}
-        </Link>
         <p>{post.text}</p>
         {isAuthor ? (
           <AiFillSetting
