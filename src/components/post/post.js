@@ -7,11 +7,12 @@ import { AiFillSetting } from "react-icons/ai";
 import Settings from "./../modals/settingsModal";
 import { useState } from "react";
 import ProfilePicture from "./../userProfile/profilePicture";
+import moment from "moment";
 
 const StyledPost = styled.div`
   padding: 10px;
   border-radius: 5px;
-  margin: 10px;
+  margin: 20px 10px;
   box-shadow: 0 0.1px 0.8px rgba(0, 0, 0, 0.02),
     0 0.1px 1.9px rgba(0, 0, 0, 0.028), 0 0.3px 3.5px rgba(0, 0, 0, 0.035),
     0 0.4px 6.3px rgba(0, 0, 0, 0.042), 0 0.8px 11.7px rgba(0, 0, 0, 0.05),
@@ -24,28 +25,41 @@ const StyledPost = styled.div`
       0 -0.8px 7.4px rgba(0, 0, 0, 0.067), 0 0.4px 12.2px rgba(0, 0, 0, 0.066),
       0 4.9px 21.3px rgba(0, 0, 0, 0.066), 0 21px 46px rgba(0, 0, 0, 0.07);
   }
-  .post {
-    padding: 5px;
-    border-bottom: 1px solid gray;
-    margin: 10px 0;
-    position: relative;
+
+  .user-info {
     display: grid;
     grid-template-columns: 60px auto;
-    grid-template-rows: 1fr auto 1px;
-    gap: 10px;
+    grid-template-rows: 15px auto;
+    row-gap: 10px;
+    margin-bottom: 10px;
+
+    p {
+      font-size: 13px;
+      font-weight: bold;
+      color: #aaa;
+    }
+  }
+
+  .post {
+    padding: 5px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid gray;
+    position: relative;
 
     .pfp-link {
-      height: 100%;
       grid-column: 1 / 2;
       grid-row: 1 / -1;
       justify-self: center;
+      align-self: center;
     }
 
-    & a,
-    & p {
-      grid-column: 2 / 3;
+    p.content {
+      margin-left: 10px;
+      line-height: 23px;
+      font-size: 15px;
     }
   }
+
   .post-settings {
     display: none;
   }
@@ -78,15 +92,17 @@ function Post({ post, setFeed, homeFeed }) {
     <StyledPost className="postItem">
       <div className="post">
         <div className="user-info">
-        <div className="pfp-link">
-          <Link to={`/user/${post.author._id}`} className="user">
+          <div className="pfp-link">
+            <Link to={`/user/${post.author._id}`} className="user">
               <ProfilePicture userId={post.author._id} size={"40px"} />
             </Link>
           </div>
           <Link to={`/user/${post.author._id}`} className="user">
             {post.author.firstName} {post.author.lastName}
           </Link>
-        <p>{post.text}</p>
+          <p>{moment(post.createdAt).fromNow()}</p>
+        </div>
+        <p className="content">{post.text}</p>
         {isAuthor ? (
           <AiFillSetting
             className="post-settings"
