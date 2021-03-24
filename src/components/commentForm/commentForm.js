@@ -17,7 +17,7 @@ const StyledForm = styled.form`
     border-radius: 18px;
     background: #707070;
     color: ${colors.white};
-    font-size: 16px;
+    font-size: 14px;
     margin: 0 7px;
   }
 
