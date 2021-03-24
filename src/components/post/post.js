@@ -70,6 +70,7 @@ const StyledPost = styled.div`
 
   .likes,
   .post-comments {
+    margin-top: 5px;
     flex: 1;
     display: flex;
     justify-content: start;
