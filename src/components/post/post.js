@@ -75,19 +75,14 @@ const StyledPost = styled.div`
   }
 
   .post-settings {
-    display: none;
-  }
-  .post:hover .post-settings {
-    display: block;
     position: absolute;
     top: 5px;
     right: 5px;
     cursor: pointer;
+  }
 
-    &:active {
-      transition: transform 0.3s ease-in-out;
-      transform: rotate(90deg);
-    }
+  .post:hover .post-settings {
+    display: block;
   }
 
   @media (max-width: 420px) {
