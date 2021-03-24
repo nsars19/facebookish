@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
+import colors from "./../../colors";
 
 const StyledModal = styled.div`
   display: ${({ vis }) => (vis ? "flex" : "none")};
