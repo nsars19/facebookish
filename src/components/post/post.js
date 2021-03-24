@@ -11,6 +11,8 @@ import moment from "moment";
 import { AiFillLike } from "react-icons/ai";
 
 const StyledPost = styled.div`
+  min-width: 340px;
+  max-width: 750px;
   padding: 10px;
   border-radius: 5px;
   margin: 20px 10px;
