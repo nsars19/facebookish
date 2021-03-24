@@ -43,7 +43,10 @@ const StyledPost = styled.div`
       font-weight: bold;
       color: #aaa;
     }
-  }
+    a,
+    p {
+      width: fit-content;
+    }
 
   .post {
     padding: 5px 0;
