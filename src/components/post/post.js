@@ -211,6 +211,7 @@ function Post({ post, setFeed, homeFeed }) {
           user={currentUser}
           setFeed={setFeed}
           homeFeed={homeFeed}
+          setCommentCount={setCommentCount}
           isPost
         />
       </div>
