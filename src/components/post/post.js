@@ -104,8 +104,8 @@ const StyledPost = styled.div`
   .post:hover .post-settings {
     display: block;
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 5px;
+    right: 5px;
     cursor: pointer;
 
     &:active {
