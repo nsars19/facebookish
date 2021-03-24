@@ -7,20 +7,30 @@ import ProfilePicture from "./../userProfile/profilePicture";
 
 const StyledComment = styled.div`
   padding: 5px;
-  border-bottom: 1px solid gray;
   margin: 10px 0;
   position: relative;
   display: grid;
-  grid-template-columns: 60px auto;
+  grid-template-columns: 50px auto;
   grid-template-rows: 1fr auto;
-  gap: 10px;
-  column-gap: 0px;
 
   .pfp-link {
     height: 100%;
     grid-column: 1 / 2;
     grid-row: 1 / -1;
     justify-self: center;
+  }
+
+  .comment-body {
+    padding: 8px 11px;
+    border-radius: 20px;
+
+    a.user {
+      font-size: 14px;
+    }
+    p.content {
+      font-size: 15px;
+      padding-top: 2px;
+    }
   }
 
   & a,
