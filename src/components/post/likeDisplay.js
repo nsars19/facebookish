@@ -3,7 +3,7 @@ import { AiFillLike } from "react-icons/ai";
 
 const StyledLike = styled.div`
   .like {
-    margin: 1px;
+    margin-top: -1px;
     margin-right: 5px;
     margin-left: 9px;
   }
