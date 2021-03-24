@@ -25,6 +25,9 @@ const GlobalStyle = createGlobalStyle`
     div.comment-body {
       background: ${({ light }) => (light ? "#d8d8d8" : "#707070")}
     }
+    ul.menu {
+      background: ${({ light }) => (light ? "#d8d8d8" : gray)}
+    }
   }
 
   button,
