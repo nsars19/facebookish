@@ -105,6 +105,11 @@ const StyledPost = styled.div`
     column-gap: 4px;
     border-bottom: 1px solid gray;
     padding: 4px 0;
+
+    & button {
+      font-weight: bold;
+      font-size: 14px;
+    }
   }
 
   .post-settings {
