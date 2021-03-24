@@ -29,8 +29,10 @@ const StyledModal = styled.div`
       border-radius: 0 0 6px 6px;
     }
 
-    &:hover {
-      background: #393aff;
+    &:hover,
+    &:active {
+      background: ${colors.white};
+      color: ${colors.black};
     }
 
     button {
