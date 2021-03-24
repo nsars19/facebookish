@@ -22,6 +22,9 @@ const GlobalStyle = createGlobalStyle`
     div.postItem {
       background: ${({ light }) => (light ? white : gray)};
     }
+    div.comment-body {
+      background: ${({ light }) => (light ? "#d8d8d8" : "#707070")}
+    }
   }
 
   button,
