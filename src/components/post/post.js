@@ -9,6 +9,7 @@ import { useState, useRef } from "react";
 import ProfilePicture from "./../userProfile/profilePicture";
 import moment from "moment";
 import { AiFillLike } from "react-icons/ai";
+import LikeAction from "./likeAction";
 
 const StyledPost = styled.div`
   min-width: 340px;
