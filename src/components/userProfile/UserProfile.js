@@ -11,7 +11,7 @@ const StyledUserProfile = styled.div`
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    height: 40vh;
+    min-height: 50vh;
   }
   .name-wrap {
     // border: 4px solid green;
