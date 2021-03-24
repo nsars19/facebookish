@@ -10,6 +10,7 @@ import ProfilePicture from "./../userProfile/profilePicture";
 import moment from "moment";
 import { AiFillLike } from "react-icons/ai";
 import LikeAction from "./likeAction";
+import PostUtils from "./postUtils";
 
 const StyledPost = styled.div`
   min-width: 340px;
@@ -96,20 +97,6 @@ const StyledPost = styled.div`
     margin: 1px;
     margin-right: 5px;
     margin-left: 9px;
-  }
-
-  .post-utils {
-    display: grid;
-    justify-items: stretch;
-    grid-auto-flow: column;
-    column-gap: 4px;
-    border-bottom: 1px solid gray;
-    padding: 4px 0;
-
-    & button {
-      font-weight: bold;
-      font-size: 14px;
-    }
   }
 
   .post-settings {
@@ -211,14 +198,12 @@ function Post({ post, setFeed, homeFeed }) {
           isPost
         />
       </div>
-      <div className="post-utils">
-        <LikeAction
-          user={currentUser}
-          post={post._id}
-          setLikeCount={setLikeCount}
-        />
-        <button onClick={() => inputRef.current.focus()}>Comment</button>
-      </div>
+      <PostUtils
+        user={currentUser}
+        post={post._id}
+        setLikeCount={setLikeCount}
+        focusRef={() => inputRef.current.focus()}
+      />
       {post.comments.map((comment) => (
         <div key={comment._id}>
           <Comment
