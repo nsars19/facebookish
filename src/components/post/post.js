@@ -8,6 +8,7 @@ import Settings from "./../modals/settingsModal";
 import { useState } from "react";
 import ProfilePicture from "./../userProfile/profilePicture";
 import moment from "moment";
+import { AiFillLike } from "react-icons/ai";
 
 const StyledPost = styled.div`
   padding: 10px;
