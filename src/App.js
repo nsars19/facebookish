@@ -33,6 +33,12 @@ const GlobalStyle = createGlobalStyle`
       background: ${({ light }) => (light ? "#d8d8d8" : "#707070")};
       color: ${({ light }) => (light ? black : white)};
     }
+    #comment-submit {
+      color: ${({ light }) => (light ? gray : white)};
+      &:hover {
+        background: ${({ light }) => (light ? "#d8d8d8" : "#707070")}
+      }
+    }
   }
 
   button,
