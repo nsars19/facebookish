@@ -12,9 +12,12 @@ const StyledModal = styled.div`
 
   ul {
     list-style: none;
-    border: 2px solid #393ac4;
-    background: #393a64;
+    border: 1px solid #a0a0a0;
+    border-radius: 6px;
     z-index: 2;
+    box-shadow: 0 0.3px 0.9px rgba(0, 0, 0, 0.073),
+      0 0.9px 2.3px rgba(0, 0, 0, 0.106), 0 1.8px 4.8px rgba(0, 0, 0, 0.124),
+      0 3.7px 9.9px rgba(0, 0, 0, 0.139), 0 10px 27px rgba(0, 0, 0, 0.19);
   }
   li {
     padding: 8px;
