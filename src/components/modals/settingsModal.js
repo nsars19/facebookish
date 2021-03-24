@@ -22,6 +22,11 @@ const StyledModal = styled.div`
 
     &:first-child {
       border-top: none;
+      border-radius: 6px 6px 0 0;
+    }
+
+    &:last-child {
+      border-radius: 0 0 6px 6px;
     }
 
     &:hover {
