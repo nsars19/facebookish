@@ -184,16 +184,12 @@ function Post({ post, setFeed, homeFeed }) {
         <p className="content">{post.text}</p>
         <div className="metrics">
           <div className="likes">
-            {/* {post.likes.length > 0 ? post.likes.length + " Likes" : <div />} */}
+            {/* {likeCount > 0 ? likeCount + " Likes" : <div />} */}
             <AiFillLike className="like" />
-            {post.likes.length}
+            {likeCount}
           </div>
           <div className="post-comments">
-            {post.comments.length > 0 ? (
-              post.comments.length + " Comments"
-            ) : (
-              <div />
-            )}
+            {commentCount > 0 ? commentCount + " Comments" : <div />}
           </div>
         </div>
         {isAuthor ? (
