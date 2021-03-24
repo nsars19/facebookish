@@ -26,15 +26,17 @@ function Feed({ user, homeFeed }) {
   }, [user, homeFeed]);
 
   return (
-    (posts && (
-      <div>
-        {posts.map((post) => (
-          <div key={post._id}>
-            <Post post={post} setFeed={setPosts} homeFeed={homeFeed} />
-          </div>
-        ))}
-      </div>
-    )) || <h1>Loading...</h1>
+    <StyledFeed>
+      {(posts && (
+        <div>
+          {posts.map((post) => (
+            <div key={post._id} className="post-wrap">
+              <Post post={post} setFeed={setPosts} homeFeed={homeFeed} />
+            </div>
+          ))}
+        </div>
+      )) || <h1>Loading...</h1>}
+    </StyledFeed>
   );
 }
 
