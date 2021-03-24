@@ -87,24 +87,27 @@ function Comment({
           {commentAuthor}
         </Link>
         <p className="content">{comment.text}</p>
-      </div>
-      {isAuthor ? (
-        <AiFillSetting
-          className="comment-settings"
-          onClick={toggleModalVisibility}
+
+        {isAuthor ? (
+          <AiFillSetting
+            className="comment-settings"
+            onClick={toggleModalVisibility}
+          />
+        ) : (
+          <div />
+        )}
+
+        <Settings
+          modalVisible={modalVisible}
+          toggleModal={setModalVisible}
+          commentItem={comment}
+          setFeed={setFeed}
+          homeFeed={homeFeed}
+          user={currentUser}
+          postAuthor={postAuthor}
+          setCommentCount={setCommentCount}
         />
-      ) : (
-        <div />
-      )}
-      <Settings
-        modalVisible={modalVisible}
-        toggleModal={setModalVisible}
-        commentItem={comment}
-        setFeed={setFeed}
-        homeFeed={homeFeed}
-        user={currentUser}
-        postAuthor={postAuthor}
-      />
+      </div>
     </StyledComment>
   );
 }
