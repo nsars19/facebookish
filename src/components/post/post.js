@@ -61,6 +61,28 @@ const StyledPost = styled.div`
     }
   }
 
+  .metrics {
+    font-size: 15px;
+    color: #aaa;
+    display: flex;
+    margin-top: 5px;
+  }
+
+  .likes,
+  .post-comments {
+    flex: 1;
+    display: flex;
+    justify-content: start;
+  }
+  .post-comments {
+    justify-content: end;
+  }
+  .like {
+    margin: 1px;
+    margin-right: 5px;
+    margin-left: 9px;
+  }
+
   .post-settings {
     display: none;
   }
