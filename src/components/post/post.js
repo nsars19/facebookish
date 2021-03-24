@@ -100,6 +100,30 @@ const StyledPost = styled.div`
       transform: rotate(90deg);
     }
   }
+
+  @media (min-width: 480px) {
+    & {
+      width: 420px;
+    }
+  }
+
+  @media (min-width: 540px) {
+    & {
+      width: 480px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    & {
+      width: 600px;
+    }
+  }
+
+  @media (min-width: 1080px) {
+    & {
+      width: 750px;
+    }
+  }
 `;
 
 const cookies = new Cookies();
