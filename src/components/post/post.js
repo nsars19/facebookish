@@ -5,7 +5,7 @@ import CommentForm from "./../commentForm/commentForm";
 import Cookies from "universal-cookie";
 import { AiFillSetting } from "react-icons/ai";
 import Settings from "./../modals/settingsModal";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import ProfilePicture from "./../userProfile/profilePicture";
 import moment from "moment";
 import { AiFillLike } from "react-icons/ai";
@@ -106,6 +106,7 @@ function Post({ post, setFeed, homeFeed }) {
   const [modalVisible, setModalVisible] = useState(false);
   const currentUser = cookies.get("currentUser");
   const isAuthor = post.author._id === currentUser;
+  const inputRef = useRef(null);
 
   function toggleModalVisibility() {
     setModalVisible(!modalVisible);
@@ -174,6 +175,7 @@ function Post({ post, setFeed, homeFeed }) {
         postAuthor={post.author._id}
         setFeed={setFeed}
         homeFeed={homeFeed}
+        inputRef={inputRef}
       />
     </StyledPost>
   );
