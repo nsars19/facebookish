@@ -9,20 +9,6 @@ const StyledModal = styled.div`
   right: 10px;
   color: black;
   margin-right: 20px;
-  animation: comeFromRight 0.3s ease;
-
-  @keyframes comeFromRight {
-    0% {
-      opacity: 0;
-      right: -20px;
-    }
-    75% {
-      opacity: 90%;
-    }
-    100% {
-      right: 0px;
-    }
-  }
 
   ul {
     list-style: none;
