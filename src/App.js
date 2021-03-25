@@ -41,7 +41,7 @@ const GlobalStyle = createGlobalStyle`
       }
     }
     #comment-util button{
-      color: ${({ light }) => (light ? gray : white)};
+      color: ${({ light }) => (light ? "#777" : "#aaa")};
     }
     #comment-likes {
       color: ${({ light }) => (light ? gray : white)};
