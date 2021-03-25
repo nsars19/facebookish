@@ -12,7 +12,6 @@ const StyledModal = styled.div`
 
   ul {
     list-style: none;
-    border: 1px solid #a0a0a0;
     border-radius: 6px;
     z-index: 2;
     box-shadow: 0 0.3px 0.9px rgba(0, 0, 0, 0.073),
