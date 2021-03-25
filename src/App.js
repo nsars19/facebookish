@@ -40,6 +40,13 @@ const GlobalStyle = createGlobalStyle`
         background: ${({ light }) => (light ? "#d8d8d8" : "#707070")}
       }
     }
+    #comment-util button{
+      color: ${({ light }) => (light ? gray : white)};
+    }
+    #comment-likes {
+      color: ${({ light }) => (light ? gray : white)};
+      background: ${({ light }) => (light ? "#cacaca" : "#707070")}
+    }
   }
 
   button,
