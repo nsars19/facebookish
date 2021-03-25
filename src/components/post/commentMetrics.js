@@ -10,7 +10,7 @@ const StyledCommentMetrics = styled.div`
 function CommentMetrics({ likeCount }) {
   return (
     <StyledCommentMetrics>
-      <LikeDisplay likeCount={likeCount} isCmt={true} />
+      <LikeDisplay likeCount={likeCount} isCmt={true} id={"comment-likes"} />
     </StyledCommentMetrics>
   );
 }
