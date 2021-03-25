@@ -86,7 +86,7 @@ const StyledPost = styled.div`
     display: block;
   }
 
-  @media (max-width: 420px) {
+  @media (min-width: 300px) {
     & {
       width: 340px;
     }
