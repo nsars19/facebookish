@@ -88,7 +88,6 @@ function Comment({
           {commentAuthor}
         </Link>
         <p className="content">{comment.text}</p>
-
         {isAuthor ? (
           <AiFillSetting
             className="comment-settings"
@@ -97,7 +96,6 @@ function Comment({
         ) : (
           <div />
         )}
-
         <Settings
           modalVisible={modalVisible}
           toggleModal={setModalVisible}
