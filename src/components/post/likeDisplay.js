@@ -25,7 +25,7 @@ const StyledLike = styled.div`
 
 function LikeDisplay({ likeCount, isCmt }) {
   return (
-    <StyledLike isCmt={isCmt} className={isCmt ? "cmt" : ""}>
+    <StyledLike isCmt={isCmt} className={isCmt ? "cmt" : ""} id={id}>
       <AiFillLike className="like" />
       {likeCount}
     </StyledLike>
