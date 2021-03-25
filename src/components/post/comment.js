@@ -4,6 +4,8 @@ import { AiFillSetting } from "react-icons/ai";
 import Settings from "./../modals/settingsModal";
 import { useState } from "react";
 import ProfilePicture from "./../userProfile/profilePicture";
+import CommentUtils from "./commentUtils";
+import CommentMetrics from "./commentMetrics";
 
 const StyledComment = styled.div`
   padding: 5px;
@@ -68,6 +70,7 @@ function Comment({
   setCommentCount,
 }) {
   const [modalVisible, setModalVisible] = useState(false);
+  const [likeCount, setLikeCount] = useState(comment.likes.length);
   const commentAuthor =
     comment.author.firstName + " " + comment.author.lastName;
   const isAuthor = comment.author._id === currentUser;
@@ -106,7 +109,13 @@ function Comment({
           postAuthor={postAuthor}
           setCommentCount={setCommentCount}
         />
+        {likeCount > 0 ? <CommentMetrics likeCount={likeCount} /> : <div />}
       </div>
+      <CommentUtils
+        comment={comment}
+        user={currentUser}
+        setLikeCount={setLikeCount}
+      />
     </StyledComment>
   );
 }
