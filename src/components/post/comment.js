@@ -10,14 +10,14 @@ const StyledComment = styled.div`
   margin: 10px 0;
   position: relative;
   display: grid;
-  grid-template-columns: 50px auto;
+  grid-template-columns: 35px auto;
   grid-template-rows: 1fr auto;
+  column-gap: 10px;
 
   .pfp-link {
     height: 100%;
     grid-column: 1 / 2;
     grid-row: 1 / -1;
-    justify-self: center;
   }
 
   .comment-body {
