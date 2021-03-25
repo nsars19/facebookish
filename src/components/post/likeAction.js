@@ -5,15 +5,20 @@ const StyledAction = styled.button`
   font-size: 14px;
 `;
 
-function LikeAction({ user, post, setLikeCount }) {
+function LikeAction({ user, post, comment, setLikeCount }) {
   async function processLike() {
-    const body = JSON.stringify({ user, post });
+    const body = post
+      ? JSON.stringify({ user, post })
+      : JSON.stringify({ user, comment });
 
-    const res = await fetch("http://localhost:3000/like", {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
-      body,
-    });
+    const res = await fetch(
+      `http://localhost:3000/like-${post ? "post" : "comment"}`,
+      {
+        method: "post",
+        headers: { "Content-Type": "application/json" },
+        body,
+      }
+    );
 
     const data = await res.json();
     const likeCount = data.likes.length;
@@ -21,7 +26,7 @@ function LikeAction({ user, post, setLikeCount }) {
   }
 
   return (
-    <StyledAction onClick={processLike} className="util">
+    <StyledAction onClick={processLike} com={comment} className="util">
       Like
     </StyledAction>
   );
