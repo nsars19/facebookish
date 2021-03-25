@@ -7,7 +7,7 @@ const StyledForm = styled.form`
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
-  margin-left: 12px;
+  margin-left: 5px;
 
   input[type="text"] {
     flex: 1;
@@ -18,7 +18,7 @@ const StyledForm = styled.form`
     background: #707070;
     color: ${colors.white};
     font-size: 14px;
-    margin: 0 7px;
+    margin: 0 10px;
   }
 
   input[type="submit"] {
