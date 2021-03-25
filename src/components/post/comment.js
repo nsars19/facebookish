@@ -50,11 +50,6 @@ const StyledComment = styled.div`
 
   &:hover .comment-settings {
     display: block;
-
-    &:active {
-      transition: transform 0.3s ease-in-out;
-      transform: rotate(90deg);
-    }
   }
 
   @media (min-width: 1280px) {
