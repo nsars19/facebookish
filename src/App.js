@@ -28,6 +28,7 @@ const GlobalStyle = createGlobalStyle`
     ul.menu {
       background: ${({ light }) => (light ? "#d8d8d8" : gray)};
       color: ${({ light }) => (light ? black : white)};
+      border: 1px solid ${({ light }) => (light ? "#aaa" : "#444")};
     }
     #comment-input {
       background: ${({ light }) => (light ? "#d8d8d8" : "#707070")};
