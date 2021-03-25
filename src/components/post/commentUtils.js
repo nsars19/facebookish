@@ -2,6 +2,8 @@ import LikeAction from "./likeAction";
 import styled from "styled-components";
 
 const StyledCommentUtils = styled.div`
+  display: flex;
+
   button {
     padding: 0;
     margin-left: 15px;
