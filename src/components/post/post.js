@@ -143,7 +143,7 @@ function Post({ post, setFeed, homeFeed }) {
   const toggleModalVisibility = () => setModalVisible(!modalVisible);
 
   return (
-    <StyledPost className="postItem">
+    <StyledPost className="postItem" cmtsVis={commentsVisible}>
       <div className="post">
         <div className="user-info">
           <div className="pfp-link">
