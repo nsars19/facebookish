@@ -6,7 +6,7 @@ import getCommentCount from "./../../utils/getCommentCount";
 
 const StyledForm = styled.form`
   display: flex;
-  height: ${({ vis }) => (vis ? "auto" : "0")};
+  height: ${({ vis }) => (vis ? "fit-content" : "0")};
   opacity: ${({ vis }) => (vis ? "100%" : "0")};
   justify-content: space-between;
   margin-left: 15px;
