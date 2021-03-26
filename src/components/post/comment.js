@@ -94,56 +94,58 @@ function Comment({
   }
 
   return (
-    <StyledComment className="comment" subFormVis={subFormVis}>
-      <div className="pfp-link">
-        <Link to={`/user/${comment.author._id}`} className="user">
-          <ProfilePicture userId={comment.author._id} size={"35px"} />
-        </Link>
-      </div>
-      <div className="comment-body">
-        <Link to={`/user/${comment.author._id}`} className="user">
-          {commentAuthor}
-        </Link>
-        <p className="content">{comment.text}</p>
-        {isAuthor ? (
-          <AiFillSetting
-            className="comment-settings"
-            onClick={toggleModalVisibility}
+    <>
+      <StyledComment className="comment" subFormVis={subFormVis}>
+        <div className="pfp-link">
+          <Link to={`/user/${comment.author._id}`} className="user">
+            <ProfilePicture userId={comment.author._id} size={"35px"} />
+          </Link>
+        </div>
+        <div className="comment-body">
+          <Link to={`/user/${comment.author._id}`} className="user">
+            {commentAuthor}
+          </Link>
+          <p className="content">{comment.text}</p>
+          {isAuthor ? (
+            <AiFillSetting
+              className="comment-settings"
+              onClick={toggleModalVisibility}
+            />
+          ) : (
+            <div />
+          )}
+          <Settings
+            modalVisible={modalVisible}
+            toggleModal={setModalVisible}
+            commentItem={comment}
+            setFeed={setFeed}
+            homeFeed={homeFeed}
+            user={currentUser}
+            postAuthor={postAuthor}
+            setCommentCount={setCommentCount}
           />
-        ) : (
-          <div />
-        )}
-        <Settings
-          modalVisible={modalVisible}
-          toggleModal={setModalVisible}
-          commentItem={comment}
+          {likeCount > 0 ? <CommentMetrics likeCount={likeCount} /> : <div />}
+        </div>
+        <CommentUtils
+          comment={comment}
+          user={currentUser}
+          setLikeCount={setLikeCount}
+          focusRef={focusSubCommentForm}
+        />
+        <SubCommentForm
+          currentUser={currentUser}
+          subFormVis={subFormVis}
+          toggleVis={setSubFormVis}
+          inputRef={subCommentRef}
+          postId={comment.post}
+          commentId={comment._id}
+          parentId={comment._id}
           setFeed={setFeed}
           homeFeed={homeFeed}
-          user={currentUser}
           postAuthor={postAuthor}
           setCommentCount={setCommentCount}
         />
-        {likeCount > 0 ? <CommentMetrics likeCount={likeCount} /> : <div />}
-      </div>
-      <CommentUtils
-        comment={comment}
-        user={currentUser}
-        setLikeCount={setLikeCount}
-        focusRef={focusSubCommentForm}
-      />
-      <SubCommentForm
-        currentUser={currentUser}
-        subFormVis={subFormVis}
-        toggleVis={setSubFormVis}
-        inputRef={subCommentRef}
-        postId={comment.post}
-        commentId={comment._id}
-        parentId={comment._id}
-        setFeed={setFeed}
-        homeFeed={homeFeed}
-        postAuthor={postAuthor}
-        setCommentCount={setCommentCount}
-      />
+      </StyledComment>
       <div className="sub-comments">
         {comment.comments.map((subComment) => (
           <div key={subComment._id} className="sub-comment">
@@ -159,7 +161,7 @@ function Comment({
           </div>
         ))}
       </div>
-    </StyledComment>
+    </>
   );
 }
 
