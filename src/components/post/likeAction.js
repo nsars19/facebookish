@@ -12,7 +12,7 @@ function LikeAction({ user, post, comment, setLikeCount }) {
       : JSON.stringify({ user, comment });
 
     const res = await fetch(
-      `http://localhost:3000/like-${post ? "post" : "comment"}`,
+      `http://localhost:3000/likes/like-${post ? "post" : "comment"}`,
       {
         method: "post",
         headers: { "Content-Type": "application/json" },
