@@ -39,6 +39,11 @@ const StyledCommentUtils = styled.div`
       display: none;
     }
   }
+
+  button.util:hover,
+  button.reply:hover {
+    cursor: pointer;
+  }
 `;
 
 function CommentUtils({ comment, user, setLikeCount, focusRef }) {
