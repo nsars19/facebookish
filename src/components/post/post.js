@@ -10,6 +10,7 @@ import ProfilePicture from "./../userProfile/profilePicture";
 import moment from "moment";
 import PostUtils from "./postUtils";
 import PostMetrics from "./postMetrics";
+import getCommentCount from "./../../utils/getCommentCount";
 
 const StyledPost = styled.div`
   min-width: 340px;
@@ -131,7 +132,9 @@ const cookies = new Cookies();
 function Post({ post, setFeed, homeFeed }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [likeCount, setLikeCount] = useState(post.likes.length);
-  const [commentCount, setCommentCount] = useState(post.comments.length);
+  const [commentCount, setCommentCount] = useState(
+    getCommentCount(post.comments)
+  );
   const currentUser = cookies.get("currentUser");
   const isAuthor = post.author._id === currentUser;
   const inputRef = useRef(null);

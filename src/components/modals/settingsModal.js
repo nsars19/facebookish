@@ -103,7 +103,7 @@ function SettingsModal(props) {
     });
     const data = await res.json();
 
-    setCommentCount(data.comments.length);
+    setCommentCount(getCommentCount(data.comments));
     refreshFeed();
   }
 

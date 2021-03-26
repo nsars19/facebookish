@@ -2,6 +2,7 @@ import styled from "styled-components";
 import colors from "./../../colors";
 import ProfilePicture from "./../userProfile/profilePicture";
 import { Link } from "react-router-dom";
+import getCommentCount from "./../../utils/getCommentCount";
 
 const StyledForm = styled.form`
   display: flex;
@@ -69,7 +70,7 @@ function CommentForm({
     }
     const data = await response.json();
     setFeed(data);
-    setCommentCount(commentData.comments.length);
+    setCommentCount(getCommentCount(commentData.comments));
     input.value = "";
   }
 
