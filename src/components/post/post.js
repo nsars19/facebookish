@@ -139,9 +139,7 @@ function Post({ post, setFeed, homeFeed }) {
   const isAuthor = post.author._id === currentUser;
   const inputRef = useRef(null);
 
-  function toggleModalVisibility() {
-    setModalVisible(!modalVisible);
-  }
+  const toggleModalVisibility = () => setModalVisible(!modalVisible);
 
   return (
     <StyledPost className="postItem">
