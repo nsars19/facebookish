@@ -18,6 +18,7 @@ const StyledForm = styled.form`
   input[type="text"] {
     flex: 1;
     height: 35px;
+    width: 170px;
     padding-left: 10px;
     border-style: none;
     border-radius: 18px;
