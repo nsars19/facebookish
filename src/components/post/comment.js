@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { AiFillSetting } from "react-icons/ai";
 import Settings from "./../modals/settingsModal";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import ProfilePicture from "./../userProfile/profilePicture";
 import CommentUtils from "./commentUtils";
 import CommentMetrics from "./commentMetrics";
@@ -11,7 +11,7 @@ import SubComment from "./subComment";
 
 const StyledComment = styled.div`
   padding: 5px;
-  margin: 10px 0;
+  margin: 5px 0;
   position: relative;
   display: grid;
   grid-template-columns: 35px auto;
