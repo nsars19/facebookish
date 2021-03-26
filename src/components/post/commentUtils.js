@@ -30,10 +30,13 @@ const StyledCommentUtils = styled.div`
   }
 `;
 
-function CommentUtils({ comment, user, setLikeCount }) {
+function CommentUtils({ comment, user, setLikeCount, focusRef }) {
   return (
-    <StyledCommentUtils>
+    <StyledCommentUtils id="comment-util">
       <LikeAction user={user} setLikeCount={setLikeCount} comment={comment} />
+      <button className="reply" onClick={focusRef}>
+        Reply
+      </button>
     </StyledCommentUtils>
   );
 }
