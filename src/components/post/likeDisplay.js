@@ -19,7 +19,7 @@ const StyledLike = styled.div`
 
   .like {
     path {
-      color: #0470e5cc;
+      color: #338ae7;
     }
     margin-bottom: 2px;
     margin-right: 5px;
