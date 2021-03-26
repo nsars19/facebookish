@@ -18,6 +18,9 @@ const StyledLike = styled.div`
       : "none"};
 
   .like {
+    path {
+      color: #0470e5cc;
+    }
     margin-bottom: 2px;
     margin-right: 5px;
     margin-left: 1px;
