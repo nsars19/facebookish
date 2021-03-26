@@ -24,8 +24,19 @@ const StyledCommentUtils = styled.div`
     }
     &:hover,
     &:active {
+      background: none;
       color: inherit;
       text-decoration: underline;
+    }
+  }
+
+  button.reply {
+    margin: 0;
+    margin-top: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    &::after {
+      display: none;
     }
   }
 `;
