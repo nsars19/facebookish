@@ -87,6 +87,10 @@ const StyledPost = styled.div`
     display: block;
   }
 
+  .comments {
+    display: ${({ cmtsVis }) => (cmtsVis ? "block" : "none")};
+  }
+
   @media (min-width: 300px) {
     & {
       width: 340px;
