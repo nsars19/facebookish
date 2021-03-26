@@ -23,7 +23,7 @@ const StyledLike = styled.div`
     margin-left: 1px;
 `;
 
-function LikeDisplay({ likeCount, isCmt }) {
+function LikeDisplay({ likeCount, isCmt, id }) {
   return (
     <StyledLike isCmt={isCmt} className={isCmt ? "cmt" : ""} id={id}>
       <AiFillLike className="like" />
