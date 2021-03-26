@@ -4,6 +4,7 @@ import { useRouteMatch } from "react-router-dom";
 import styled from "styled-components";
 import Feed from "./../feed/feed";
 import ProfilePicture from "./profilePicture";
+import FriendshipButton from "./../friendshipButton/friendshipButton";
 
 const StyledUserProfile = styled.div`
   .profile-desc {
@@ -40,7 +41,7 @@ function UserProfile({ colors, lightMode, user }) {
         <div className="name-wrap">
           <h2>{userName || <Skeleton width={150} />}</h2>
         </div>
-        <button>Become Friends</button>
+        <FriendshipButton />
       </div>
       <Feed user={userId} />
     </StyledUserProfile>
