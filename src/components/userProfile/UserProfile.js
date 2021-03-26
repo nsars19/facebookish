@@ -38,7 +38,7 @@ function UserProfile({ colors, lightMode, user }) {
       <div className="profile-desc">
         <ProfilePicture userId={userId} size={"250px"} />
         <div className="name-wrap">
-          <h3>{userName || <Skeleton width={150} />}</h3>
+          <h2>{userName || <Skeleton width={150} />}</h2>
         </div>
         <button>Become Friends</button>
       </div>
