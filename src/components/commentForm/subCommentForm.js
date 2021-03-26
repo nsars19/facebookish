@@ -70,7 +70,7 @@ function SubCommentForm({
       body: requestBody,
     });
     const commentData = await commentRes.json();
-    console.log("subComment: ", commentData);
+
     let response;
     if (homeFeed) {
       response = await fetch(`http://localhost:3000/posts/feed/${currentUser}`);
