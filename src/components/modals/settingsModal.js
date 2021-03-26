@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import colors from "./../../colors";
+import getCommentCount from "./../../utils/getCommentCount";
 
 const StyledModal = styled.div`
   display: ${({ vis }) => (vis ? "flex" : "none")};
@@ -89,13 +90,16 @@ function SettingsModal(props) {
   }
 
   async function deleteComment(e) {
-    const [post, author, commentId] = [
+    const [post, author, commentId, parentId] = [
       commentItem.post,
       commentItem.author._id,
       commentItem._id,
+      commentItem.parentId,
     ];
-    const reqBody = JSON.stringify({ post, author, commentId });
-
+    const reqBodyData = parentId
+      ? { post, author, commentId, parentId }
+      : { post, author, commentId };
+    const reqBody = JSON.stringify(reqBodyData);
     const res = await fetch("http://localhost:3000/comments/delete", {
       method: "delete",
       headers: { "Content-Type": "application/json" },
