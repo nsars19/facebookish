@@ -61,6 +61,11 @@ const StyledComment = styled.div`
       display: none;
     }
   }
+
+  .sub-comments {
+    margin-top: ${({ subFormVis }) => (subFormVis ? "50px" : "0")};
+    margin-left: -20px;
+  }
 `;
 
 function Comment({
@@ -88,7 +93,7 @@ function Comment({
   }
 
   return (
-    <StyledComment className="comment">
+    <StyledComment className="comment" subFormVis={subFormVis}>
       <div className="pfp-link">
         <Link to={`/user/${comment.author._id}`} className="user">
           <ProfilePicture userId={comment.author._id} size={"35px"} />
