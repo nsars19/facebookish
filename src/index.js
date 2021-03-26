@@ -12,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    transition: background 0.2s ease, color 0.2s ease;
+    transition: color 25ms ease;
     font-family: 'Poppins', Courier, Arial, sans-serif;
   }
     
