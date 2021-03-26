@@ -11,7 +11,7 @@ import Skeleton from "react-loading-skeleton";
 
 const StyledComment = styled.div`
   padding: 5px;
-  // margin: 10px 0;
+  margin-left: 25px;
   position: relative;
   display: grid;
   grid-template-columns: 35px auto;
