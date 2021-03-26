@@ -22,7 +22,8 @@ const GlobalStyle = createGlobalStyle`
     div.postItem {
       background: ${({ light }) => (light ? white : gray)};
     }
-    div.comment-body {
+    div.comment-body,
+    div.sub-comment-body {
       background: ${({ light }) => (light ? "#d8d8d8" : "#707070")}
     }
     ul.menu {
