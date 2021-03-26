@@ -20,6 +20,7 @@ const StyledMetrics = styled.div`
 
     &:hover {
       text-decoration: underline;
+      cursor: pointer;
     }
   }
 `;
