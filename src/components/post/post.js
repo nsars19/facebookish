@@ -187,18 +187,20 @@ function Post({ post, setFeed, homeFeed }) {
         setLikeCount={setLikeCount}
         focusRef={() => inputRef.current.focus()}
       />
-      {post.comments.map((comment) => (
-        <div key={comment._id}>
-          <Comment
-            comment={comment}
-            currentUser={currentUser}
-            setFeed={setFeed}
-            homeFeed={homeFeed}
-            postAuthor={post.author._id}
-            setCommentCount={setCommentCount}
-          />
-        </div>
-      ))}
+      <div className="comments">
+        {post.comments.map((comment) => (
+          <div key={comment._id}>
+            <Comment
+              comment={comment}
+              currentUser={currentUser}
+              setFeed={setFeed}
+              homeFeed={homeFeed}
+              postAuthor={post.author._id}
+              setCommentCount={setCommentCount}
+            />
+          </div>
+        ))}
+      </div>
       <CommentForm
         currentUser={currentUser}
         postId={post._id}
