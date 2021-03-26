@@ -82,6 +82,7 @@ function SubCommentForm({
     const data = await response.json();
     setFeed(data);
     setCommentCount(getCommentCount(commentData.comments));
+    toggleVis();
     input.value = "";
   }
 
