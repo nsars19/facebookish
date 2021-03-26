@@ -207,6 +207,7 @@ function Post({ post, setFeed, homeFeed }) {
         homeFeed={homeFeed}
         inputRef={inputRef}
         setCommentCount={setCommentCount}
+        setCommentsVisible={() => setCommentsVisible(true)}
       />
     </StyledPost>
   );

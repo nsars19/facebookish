@@ -36,6 +36,7 @@ function CommentForm({
   inputRef,
   currentUser,
   setCommentCount,
+  setCommentsVisible,
 }) {
   async function handleSubmit(e) {
     e.preventDefault();
@@ -71,6 +72,7 @@ function CommentForm({
     const data = await response.json();
     setFeed(data);
     setCommentCount(getCommentCount(commentData.comments));
+    setCommentsVisible();
     input.value = "";
   }
 
