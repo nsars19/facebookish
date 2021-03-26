@@ -17,6 +17,10 @@ const StyledMetrics = styled.div`
   .post-comments {
     justify-content: end;
     margin-right: 4px;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `;
 
