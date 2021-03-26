@@ -135,6 +135,7 @@ function Post({ post, setFeed, homeFeed }) {
   const [commentCount, setCommentCount] = useState(
     getCommentCount(post.comments)
   );
+  const [commentsVisible, setCommentsVisible] = useState(true);
   const currentUser = cookies.get("currentUser");
   const isAuthor = post.author._id === currentUser;
   const inputRef = useRef(null);
@@ -156,7 +157,11 @@ function Post({ post, setFeed, homeFeed }) {
           <p>{moment(post.createdAt).fromNow()}</p>
         </div>
         <p className="content">{post.text}</p>
-        <PostMetrics likeCount={likeCount} commentCount={commentCount} />
+        <PostMetrics
+          likeCount={likeCount}
+          commentCount={commentCount}
+          toggleComments={() => setCommentsVisible(!commentsVisible)}
+        />
         {isAuthor ? (
           <AiFillSetting
             className="post-settings"

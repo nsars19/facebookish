@@ -20,13 +20,13 @@ const StyledMetrics = styled.div`
   }
 `;
 
-function PostMetrics({ likeCount, commentCount }) {
+function PostMetrics({ likeCount, commentCount, toggleComments }) {
   return (
     <StyledMetrics>
       <div className="likes">
         {likeCount > 0 ? <LikeDisplay likeCount={likeCount} /> : <div />}
       </div>
-      <div className="post-comments">
+      <div className="post-comments" onClick={toggleComments}>
         {commentCount > 0 ? commentCount + " Comments" : <div />}
       </div>
     </StyledMetrics>
