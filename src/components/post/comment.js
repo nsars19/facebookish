@@ -78,6 +78,7 @@ function Comment({
 }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [likeCount, setLikeCount] = useState(comment.likes.length);
+  const [subFormVis, setSubFormVis] = useState(false);
   const commentAuthor =
     comment.author.firstName + " " + comment.author.lastName;
   const isAuthor = comment.author._id === currentUser;
