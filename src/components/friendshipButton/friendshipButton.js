@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { IoMdPersonAdd } from "react-icons/io";
+import { FaUserFriends } from "react-icons/fa";
 
 const StyledFriendShip = styled.button`
   display: flex;
@@ -19,11 +20,38 @@ const StyledFriendShip = styled.button`
   }
 `;
 
-function FriendshipButton(props) {
+function FriendshipButton({ receiverId, currentUser, isPending }) {
+  async function addPendingFriendship() {
+    const body = JSON.stringify({ receiverId, senderId: currentUser });
+
+    await fetch("http://localhost:3000/friends/add", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body,
+    });
+  }
+
+  const addFriend = () => {
+    return (
+      <>
+        <IoMdPersonAdd className="icon" />
+        <p className="txt">Add Friend</p>
+      </>
+    );
+  };
+
+  const reqPending = () => {
+    return (
+      <>
+        <FaUserFriends className="icon" />
+        <p className="txt">Request Pending...</p>
+      </>
+    );
+  };
+
   return (
-    <StyledFriendShip>
-      <IoMdPersonAdd className="icon" />
-      <p className="txt">Add Friend</p>
+    <StyledFriendShip onClick={addPendingFriendship} disabled={isPending}>
+      {isPending ? reqPending() : addFriend()}
     </StyledFriendShip>
   );
 }
