@@ -146,7 +146,7 @@ function Comment({
           {likeCount > 0 ? <CommentMetrics likeCount={likeCount} /> : <div />}
         </div>
         <CommentUtils
-          comment={comment}
+          comment={comment._id}
           user={currentUser}
           setLikeCount={setLikeCount}
           focusRef={focusSubCommentForm}
