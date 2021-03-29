@@ -21,7 +21,7 @@ const StyledUserProfile = styled.div`
   }
 `;
 
-function UserProfile({ colors, lightMode, user }) {
+function UserProfile({ colors, lightMode, user, currentUser }) {
   const match = useRouteMatch();
   const userId = user || match.params.userId;
   const [userName, setUserName] = useState(null);
