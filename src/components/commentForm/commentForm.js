@@ -14,6 +14,7 @@ const StyledForm = styled.form`
     flex: 1;
     height: 35px;
     padding-left: 10px;
+    padding-right: 10px;
     border-style: none;
     border-radius: 18px;
     background: #707070;
