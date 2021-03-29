@@ -23,7 +23,7 @@ const StyledEditForm = styled.form`
   }
   input.comment-input {
     margin-top: 5px;
-    border: 1px solid #505050;
+    border: 1px solid #a0a0a0;
   }
 `;
 
