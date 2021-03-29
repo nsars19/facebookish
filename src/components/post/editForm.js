@@ -1,6 +1,31 @@
 import styled from "styled-components";
+import colors from "./../../colors";
 
-const StyledEditForm = styled.form``;
+const StyledEditForm = styled.form`
+  width: 100%;
+  margin-left: 10px;
+  padding-right: 10px;
+  input[type="text"] {
+    width: 100%;
+    flex: 1;
+    height: 35px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-style: none;
+    border-radius: 18px;
+    background: #707070;
+    color: ${colors.white};
+    font-size: 14px;
+  }
+  p {
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  input.comment-input {
+    margin-top: 5px;
+    border: 1px solid #505050;
+  }
+`;
 
 function EditForm(props) {
   const {
