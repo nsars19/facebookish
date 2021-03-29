@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Skeleton from "react-loading-skeleton";
 import styled from "styled-components";
 import Cookies from "universal-cookie";
 import colors from "./../../colors";
@@ -45,7 +46,7 @@ function ProfilePicture({ userId, size }) {
   return (
     <StyledProfile lm={lightMode} black={black} size={size}>
       <div className="frame">
-        <img src={photoSrc} alt="profile" />
+        {photoSrc ? <img src={photoSrc} alt="profile" /> : <Skeleton />}
       </div>
     </StyledProfile>
   );
