@@ -11,6 +11,7 @@ import moment from "moment";
 import PostUtils from "./postUtils";
 import PostMetrics from "./postMetrics";
 import getCommentCount from "./../../utils/getCommentCount";
+import EditForm from "./editForm";
 
 const StyledPost = styled.div`
   min-width: 340px;
@@ -149,30 +150,15 @@ function Post({ post, setFeed, homeFeed }) {
   const toggleModalVisibility = () => setModalVisible(!modalVisible);
   const togglePostEdit = () => setPostEditStatus(!editingPost);
 
-  const handleEditSubmit = async (e) => {
-    e.preventDefault();
-
-    const postId = post._id;
-    const newData = e.target.firstElementChild.value;
-    const reqBody = JSON.stringify({ postId, newData });
-
-    const res = await fetch("http://localhost:3000/posts/update", {
-      method: "put",
-      headers: { "Content-Type": "application/json" },
-      body: reqBody,
-    });
-    const data = await res.json();
-    console.log(data);
-    setPostText(data.text);
-    togglePostEdit();
-  };
-
-  const editForm = () => {
+  const EditComponent = () => {
     return (
-      <form onSubmit={handleEditSubmit} className="edit-form-post">
-        <input type="text" defaultValue={postText} />
-        <p>Hit enter to submit.</p>
-      </form>
+      <EditForm
+        setPostText={setPostText}
+        postText={postText}
+        togglePostEdit={togglePostEdit}
+        postId={post._id}
+        isPost
+      />
     );
   };
 
@@ -192,7 +178,7 @@ function Post({ post, setFeed, homeFeed }) {
           </Link>
           <p>{moment(post.createdAt).fromNow()}</p>
         </div>
-        {editingPost ? editForm() : postContent()}
+        {editingPost ? EditComponent() : postContent()}
         <PostMetrics
           likeCount={likeCount}
           commentCount={commentCount}

@@ -8,6 +8,7 @@ import CommentUtils from "./commentUtils";
 import CommentMetrics from "./commentMetrics";
 import SubCommentForm from "./../commentForm/subCommentForm";
 import SubComment from "./subComment";
+import EditForm from "./editForm";
 
 const StyledComment = styled.div`
   padding: 5px;
@@ -97,30 +98,14 @@ function Comment({
 
   const toggleCommentEditStatus = () => setCommentEditStatus(!editingComment);
 
-  const handleEditSubmit = async (e) => {
-    e.preventDefault();
-
-    const commentId = comment._id;
-    const newData = e.target.firstElementChild.value;
-    const reqBody = JSON.stringify({ commentId, newData });
-
-    const res = await fetch("http://localhost:3000/comments/update", {
-      method: "put",
-      headers: { "Content-Type": "application/json" },
-      body: reqBody,
-    });
-    const data = await res.json();
-
-    setCommentText(data.text);
-    toggleCommentEditStatus();
-  };
-
-  const editForm = () => {
+  const EditComponent = () => {
     return (
-      <form onSubmit={handleEditSubmit} className="edit-form-comment">
-        <input type="text" defaultValue={commentText} />
-        <p>Hit enter to submit.</p>
-      </form>
+      <EditForm
+        setCommentText={setCommentText}
+        commentText={commentText}
+        commentId={comment._id}
+        toggleCommentEditStatus={toggleCommentEditStatus}
+      />
     );
   };
 
@@ -138,7 +123,7 @@ function Comment({
           <Link to={`/user/${comment.author._id}`} className="user">
             {commentAuthor}
           </Link>
-          {editingComment ? editForm() : postContent()}
+          {editingComment ? EditComponent() : postContent()}
           {isAuthor ? (
             <AiFillSetting
               className="comment-settings"
