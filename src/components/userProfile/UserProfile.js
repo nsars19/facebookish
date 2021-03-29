@@ -46,7 +46,11 @@ function UserProfile({ colors, lightMode, user, currentUser }) {
         <div className="name-wrap">
           <h2>{userName || <Skeleton width={150} />}</h2>
         </div>
-        <FriendshipButton />
+        <FriendshipButton
+          receiverId={userId}
+          currentUser={currentUser}
+          isPending={pendingFriendRequest()}
+        />
       </div>
       <Feed user={userId} />
     </StyledUserProfile>
