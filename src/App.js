@@ -48,6 +48,10 @@ const GlobalStyle = createGlobalStyle`
       color: ${({ light }) => (light ? gray : white)};
       background: ${({ light }) => (light ? "#cacaca" : "#707070")}
     }
+    #edit-form {
+      background: ${({ light }) => (light ? "#d8d8d8" : "#707070")};
+      color: ${({ light }) => (light ? black : white)};
+    }
   }
 
   button,
