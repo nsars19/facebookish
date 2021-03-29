@@ -36,6 +36,9 @@ function UserProfile({ colors, lightMode, user, currentUser }) {
     })();
   }, [userId]);
 
+  const pendingFriendRequest = () =>
+    userData?.pendingFriends.includes(currentUser);
+
   return (
     <StyledUserProfile black={black} white={white} gray={gray} lm={lightMode}>
       <div className="profile-desc">
