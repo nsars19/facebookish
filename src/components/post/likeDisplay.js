@@ -24,6 +24,7 @@ const StyledLike = styled.div`
     margin-bottom: 2px;
     margin-right: 5px;
     margin-left: 1px;
+  }
 `;
 
 function LikeDisplay({ likeCount, isCmt, id }) {
