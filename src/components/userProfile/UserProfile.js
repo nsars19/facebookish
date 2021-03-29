@@ -26,7 +26,7 @@ function UserProfile({ colors, lightMode, user, currentUser }) {
   const userId = user || match.params.userId;
   const [userName, setUserName] = useState(null);
   const [userData, setUserData] = useState(null);
-  const { white, black, gray, blue } = colors;
+  const { white, black, gray } = colors;
   useEffect(() => {
     (async function fetchUserData() {
       const dataResponse = await fetch(`http://localhost:3000/users/${userId}`);
