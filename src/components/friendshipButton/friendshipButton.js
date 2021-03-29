@@ -7,6 +7,7 @@ const StyledFriendShip = styled.button`
   justify-content: center;
   width: 180px;
   height: 40px;
+  cursor: pointer;
 
   .icon {
     font-size: 18px;
