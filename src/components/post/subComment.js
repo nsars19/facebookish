@@ -73,7 +73,7 @@ function SubComment({
   setCommentCount,
 }) {
   const [modalVisible, setModalVisible] = useState(false);
-  const [likeCount, setLikeCount] = useState(0);
+  const [likeCount, setLikeCount] = useState(comment.likes.length);
   const [subFormVis, setSubFormVis] = useState(false);
   const [editingComment, setCommentEditStatus] = useState(false);
   const [commentText, setCommentText] = useState(comment.text);
