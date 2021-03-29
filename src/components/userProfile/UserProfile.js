@@ -25,11 +25,13 @@ function UserProfile({ colors, lightMode, user, currentUser }) {
   const match = useRouteMatch();
   const userId = user || match.params.userId;
   const [userName, setUserName] = useState(null);
+  const [userData, setUserData] = useState(null);
   const { white, black, gray, blue } = colors;
   useEffect(() => {
     (async function fetchUserData() {
       const dataResponse = await fetch(`http://localhost:3000/users/${userId}`);
       const data = await dataResponse.json();
+      setUserData(data);
       setUserName(data.firstName + " " + data.lastName);
     })();
   }, [userId]);
