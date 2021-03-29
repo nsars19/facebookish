@@ -140,11 +140,43 @@ function Post({ post, setFeed, homeFeed }) {
     getCommentCount(post.comments)
   );
   const [commentsVisible, setCommentsVisible] = useState(true);
+  const [editingPost, setPostEditStatus] = useState(false);
+  const [postText, setPostText] = useState(post.text);
   const currentUser = cookies.get("currentUser");
   const isAuthor = post.author._id === currentUser;
   const inputRef = useRef(null);
 
   const toggleModalVisibility = () => setModalVisible(!modalVisible);
+  const togglePostEdit = () => setPostEditStatus(!editingPost);
+
+  const handleEditSubmit = async (e) => {
+    e.preventDefault();
+
+    const postId = post._id;
+    const newData = e.target.firstElementChild.value;
+    const reqBody = JSON.stringify({ postId, newData });
+
+    const res = await fetch("http://localhost:3000/posts/update", {
+      method: "put",
+      headers: { "Content-Type": "application/json" },
+      body: reqBody,
+    });
+    const data = await res.json();
+    console.log(data);
+    setPostText(data.text);
+    togglePostEdit();
+  };
+
+  const editForm = () => {
+    return (
+      <form onSubmit={handleEditSubmit} className="edit-form-post">
+        <input type="text" defaultValue={postText} />
+        <p>Hit enter to submit.</p>
+      </form>
+    );
+  };
+
+  const postContent = () => <p className="content">{postText}</p>;
 
   return (
     <StyledPost className="postItem" cmtsVis={commentsVisible}>
@@ -160,7 +192,7 @@ function Post({ post, setFeed, homeFeed }) {
           </Link>
           <p>{moment(post.createdAt).fromNow()}</p>
         </div>
-        <p className="content">{post.text}</p>
+        {editingPost ? editForm() : postContent()}
         <PostMetrics
           likeCount={likeCount}
           commentCount={commentCount}
@@ -182,6 +214,7 @@ function Post({ post, setFeed, homeFeed }) {
           setFeed={setFeed}
           homeFeed={homeFeed}
           setCommentCount={setCommentCount}
+          togglePostEdit={togglePostEdit}
           isPost
         />
       </div>

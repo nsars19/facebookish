@@ -74,6 +74,8 @@ function SubComment({
   const [modalVisible, setModalVisible] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
   const [subFormVis, setSubFormVis] = useState(false);
+  const [editingComment, setCommentEditStatus] = useState(false);
+  const [commentText, setCommentText] = useState(comment.text);
   const commentAuthor =
     comment.author.firstName + " " + comment.author.lastName;
   const isAuthor = comment.author._id === currentUser;
@@ -88,6 +90,37 @@ function SubComment({
     setModalVisible(!modalVisible);
   }
 
+  const toggleCommentEditStatus = () => setCommentEditStatus(!editingComment);
+
+  const handleEditSubmit = async (e) => {
+    e.preventDefault();
+
+    const commentId = comment._id;
+    const newData = e.target.firstElementChild.value;
+    const reqBody = JSON.stringify({ commentId, newData });
+
+    const res = await fetch("http://localhost:3000/comments/update", {
+      method: "put",
+      headers: { "Content-Type": "application/json" },
+      body: reqBody,
+    });
+    const data = await res.json();
+
+    setCommentText(data.text);
+    toggleCommentEditStatus();
+  };
+
+  const editForm = () => {
+    return (
+      <form onSubmit={handleEditSubmit} className="edit-form-comment">
+        <input type="text" defaultValue={commentText} />
+        <p>Hit enter to submit.</p>
+      </form>
+    );
+  };
+
+  const postContent = () => <p className="content">{commentText}</p>;
+
   return (
     <StyledComment>
       <div className="pfp-link">
@@ -99,7 +132,7 @@ function SubComment({
         <Link to={`/user/${comment.author._id}`} className="user">
           {commentAuthor}
         </Link>
-        <p className="content">{comment.text}</p>
+        {editingComment ? editForm() : postContent()}
         {isAuthor ? (
           <AiFillSetting
             className="comment-settings"
@@ -117,6 +150,7 @@ function SubComment({
           user={currentUser}
           postAuthor={postAuthor}
           setCommentCount={setCommentCount}
+          toggleCommentEditStatus={toggleCommentEditStatus}
         />
         {likeCount > 0 ? <CommentMetrics likeCount={likeCount} /> : <div />}
       </div>

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import colors from "./../../colors";
 import getCommentCount from "./../../utils/getCommentCount";
+import { useState, useEffect } from "react";
 
 const StyledModal = styled.div`
   display: ${({ vis }) => (vis ? "flex" : "none")};
@@ -60,6 +61,8 @@ function SettingsModal(props) {
     user,
     postAuthor,
     setCommentCount,
+    togglePostEdit,
+    toggleCommentEditStatus,
   } = props;
 
   async function refreshFeed() {
@@ -117,11 +120,17 @@ function SettingsModal(props) {
         <li
           onClick={(e) => {
             isPost ? deletePost() : deleteComment(e);
+            toggleModal();
           }}
         >
           <button>Delete {isPost ? "post" : "comment"}</button>
         </li>
-        <li>
+        <li
+          onClick={() => {
+            isPost ? togglePostEdit() : toggleCommentEditStatus();
+            toggleModal();
+          }}
+        >
           <button>Edit {isPost ? "post" : "comment"}</button>
         </li>
       </ul>
