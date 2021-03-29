@@ -43,8 +43,13 @@ function EditForm(props) {
 
   return (
     <StyledEditForm onSubmit={handleEditSubmit}>
-      <input type="text" defaultValue={isPost ? postText : commentText} />
-      <p>Hit enter to submit.</p>
+      <input
+        type="text"
+        className={isPost ? "post-input" : "comment-input"}
+        defaultValue={isPost ? postText : commentText}
+        id="edit-form"
+      />
+      <p>Press enter to submit.</p>
     </StyledEditForm>
   );
 }
