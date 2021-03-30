@@ -12,6 +12,7 @@ import { createGlobalStyle } from "styled-components";
 const { black, gray, white, yellow, blue } = colors;
 const GlobalStyle = createGlobalStyle`
   body {
+    margin-bottom: 50px;
     background: ${({ light }) => (light ? white : black)};
     color: ${({ light }) => (light ? black : white)};
 
