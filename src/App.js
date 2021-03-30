@@ -52,6 +52,11 @@ const GlobalStyle = createGlobalStyle`
       background: ${({ light }) => (light ? "#d8d8d8" : "#707070")};
       color: ${({ light }) => (light ? black : white)};
     }
+    #pending:hover,
+    #pending:active {
+      color: ${white};
+      background: ${({ light }) => (light ? blue : gray)};
+      cursor: auto;
   }
 
   button,
