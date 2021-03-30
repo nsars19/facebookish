@@ -54,6 +54,7 @@ function FriendshipButton({ receiverId, currentUser, isPending, sameUser }) {
       onClick={addPendingFriendship}
       disabled={isPending}
       sameUser={sameUser}
+      id={isPending ? "pending" : ""}
     >
       {isPending ? reqPending() : addFriend()}
     </StyledFriendShip>
