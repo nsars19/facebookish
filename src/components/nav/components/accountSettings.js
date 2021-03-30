@@ -80,6 +80,7 @@ const StyledSettings = styled.div`
       width: 50px;
       display: flex;
       justify-content: start;
+      font-size: 24px;
     }
 
     &:hover,
