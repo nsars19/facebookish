@@ -12,7 +12,6 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    transition: color 25ms ease;
     font-family: 'Poppins', Courier, Arial, sans-serif;
   }
     
