@@ -74,7 +74,6 @@ const GlobalStyle = createGlobalStyle`
       background: ${({ light }) => (light ? blue : yellow)}cc;
       color: ${({ light }) => (light ? white : black)};
     }
-    }
   }
 `;
 
