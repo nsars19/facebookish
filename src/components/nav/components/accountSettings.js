@@ -87,7 +87,6 @@ function AccountSettings({
   toggleVis,
   light,
   changeColorMode,
-  children,
 }) {
   const [userData, setData] = useState(null);
   const [fullName, setFullName] = useState(null);
