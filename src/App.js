@@ -94,7 +94,11 @@ function App() {
     <>
       <GlobalStyle light={lightMode} />
       <Router>
-        <Nav setLightMode={setLightMode} lightMode={lightMode} />
+        <Nav
+          setLightMode={setLightMode}
+          lightMode={lightMode}
+          currentUser={currentUser}
+        />
         <Switch>
           <Route path="/users">
             <Users />
