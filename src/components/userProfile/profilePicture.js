@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import styled from "styled-components";
-import Cookies from "universal-cookie";
 import colors from "./../../colors";
 const { black } = colors;
 
@@ -28,10 +27,7 @@ const StyledProfile = styled.div`
   }
 `;
 
-const cookies = new Cookies();
-const lightMode = cookies.get("light") === "true" ? true : false;
-
-function ProfilePicture({ userId, size }) {
+function ProfilePicture({ userId, size, lightMode }) {
   const [photoSrc, setPhotoSrc] = useState(null);
 
   useEffect(() => {
