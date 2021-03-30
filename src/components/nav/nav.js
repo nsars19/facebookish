@@ -28,10 +28,8 @@ const StyledNav = styled.div`
 
     &:hover,
     &:active {
-      background: ${({ light }) => (light ? black : white)};
-      color: ${({ light }) => (light ? white : black)};
-      // box-shadow: -4px 4px 0 ${({ light }) => (light ? white : black)};
-      transition: color 0.5s ease, box-shadow 0.2s ease;
+      color: ${black};
+      transition: color 50ms ease;
       font-weight: 600;
     }
   }
