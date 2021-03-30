@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import ProfilePicture from "./../../userProfile/profilePicture";
 import Toggle from "./toggle";
+import { IoLogOutOutline } from "react-icons/io5";
 import colors from "./../../../colors";
 const { black, gray, white } = colors;
 
@@ -65,18 +66,30 @@ const StyledSettings = styled.div`
     border-bottom: 1px solid ${({ light }) => (light ? black : white)}33;
   }
 
-  .color-mode {
+  ul li {
+    height: 40px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: start;
     font-size: 14px;
-    padding: 0 8px;
+    padding 0 8px;
     border-radius: 8px;
     margin-top: 5px;
 
-    &:hover {
+    .icon {
+      width: 50px;
+      display: flex;
+      justify-content: start;
+    }
+
+    &:hover,
+    &:active {
       background: ${({ light }) => (light ? gray : white)}33;
       cursor: pointer;
+    }
+
+    .logout-icon {
+      font-size: 24px;
     }
   }
 `;
