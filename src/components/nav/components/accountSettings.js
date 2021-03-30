@@ -113,10 +113,20 @@ function AccountSettings({
         </div>
       </Link>
       <div className="spacer" />
-      <div className="color-mode" onClick={changeColorMode}>
-        <p>Toggle color mode:</p>
-        <Toggle colors={colors} light={light} />
-      </div>
+      <ul>
+        <li onClick={changeColorMode}>
+          <div className="icon">
+            <Toggle colors={colors} light={light} />
+          </div>
+          <p>Toggle color mode</p>
+        </li>
+        <li className="logout">
+          <div className="icon">
+            <IoLogOutOutline />
+          </div>
+          <p>Logout</p>
+        </li>
+      </ul>
     </StyledSettings>
   );
 }
