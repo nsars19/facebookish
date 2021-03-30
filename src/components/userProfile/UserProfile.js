@@ -25,19 +25,18 @@ function UserProfile({ colors, lightMode, user, currentUser }) {
   const match = useRouteMatch();
   const userId = user || match.params.userId;
   const [userName, setUserName] = useState(null);
-  const [userData, setUserData] = useState(null);
+  const [friendshipPending, setFriendStatus] = useState(null);
   const { white, black, gray } = colors;
+
   useEffect(() => {
     (async function fetchUserData() {
       const dataResponse = await fetch(`http://localhost:3000/users/${userId}`);
       const data = await dataResponse.json();
-      setUserData(data);
+
+      setFriendStatus(data.pendingFriends.includes(currentUser));
       setUserName(data.firstName + " " + data.lastName);
     })();
-  }, [userId]);
-
-  const pendingFriendRequest = () =>
-    userData?.pendingFriends.includes(currentUser);
+  }, [userId, currentUser]);
 
   return (
     <StyledUserProfile black={black} white={white} gray={gray} lm={lightMode}>
@@ -49,7 +48,7 @@ function UserProfile({ colors, lightMode, user, currentUser }) {
         <FriendshipButton
           receiverId={userId}
           currentUser={currentUser}
-          isPending={pendingFriendRequest()}
+          isPending={friendshipPending}
         />
       </div>
       <Feed user={userId} />
