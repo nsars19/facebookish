@@ -57,6 +57,7 @@ const GlobalStyle = createGlobalStyle`
       color: ${white};
       background: ${({ light }) => (light ? blue : gray)};
       cursor: auto;
+   }
   }
 
   button,
