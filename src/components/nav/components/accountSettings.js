@@ -10,7 +10,7 @@ const StyledSettings = styled.div`
   display: ${({ vis }) => (vis ? "grid" : "none")};
   position: fixed;
   bottom: 55px;
-  right: 0;
+  right: 10px;
   width: 300px;
   background: ${({ light }) => (light ? white : gray)};
   padding: 8px;
