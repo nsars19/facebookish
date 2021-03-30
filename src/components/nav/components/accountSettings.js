@@ -101,6 +101,7 @@ function AccountSettings({
   toggleVis,
   light,
   changeColorMode,
+  setCurrentUser,
 }) {
   const [userData, setData] = useState(null);
   const [fullName, setFullName] = useState(null);

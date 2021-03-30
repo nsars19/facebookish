@@ -97,6 +97,7 @@ function App() {
           setLightMode={setLightMode}
           lightMode={lightMode}
           currentUser={currentUser}
+          setCurrentUser={setCurrentUser}
         />
         <Switch>
           <Route path="/users">

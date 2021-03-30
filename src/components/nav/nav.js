@@ -53,7 +53,7 @@ const StyledNav = styled.div`
 `;
 
 function Nav(props) {
-  const { setLightMode, lightMode, currentUser } = props;
+  const { setLightMode, lightMode, currentUser, setCurrentUser } = props;
   const [settingsModalVis, setSettingsVis] = useState(false);
 
   const toggleSettingsModal = () => setSettingsVis(!settingsModalVis);
@@ -83,6 +83,7 @@ function Nav(props) {
         toggleVis={toggleSettingsModal}
         light={lightMode}
         changeColorMode={changeColorMode}
+        setCurrentUser={setCurrentUser}
       ></AccountSettings>
     </StyledNav>
   );
