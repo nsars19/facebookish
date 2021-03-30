@@ -3,7 +3,7 @@ import { IoMdPersonAdd } from "react-icons/io";
 import { FaUserFriends } from "react-icons/fa";
 
 const StyledFriendShip = styled.button`
-  display: flex;
+  display: ${({ sameUser }) => (sameUser ? "none" : "flex")};
   align-items: center;
   justify-content: center;
   width: 180px;
@@ -20,7 +20,7 @@ const StyledFriendShip = styled.button`
   }
 `;
 
-function FriendshipButton({ receiverId, currentUser, isPending }) {
+function FriendshipButton({ receiverId, currentUser, isPending, sameUser }) {
   async function addPendingFriendship() {
     const body = JSON.stringify({ receiverId, senderId: currentUser });
 
@@ -50,7 +50,11 @@ function FriendshipButton({ receiverId, currentUser, isPending }) {
   };
 
   return (
-    <StyledFriendShip onClick={addPendingFriendship} disabled={isPending}>
+    <StyledFriendShip
+      onClick={addPendingFriendship}
+      disabled={isPending}
+      sameUser={sameUser}
+    >
       {isPending ? reqPending() : addFriend()}
     </StyledFriendShip>
   );

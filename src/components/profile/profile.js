@@ -8,7 +8,12 @@ const StyledProfile = styled.div`
 function Profile({ user, lightMode, colors }) {
   return (
     <StyledProfile>
-      <UserProfile user={user} colors={colors} lightMode={lightMode} />
+      <UserProfile
+        currentUser={user}
+        user={user}
+        colors={colors}
+        lightMode={lightMode}
+      />
     </StyledProfile>
   );
 }

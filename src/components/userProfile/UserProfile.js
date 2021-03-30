@@ -49,6 +49,7 @@ function UserProfile({ colors, lightMode, user, currentUser }) {
           receiverId={userId}
           currentUser={currentUser}
           isPending={friendshipPending}
+          sameUser={currentUser === userId}
         />
       </div>
       <Feed user={userId} />
