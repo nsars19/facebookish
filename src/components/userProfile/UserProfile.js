@@ -15,7 +15,6 @@ const StyledUserProfile = styled.div`
     min-height: 50vh;
   }
   .name-wrap {
-    // border: 4px solid green;
     max-width: fit-content;
     font-size: 18px;
   }
