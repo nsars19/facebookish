@@ -22,15 +22,13 @@ const StyledPost = styled.div`
   margin: 20px 10px;
   box-shadow: 0 0.1px 0.8px rgba(0, 0, 0, 0.02),
     0 0.1px 1.9px rgba(0, 0, 0, 0.028), 0 0.3px 3.5px rgba(0, 0, 0, 0.035),
-    0 0.4px 6.3px rgba(0, 0, 0, 0.042), 0 0.8px 11.7px rgba(0, 0, 0, 0.05),
-    0 2px 28px rgba(0, 0, 0, 0.07);
+    0 0.4px 6.3px rgba(0, 0, 0, 0.042), 0 0.8px 11.7px rgba(0, 0, 0, 0.05);
 
   &:hover {
     transition: box-shadow 0.05s ease;
     box-shadow: 0 -0.4px 1.1px rgba(0, 0, 0, 0.047),
       0 -0.7px 2.5px rgba(0, 0, 0, 0.063), 0 -0.9px 4.5px rgba(0, 0, 0, 0.067),
-      0 -0.8px 7.4px rgba(0, 0, 0, 0.067), 0 0.4px 12.2px rgba(0, 0, 0, 0.066),
-      0 4.9px 21.3px rgba(0, 0, 0, 0.066), 0 21px 46px rgba(0, 0, 0, 0.07);
+      0 -0.8px 7.4px rgba(0, 0, 0, 0.067), 0 0.4px 12.2px rgba(0, 0, 0, 0.066);
   }
 
   .user-info {
