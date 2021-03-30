@@ -22,9 +22,12 @@ const StyledNav = styled.div`
   z-index: 10;
 
   a {
+    display: flex;
+    align-items: center;
     color: ${white};
     padding: 10px;
     text-decoration: none;
+    font-size: 24px;
 
     &:visited {
       color: inherit;
