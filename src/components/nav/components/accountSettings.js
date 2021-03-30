@@ -5,6 +5,7 @@ import ProfilePicture from "./../../userProfile/profilePicture";
 import Toggle from "./toggle";
 import { IoLogOutOutline } from "react-icons/io5";
 import colors from "./../../../colors";
+import Cookies from "universal-cookie";
 const { black, gray, white } = colors;
 
 const StyledSettings = styled.div`
@@ -95,6 +96,8 @@ const StyledSettings = styled.div`
   }
 `;
 
+const cookies = new Cookies();
+
 function AccountSettings({
   modalVis,
   currentUser,
@@ -116,6 +119,11 @@ function AccountSettings({
     })();
   }, [currentUser]);
 
+  const handleLogout = () => {
+    setCurrentUser(null);
+    cookies.set("currentUser", null);
+  };
+
   return (
     <StyledSettings vis={modalVis} light={light} id="settings-modal">
       <Link to="/profile" className="name-container" onClick={toggleVis}>
@@ -135,7 +143,7 @@ function AccountSettings({
           </div>
           <p>Toggle color mode</p>
         </li>
-        <li className="logout">
+        <li onClick={handleLogout} className="logout">
           <div className="icon">
             <IoLogOutOutline />
           </div>
