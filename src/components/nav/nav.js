@@ -16,6 +16,10 @@ const StyledNav = styled.div`
   color: ${white};
   font-weight: 600;
   letter-spacing: 1.2px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 10;
 
   a {
     color: ${white};
