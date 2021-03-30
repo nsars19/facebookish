@@ -3,6 +3,11 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import colors from "../../colors";
 import Toggle from "./components/toggle";
+import { AiFillHome } from "react-icons/ai";
+import { ImUsers } from "react-icons/im";
+import { CgProfile } from "react-icons/cg";
+import { IoNotifications } from "react-icons/io5";
+import { BsPlusSquareFill } from "react-icons/bs";
 
 const { black, white, blue } = colors;
 
@@ -51,9 +56,21 @@ function Nav(props) {
 
   return (
     <StyledNav light={lightMode}>
-      <Link to="/">Home</Link>
-      <Link to="/users">Users</Link>
-      <Link to="/profile">My Profile</Link>
+      <Link to="/">
+        <AiFillHome />
+      </Link>
+      <Link to="/users">
+        <ImUsers />
+      </Link>
+      <Link to="/home">
+        <BsPlusSquareFill />
+      </Link>
+      <Link to="/profile">
+        <CgProfile />
+      </Link>
+      <Link to="/home">
+        <IoNotifications />
+      </Link>
       <Toggle
         colors={colors}
         light={lightMode}
