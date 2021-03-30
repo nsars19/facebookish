@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import colors from "../../colors";
-import Toggle from "./components/toggle";
+import AccountSettings from "./components/accountSettings";
 import { AiFillHome } from "react-icons/ai";
 import { ImUsers } from "react-icons/im";
-import { CgProfile } from "react-icons/cg";
 import { IoNotifications } from "react-icons/io5";
-import { BsPlusSquareFill } from "react-icons/bs";
+import { BsPlusSquareFill, BsThreeDots } from "react-icons/bs";
 
 const { black, white, blue } = colors;
 
@@ -26,29 +25,38 @@ const StyledNav = styled.div`
   width: 100%;
   z-index: 10;
 
-  a {
+  a,
+  a:visited {
     display: flex;
     align-items: center;
-    color: ${white};
     padding: 10px;
     text-decoration: none;
     font-size: 24px;
+    color: inherit;
 
-    &:visited {
-      color: inherit;
-    }
-
-    &:hover,
-    &:active {
+    &:hover:not(.name-container),
+    &:active:not(.name-container) {
       color: ${black};
       transition: color 50ms ease;
       font-weight: 600;
     }
   }
+
+  .settings {
+    font-size: 28px;
+    cursor: pointer;
+
+    &:hover {
+      color: ${black};
+    }
+  }
 `;
 
 function Nav(props) {
-  const { setLightMode, lightMode } = props;
+  const { setLightMode, lightMode, currentUser } = props;
+  const [settingsModalVis, setSettingsVis] = useState(false);
+
+  const toggleSettingsModal = () => setSettingsVis(!settingsModalVis);
 
   function changeColorMode() {
     setLightMode(!lightMode);
@@ -65,17 +73,17 @@ function Nav(props) {
       <Link to="/home">
         <BsPlusSquareFill />
       </Link>
-      <Link to="/profile">
-        <CgProfile />
-      </Link>
       <Link to="/home">
         <IoNotifications />
       </Link>
-      <Toggle
-        colors={colors}
+      <BsThreeDots onClick={toggleSettingsModal} className="settings" />
+      <AccountSettings
+        modalVis={settingsModalVis}
+        currentUser={currentUser}
+        toggleVis={toggleSettingsModal}
         light={lightMode}
         changeColorMode={changeColorMode}
-      />
+      ></AccountSettings>
     </StyledNav>
   );
 }
