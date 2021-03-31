@@ -21,8 +21,7 @@ const StyledFriendShip = styled.button`
   }
 
   &.pending:hover p,
-  &.pending path,
-  &:hover {
+  &.pending path {
     color: #eee;
     cursor: auto;
   }
