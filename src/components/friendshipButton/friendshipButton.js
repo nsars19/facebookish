@@ -19,6 +19,13 @@ const StyledFriendShip = styled.button`
     font-size: 15px;
     font-weight: bold;
   }
+
+  &.pending:hover p,
+  &.pending path,
+  &:hover {
+    color: #eee;
+    cursor: auto;
+  }
 `;
 
 function FriendshipButton({ receiverId, currentUser, isPending, sameUser }) {
