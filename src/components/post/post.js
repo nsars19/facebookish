@@ -199,6 +199,7 @@ function Post({ post, setFeed, homeFeed }) {
           homeFeed={homeFeed}
           setCommentCount={setCommentCount}
           togglePostEdit={togglePostEdit}
+          postAuthor={post.author._id}
           isPost
         />
       </div>
