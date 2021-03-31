@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { IoMdPersonAdd } from "react-icons/io";
 import { FaUserFriends } from "react-icons/fa";
+import { useState } from "react";
 
 const StyledFriendShip = styled.button`
   display: ${({ sameUser }) => (sameUser ? "none" : "flex")};
@@ -21,6 +22,8 @@ const StyledFriendShip = styled.button`
 `;
 
 function FriendshipButton({ receiverId, currentUser, isPending, sameUser }) {
+  const [pending, setPending] = useState(false);
+
   async function addPendingFriendship() {
     const body = JSON.stringify({ receiverId, senderId: currentUser });
 
@@ -29,6 +32,8 @@ function FriendshipButton({ receiverId, currentUser, isPending, sameUser }) {
       headers: { "Content-Type": "application/json" },
       body,
     });
+
+    setPending(true);
   }
 
   const addFriend = () => {
@@ -52,11 +57,12 @@ function FriendshipButton({ receiverId, currentUser, isPending, sameUser }) {
   return (
     <StyledFriendShip
       onClick={addPendingFriendship}
-      disabled={isPending}
+      disabled={pending}
       sameUser={sameUser}
+      className={pending ? "pending" : ""}
       id={isPending ? "pending" : ""}
     >
-      {isPending ? reqPending() : addFriend()}
+      {pending ? reqPending() : addFriend()}
     </StyledFriendShip>
   );
 }
