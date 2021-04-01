@@ -3,7 +3,7 @@ import styled from "styled-components";
 import ProfilePicture from "./../../userProfile/profilePicture";
 
 const StyledStatusForm = styled.div`
-  background: ${({ lm, g }) => (lm ? "#d8d8d8" : g)};
+  background: ${({ lm, g }) => (lm ? "#eee" : g)};
   border: 1px solid ${({ lm, g, w }) => (lm ? g : w)}11;
   padding: 18px;
   padding-bottom: 8px;
@@ -12,6 +12,9 @@ const StyledStatusForm = styled.div`
   position: relative;
   width: 95%;
   max-width: 750px;
+  box-shadow: 0 0.1px 0.8px rgba(0, 0, 0, 0.02),
+    0 0.1px 1.9px rgba(0, 0, 0, 0.028), 0 0.3px 3.5px rgba(0, 0, 0, 0.035),
+    0 0.4px 6.3px rgba(0, 0, 0, 0.042), 0 0.8px 11.7px rgba(0, 0, 0, 0.05);
 
   form {
     display: flex;
@@ -27,6 +30,7 @@ const StyledStatusForm = styled.div`
   }
 
   input[type="text"] {
+    background: ${({ lm }) => (lm ? "#d8d8d8" : "#707070")};
     padding-left: 10px;
     border-style: none;
     border-radius: 18px;
@@ -40,7 +44,7 @@ const StyledStatusForm = styled.div`
   }
 
   .placeholder {
-    color: ${({ lm, g }) => (lm ? g + "aa" : g)};
+    color: ${({ lm, g, w }) => (lm ? g : w)}aa;
     position: absolute;
     top: 28px;
     left: 75px;
