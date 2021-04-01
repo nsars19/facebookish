@@ -11,6 +11,8 @@ const StyledStatusForm = styled.div`
   margin: 10px auto;
   position: relative;
   transition: width 0.2s ease-in-out;
+  width: 95%;
+  max-width: 750px;
 
   form {
     display: flex;
@@ -68,39 +70,6 @@ const StyledStatusForm = styled.div`
     font-size: 12px;
     padding-top: 3px;
     padding-left: 57px;
-  }
-
-  @media (min-width: 300px) {
-    & {
-      width: 340px;
-    }
-    .post-settings {
-      display: block;
-    }
-  }
-
-  @media (min-width: 480px) {
-    & {
-      width: 420px;
-    }
-  }
-
-  @media (min-width: 540px) {
-    & {
-      width: 480px;
-    }
-  }
-
-  @media (min-width: 768px) {
-    & {
-      width: 600px;
-    }
-  }
-
-  @media (min-width: 1080px) {
-    & {
-      width: 750px;
-    }
   }
 `;
 
