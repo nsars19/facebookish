@@ -42,6 +42,9 @@ const GlobalStyle = createGlobalStyle`
         background: ${({ light }) => (light ? "#d8d8d8" : "#707070")}
       }
     }
+    button.util {
+      color: ${({ light }) => (light ? black : white)}aa;
+    }
     #comment-util button{
       color: ${({ light }) => (light ? "#777" : "#aaa")};
     }

@@ -16,11 +16,9 @@ const StyledUtils = styled.div`
 
   button.util {
     background: none;
-    color: #aaa;
     &:hover,
     &:active {
       background: #707070aa;
-      color: #ccc;
     }
   }
 `;
