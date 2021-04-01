@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import ProfilePicture from "./../../userProfile/profilePicture";
 
-const StyledStatusForm = styled.form`
+const StyledStatusForm = styled.div`
   background: ${({ lm, g }) => (lm ? "#eee" : g)};
   border: 1px solid ${({ lm, g, w }) => (lm ? g : w)}11;
   padding: 18px;
