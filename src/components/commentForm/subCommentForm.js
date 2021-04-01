@@ -5,12 +5,14 @@ import { Link } from "react-router-dom";
 import getCommentCount from "./../../utils/getCommentCount";
 
 const StyledForm = styled.form`
-  display: flex;
-  height: ${({ vis }) => (vis ? "fit-content" : "0")};
   opacity: ${({ vis }) => (vis ? "100%" : "0")};
-  justify-content: space-between;
-  margin-left: 15px;
-  margin-top: ${({ vis }) => (vis ? "10px" : "0px")};
+  height: ${({ vis }) => (vis ? "fit-content" : "0")};
+  .wrap {
+    margin-top: ${({ vis }) => (vis ? "10px" : "0px")};
+    margin-left: 15px;
+    display: flex;
+    justify-content: space-between;
+  }
 
   a {
     align-self: center;
@@ -31,6 +33,13 @@ const StyledForm = styled.form`
   input[type="submit"] {
     background: none;
     font-weight: bold;
+  }
+
+  p {
+    width: max-content;
+    font-size: 12px;
+    padding-top: 3px;
+    padding-left: 55px;
   }
 `;
 
@@ -89,16 +98,18 @@ function SubCommentForm({
 
   return (
     <StyledForm onSubmit={handleSubmit} vis={subFormVis}>
-      <Link to="/profile">
-        <ProfilePicture userId={currentUser} size={"25px"} />
-      </Link>
-      <input
-        type="text"
-        ref={inputRef}
-        id="comment-input"
-        placeholder="Write a comment..."
-      />
-      <input type="submit" value="submit" id="comment-submit" />
+      <div className="wrap">
+        <Link to="/profile">
+          <ProfilePicture userId={currentUser} size={"25px"} />
+        </Link>
+        <input
+          type="text"
+          ref={inputRef}
+          id="comment-input"
+          placeholder="Write a comment..."
+        />
+      </div>
+      <p>Press enter to comment</p>
     </StyledForm>
   );
 }

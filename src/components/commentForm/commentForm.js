@@ -5,10 +5,12 @@ import { Link } from "react-router-dom";
 import getCommentCount from "./../../utils/getCommentCount";
 
 const StyledForm = styled.form`
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-  margin-left: 5px;
+  .wrap {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-left: 5px;
+  }
 
   input[type="text"] {
     flex: 1;
@@ -26,6 +28,12 @@ const StyledForm = styled.form`
   input[type="submit"] {
     background: none;
     font-weight: bold;
+  }
+
+  p {
+    font-size: 12px;
+    padding-top: 3px;
+    padding-left: 55px;
   }
 `;
 
@@ -79,16 +87,19 @@ function CommentForm({
 
   return (
     <StyledForm onSubmit={handleSubmit}>
-      <Link to="/profile">
-        <ProfilePicture userId={currentUser} size={"35px"} />
-      </Link>
-      <input
-        type="text"
-        ref={inputRef}
-        id="comment-input"
-        placeholder="Write a comment..."
-      />
-      <input type="submit" value="submit" id="comment-submit" />
+      <div className="wrap">
+        <Link to="/profile">
+          <ProfilePicture userId={currentUser} size={"35px"} />
+        </Link>
+        <input
+          type="text"
+          ref={inputRef}
+          id="comment-input"
+          placeholder="Write a comment..."
+        />
+      </div>
+      {/* <input type="submit" value="submit" id="comment-submit" /> */}
+      <p>Press enter to comment</p>
     </StyledForm>
   );
 }
