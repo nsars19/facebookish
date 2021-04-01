@@ -8,7 +8,7 @@ const StyledHomePage = styled.div`
   // color: black;
 `;
 
-function HomePage({ currentUser }) {
+function HomePage({ currentUser, lightMode }) {
   const [posts, setPosts] = useState(null);
 
   useEffect(() => {
@@ -26,6 +26,7 @@ function HomePage({ currentUser }) {
     <StyledHomePage>
       <StatusForm
         colors={colors}
+        lightMode={lightMode}
         currentUser={currentUser}
         setFeed={setPosts}
         homeFeed

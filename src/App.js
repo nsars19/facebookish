@@ -114,7 +114,7 @@ function App() {
             <Profile user={currentUser} colors={colors} lightMode={lightMode} />
           </Route>
           <Route path="/">
-            <HomePage currentUser={currentUser} />
+            <HomePage currentUser={currentUser} lightMode={lightMode} />
           </Route>
         </Switch>
       </Router>
