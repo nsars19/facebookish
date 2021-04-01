@@ -35,7 +35,6 @@ function StatusForm({ colors, currentUser, setFeed, homeFeed }) {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const text = e.target.firstElementChild.value;
     // Prevent posting empty content
     if (!text) return;
 
