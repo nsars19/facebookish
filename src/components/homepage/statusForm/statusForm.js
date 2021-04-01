@@ -52,14 +52,36 @@ function StatusForm({ colors, currentUser, setFeed, homeFeed }) {
     const data = await res.json();
     setFeed(data);
 
-    e.target.firstElementChild.value = "";
+    setText("");
   }
 
+  const textIsEmpty = () => text === "";
+
+  const handleInputChange = (e) => {
+    setText(e.target.value);
+  };
+
   return (
-    <StyledStatusForm r={red} y={yellow} b={black} g={gray}>
+    <StyledStatusForm
+      r={red}
+      y={yellow}
+      b={black}
+      g={gray}
+      w={white}
+      lm={lightMode}
+      textIsEmpty={textIsEmpty()}
+    >
       <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="What's on your mind, govnuh?" />
-        <input type="submit" value="Submit post" />
+        <div className="wrap">
+          <div className="pfp">
+            <ProfilePicture userId={currentUser} size={"37px"} />
+          </div>
+          <input type="text" onChange={handleInputChange} value={text} />
+          <div className="placeholder" id={text ? "moved" : " "}>
+            What's on your mind?
+          </div>
+        </div>
+        <p>Hit enter to post</p>
       </form>
     </StyledStatusForm>
   );
