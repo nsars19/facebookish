@@ -30,7 +30,7 @@ const StyledStatusForm = styled.div`
   }
 `;
 
-function StatusForm({ colors, currentUser }) {
+function StatusForm({ colors, currentUser, setFeed, homeFeed }) {
   const { black, gray, white, red, yellow } = colors;
   async function handleSubmit(e) {
     e.preventDefault();
@@ -39,20 +39,18 @@ function StatusForm({ colors, currentUser }) {
     // Prevent posting empty content
     if (!text) return;
 
-    const formData = { text, author: currentUser };
+    const formData = { homeFeed, text, author: currentUser };
     const reqBody = JSON.stringify(formData);
-    await fetch(`http://localhost:3000/posts/new`, {
+
+    // Response returns the updated posts from the create method of the post controller.
+    // This is to help minimize requests.
+    const res = await fetch(`http://localhost:3000/posts/new`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: reqBody,
     });
 
-    const url = "http://localhost:3000/posts";
-    const response = homeFeed
-      ? await fetch(`${url}/feed/${currentUser}`)
-      : await fetch(`${url}/byuser/${currentUser}`);
-    const data = await response.json();
-
+    const data = await res.json();
     setFeed(data);
   }
 
