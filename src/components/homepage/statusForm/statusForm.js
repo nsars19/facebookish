@@ -1,36 +1,111 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
+import ProfilePicture from "./../../userProfile/profilePicture";
 
 const StyledStatusForm = styled.div`
-  background: ${({ g }) => g}22;
-  padding: 20px;
-  margin: 20px;
+  background: ${({ lm, g }) => (lm ? "#d8d8d8" : g)};
+  border: 1px solid ${({ lm, g, w }) => (lm ? g : w)}11;
+  padding: 18px;
+  padding-bottom: 8px;
+  border-radius: 8px;
+  margin: 10px auto;
+  position: relative;
+  transition: width 0.2s ease-in-out;
+
   form {
     display: flex;
     flex-flow: column wrap;
   }
 
+  .wrap {
+    display: flex;
+  }
+
+  .pfp {
+    margin-right: 10px;
+  }
+
   input[type="text"] {
+    padding-left: 10px;
     border-style: none;
-    transition: all 0.6s ease;
-    border: 0px solid transparent;
-    height: 50px;
+    border-radius: 18px;
+    height: 37px;
     width: 100%;
+    opacity: 60%;
+
     &:focus {
-      // border: 20px solid transparent;
-      height: 100px;
-      width: 100%;
+      outline: none;
     }
   }
-  input[type="submit"] {
-    padding: 7px;
-    border-style: none;
-    border: 2px solid ${({ b }) => b};
-    background: ${({ g }) => g}44;
+
+  .placeholder {
+    color: ${({ lm, g }) => (lm ? g + "aa" : g)};
+    position: absolute;
+    top: 28px;
+    left: 75px;
+    font-size: 15px;
+    transition: top 0.2s ease, left 0.2s ease, font-size 0.2s ease;
+    pointer-events: none;
+  }
+
+  input[type="text"]:focus + div.placeholder {
+    color: ${({ lm, g, w }) => (lm ? g : w)};
+    font-size: 12px;
+    top: 2px;
+    left: 70px;
+    transition: top 0.2s ease, left 0.2s ease, font-size 0.2s ease;
+  }
+
+  #moved {
+    top: 2px;
+    left: 70px;
+    color: ${({ lm, g, w }) => (lm ? g : w)};
+    font-size: 12px;
+    transition: top 0.2s ease, left 0.2s ease, font-size 0.2s ease;
+  }
+
+  p {
+    font-size: 12px;
+    padding-top: 3px;
+    padding-left: 57px;
+  }
+
+  @media (min-width: 300px) {
+    & {
+      width: 340px;
+    }
+    .post-settings {
+      display: block;
+    }
+  }
+
+  @media (min-width: 480px) {
+    & {
+      width: 420px;
+    }
+  }
+
+  @media (min-width: 540px) {
+    & {
+      width: 480px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    & {
+      width: 600px;
+    }
+  }
+
+  @media (min-width: 1080px) {
+    & {
+      width: 750px;
+    }
   }
 `;
 
-function StatusForm({ colors, currentUser, setFeed, homeFeed }) {
+function StatusForm({ colors, currentUser, lightMode, setFeed, homeFeed }) {
+  const [text, setText] = useState("");
   const { black, gray, white, red, yellow } = colors;
   async function handleSubmit(e) {
     e.preventDefault();
