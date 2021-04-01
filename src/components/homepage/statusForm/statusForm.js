@@ -52,6 +52,8 @@ function StatusForm({ colors, currentUser, setFeed, homeFeed }) {
 
     const data = await res.json();
     setFeed(data);
+
+    e.target.firstElementChild.value = "";
   }
 
   return (
