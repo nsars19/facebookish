@@ -41,12 +41,19 @@ function StatusForm({ colors, currentUser }) {
 
     const formData = { text, author: currentUser };
     const reqBody = JSON.stringify(formData);
-    const response = await fetch(`http://localhost:3000/posts/new`, {
+    await fetch(`http://localhost:3000/posts/new`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: reqBody,
     });
+
+    const url = "http://localhost:3000/posts";
+    const response = homeFeed
+      ? await fetch(`${url}/feed/${currentUser}`)
+      : await fetch(`${url}/byuser/${currentUser}`);
     const data = await response.json();
+
+    setFeed(data);
   }
 
   return (
