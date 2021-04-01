@@ -37,6 +37,8 @@ const StyledStatusForm = styled.form`
     height: 37px;
     width: 100%;
     opacity: 60%;
+    color: ${({ lm, w, b }) => (lm ? "#000" : "#fff")};
+    font-size: 14px;
 
     &:focus {
       outline: none;
