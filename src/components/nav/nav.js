@@ -62,6 +62,11 @@ function Nav(props) {
     setLightMode(!lightMode);
   }
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Tab") return;
+    e.target.click();
+  };
+
   return (
     <StyledNav light={lightMode}>
       <Link to="/">
@@ -76,7 +81,14 @@ function Nav(props) {
       <Link to="/home">
         <IoNotifications />
       </Link>
-      <BsThreeDots onClick={toggleSettingsModal} className="settings" />
+      <div
+        onKeyDown={handleKeyDown}
+        onClick={toggleSettingsModal}
+        tabIndex="0"
+        className="settings"
+      >
+        <BsThreeDots />
+      </div>
       <AccountSettings
         modalVis={settingsModalVis}
         currentUser={currentUser}
