@@ -14,9 +14,8 @@ import getCommentCount from "./../../utils/getCommentCount";
 import EditForm from "./editForm";
 
 const StyledPost = styled.div`
-  min-width: 340px;
+  width: 95%;
   max-width: 750px;
-  transition: width 0.2s ease-in-out;
   padding: 10px;
   border-radius: 5px;
   margin: 20px 10px;
@@ -91,35 +90,8 @@ const StyledPost = styled.div`
   }
 
   @media (min-width: 300px) {
-    & {
-      width: 340px;
-    }
     .post-settings {
       display: block;
-    }
-  }
-
-  @media (min-width: 480px) {
-    & {
-      width: 420px;
-    }
-  }
-
-  @media (min-width: 540px) {
-    & {
-      width: 480px;
-    }
-  }
-
-  @media (min-width: 768px) {
-    & {
-      width: 600px;
-    }
-  }
-
-  @media (min-width: 1080px) {
-    & {
-      width: 750px;
     }
   }
 
