@@ -63,6 +63,10 @@ const GlobalStyle = createGlobalStyle`
      background: ${({ light }) => (light ? "#d8d8d8" : gray)};
      border: 1px solid ${({ light }) => (light ? gray : white)}33;
    }
+
+  input[type="text"]:hover {
+     opacity: 70%;
+   }
   }
 
   button,
