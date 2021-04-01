@@ -128,7 +128,7 @@ function StatusForm({ colors, currentUser, lightMode, setFeed, homeFeed }) {
             What's on your mind?
           </div>
         </div>
-        <p>Hit enter to post</p>
+        <p>Press enter to post</p>
       </form>
     </StyledStatusForm>
   );
