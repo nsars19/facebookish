@@ -11,13 +11,16 @@ import SubComment from "./subComment";
 import EditForm from "./editForm";
 
 const StyledComment = styled.div`
-  padding: 5px;
-  margin: 5px 0;
+  padding: 0 5px;
   position: relative;
   display: grid;
   grid-template-columns: 35px auto;
   grid-template-rows: 1fr auto;
   column-gap: 10px;
+
+  &:first-child {
+    margin-top: 10px;
+  }
 
   .pfp-link {
     height: 100%;
