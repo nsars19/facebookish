@@ -109,7 +109,7 @@ function UserCard({ user, amtCommon, currentUser, requested }) {
     const denierId = currentUser;
     const body = JSON.stringify({ senderId, denierId });
 
-    const res = await fetch("http://localhost:3000/friends/deny", {
+    await fetch("http://localhost:3000/friends/deny", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body,
