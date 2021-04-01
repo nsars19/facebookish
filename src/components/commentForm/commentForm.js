@@ -23,6 +23,7 @@ const StyledForm = styled.form`
     color: ${colors.white};
     font-size: 14px;
     margin: 0 10px;
+    z-index: 2;
   }
 
   input[type="submit"] {
