@@ -10,7 +10,6 @@ const StyledStatusForm = styled.div`
   border-radius: 8px;
   margin: 10px auto;
   position: relative;
-  transition: width 0.2s ease-in-out;
   width: 95%;
   max-width: 750px;
 
