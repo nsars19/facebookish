@@ -8,23 +8,7 @@ const StyledFeed = styled.div`
   justify-content: center;
 `;
 
-function Feed({ user, homeFeed }) {
-  const [posts, setPosts] = useState(null);
-
-  useEffect(() => {
-    (async function fetchPosts() {
-      let response;
-      if (homeFeed) {
-        response = await fetch(`http://localhost:3000/posts/feed/${user}`);
-      } else {
-        response = await fetch(`http://localhost:3000/posts/byuser/${user}`);
-      }
-
-      const data = await response.json();
-      setPosts(data);
-    })();
-  }, [user, homeFeed]);
-
+function Feed({ homeFeed, posts, setPosts }) {
   return (
     <StyledFeed>
       {(posts && (

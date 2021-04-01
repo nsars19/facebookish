@@ -24,6 +24,7 @@ function UserProfile({ colors, lightMode, user, currentUser }) {
   const match = useRouteMatch();
   const userId = user || match.params.userId;
   const [userName, setUserName] = useState(null);
+  const [posts, setPosts] = useState(null);
   const [friendshipPending, setFriendStatus] = useState(null);
   const { white, black, gray } = colors;
 
@@ -36,6 +37,17 @@ function UserProfile({ colors, lightMode, user, currentUser }) {
       setUserName(data.firstName + " " + data.lastName);
     })();
   }, [userId, currentUser]);
+
+  useEffect(() => {
+    (async function fetchPosts() {
+      const response = await fetch(
+        `http://localhost:3000/posts/byuser/${userId}`
+      );
+
+      const data = await response.json();
+      setPosts(data);
+    })();
+  }, [user, setPosts]);
 
   return (
     <StyledUserProfile black={black} white={white} gray={gray} lm={lightMode}>
@@ -51,7 +63,7 @@ function UserProfile({ colors, lightMode, user, currentUser }) {
           sameUser={currentUser === userId}
         />
       </div>
-      <Feed user={userId} />
+      <Feed user={userId} posts={posts} setPosts={setPosts} />
     </StyledUserProfile>
   );
 }
