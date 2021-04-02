@@ -1,6 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useRef } from "react";
 import styled from "styled-components";
 import ProfilePicture from "./../../userProfile/profilePicture";
+import { AiFillPicture } from "react-icons/ai";
+import { MdTextsms } from "react-icons/md";
+import ImageHandlerModal from "./../../imageHandler/imageHandlerModal";
 
 const StyledStatusForm = styled.div`
   background: ${({ lm, g }) => (lm ? "#eee" : g)};
@@ -37,12 +40,17 @@ const StyledStatusForm = styled.div`
     height: 37px;
     width: 100%;
     opacity: 60%;
-    color: ${({ lm, w, b }) => (lm ? "#000" : "#fff")};
-    font-size: 14px;
+    color: ${({ lm }) => (lm ? "#000" : "#fff")};
 
     &:focus {
       outline: none;
     }
+  }
+
+  .txt-form {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #aaa;
+    margin-bottom: 7px;
   }
 
   .placeholder {
@@ -76,11 +84,51 @@ const StyledStatusForm = styled.div`
     padding-top: 3px;
     padding-left: 57px;
   }
+
+  .post-types {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(3, 1fr)
+    // padding-top: 5px;
+    // border-top: 1px solid #aaaa;
+    margin-top: 10px;
+  }
+
+  .post-icon {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: center;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 5px 0;
+    border-radius: 8px;
+
+    &:hover {
+      background: #aaaa;
+    }
+
+    p {
+      padding: 0;
+      padding-left: 5px;
+      width: fit-content;
+      justify-self: start;
+      align-self: center;
+      font-size: 15px;
+      font-weight: bold;
+    }
+  }
 `;
 
 function StatusForm({ colors, currentUser, lightMode, setFeed, homeFeed }) {
   const [text, setText] = useState("");
+  const [modalVis, setImgModalVis] = useState(false);
   const { black, gray, white, red, yellow } = colors;
+
+  const postInput = useRef(null);
+  const focusRef = () => postInput.current.focus();
+
+  const toggleImgModal = () => setImgModalVis(!modalVis);
+
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -102,6 +150,7 @@ function StatusForm({ colors, currentUser, lightMode, setFeed, homeFeed }) {
     setFeed(data);
 
     setText("");
+    postInput.current.blur();
   }
 
   const textIsEmpty = () => text === "";
@@ -111,28 +160,50 @@ function StatusForm({ colors, currentUser, lightMode, setFeed, homeFeed }) {
   };
 
   return (
-    <StyledStatusForm
-      r={red}
-      y={yellow}
-      b={black}
-      g={gray}
-      w={white}
-      lm={lightMode}
-      textIsEmpty={textIsEmpty()}
-    >
-      <form onSubmit={handleSubmit}>
-        <div className="wrap">
-          <div className="pfp">
-            <ProfilePicture userId={currentUser} size={"37px"} />
+    <>
+      <StyledStatusForm
+        r={red}
+        y={yellow}
+        b={black}
+        g={gray}
+        w={white}
+        lm={lightMode}
+        textIsEmpty={textIsEmpty()}
+      >
+        <form onSubmit={handleSubmit} className="txt-form">
+          <div className="wrap">
+            <div className="pfp">
+              <ProfilePicture userId={currentUser} size={"37px"} />
+            </div>
+            <input
+              type="text"
+              onChange={handleInputChange}
+              value={text}
+              ref={postInput}
+            />
+            <div className="placeholder" id={text ? "moved" : " "}>
+              What's on your mind?
+            </div>
           </div>
-          <input type="text" onChange={handleInputChange} value={text} />
-          <div className="placeholder" id={text ? "moved" : " "}>
-            What's on your mind?
+          <p>Press enter to post</p>
+        </form>
+        <div className="post-types">
+          <div className="post-icon" onClick={toggleImgModal}>
+            <AiFillPicture />
+            <p id="post-icon-text">Photo</p>
+            <ImageHandlerModal
+              toggle={toggleImgModal}
+              user={currentUser}
+              vis={modalVis}
+            />
+          </div>
+          <div className="post-icon" onClick={focusRef}>
+            <MdTextsms />
+            <p id="post-icon-text">Text</p>
           </div>
         </div>
-        <p>Press enter to post</p>
-      </form>
-    </StyledStatusForm>
+      </StyledStatusForm>
+    </>
   );
 }
 
