@@ -154,7 +154,11 @@ function App() {
             <Profile user={currentUser} colors={colors} lightMode={lightMode} />
           </Route>
           <Route path="/">
-            <HomePage currentUser={currentUser} lightMode={lightMode} />
+            <HomePage
+              currentUser={currentUser}
+              lightMode={lightMode}
+              postRef={postRef}
+            />
           </Route>
         </Switch>
       </Router>
