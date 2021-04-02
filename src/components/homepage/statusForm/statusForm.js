@@ -89,8 +89,6 @@ const StyledStatusForm = styled.div`
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: repeat(3, 1fr)
-    // padding-top: 5px;
-    // border-top: 1px solid #aaaa;
     margin-top: 10px;
   }
 
