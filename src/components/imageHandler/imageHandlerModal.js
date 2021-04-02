@@ -12,10 +12,6 @@ const StyledModal = styled.div`
   z-index: 3;
   // animation: comeFromLeft 0.3s ease;
 
-  #img-form {
-    // align-items: center;
-  }
-
   @keyframes comeFromLeft {
     from {
       left: -200px;
