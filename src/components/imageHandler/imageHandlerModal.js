@@ -10,11 +10,12 @@ const StyledModal = styled.div`
   width: 80%;
   margin: 0 10%;
   z-index: 3;
-  // animation: comeFromLeft 0.3s ease;
+  animation: comeFromTop 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
 
-  @keyframes comeFromLeft {
+  @keyframes comeFromTop {
     from {
-      left: -200px;
+      opacity: 0;
+      top: -50px;
     }
   }
 `;
