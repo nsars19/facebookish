@@ -103,7 +103,8 @@ const StyledStatusForm = styled.div`
     padding: 5px 0;
     border-radius: 8px;
 
-    &:hover {
+    &:hover,
+    &:active {
       background: #aaaa;
     }
 
