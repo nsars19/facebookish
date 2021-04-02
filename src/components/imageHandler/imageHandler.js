@@ -132,6 +132,7 @@ function ImageHandler({ user, toggleOff }) {
 
     const formData = new FormData();
     formData.append("file", imgFile);
+    formData.append("text", text);
 
     const url = `http://localhost:3000/upload/posts/${user}`;
     const res = await fetch(url, {
