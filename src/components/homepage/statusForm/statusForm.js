@@ -190,17 +190,17 @@ function StatusForm({ colors, currentUser, lightMode, setFeed, homeFeed }) {
           <div className="post-icon" onClick={toggleImgModal}>
             <AiFillPicture />
             <p id="post-icon-text">Photo</p>
-            <ImageHandlerModal
-              toggle={toggleImgModal}
-              user={currentUser}
-              vis={modalVis}
-            />
           </div>
           <div className="post-icon" onClick={focusRef}>
             <MdTextsms />
             <p id="post-icon-text">Text</p>
           </div>
         </div>
+        <ImageHandlerModal
+          toggle={toggleImgModal}
+          user={currentUser}
+          vis={modalVis}
+        />
       </StyledStatusForm>
     </>
   );
