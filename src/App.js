@@ -61,15 +61,41 @@ const GlobalStyle = createGlobalStyle`
       color: ${white};
       background: ${({ light }) => (light ? blue : gray)};
       cursor: auto;
-   }
-   #prof-card {
-     background: ${({ light }) => (light ? "#d8d8d8" : gray)};
-     border: 1px solid ${({ light }) => (light ? gray : white)}33;
-   }
+    }
+    #prof-card {
+      background: ${({ light }) => (light ? "#d8d8d8" : gray)};
+      border: 1px solid ${({ light }) => (light ? gray : white)}33;
+    }
 
-  input[type="text"]:hover {
-     opacity: 70%;
-   }
+    input[type="text"]:hover {
+      opacity: 70%;
+    }
+
+    #esc {
+      background: ${({ light }) => (light ? "#d8d8d8" : "#707070")};
+    }
+    #img-form {
+      background: ${({ light }) => (light ? white : gray)};
+      border: 1px solid ${({ light }) => (light ? gray + "33" : white + "22")};
+      
+      input {
+        background: ${blue};
+
+        &:hover,
+        &:active {
+          background: ${blue}${({ light }) => (light ? "cc" : "88")};
+          color: #eee;
+        }
+      }
+    }
+
+    #post-icon-text {
+      color: ${({ light }) => (light ? black : white)}aa;
+    }
+
+    input#img-text-input {
+      background: ${({ light }) => (light ? "#d8d8d8" : "#707070")};
+    }
   }
 
   button,
