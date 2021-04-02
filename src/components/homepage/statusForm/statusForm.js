@@ -103,7 +103,7 @@ const StyledStatusForm = styled.div`
 
     &:hover,
     &:active {
-      background: #aaaa;
+      background: #707070aa;
     }
 
     p {
