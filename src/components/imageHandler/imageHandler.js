@@ -118,6 +118,7 @@ const StyledHandler = styled.form`
 function ImageHandler({ user, toggleOff }) {
   const [imgFile, setImage] = useState(null);
   const [src, setSrc] = useState(null);
+  const [text, setText] = useState("");
 
   const handleImgInput = (e) => {
     setImage(e.target.files[0]);
@@ -146,7 +147,10 @@ function ImageHandler({ user, toggleOff }) {
     toggleOff();
     setImage(null);
     setSrc(null);
+    setText("");
   };
+
+  const handleInputChange = (e) => setText(e.target.value);
 
   return (
     <StyledHandler
@@ -169,6 +173,8 @@ function ImageHandler({ user, toggleOff }) {
         type="text"
         id="img-text-input"
         placeholder="What's on your mind?"
+        onChange={handleInputChange}
+        value={text}
       />
       <img src={src} alt="" />
       <input type="submit" value="Post" />
