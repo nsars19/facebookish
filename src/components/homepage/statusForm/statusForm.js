@@ -49,7 +49,7 @@ const StyledStatusForm = styled.div`
 
   .txt-form {
     padding-bottom: 10px;
-    border-bottom: 1px solid #aaa;
+    border-bottom: 1px solid gray;
     margin-bottom: 7px;
   }
 
