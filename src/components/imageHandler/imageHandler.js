@@ -105,6 +105,14 @@ const StyledHandler = styled.form`
       }
     }
   }
+
+  input#img-text-input {
+    width: 75%;
+    min-height: 35px;
+    max-width: 400px;
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
 `;
 
 function ImageHandler({ user, toggleOff }) {
@@ -157,6 +165,11 @@ function ImageHandler({ user, toggleOff }) {
         <AiFillPicture className="upload-icon icon" />
         <p className="upload-txt">Upload an image</p>
       </label>
+      <input
+        type="text"
+        id="img-text-input"
+        placeholder="What's on your mind?"
+      />
       <img src={src} alt="" />
       <input type="submit" value="Post" />
       <button id="esc" onClick={clearHandler}>
