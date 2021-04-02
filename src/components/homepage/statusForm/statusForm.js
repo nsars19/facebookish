@@ -21,7 +21,7 @@ const StyledStatusForm = styled.div`
 
   form {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
   }
 
   .wrap {

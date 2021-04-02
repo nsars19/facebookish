@@ -10,7 +10,7 @@ const StyledHandler = styled.form`
   position: relative;
   z-index: 10;
   width: 100%;
-  max-width: 700px;
+  max-width: 500px;
   max-height: 90vh;
   padding-bottom: 15px;
   border-radius: 8px;
@@ -53,6 +53,7 @@ const StyledHandler = styled.form`
   input[type="submit"] {
     margin-top: 20px;
     width: 95%;
+    max-width: 400px;
     font-size: 18px;
     padding: 10px;
 
@@ -65,7 +66,7 @@ const StyledHandler = styled.form`
 
   img {
     max-width: 95%;
-    max-height: 66%;
+    max-height: 300px;
   }
 
   #esc {
