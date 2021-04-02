@@ -141,7 +141,7 @@ function App() {
         />
         <Switch>
           <Route path="/users">
-            <Users />
+            <Users currentUser={currentUser} />
           </Route>
           <Route path="/user/:userId">
             <UserProfile
