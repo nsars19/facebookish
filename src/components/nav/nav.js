@@ -25,6 +25,12 @@ const StyledNav = styled.div`
   width: 100%;
   z-index: 10;
 
+  .post-icon {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+  }
+
   a,
   a:visited {
     display: flex;
@@ -53,7 +59,13 @@ const StyledNav = styled.div`
 `;
 
 function Nav(props) {
-  const { setLightMode, lightMode, currentUser, setCurrentUser } = props;
+  const {
+    setLightMode,
+    lightMode,
+    currentUser,
+    setCurrentUser,
+    focusRef,
+  } = props;
   const [settingsModalVis, setSettingsVis] = useState(false);
 
   const toggleSettingsModal = () => setSettingsVis(!settingsModalVis);
@@ -75,9 +87,9 @@ function Nav(props) {
       <Link to="/users">
         <ImUsers />
       </Link>
-      <Link to="/home">
+      <div className="post-icon" onClick={focusRef}>
         <BsPlusSquareFill />
-      </Link>
+      </div>
       <Link to="/home">
         <IoNotifications />
       </Link>

@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import ProfilePicture from "./../../userProfile/profilePicture";
 import { AiFillPicture } from "react-icons/ai";
@@ -118,13 +118,19 @@ const StyledStatusForm = styled.div`
   }
 `;
 
-function StatusForm({ colors, currentUser, lightMode, setFeed, homeFeed }) {
+function StatusForm({
+  colors,
+  postRef,
+  currentUser,
+  lightMode,
+  setFeed,
+  homeFeed,
+}) {
   const [text, setText] = useState("");
   const [modalVis, setImgModalVis] = useState(false);
   const { black, gray, white, red, yellow } = colors;
 
-  const postInput = useRef(null);
-  const focusRef = () => postInput.current.focus();
+  const focusRef = () => postRef.current.focus();
 
   const toggleImgModal = () => setImgModalVis(!modalVis);
 
@@ -149,7 +155,7 @@ function StatusForm({ colors, currentUser, lightMode, setFeed, homeFeed }) {
     setFeed(data);
 
     setText("");
-    postInput.current.blur();
+    postRef.current.blur();
   }
 
   const textIsEmpty = () => text === "";
@@ -178,7 +184,7 @@ function StatusForm({ colors, currentUser, lightMode, setFeed, homeFeed }) {
               type="text"
               onChange={handleInputChange}
               value={text}
-              ref={postInput}
+              ref={postRef}
             />
             <div className="placeholder" id={text ? "moved" : " "}>
               What's on your mind?
