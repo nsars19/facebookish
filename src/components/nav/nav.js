@@ -29,6 +29,14 @@ const StyledNav = styled.div`
     display: flex;
     align-items: center;
     font-size: 24px;
+    cursor: pointer;
+
+    &:hover:not(.name-container),
+    &:active:not(.name-container) {
+      color: ${black};
+      transition: color 50ms ease;
+      font-weight: 600;
+    }
   }
 
   a,
