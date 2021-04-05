@@ -112,6 +112,10 @@ const StyledHandler = styled.form`
     max-width: 400px;
     font-size: 14px;
     margin-bottom: 15px;
+
+    &:hover {
+      opacity: 70%;
+    }
   }
 `;
 

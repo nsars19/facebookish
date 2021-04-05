@@ -78,7 +78,7 @@ const GlobalStyle = createGlobalStyle`
       background: ${({ light }) => (light ? white : gray)};
       border: 1px solid ${({ light }) => (light ? gray + "33" : white + "22")};
       
-      input {
+      input:not(input[type="text"]) {
         background: ${blue};
 
         &:hover,
