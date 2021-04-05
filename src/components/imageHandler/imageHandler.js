@@ -119,7 +119,7 @@ const StyledHandler = styled.form`
   }
 `;
 
-function ImageHandler({ user, toggleOff }) {
+function ImageHandler({ user, toggleOff, noInput, profile }) {
   const [imgFile, setImage] = useState(null);
   const [src, setSrc] = useState(null);
   const [text, setText] = useState("");
@@ -138,7 +138,10 @@ function ImageHandler({ user, toggleOff }) {
     formData.append("file", imgFile);
     formData.append("text", text);
 
-    const url = `http://localhost:3000/upload/posts/${user}`;
+    const url = `http://localhost:3000/upload/${
+      profile ? "profile" : "posts"
+    }/${user}`;
+
     await fetch(url, {
       method: "post",
       body: formData,
