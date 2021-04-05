@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import colors from "./../../colors";
 import getCommentCount from "./../../utils/getCommentCount";
-import { useState, useEffect } from "react";
 
 const StyledModal = styled.div`
   display: ${({ vis }) => (vis ? "flex" : "none")};
