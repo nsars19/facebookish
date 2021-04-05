@@ -188,7 +188,10 @@ function ImageHandler({ user, toggleOff, profile }) {
         />
       )}
       <img src={src} alt="" />
-      <input type="submit" value="Post" />
+      <input
+        type="submit"
+        value={profile ? "Change profile picture" : "Post"}
+      />
       <button id="esc" onClick={clearHandler}>
         <span />
         <span />
