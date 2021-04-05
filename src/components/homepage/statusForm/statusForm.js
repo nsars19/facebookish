@@ -206,6 +206,7 @@ function StatusForm({
           toggle={toggleImgModal}
           user={currentUser}
           vis={modalVis}
+          setFeed={setFeed}
         />
       </StyledStatusForm>
     </>

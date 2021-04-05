@@ -119,7 +119,7 @@ const StyledHandler = styled.form`
   }
 `;
 
-function ImageHandler({ user, toggleOff, profile }) {
+function ImageHandler({ user, toggleOff, profile, setFeed }) {
   const [imgFile, setImage] = useState(null);
   const [src, setSrc] = useState(null);
   const [text, setText] = useState("");
@@ -142,10 +142,14 @@ function ImageHandler({ user, toggleOff, profile }) {
       profile ? "profile" : "posts"
     }/${user}`;
 
-    await fetch(url, {
+    const res = await fetch(url, {
       method: "post",
       body: formData,
     });
+
+    const data = await res.json();
+
+    if (!profile) setFeed(data);
 
     clearHandler();
   };
