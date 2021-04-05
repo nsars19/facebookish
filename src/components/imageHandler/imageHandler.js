@@ -139,13 +139,12 @@ function ImageHandler({ user, toggleOff }) {
     formData.append("text", text);
 
     const url = `http://localhost:3000/upload/posts/${user}`;
-    const res = await fetch(url, {
+    await fetch(url, {
       method: "post",
       body: formData,
     });
 
-    const data = await res.json();
-    // toggleOff();
+    toggleOff();
   };
 
   const clearHandler = () => {
