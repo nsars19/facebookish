@@ -42,7 +42,11 @@ function ProfilePicture({ userId, size, lightMode }) {
   return (
     <StyledProfile lm={lightMode} black={black} size={size}>
       <div className="frame">
-        {photoSrc ? <img src={photoSrc} alt="profile" /> : <Skeleton />}
+        {photoSrc ? (
+          <img src={photoSrc} alt="profile" loading="lazy" />
+        ) : (
+          <Skeleton />
+        )}
       </div>
     </StyledProfile>
   );
