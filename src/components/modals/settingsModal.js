@@ -11,6 +11,7 @@ const StyledModal = styled.div`
   right: 10px;
   color: black;
   margin-right: 20px;
+  z-index: 3;
 
   ul {
     list-style: none;
