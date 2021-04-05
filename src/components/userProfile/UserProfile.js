@@ -18,24 +18,26 @@ const StyledUserProfile = styled.div`
 
   .tool-tip {
     display: none;
+    width: max-content;
     position: absolute;
     bottom: -20px;
-    left: 43px;
+    left: 0;
     font-size: 12px;
     animation: comeFromBottom 0.2s ease-in-out;
   }
 
   .pfp {
     position: relative;
-    cursor: pointer;
+    cursor: ${({ sameUser }) => (sameUser ? "pointer" : "auto")};
 
-    &:hover {
-      opacity: 80%;
+    &:hover,
+    &:active {
+      opacity: ${({ sameUser }) => (sameUser ? "80%" : "100%")};
     }
   }
 
   .pfp:hover .tool-tip {
-    display: block;
+    display: ${({ sameUser }) => (sameUser ? "block" : "none")};
   }
 
   @keyframes comeFromBottom {
@@ -102,15 +104,28 @@ function UserProfile({ colors, lightMode, user, currentUser }) {
   }, [user, setPosts, userId]);
 
   return (
-    <StyledUserProfile black={black} white={white} gray={gray} lm={lightMode}>
+    <StyledUserProfile
+      black={black}
+      white={white}
+      gray={gray}
+      lm={lightMode}
+      sameUser={currentUser === userId}
+    >
       <div className="profile-desc">
-        <div className="pfp" onClick={() => setVis(!modalVis)}>
+        <div
+          className="pfp"
+          onClick={() => {
+            if (currentUser === userId) setVis(!modalVis);
+          }}
+        >
           <ProfilePicture
             userId={userId}
             size={"250px"}
             lightMode={lightMode}
           />
-          <p className="tool-tip">Click to upload a profile picture</p>
+          <p className="tool-tip">
+            Click the picture to upload a new profile picture
+          </p>
         </div>
         <div className="name-wrap">
           <h2>{userName || <Skeleton width={150} />}</h2>
