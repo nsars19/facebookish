@@ -119,7 +119,7 @@ const StyledHandler = styled.form`
   }
 `;
 
-function ImageHandler({ user, toggleOff, noInput, profile }) {
+function ImageHandler({ user, toggleOff, profile }) {
   const [imgFile, setImage] = useState(null);
   const [src, setSrc] = useState(null);
   const [text, setText] = useState("");
@@ -176,7 +176,7 @@ function ImageHandler({ user, toggleOff, noInput, profile }) {
         <AiFillPicture className="upload-icon icon" />
         <p className="upload-txt">Upload an image</p>
       </label>
-      {noInput ? (
+      {profile ? (
         <div />
       ) : (
         <input

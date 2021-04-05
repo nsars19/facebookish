@@ -94,7 +94,6 @@ function UserProfile({ colors, lightMode, user, currentUser }) {
           vis={modalVis}
           user={currentUser}
           toggle={() => setVis(!modalVis)}
-          noInput
           profile
         />
       </div>

@@ -20,15 +20,10 @@ const StyledModal = styled.div`
   }
 `;
 
-function ImageHandlerModal({ toggle, user, vis, noInput, profile }) {
+function ImageHandlerModal({ toggle, user, vis, profile }) {
   return (
     <StyledModal vis={vis}>
-      <ImageHandler
-        user={user}
-        toggleOff={toggle}
-        noInput={noInput}
-        profile={profile}
-      />
+      <ImageHandler user={user} toggleOff={toggle} profile={profile} />
     </StyledModal>
   );
 }
