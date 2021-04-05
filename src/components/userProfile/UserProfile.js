@@ -15,6 +15,36 @@ const StyledUserProfile = styled.div`
     align-items: center;
     min-height: 50vh;
   }
+
+  .tool-tip {
+    display: none;
+    position: absolute;
+    bottom: -20px;
+    left: 43px;
+    font-size: 12px;
+    animation: comeFromBottom 0.2s ease-in-out;
+  }
+
+  .pfp {
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 80%;
+    }
+  }
+
+  .pfp:hover .tool-tip {
+    display: block;
+  }
+
+  @keyframes comeFromBottom {
+    from {
+      bottom: 0;
+      opacity: 0;
+    }
+  }
+
   .name-wrap {
     max-width: fit-content;
     font-size: 18px;
@@ -74,12 +104,13 @@ function UserProfile({ colors, lightMode, user, currentUser }) {
   return (
     <StyledUserProfile black={black} white={white} gray={gray} lm={lightMode}>
       <div className="profile-desc">
-        <div onClick={() => setVis(!modalVis)}>
+        <div className="pfp" onClick={() => setVis(!modalVis)}>
           <ProfilePicture
             userId={userId}
             size={"250px"}
             lightMode={lightMode}
           />
+          <p className="tool-tip">Click to upload a profile picture</p>
         </div>
         <div className="name-wrap">
           <h2>{userName || <Skeleton width={150} />}</h2>
