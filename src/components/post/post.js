@@ -5,7 +5,7 @@ import CommentForm from "./../commentForm/commentForm";
 import Cookies from "universal-cookie";
 import { AiFillSetting } from "react-icons/ai";
 import Settings from "./../modals/settingsModal";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import ProfilePicture from "./../userProfile/profilePicture";
 import moment from "moment";
 import PostUtils from "./postUtils";
@@ -88,6 +88,18 @@ const StyledPost = styled.div`
     display: ${({ cmtsVis }) => (cmtsVis ? "block" : "none")};
   }
 
+  .photo-wrap {
+    width: 100%;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+
+    img {
+      width: 100%;
+      // max-width: 100%;
+    }
+  }
+
   @media (min-width: 300px) {
     .post-settings {
       display: block;
@@ -112,9 +124,22 @@ function Post({ post, setFeed, homeFeed }) {
   const [commentsVisible, setCommentsVisible] = useState(true);
   const [editingPost, setPostEditStatus] = useState(false);
   const [postText, setPostText] = useState(post.text);
+  const [img, setImg] = useState(null);
   const currentUser = cookies.get("currentUser");
   const isAuthor = post.author._id === currentUser;
   const inputRef = useRef(null);
+
+  useEffect(() => {
+    (async function getImg() {
+      if (post.photo) {
+        const path = post.photo.path;
+        const res = await fetch(`http://localhost:3000/${path}`);
+        setImg(res.url);
+      } else {
+        return;
+      }
+    })();
+  }, [img, post.photo]);
 
   const toggleModalVisibility = () => setModalVisible(!modalVisible);
   const togglePostEdit = () => setPostEditStatus(!editingPost);
@@ -133,6 +158,12 @@ function Post({ post, setFeed, homeFeed }) {
 
   const postContent = () => <p className="content">{postText}</p>;
 
+  const postPhoto = () => (
+    <div className="photo-wrap">
+      <img src={img} alt="post" loading="lazy" />
+    </div>
+  );
+
   return (
     <StyledPost className="postItem" cmtsVis={commentsVisible}>
       <div className="post">
@@ -148,6 +179,7 @@ function Post({ post, setFeed, homeFeed }) {
           <p>{moment(post.createdAt).fromNow()}</p>
         </div>
         {editingPost ? EditComponent() : postContent()}
+        {post.photo ? postPhoto() : <div />}
         <PostMetrics
           likeCount={likeCount}
           commentCount={commentCount}
