@@ -47,7 +47,7 @@ function UserProfile({ colors, lightMode, user, currentUser }) {
       const data = await response.json();
       setPosts(data);
     })();
-  }, [user, setPosts]);
+  }, [user, setPosts, userId]);
 
   return (
     <StyledUserProfile black={black} white={white} gray={gray} lm={lightMode}>
