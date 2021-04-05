@@ -23,7 +23,9 @@ const StyledProfile = styled.div`
     background-color: #eee;
   }
   img {
-    height: ${({ size }) => size};
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
   }
 `;
 
