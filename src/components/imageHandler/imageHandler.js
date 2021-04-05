@@ -147,7 +147,7 @@ function ImageHandler({ user, toggleOff, noInput, profile }) {
       body: formData,
     });
 
-    toggleOff();
+    clearHandler();
   };
 
   const clearHandler = () => {
@@ -176,13 +176,17 @@ function ImageHandler({ user, toggleOff, noInput, profile }) {
         <AiFillPicture className="upload-icon icon" />
         <p className="upload-txt">Upload an image</p>
       </label>
-      <input
-        type="text"
-        id="img-text-input"
-        placeholder="What's on your mind?"
-        onChange={handleInputChange}
-        value={text}
-      />
+      {noInput ? (
+        <div />
+      ) : (
+        <input
+          type="text"
+          id="img-text-input"
+          placeholder="What's on your mind?"
+          onChange={handleInputChange}
+          value={text}
+        />
+      )}
       <img src={src} alt="" />
       <input type="submit" value="Post" />
       <button id="esc" onClick={clearHandler}>
