@@ -29,7 +29,13 @@ const StyledProfile = styled.div`
   }
 `;
 
-function ProfilePicture({ userId, size, lightMode }) {
+function ProfilePicture({
+  userId,
+  size,
+  lightMode,
+  needsUpdate,
+  setUpdateStatus,
+}) {
   const [photoSrc, setPhotoSrc] = useState(null);
 
   useEffect(() => {
@@ -38,8 +44,13 @@ function ProfilePicture({ userId, size, lightMode }) {
         `http://localhost:3000/profiledata/${userId}`
       );
       setPhotoSrc(photoResponse.url);
+
+      if (needsUpdate) {
+        window.location.reload();
+        setUpdateStatus(false);
+      }
     })();
-  }, [setPhotoSrc, userId]);
+  }, [setPhotoSrc, userId, needsUpdate, setUpdateStatus]);
 
   return (
     <StyledProfile lm={lightMode} black={black} size={size}>

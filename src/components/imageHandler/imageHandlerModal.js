@@ -20,7 +20,14 @@ const StyledModal = styled.div`
   }
 `;
 
-function ImageHandlerModal({ toggle, user, vis, profile, setFeed }) {
+function ImageHandlerModal({
+  toggle,
+  user,
+  vis,
+  profile,
+  setFeed,
+  setUpdateStatus,
+}) {
   return (
     <StyledModal vis={vis}>
       <ImageHandler
@@ -28,6 +35,7 @@ function ImageHandlerModal({ toggle, user, vis, profile, setFeed }) {
         toggleOff={toggle}
         profile={profile}
         setFeed={setFeed}
+        setUpdateStatus={setUpdateStatus}
       />
     </StyledModal>
   );

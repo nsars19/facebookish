@@ -119,7 +119,7 @@ const StyledHandler = styled.form`
   }
 `;
 
-function ImageHandler({ user, toggleOff, profile, setFeed }) {
+function ImageHandler({ user, toggleOff, profile, setFeed, setUpdateStatus }) {
   const [imgFile, setImage] = useState(null);
   const [src, setSrc] = useState(null);
   const [text, setText] = useState("");
@@ -150,7 +150,7 @@ function ImageHandler({ user, toggleOff, profile, setFeed }) {
     const data = await res.json();
 
     if (!profile) setFeed(data);
-
+    if (profile) setUpdateStatus(true);
     clearHandler();
   };
 

@@ -80,6 +80,7 @@ function UserProfile({ colors, lightMode, user, currentUser }) {
   const [posts, setPosts] = useState(null);
   const [modalVis, setVis] = useState(false);
   const [friendshipPending, setFriendStatus] = useState(null);
+  const [needsUpdate, setUpdateStatus] = useState(false);
   const { white, black, gray } = colors;
 
   useEffect(() => {
@@ -122,6 +123,8 @@ function UserProfile({ colors, lightMode, user, currentUser }) {
             userId={userId}
             size={"250px"}
             lightMode={lightMode}
+            needsUpdate={needsUpdate}
+            setUpdateStatus={setUpdateStatus}
           />
           <p className="tool-tip">
             Click the picture to upload a new profile picture
@@ -140,6 +143,7 @@ function UserProfile({ colors, lightMode, user, currentUser }) {
           vis={modalVis}
           user={currentUser}
           toggle={() => setVis(!modalVis)}
+          setUpdateStatus={setUpdateStatus}
           profile
         />
       </div>
