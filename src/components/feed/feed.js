@@ -13,14 +13,19 @@ const StyledFeed = styled.div`
   }
 `;
 
-function Feed({ homeFeed, posts, setPosts }) {
+function Feed({ homeFeed, posts, setPosts, src }) {
   return (
     <StyledFeed>
       {(posts && (
         <div className="wrap">
           {posts.map((post) => (
             <div key={post._id} className="post-wrap">
-              <Post post={post} setFeed={setPosts} homeFeed={homeFeed} />
+              <Post
+                post={post}
+                setFeed={setPosts}
+                homeFeed={homeFeed}
+                src={src}
+              />
             </div>
           ))}
         </div>

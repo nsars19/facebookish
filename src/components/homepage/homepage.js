@@ -47,7 +47,13 @@ function HomePage({ currentUser, lightMode, postRef }) {
         src={pfpSrc}
         homeFeed
       ></StatusForm>
-      <Feed user={currentUser} posts={posts} setPosts={setPosts} homeFeed />
+      <Feed
+        user={currentUser}
+        src={userData.profilePhotoSrc}
+        posts={posts}
+        setPosts={setPosts}
+        homeFeed
+      />
     </StyledHomePage>
   );
 }

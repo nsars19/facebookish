@@ -115,7 +115,7 @@ const StyledPost = styled.div`
 
 const cookies = new Cookies();
 
-function Post({ post, setFeed, homeFeed }) {
+function Post({ post, setFeed, homeFeed, src }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [likeCount, setLikeCount] = useState(post.likes.length);
   const [commentCount, setCommentCount] = useState(
@@ -235,7 +235,7 @@ function Post({ post, setFeed, homeFeed }) {
         inputRef={inputRef}
         setCommentCount={setCommentCount}
         setCommentsVisible={() => setCommentsVisible(true)}
-        src={post.author.profilePhotoSrc}
+        src={src}
       />
     </StyledPost>
   );
