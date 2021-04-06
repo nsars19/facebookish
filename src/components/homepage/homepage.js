@@ -49,7 +49,7 @@ function HomePage({ currentUser, lightMode, postRef }) {
       ></StatusForm>
       <Feed
         user={currentUser}
-        src={userData.profilePhotoSrc}
+        src={pfpSrc}
         posts={posts}
         setPosts={setPosts}
         homeFeed
