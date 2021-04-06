@@ -149,7 +149,7 @@ function UserProfile({ colors, lightMode, user, currentUser }) {
           profile
         />
       </div>
-      <Feed user={userId} posts={posts} setPosts={setPosts} />
+      <Feed user={userId} posts={posts} setPosts={setPosts} src={pfpSrc} />
     </StyledUserProfile>
   );
 }
