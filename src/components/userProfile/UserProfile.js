@@ -103,7 +103,7 @@ function UserProfile({ colors, lightMode, user, currentUser }) {
       const data = await response.json();
       setPosts(data);
     })();
-  }, [user, setPosts, userId]);
+  }, [userId]);
 
   return (
     <StyledUserProfile
