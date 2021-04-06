@@ -64,7 +64,8 @@ const StyledHandler = styled.form`
     }
   }
 
-  img {
+  img[src] {
+    margin-top: 15px;
     max-width: 95%;
     max-height: 300px;
   }
@@ -111,7 +112,6 @@ const StyledHandler = styled.form`
     min-height: 35px;
     max-width: 400px;
     font-size: 14px;
-    margin-bottom: 15px;
 
     &:hover {
       opacity: 70%;
