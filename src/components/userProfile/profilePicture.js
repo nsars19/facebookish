@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import styled from "styled-components";
 import colors from "./../../colors";
