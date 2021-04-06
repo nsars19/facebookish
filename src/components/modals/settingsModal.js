@@ -47,6 +47,11 @@ const StyledModal = styled.div`
       font-size: 14px;
     }
   }
+
+  .del:hover,
+  .del:active {
+    background: ${colors.red}cc;
+  }
 `;
 
 function SettingsModal(props) {
@@ -118,6 +123,7 @@ function SettingsModal(props) {
     <StyledModal vis={modalVisible}>
       <ul className="menu">
         <li
+          className="del"
           onClick={(e) => {
             isPost ? deletePost() : deleteComment(e);
             toggleModal();
