@@ -101,7 +101,7 @@ function SubCommentForm({
     <StyledForm onSubmit={handleSubmit} vis={subFormVis}>
       <div className="wrap">
         <Link to="/profile">
-          <ProfilePicture src={src} size={"25px"} />
+          <ProfilePicture src={src} size={"25px"} userId={currentUser} />
         </Link>
         <input
           type="text"

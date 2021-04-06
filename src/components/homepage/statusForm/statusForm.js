@@ -179,7 +179,7 @@ function StatusForm({
         <form onSubmit={handleSubmit} className="txt-form">
           <div className="wrap">
             <div className="pfp">
-              <ProfilePicture src={src} size={"37px"} />
+              <ProfilePicture src={src} userId={currentUser} size={"37px"} />
             </div>
             <input
               type="text"

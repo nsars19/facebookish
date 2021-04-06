@@ -123,6 +123,7 @@ function UserProfile({ colors, lightMode, user, currentUser }) {
           <ProfilePicture
             size={"250px"}
             src={pfpSrc}
+            userId={currentUser}
             lightMode={lightMode}
             needsUpdate={needsUpdate}
             setUpdateStatus={setUpdateStatus}

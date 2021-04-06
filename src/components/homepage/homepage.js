@@ -35,7 +35,7 @@ function HomePage({ currentUser, lightMode, postRef }) {
       setSrc(data.profilePhotoSrc);
     })();
   }, [currentUser]);
-
+  console.log({ pfpSrc });
   return (
     <StyledHomePage>
       <StatusForm

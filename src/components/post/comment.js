@@ -121,6 +121,7 @@ function Comment({
           <Link to={`/user/${comment.author._id}`} className="user">
             <ProfilePicture
               src={comment.author.profilePhotoSrc}
+              userId={comment.author._id}
               size={"35px"}
             />
           </Link>

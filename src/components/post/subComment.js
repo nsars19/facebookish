@@ -110,7 +110,11 @@ function SubComment({
     <StyledComment>
       <div className="pfp-link">
         <Link to={`/user/${comment.author._id}`} className="user">
-          <ProfilePicture src={comment.author.profilePhotoSrc} size={"35px"} />
+          <ProfilePicture
+            src={comment.author.profilePhotoSrc}
+            userId={currentUser}
+            size={"35px"}
+          />
         </Link>
       </div>
       <div className="sub-comment-body">

@@ -128,7 +128,7 @@ function AccountSettings({
     <StyledSettings vis={modalVis} light={light} id="settings-modal">
       <Link to="/profile" className="name-container" onClick={toggleVis}>
         <div className="pfp">
-          <ProfilePicture src={pfpSrc} size={"60px"} />
+          <ProfilePicture src={pfpSrc} userId={currentUser} size={"60px"} />
         </div>
         <div className="name-container-right">
           <h3>{fullName}</h3>

@@ -148,7 +148,11 @@ function UserCard({ user, amtCommon, currentUser, requested }) {
     <StyledCard id="prof-card">
       <div className="pfp">
         <Link to={`/users/${user._id}`}>
-          <ProfilePicture src={user.profilePhotoSrc} size={"70px"} />
+          <ProfilePicture
+            src={user.profilePhotoSrc}
+            userId={user._id}
+            size={"70px"}
+          />
         </Link>
       </div>
       <div className="user-data">

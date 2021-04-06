@@ -91,7 +91,7 @@ function CommentForm({
     <StyledForm onSubmit={handleSubmit}>
       <div className="wrap">
         <Link to="/profile">
-          <ProfilePicture size={"35px"} src={src} />
+          <ProfilePicture size={"35px"} src={src} userId={currentUser} />
         </Link>
         <input
           type="text"

@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import styled from "styled-components";
 import colors from "./../../colors";
@@ -29,19 +30,34 @@ const StyledProfile = styled.div`
 `;
 
 function ProfilePicture({
-  userId,
   size,
   lightMode,
   needsUpdate,
   setUpdateStatus,
   src,
+  userId,
 }) {
+  const [imgSrc, setSrc] = useState(null);
   const fullSrc = "http://localhost:3000/" + src;
+
+  useEffect(() => {
+    if (needsUpdate) {
+      (async function fetchUpdatedUserInfo() {
+        const res = await fetch(`http://localhost:3000/profileData/${userId}`);
+        const data = await res.text();
+        setSrc(data);
+        setUpdateStatus(false);
+        window.location.reload();
+      })();
+    }
+  }, [needsUpdate, userId, setUpdateStatus]);
 
   return (
     <StyledProfile lm={lightMode} black={black} size={size}>
       <div className="frame">
-        {<img src={fullSrc} alt="profile" loading="lazy" /> || <Skeleton />}
+        {<img src={imgSrc || fullSrc} alt="profile" loading="lazy" /> || (
+          <Skeleton />
+        )}
       </div>
     </StyledProfile>
   );
