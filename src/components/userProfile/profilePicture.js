@@ -35,27 +35,14 @@ function ProfilePicture({
   lightMode,
   needsUpdate,
   setUpdateStatus,
+  src,
 }) {
-  const [photoSrc, setPhotoSrc] = useState(null);
-
-  useEffect(() => {
-    (async function fetchProfilePicture() {
-      const photoResponse = await fetch(
-        `http://localhost:3000/profiledata/${userId}`
-      );
-      setPhotoSrc(photoResponse.url);
-
-      if (needsUpdate) {
-        window.location.reload();
-        setUpdateStatus(false);
-      }
-    })();
-  }, [setPhotoSrc, userId, needsUpdate, setUpdateStatus]);
+  const fullSrc = "http://localhost:3000/" + src;
 
   return (
     <StyledProfile lm={lightMode} black={black} size={size}>
       <div className="frame">
-        {<img src={photoSrc} alt="profile" loading="lazy" /> || <Skeleton />}
+        {<img src={fullSrc} alt="profile" loading="lazy" /> || <Skeleton />}
       </div>
     </StyledProfile>
   );

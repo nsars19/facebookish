@@ -170,7 +170,7 @@ function Post({ post, setFeed, homeFeed }) {
         <div className="user-info">
           <div className="pfp-link">
             <Link to={`/user/${post.author._id}`} className="user">
-              <ProfilePicture userId={post.author._id} size={"40px"} />
+              <ProfilePicture src={post.author.profilePhotoSrc} size={"40px"} />
             </Link>
           </div>
           <Link to={`/user/${post.author._id}`} className="user">
@@ -235,6 +235,7 @@ function Post({ post, setFeed, homeFeed }) {
         inputRef={inputRef}
         setCommentCount={setCommentCount}
         setCommentsVisible={() => setCommentsVisible(true)}
+        src={post.author.profilePhotoSrc}
       />
     </StyledPost>
   );

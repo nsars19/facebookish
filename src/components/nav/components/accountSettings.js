@@ -106,16 +106,16 @@ function AccountSettings({
   changeColorMode,
   setCurrentUser,
 }) {
-  const [userData, setData] = useState(null);
   const [fullName, setFullName] = useState(null);
+  const [pfpSrc, setSrc] = useState(null);
 
   useEffect(() => {
     (async function fetchUserData() {
       const res = await fetch(`http://localhost:3000/users/${currentUser}`);
       const data = await res.json();
 
-      setData(data);
       setFullName(`${data.firstName} ${data.lastName}`);
+      setSrc(data.profilePhotoSrc);
     })();
   }, [currentUser]);
 
@@ -128,7 +128,7 @@ function AccountSettings({
     <StyledSettings vis={modalVis} light={light} id="settings-modal">
       <Link to="/profile" className="name-container" onClick={toggleVis}>
         <div className="pfp">
-          <ProfilePicture userId={currentUser} size={"60px"} />
+          <ProfilePicture src={pfpSrc} size={"60px"} />
         </div>
         <div className="name-container-right">
           <h3>{fullName}</h3>

@@ -47,6 +47,7 @@ function CommentForm({
   currentUser,
   setCommentCount,
   setCommentsVisible,
+  src,
 }) {
   async function handleSubmit(e) {
     e.preventDefault();
@@ -90,7 +91,7 @@ function CommentForm({
     <StyledForm onSubmit={handleSubmit}>
       <div className="wrap">
         <Link to="/profile">
-          <ProfilePicture userId={currentUser} size={"35px"} />
+          <ProfilePicture size={"35px"} src={src} />
         </Link>
         <input
           type="text"

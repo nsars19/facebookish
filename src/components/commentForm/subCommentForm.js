@@ -55,6 +55,7 @@ function SubCommentForm({
   currentUser,
   setCommentCount,
   parentId,
+  src,
 }) {
   async function handleSubmit(e) {
     e.preventDefault();
@@ -100,7 +101,7 @@ function SubCommentForm({
     <StyledForm onSubmit={handleSubmit} vis={subFormVis}>
       <div className="wrap">
         <Link to="/profile">
-          <ProfilePicture userId={currentUser} size={"25px"} />
+          <ProfilePicture src={src} size={"25px"} />
         </Link>
         <input
           type="text"

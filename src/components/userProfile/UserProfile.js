@@ -81,6 +81,7 @@ function UserProfile({ colors, lightMode, user, currentUser }) {
   const [modalVis, setVis] = useState(false);
   const [friendshipPending, setFriendStatus] = useState(null);
   const [needsUpdate, setUpdateStatus] = useState(false);
+  const [pfpSrc, setPfpSrc] = useState(null);
   const { white, black, gray } = colors;
 
   useEffect(() => {
@@ -90,6 +91,7 @@ function UserProfile({ colors, lightMode, user, currentUser }) {
 
       setFriendStatus(data.pendingFriends.includes(currentUser));
       setUserName(data.firstName + " " + data.lastName);
+      setPfpSrc(data.profilePhotoSrc);
     })();
   }, [userId, currentUser]);
 
@@ -120,8 +122,8 @@ function UserProfile({ colors, lightMode, user, currentUser }) {
           }}
         >
           <ProfilePicture
-            userId={userId}
             size={"250px"}
+            src={pfpSrc}
             lightMode={lightMode}
             needsUpdate={needsUpdate}
             setUpdateStatus={setUpdateStatus}

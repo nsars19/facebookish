@@ -125,6 +125,7 @@ function StatusForm({
   lightMode,
   setFeed,
   homeFeed,
+  src,
 }) {
   const [text, setText] = useState("");
   const [modalVis, setImgModalVis] = useState(false);
@@ -178,7 +179,7 @@ function StatusForm({
         <form onSubmit={handleSubmit} className="txt-form">
           <div className="wrap">
             <div className="pfp">
-              <ProfilePicture userId={currentUser} size={"37px"} />
+              <ProfilePicture src={src} size={"37px"} />
             </div>
             <input
               type="text"

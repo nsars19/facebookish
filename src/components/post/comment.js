@@ -119,7 +119,10 @@ function Comment({
       <StyledComment className="comment" subFormVis={subFormVis}>
         <div className="pfp-link">
           <Link to={`/user/${comment.author._id}`} className="user">
-            <ProfilePicture userId={comment.author._id} size={"35px"} />
+            <ProfilePicture
+              src={comment.author.profilePhotoSrc}
+              size={"35px"}
+            />
           </Link>
         </div>
         <div className="comment-body">
@@ -166,6 +169,7 @@ function Comment({
           homeFeed={homeFeed}
           postAuthor={postAuthor}
           setCommentCount={setCommentCount}
+          src={comment.author.profilePhotoSrc}
         />
       </StyledComment>
       <div className="sub-comments">

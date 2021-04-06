@@ -10,6 +10,8 @@ const StyledHomePage = styled.div`
 
 function HomePage({ currentUser, lightMode, postRef }) {
   const [posts, setPosts] = useState(null);
+  const [userData, setUserData] = useState(null);
+  const [pfpSrc, setSrc] = useState(null);
 
   useEffect(() => {
     (async function fetchPosts() {
@@ -22,6 +24,18 @@ function HomePage({ currentUser, lightMode, postRef }) {
     })();
   }, [currentUser]);
 
+  useEffect(() => {
+    (async function fetchPosts() {
+      const response = await fetch(
+        `http://localhost:3000/users/${currentUser}`
+      );
+
+      const data = await response.json();
+      setUserData(data);
+      setSrc(data.profilePhotoSrc);
+    })();
+  }, [currentUser]);
+
   return (
     <StyledHomePage>
       <StatusForm
@@ -30,6 +44,7 @@ function HomePage({ currentUser, lightMode, postRef }) {
         lightMode={lightMode}
         currentUser={currentUser}
         setFeed={setPosts}
+        src={pfpSrc}
         homeFeed
       ></StatusForm>
       <Feed user={currentUser} posts={posts} setPosts={setPosts} homeFeed />
