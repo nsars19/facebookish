@@ -63,7 +63,6 @@ const StyledUserProfile = styled.div`
     border-style: none;
     border-radius: 18px;
     height: 37px;
-    width: 100%;
     opacity: 60%;
     color: ${({ lm }) => (lm ? "#000" : "#fff")};
 
