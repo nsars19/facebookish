@@ -108,7 +108,7 @@ const StyledHandler = styled.form`
   }
 
   input#img-text-input {
-    width: 75%;
+    width: 95%;
     min-height: 35px;
     max-width: 400px;
     font-size: 14px;
