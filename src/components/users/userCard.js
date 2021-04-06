@@ -69,7 +69,7 @@ const StyledCard = styled.div`
       }
     }
 
-    #not-responded {
+    #not-responded:not(.req-btns button:hover) {
       opacity: 100%;
     }
 
