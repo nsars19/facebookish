@@ -121,6 +121,7 @@ function App() {
   const isLight = cookies.get("light") === "true" ? true : false;
   const [lightMode, setLightMode] = useState(isLight);
   const [currentUser, setCurrentUser] = useState("60524b11581676421e9c7302");
+  const userData = useFetchUser(currentUser);
   const postRef = useRef(null);
   const focusRef = () => postRef.current.focus();
 
@@ -148,6 +149,7 @@ function App() {
               colors={colors}
               lightMode={lightMode}
               currentUser={currentUser}
+              userData={userData}
             />
           </Route>
           <Route path="/profile">

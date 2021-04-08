@@ -115,7 +115,7 @@ const StyledPost = styled.div`
 
 const cookies = new Cookies();
 
-function Post({ post, setFeed, homeFeed, src }) {
+function Post({ post, setFeed, homeFeed, src, currentUser, userData }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [likeCount, setLikeCount] = useState(post.likes.length);
   const [commentCount, setCommentCount] = useState(
@@ -125,7 +125,6 @@ function Post({ post, setFeed, homeFeed, src }) {
   const [editingPost, setPostEditStatus] = useState(false);
   const [postText, setPostText] = useState(post.text);
   const [img, setImg] = useState(null);
-  const currentUser = cookies.get("currentUser");
   const isAuthor = post.author._id === currentUser;
   const inputRef = useRef(null);
 
@@ -236,6 +235,7 @@ function Post({ post, setFeed, homeFeed, src }) {
         setCommentCount={setCommentCount}
         setCommentsVisible={() => setCommentsVisible(true)}
         src={src}
+        userData={userData}
       />
     </StyledPost>
   );

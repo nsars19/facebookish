@@ -13,7 +13,7 @@ const StyledFeed = styled.div`
   }
 `;
 
-function Feed({ homeFeed, posts, setPosts, src }) {
+function Feed({ homeFeed, posts, setPosts, src, currentUser, userData }) {
   return (
     <StyledFeed>
       {(posts && (
@@ -25,6 +25,8 @@ function Feed({ homeFeed, posts, setPosts, src }) {
                 setFeed={setPosts}
                 homeFeed={homeFeed}
                 src={src}
+                currentUser={currentUser}
+                userData={userData}
               />
             </div>
           ))}
