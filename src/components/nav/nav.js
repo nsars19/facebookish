@@ -94,7 +94,7 @@ function Nav(props) {
       <HomeLink />
       <UsersLink />
       <CreatePost focusRef={focusRef} />
-      <Notifications />
+      <Notifications currentUser={currentUser} />
       <MainAccountSettings
         currentUser={currentUser}
         lightMode={lightMode}
