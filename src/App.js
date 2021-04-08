@@ -133,7 +133,9 @@ function App() {
   const [currentUser, setCurrentUser] = useState("60524b11581676421e9c7302");
   const [pfp, setPfp] = useState(null);
   const postRef = useRef(null);
-  const focusRef = () => postRef.current.focus();
+  const focusRef = () => {
+    if (postRef.current) postRef.current.focus();
+  };
 
   useEffect(() => {
     cookies.set("light", lightMode);
