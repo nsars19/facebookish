@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import colors from "../../colors";
-import { AiFillHome } from "react-icons/ai";
-import { ImUsers } from "react-icons/im";
 import MainAccountSettings from "./components/mainAccountSettings";
 import CreatePost from "./components/createPost";
 import Notifications from "./components/notifications";
+import HomeLink from "./components/home";
+import UsersLink from "./components/users";
 
 const { black, white, blue } = colors;
 
@@ -97,12 +96,8 @@ function Nav(props) {
 
   return (
     <StyledNav light={lightMode}>
-      <Link to="/">
-        <AiFillHome />
-      </Link>
-      <Link to="/users">
-        <ImUsers />
-      </Link>
+      <HomeLink />
+      <UsersLink />
       <CreatePost focusRef={focusRef} />
       <Notifications toggle={toggleNotifsModal} />
       <MainAccountSettings
