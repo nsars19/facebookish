@@ -84,11 +84,6 @@ function Nav(props) {
     setCurrentUser,
     focusRef,
   } = props;
-  const [settingsModalVis, setSettingsVis] = useState(false);
-  const [notifsModal, setNotifsVis] = useState(false);
-
-  const toggleSettingsModal = () => setSettingsVis(!settingsModalVis);
-  const toggleNotifsModal = () => setNotifsVis(!notifsModal);
 
   function changeColorMode() {
     setLightMode(!lightMode);
@@ -99,10 +94,8 @@ function Nav(props) {
       <HomeLink />
       <UsersLink />
       <CreatePost focusRef={focusRef} />
-      <Notifications toggle={toggleNotifsModal} />
+      <Notifications />
       <MainAccountSettings
-        toggleSettingsModal={toggleSettingsModal}
-        settingsModalVis={settingsModalVis}
         currentUser={currentUser}
         lightMode={lightMode}
         changeColorMode={changeColorMode}

@@ -1,15 +1,12 @@
+import { useState } from "react";
 import { BsThreeDots } from "react-icons/bs";
 import AccountSettings from "./accountSettings";
 
 function MainAccountSettings(props) {
-  const {
-    toggleSettingsModal,
-    settingsModalVis,
-    currentUser,
-    lightMode,
-    changeColorMode,
-    setCurrentUser,
-  } = props;
+  const { currentUser, lightMode, changeColorMode, setCurrentUser } = props;
+  const [settingsModalVis, setSettingsVis] = useState(false);
+
+  const toggleSettingsModal = () => setSettingsVis(!settingsModalVis);
 
   const handleKeyDown = (e) => {
     if (e.key === "Tab") return;
