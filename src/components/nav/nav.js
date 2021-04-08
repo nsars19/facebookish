@@ -4,9 +4,9 @@ import styled from "styled-components";
 import colors from "../../colors";
 import { AiFillHome } from "react-icons/ai";
 import { ImUsers } from "react-icons/im";
-import { IoNotifications } from "react-icons/io5";
-import { BsPlusSquareFill } from "react-icons/bs";
 import MainAccountSettings from "./components/mainAccountSettings";
+import CreatePost from "./components/createPost";
+import Notifications from "./components/notifications";
 
 const { black, white, blue } = colors;
 
@@ -108,12 +108,8 @@ function Nav(props) {
       <Link to="/users">
         <ImUsers />
       </Link>
-      <div className="post-icon" onClick={focusRef}>
-        <BsPlusSquareFill />
-      </div>
-      <button onClick={toggleNotifsModal} className="notifs">
-        <IoNotifications />
-      </button>
+      <CreatePost focusRef={focusRef} />
+      <Notifications toggle={toggleNotifsModal} />
       <MainAccountSettings
         handleKeyDown={handleKeyDown}
         toggleSettingsModal={toggleSettingsModal}
