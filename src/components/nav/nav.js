@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import colors from "../../colors";
-import AccountSettings from "./components/accountSettings";
 import { AiFillHome } from "react-icons/ai";
 import { ImUsers } from "react-icons/im";
 import { IoNotifications } from "react-icons/io5";
-import { BsPlusSquareFill, BsThreeDots } from "react-icons/bs";
+import { BsPlusSquareFill } from "react-icons/bs";
+import MainAccountSettings from "./components/mainAccountSettings";
 
 const { black, white, blue } = colors;
 
@@ -114,19 +114,12 @@ function Nav(props) {
       <button onClick={toggleNotifsModal} className="notifs">
         <IoNotifications />
       </button>
-      <button
-        onKeyDown={handleKeyDown}
-        onClick={toggleSettingsModal}
-        tabIndex="0"
-        className="settings"
-      >
-        <BsThreeDots />
-      </button>
-      <AccountSettings
-        modalVis={settingsModalVis}
+      <MainAccountSettings
+        handleKeyDown={handleKeyDown}
+        toggleSettingsModal={toggleSettingsModal}
+        settingsModalVis={settingsModalVis}
         currentUser={currentUser}
-        toggleVis={toggleSettingsModal}
-        light={lightMode}
+        lightMode={lightMode}
         changeColorMode={changeColorMode}
         setCurrentUser={setCurrentUser}
       />
