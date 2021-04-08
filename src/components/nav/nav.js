@@ -129,7 +129,7 @@ function Nav(props) {
         light={lightMode}
         changeColorMode={changeColorMode}
         setCurrentUser={setCurrentUser}
-      ></AccountSettings>
+      />
     </StyledNav>
   );
 }
