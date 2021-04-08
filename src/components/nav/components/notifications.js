@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const StyledNotifications = styled.button``;
 
-function Notifications() {
+function Notifications({ currentUser }) {
   const [notifsModal, setNotifsVis] = useState(false);
   const toggle = () => {
     setNotifsVis(!notifsModal);
