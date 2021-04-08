@@ -101,7 +101,6 @@ function CommentForm({
           placeholder="Write a comment..."
         />
       </div>
-      {/* <input type="submit" value="submit" id="comment-submit" /> */}
       <p>Press enter to comment</p>
     </StyledForm>
   );
