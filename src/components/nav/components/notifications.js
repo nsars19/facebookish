@@ -20,7 +20,8 @@ const StyledNotifications = styled.button`
     justify-content: center;
     font-size: 12px;
     font-weight: bold;
-    color: ${colors.black};
+    color: ${colors.white};
+    text-shadow: 1px 1px 1px ${colors.black};
     position: absolute;
     top: 0px;
     right: 5px;
