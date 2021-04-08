@@ -86,8 +86,10 @@ function Nav(props) {
     focusRef,
   } = props;
   const [settingsModalVis, setSettingsVis] = useState(false);
+  const [notifsModal, setNotifsVis] = useState(false);
 
   const toggleSettingsModal = () => setSettingsVis(!settingsModalVis);
+  const toggleNotifsModal = () => setNotifsVis(!notifsModal);
 
   function changeColorMode() {
     setLightMode(!lightMode);
