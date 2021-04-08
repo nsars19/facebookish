@@ -74,6 +74,12 @@ const StyledNav = styled.div`
   .notifs {
     font-size: 24px;
   }
+
+  & button,
+  & button:hover,
+  & button:active {
+    background: none;
+  }
 `;
 
 function Nav(props) {
