@@ -59,6 +59,7 @@ const StyledUserProfile = styled.div`
 
   input[type="text"] {
     background: ${({ lm }) => (lm ? "#d8d8d8" : "#707070")};
+    padding: 8px;
     padding-left: 10px;
     border-style: none;
     border-radius: 18px;
