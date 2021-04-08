@@ -57,13 +57,23 @@ const StyledNav = styled.div`
     }
   }
 
+  .notifs,
   .settings {
-    font-size: 28px;
+    display: flex;
+    align-items: center;
     cursor: pointer;
 
-    &:hover {
+    &:hover,
+    &:active {
       color: ${black};
     }
+  }
+  .settings {
+    font-size: 28px;
+  }
+
+  .notifs {
+    font-size: 24px;
   }
 `;
 
@@ -99,17 +109,17 @@ function Nav(props) {
       <div className="post-icon" onClick={focusRef}>
         <BsPlusSquareFill />
       </div>
-      <Link to="/home">
+      <button onClick={toggleNotifsModal} className="notifs">
         <IoNotifications />
-      </Link>
-      <div
+      </button>
+      <button
         onKeyDown={handleKeyDown}
         onClick={toggleSettingsModal}
         tabIndex="0"
         className="settings"
       >
         <BsThreeDots />
-      </div>
+      </button>
       <AccountSettings
         modalVis={settingsModalVis}
         currentUser={currentUser}
