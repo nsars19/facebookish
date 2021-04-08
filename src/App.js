@@ -96,6 +96,16 @@ const GlobalStyle = createGlobalStyle`
     input#img-text-input {
       background: ${({ light }) => (light ? "#d8d8d8" : "#707070")};
     }
+
+    #notif-modal {
+      background: ${({ light }) => (light ? white : gray)};
+      color: ${({ light }) => (light ? black : white)};
+      border: 1px solid ${({ light }) => (light ? gray + "55" : white + "55")};
+    }
+    #notif-item:hover,
+    #notif-item:active {
+      background: ${({ light }) => (light ? "#d8d8d8" : "#707070")};
+    }
   }
 
   button,
