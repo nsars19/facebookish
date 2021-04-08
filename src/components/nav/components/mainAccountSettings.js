@@ -3,7 +3,6 @@ import AccountSettings from "./accountSettings";
 
 function MainAccountSettings(props) {
   const {
-    handleKeyDown,
     toggleSettingsModal,
     settingsModalVis,
     currentUser,
@@ -11,6 +10,11 @@ function MainAccountSettings(props) {
     changeColorMode,
     setCurrentUser,
   } = props;
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Tab") return;
+    e.target.click();
+  };
 
   return (
     <>

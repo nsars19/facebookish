@@ -95,11 +95,6 @@ function Nav(props) {
     setLightMode(!lightMode);
   }
 
-  const handleKeyDown = (e) => {
-    if (e.key === "Tab") return;
-    e.target.click();
-  };
-
   return (
     <StyledNav light={lightMode}>
       <Link to="/">
@@ -111,7 +106,6 @@ function Nav(props) {
       <CreatePost focusRef={focusRef} />
       <Notifications toggle={toggleNotifsModal} />
       <MainAccountSettings
-        handleKeyDown={handleKeyDown}
         toggleSettingsModal={toggleSettingsModal}
         settingsModalVis={settingsModalVis}
         currentUser={currentUser}
