@@ -5,7 +5,7 @@ const StyledProfile = styled.div`
   // color: black:
 `;
 
-function Profile({ user, lightMode, colors }) {
+function Profile({ user, lightMode, colors, userData }) {
   return (
     <StyledProfile>
       <UserProfile
@@ -13,6 +13,7 @@ function Profile({ user, lightMode, colors }) {
         user={user}
         colors={colors}
         lightMode={lightMode}
+        userData={userData}
       />
     </StyledProfile>
   );

@@ -153,7 +153,12 @@ function App() {
             />
           </Route>
           <Route path="/profile">
-            <Profile user={currentUser} colors={colors} lightMode={lightMode} />
+            <Profile
+              user={currentUser}
+              colors={colors}
+              lightMode={lightMode}
+              userData={userData}
+            />
           </Route>
           <Route path="/">
             <HomePage
