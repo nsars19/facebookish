@@ -73,7 +73,7 @@ const StyledUserProfile = styled.div`
   }
 `;
 
-function UserProfile({ colors, lightMode, user, currentUser, userData }) {
+function UserProfile({ colors, lightMode, user, currentUser, pfp }) {
   const match = useRouteMatch();
   const userId = user || match.params.userId;
   const [userName, setUserName] = useState(null);
@@ -156,7 +156,7 @@ function UserProfile({ colors, lightMode, user, currentUser, userData }) {
         setPosts={setPosts}
         src={pfpSrc}
         currentUser={currentUser}
-        userData={userData}
+        pfp={pfp}
       />
     </StyledUserProfile>
   );

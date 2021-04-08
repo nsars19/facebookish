@@ -8,7 +8,7 @@ const StyledHomePage = styled.div`
   // color: black;
 `;
 
-function HomePage({ currentUser, lightMode, postRef }) {
+function HomePage({ currentUser, lightMode, postRef, pfp }) {
   const [posts, setPosts] = useState(null);
   const [userData, setUserData] = useState(null);
   const [pfpSrc, setSrc] = useState(null);
@@ -48,8 +48,9 @@ function HomePage({ currentUser, lightMode, postRef }) {
         homeFeed
       ></StatusForm>
       <Feed
-        user={currentUser}
+        currentUser={currentUser}
         src={pfpSrc}
+        pfp={pfp}
         posts={posts}
         setPosts={setPosts}
         homeFeed

@@ -131,13 +131,23 @@ function App() {
   const isLight = cookies.get("light") === "true" ? true : false;
   const [lightMode, setLightMode] = useState(isLight);
   const [currentUser, setCurrentUser] = useState("60524b11581676421e9c7302");
-  const userData = useFetchUser(currentUser);
+  const [pfp, setPfp] = useState(null);
   const postRef = useRef(null);
   const focusRef = () => postRef.current.focus();
 
   useEffect(() => {
     cookies.set("light", lightMode);
   }, [lightMode]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const res = await fetch(`http://localhost:3000/users/${currentUser}`);
+      const data = await res.json();
+      setPfp(data.profilePhotoSrc);
+    }
+
+    fetchData();
+  }, [currentUser]);
 
   return (
     <>
@@ -159,7 +169,7 @@ function App() {
               colors={colors}
               lightMode={lightMode}
               currentUser={currentUser}
-              userData={userData}
+              pfp={pfp}
             />
           </Route>
           <Route path="/profile">
@@ -167,7 +177,7 @@ function App() {
               user={currentUser}
               colors={colors}
               lightMode={lightMode}
-              userData={userData}
+              pfp={pfp}
             />
           </Route>
           <Route path="/">
@@ -175,6 +185,7 @@ function App() {
               currentUser={currentUser}
               lightMode={lightMode}
               postRef={postRef}
+              pfp={pfp}
             />
           </Route>
         </Switch>
