@@ -30,7 +30,8 @@ const StyledNav = styled.div`
     align-items: center;
     font-size: 24px;
     cursor: pointer;
-
+    padding: 10px;
+    
     &:hover:not(.name-container),
     &:active:not(.name-container) {
       color: ${black};
