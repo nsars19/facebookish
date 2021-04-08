@@ -1,5 +1,8 @@
 import { IoNotifications } from "react-icons/io5";
 import { useState } from "react";
+import styled from "styled-components";
+
+const StyledNotifications = styled.button``;
 
 function Notifications() {
   const [notifsModal, setNotifsVis] = useState(false);
@@ -9,9 +12,9 @@ function Notifications() {
   };
 
   return (
-    <button onClick={toggle} className="notifs">
+    <StyledNotifications onClick={toggle} className="notifs">
       <IoNotifications />
-    </button>
+    </StyledNotifications>
   );
 }
 
