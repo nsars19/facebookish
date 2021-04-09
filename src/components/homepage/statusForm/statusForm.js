@@ -1,9 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
-import ProfilePicture from "./../../userProfile/profilePicture";
-import { AiFillPicture } from "react-icons/ai";
-import { MdTextsms } from "react-icons/md";
+import PostIcons from "./postIcons";
 import ImageHandlerModal from "./../../imageHandler/imageHandlerModal";
+import Form from "./form";
 
 const StyledStatusForm = styled.div`
   background: ${({ lm, g }) => (lm ? "#eee" : g)};
@@ -187,25 +186,10 @@ function StatusForm({
           text={text}
           postRef={postRef}
         />
-            <div className="placeholder" id={text ? "moved" : " "}>
-              What's on your mind?
-            </div>
-          </div>
-          <p>Press enter to post</p>
-        </form>
         {profile ? (
           <div />
         ) : (
-          <div className="post-types">
-            <div className="post-icon" onClick={toggleImgModal}>
-              <AiFillPicture />
-              <p id="post-icon-text">Photo</p>
-            </div>
-            <div className="post-icon" onClick={focusRef}>
-              <MdTextsms />
-              <p id="post-icon-text">Text</p>
-            </div>
-          </div>
+          <PostIcons toggleImgModal={toggleImgModal} focusRef={focusRef} />
         )}
         <ImageHandlerModal
           toggle={toggleImgModal}
