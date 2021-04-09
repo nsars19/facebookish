@@ -1,9 +1,8 @@
 import { IoNotifications } from "react-icons/io5";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import useFetchNotifications from "./../../../hooks/useFetchNotifications";
 import Notification from "./notification";
-import Skeleton from "react-loading-skeleton";
 import colors from "./../../../colors";
 
 const StyledNotifications = styled.button`
