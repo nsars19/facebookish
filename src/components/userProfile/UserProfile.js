@@ -54,6 +54,7 @@ function UserProfile({ colors, lightMode, user, currentUser, pfp, postRef }) {
         setFeed={setPosts}
         src={pfp}
         postRef={postRef}
+        profile
       />
       <Feed
         user={userId}

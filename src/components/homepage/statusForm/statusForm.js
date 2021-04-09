@@ -50,7 +50,8 @@ const StyledStatusForm = styled.div`
   .txt-form {
     padding-bottom: 10px;
     border-bottom: 1px solid gray;
-    margin-bottom: 7px;
+    border-bottom: ${({ profile }) => (profile ? "none" : "1px solid gray")};
+    margin-bottom: ${({ profile }) => (profile ? "0px" : "7px")};
   }
 
   .placeholder {
@@ -126,6 +127,7 @@ function StatusForm({
   setFeed,
   homeFeed,
   src,
+  profile,
 }) {
   const [text, setText] = useState("");
   const [modalVis, setImgModalVis] = useState(false);
@@ -174,6 +176,7 @@ function StatusForm({
         g={gray}
         w={white}
         lm={lightMode}
+        profile={profile}
         textIsEmpty={textIsEmpty()}
       >
         <form onSubmit={handleSubmit} className="txt-form">
@@ -193,16 +196,20 @@ function StatusForm({
           </div>
           <p>Press enter to post</p>
         </form>
-        <div className="post-types">
-          <div className="post-icon" onClick={toggleImgModal}>
-            <AiFillPicture />
-            <p id="post-icon-text">Photo</p>
+        {profile ? (
+          <div />
+        ) : (
+          <div className="post-types">
+            <div className="post-icon" onClick={toggleImgModal}>
+              <AiFillPicture />
+              <p id="post-icon-text">Photo</p>
+            </div>
+            <div className="post-icon" onClick={focusRef}>
+              <MdTextsms />
+              <p id="post-icon-text">Text</p>
+            </div>
           </div>
-          <div className="post-icon" onClick={focusRef}>
-            <MdTextsms />
-            <p id="post-icon-text">Text</p>
-          </div>
-        </div>
+        )}
         <ImageHandlerModal
           toggle={toggleImgModal}
           user={currentUser}
