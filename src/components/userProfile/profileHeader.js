@@ -10,7 +10,7 @@ const StyledHeader = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  min-height: 50vh;
+  min-height: 45vh;
 
   .tool-tip {
     display: none;
