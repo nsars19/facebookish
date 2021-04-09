@@ -172,6 +172,7 @@ function App() {
               lightMode={lightMode}
               currentUser={currentUser}
               pfp={pfp}
+              postRef={postRef}
             />
           </Route>
           <Route path="/profile">
@@ -180,6 +181,7 @@ function App() {
               colors={colors}
               lightMode={lightMode}
               pfp={pfp}
+              postRef={postRef}
             />
           </Route>
           <Route path="/">

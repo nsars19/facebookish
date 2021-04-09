@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useRouteMatch } from "react-router-dom";
 import Feed from "./../feed/feed";
 import ProfileHeader from "./profileHeader";
+import StatusForm from "./../homepage/statusForm/statusForm";
 
-function UserProfile({ colors, lightMode, user, currentUser, pfp }) {
+function UserProfile({ colors, lightMode, user, currentUser, pfp, postRef }) {
   const match = useRouteMatch();
   const userId = user || match.params.userId;
   const [userName, setUserName] = useState(null);
@@ -45,6 +46,14 @@ function UserProfile({ colors, lightMode, user, currentUser, pfp }) {
         setUpdateStatus={setUpdateStatus}
         userName={userName}
         friendshipPending={friendshipPending}
+      />
+      <StatusForm
+        colors={colors}
+        currentUser={currentUser}
+        lightMode={lightMode}
+        setFeed={setPosts}
+        src={pfp}
+        postRef={postRef}
       />
       <Feed
         user={userId}
