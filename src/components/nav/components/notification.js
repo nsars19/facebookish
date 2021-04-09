@@ -14,6 +14,8 @@ const StyledNotification = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    letter-spacing: 0.5px;
+    line-height: 18px;
   }
 `;
 
