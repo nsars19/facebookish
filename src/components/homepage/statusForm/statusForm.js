@@ -49,8 +49,9 @@ const StyledStatusForm = styled.div`
   .txt-form {
     padding-bottom: 10px;
     border-bottom: 1px solid gray;
-    border-bottom: ${({ profile }) => (profile ? "none" : "1px solid gray")};
-    margin-bottom: ${({ profile }) => (profile ? "0px" : "7px")};
+    border-bottom: ${({ fromProfile }) =>
+      fromProfile ? "none" : "1px solid gray"};
+    margin-bottom: ${({ fromProfile }) => (fromProfile ? "0px" : "7px")};
   }
 
   .placeholder {
@@ -126,7 +127,7 @@ function StatusForm({
   setFeed,
   homeFeed,
   src,
-  profile,
+  fromProfile,
 }) {
   const [text, setText] = useState("");
   const [modalVis, setImgModalVis] = useState(false);
@@ -175,7 +176,7 @@ function StatusForm({
         g={gray}
         w={white}
         lm={lightMode}
-        profile={profile}
+        fromProfile={fromProfile}
         textIsEmpty={textIsEmpty()}
       >
         <Form
@@ -186,7 +187,7 @@ function StatusForm({
           text={text}
           postRef={postRef}
         />
-        {profile ? (
+        {fromProfile ? (
           <div />
         ) : (
           <PostIcons toggleImgModal={toggleImgModal} focusRef={focusRef} />
