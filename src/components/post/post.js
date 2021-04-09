@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Comment from "./comment";
 import CommentForm from "./../commentForm/commentForm";
-import Cookies from "universal-cookie";
 import { AiFillSetting } from "react-icons/ai";
 import Settings from "./../modals/settingsModal";
 import { useState, useRef, useEffect } from "react";
@@ -112,8 +111,6 @@ const StyledPost = styled.div`
     }
   }
 `;
-
-const cookies = new Cookies();
 
 function Post({ post, setFeed, homeFeed, src, currentUser, pfp }) {
   const [modalVisible, setModalVisible] = useState(false);
