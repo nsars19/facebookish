@@ -179,17 +179,14 @@ function StatusForm({
         profile={profile}
         textIsEmpty={textIsEmpty()}
       >
-        <form onSubmit={handleSubmit} className="txt-form">
-          <div className="wrap">
-            <div className="pfp">
-              <ProfilePicture src={src} userId={currentUser} size={"37px"} />
-            </div>
-            <input
-              type="text"
-              onChange={handleInputChange}
-              value={text}
-              ref={postRef}
-            />
+        <Form
+          handleSubmit={handleSubmit}
+          src={src}
+          currentUser={currentUser}
+          handleInputChange={handleInputChange}
+          text={text}
+          postRef={postRef}
+        />
             <div className="placeholder" id={text ? "moved" : " "}>
               What's on your mind?
             </div>
