@@ -179,6 +179,7 @@ function StatusForm({
         lm={lightMode}
         fromProfile={fromProfile}
         textIsEmpty={textIsEmpty()}
+        className="grid-status-form"
       >
         <Form
           handleSubmit={handleSubmit}

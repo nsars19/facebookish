@@ -85,7 +85,11 @@ function ProfileHeader(props) {
   const [modalVis, setVis] = useState(false);
 
   return (
-    <StyledHeader lm={lightMode} sameUser={currentUser === userId}>
+    <StyledHeader
+      lm={lightMode}
+      sameUser={currentUser === userId}
+      className="grid-prof-head"
+    >
       <div
         className="pfp"
         onClick={() => {

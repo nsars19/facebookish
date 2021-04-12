@@ -122,6 +122,31 @@ const GlobalStyle = createGlobalStyle`
       color: ${({ light }) => (light ? white : black)};
     }
   }
+
+  @media (min-width: 1024px) {
+    .grid-wrap {
+      display: grid;
+      grid-template-areas:
+        "head head head head"
+        "list form form form"
+        "list feed feed feed"
+        ".... feed feed feed";
+    }
+
+    .grid-prof-head {
+      grid-area: head;
+    }
+    .grid-friend-list {
+      grid-area: list;
+      grid-auto-flow: row;
+    }
+    .grid-feed {
+      grid-area: feed;
+    }
+    .grid-status-form {
+      grid-area: form;
+    }
+  }
 `;
 
 const cookies = new Cookies();
@@ -167,22 +192,26 @@ function App() {
             <Users currentUser={currentUser} />
           </Route>
           <Route path="/user/:userId">
-            <UserProfile
-              colors={colors}
-              lightMode={lightMode}
-              currentUser={currentUser}
-              pfp={pfp}
-              postRef={postRef}
-            />
+            <div className="grid-wrap">
+              <UserProfile
+                colors={colors}
+                lightMode={lightMode}
+                currentUser={currentUser}
+                pfp={pfp}
+                postRef={postRef}
+              />
+            </div>
           </Route>
           <Route path="/profile">
-            <Profile
-              user={currentUser}
-              colors={colors}
-              lightMode={lightMode}
-              pfp={pfp}
-              postRef={postRef}
-            />
+            <div className="grid-wrap">
+              <Profile
+                user={currentUser}
+                colors={colors}
+                lightMode={lightMode}
+                pfp={pfp}
+                postRef={postRef}
+              />
+            </div>
           </Route>
           <Route path="/">
             <HomePage

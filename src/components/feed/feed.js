@@ -13,7 +13,7 @@ const StyledFeed = styled.div`
 
 function Feed({ homeFeed, posts, setPosts, src, currentUser, pfp }) {
   return (
-    <StyledFeed>
+    <StyledFeed className="grid-feed">
       {(posts && (
         <div className="wrap">
           {posts.map((post) => (

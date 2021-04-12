@@ -51,6 +51,12 @@ const StyledCard = styled.div`
     font-size: 1em;
     margin-top: 8px;
   }
+
+  @media (min-width: 1024px) {
+    & {
+      width: auto;
+    }
+  }
 `;
 
 function FriendCard({ friend, lightMode }) {

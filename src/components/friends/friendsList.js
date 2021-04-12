@@ -42,6 +42,22 @@ const StyledFriends = styled.ul`
     top: 12px;
     left: 18px;
   }
+
+  @media (min-width: 1024px) {
+    & {
+      align-content: start;
+      grid-auto-flow: row;
+      height: min-content;
+      max-height: 100vh;
+      overflow-x: hidden;
+      overflow-y: scroll;
+
+      &:hover,
+      &:active {
+        padding-right: 3px;
+      }
+    }
+  }
 `;
 
 function FriendsList({ friends, lightMode }) {
@@ -54,7 +70,7 @@ function FriendsList({ friends, lightMode }) {
   });
 
   return (
-    <StyledFriends lm={lightMode}>
+    <StyledFriends lm={lightMode} className="grid-friend-list">
       <h3 className="count">Friends ( {friends.length} )</h3>
       {mapFriends}
     </StyledFriends>
