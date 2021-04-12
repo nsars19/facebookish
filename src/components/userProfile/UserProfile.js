@@ -3,15 +3,18 @@ import { useRouteMatch } from "react-router-dom";
 import Feed from "./../feed/feed";
 import ProfileHeader from "./profileHeader";
 import StatusForm from "./../homepage/statusForm/statusForm";
+import FriendsList from "./../friends/friendsList";
 
 function UserProfile({ colors, lightMode, user, currentUser, pfp, postRef }) {
   const match = useRouteMatch();
   const userId = user || match.params.userId;
   const [userName, setUserName] = useState(null);
-  const [posts, setPosts] = useState(null);
+  const [posts, setPosts] = useState([]);
   const [friendshipPending, setFriendStatus] = useState(null);
   const [needsUpdate, setUpdateStatus] = useState(false);
   const [pfpSrc, setPfpSrc] = useState(null);
+  const [friends, setFriends] = useState([]);
+  const [alreadyFriends, setAlreadyFriends] = useState(null);
 
   useEffect(() => {
     (async function fetchUserData() {
@@ -21,6 +24,8 @@ function UserProfile({ colors, lightMode, user, currentUser, pfp, postRef }) {
       setFriendStatus(data.pendingFriends.includes(currentUser));
       setUserName(data.firstName + " " + data.lastName);
       setPfpSrc(data.profilePhotoSrc);
+      setFriends(data.friends);
+      setAlreadyFriends(data.friends.map((fr) => fr._id).includes(currentUser));
     })();
   }, [userId, currentUser]);
 
@@ -46,7 +51,9 @@ function UserProfile({ colors, lightMode, user, currentUser, pfp, postRef }) {
         setUpdateStatus={setUpdateStatus}
         userName={userName}
         friendshipPending={friendshipPending}
+        alreadyFriends={alreadyFriends}
       />
+      <FriendsList friends={friends} lightMode={lightMode} />
       <StatusForm
         colors={colors}
         currentUser={currentUser}
