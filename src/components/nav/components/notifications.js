@@ -1,7 +1,6 @@
 import { IoNotifications } from "react-icons/io5";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
-import useFetchNotifications from "./../../../hooks/useFetchNotifications";
 import Notification from "./notification";
 import colors from "./../../../colors";
 
@@ -85,8 +84,20 @@ const StyledNotifs = styled.ul`
 
 function Notifications({ currentUser }) {
   const [notifsModal, setNotifsVis] = useState(false);
-  const [updatedNotifs, setUpdatedNotifs] = useState(null);
-  const notifs = useFetchNotifications(currentUser);
+  const [notifs, setNotifs] = useState([]);
+
+  useEffect(() => {
+    async function fetchNotifications() {
+      const res = await fetch(
+        `http://localhost:3000/notifications/${currentUser}`
+      );
+      const data = await res.json();
+
+      setNotifs(data);
+    }
+
+    fetchNotifications();
+  }, [currentUser]);
 
   const toggle = () => setNotifsVis(!notifsModal);
 
@@ -101,38 +112,19 @@ function Notifications({ currentUser }) {
       });
 
       const data = await res.json();
-      setUpdatedNotifs(data);
+      setNotifs(data);
     };
   };
 
-  const mapUpdated = () => {
-    return updatedNotifs.map((notif) => (
-      <li key={notif._id}>
-        <Notification notif={notif} user={currentUser} markRead={markRead} />
-      </li>
-    ));
-  };
-
-  const mapNotifs = () => {
-    return (
-      notifs &&
-      notifs.map((notif) => (
-        <li key={notif._id}>
-          <Notification notif={notif} user={currentUser} markRead={markRead} />
-        </li>
-      ))
-    );
-  };
+  const mapNotifs = notifs.map((notif) => (
+    <li key={notif._id}>
+      <Notification notif={notif} user={currentUser} markRead={markRead} />
+    </li>
+  ));
 
   return (
     <>
-      <StyledNotifications
-        onClick={toggle}
-        notifLength={
-          (updatedNotifs && (updatedNotifs.length || 0)) ||
-          (notifs && notifs.length)
-        }
-      >
+      <StyledNotifications onClick={toggle} notifLength={notifs.length}>
         <IoNotifications />
       </StyledNotifications>
       <StyledNotifs vis={notifsModal} id="notif-modal">
@@ -140,7 +132,7 @@ function Notifications({ currentUser }) {
           <h1>Notifications</h1>
           <p>click to mark as read</p>
         </div>
-        {updatedNotifs ? mapUpdated() : mapNotifs()}
+        {mapNotifs}
       </StyledNotifs>
     </>
   );
