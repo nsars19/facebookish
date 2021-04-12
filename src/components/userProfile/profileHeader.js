@@ -79,6 +79,7 @@ function ProfileHeader(props) {
     setUpdateStatus,
     userName,
     friendshipPending,
+    alreadyFriends,
   } = props;
 
   const [modalVis, setVis] = useState(false);
@@ -106,12 +107,17 @@ function ProfileHeader(props) {
       <div className="name-wrap">
         <h2>{userName || <Skeleton width={150} />}</h2>
       </div>
-      <FriendshipButton
-        receiverId={userId}
-        currentUser={currentUser}
-        isPending={friendshipPending}
-        sameUser={currentUser === userId}
-      />
+      {alreadyFriends ? (
+        <div />
+      ) : (
+        <FriendshipButton
+          receiverId={userId}
+          currentUser={currentUser}
+          isPending={friendshipPending}
+          sameUser={currentUser === userId}
+          alreadyFriends={alreadyFriends}
+        />
+      )}
       <ImageHandlerModal
         vis={modalVis}
         user={currentUser}
