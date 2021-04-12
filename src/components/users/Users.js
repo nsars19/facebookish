@@ -43,7 +43,7 @@ function Users({ currentUser }) {
   }, [currentUser]);
 
   const getCommonFriendCount = (self, user) => {
-    return self.friends.filter((friendId) => user.friends.includes(friendId))
+    return self.friends.filter((friend) => user.friends.includes(friend._id))
       .length;
   };
 
