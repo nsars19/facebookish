@@ -30,7 +30,7 @@ const StyledHeader = styled.div`
 
     &:hover,
     &:active {
-      opacity: ${({ sameUser }) => (sameUser ? "80%" : "100%")};
+      filter: brightness(${({ sameUser }) => (sameUser ? "1.1" : "1")});
     }
   }
 
