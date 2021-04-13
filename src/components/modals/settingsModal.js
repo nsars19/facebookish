@@ -123,6 +123,14 @@ function SettingsModal(props) {
     <StyledModal vis={modalVisible}>
       <ul className="menu">
         <li
+          onClick={() => {
+            isPost ? togglePostEdit() : toggleCommentEditStatus();
+            toggleModal();
+          }}
+        >
+          <button>Edit {isPost ? "post" : "comment"}</button>
+        </li>
+        <li
           className="del"
           onClick={(e) => {
             isPost ? deletePost() : deleteComment(e);
@@ -130,14 +138,6 @@ function SettingsModal(props) {
           }}
         >
           <button>Delete {isPost ? "post" : "comment"}</button>
-        </li>
-        <li
-          onClick={() => {
-            isPost ? togglePostEdit() : toggleCommentEditStatus();
-            toggleModal();
-          }}
-        >
-          <button>Edit {isPost ? "post" : "comment"}</button>
         </li>
       </ul>
     </StyledModal>
