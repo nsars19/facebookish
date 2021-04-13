@@ -6,6 +6,7 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { useState } from "react";
 import { MdPhotoCamera } from "react-icons/md";
 import BannerModal from "./banner/bannerModal";
+import colors from "./../../colors";
 
 const StyledHeader = styled.div`
   display: flex;
@@ -26,16 +27,6 @@ const StyledHeader = styled.div`
 
   .pfp {
     position: relative;
-    cursor: ${({ sameUser }) => (sameUser ? "pointer" : "auto")};
-
-    &:hover,
-    &:active {
-      filter: brightness(${({ sameUser }) => (sameUser ? "1.1" : "1")});
-    }
-  }
-
-  .pfp:hover .tool-tip {
-    display: ${({ sameUser }) => (sameUser ? "block" : "none")};
   }
 
   .name-wrap {
@@ -106,6 +97,26 @@ const StyledHeader = styled.div`
     }
   }
 
+  .pfp-edit-icon {
+    display: ${({ sameUser }) => (sameUser ? "flex" : "none")};
+    position: absolute;
+    right: 15px;
+    bottom: 10px;
+    // font-size: 24px;
+    border-radius: 50%;
+    background: ${({ lm }) => (lm ? colors.white : colors.gray)};
+    height: 40px;
+    width: 40px;
+    padding: 6px;
+    border: 1px solid ${colors.gray}33;
+
+    &:hover,
+    &:active {
+      cursor: pointer;
+      filter: brightness(${({ lm }) => (lm ? 1.05 : 1.2)});
+    }
+  }
+
   @media (min-width: 1024px) {
     & {
       min-height: 65vh;
@@ -172,12 +183,7 @@ function ProfileHeader(props) {
         user={currentUser}
         setBannerSrc={setBannerSrc}
       />
-      <div
-        className="pfp"
-        onClick={() => {
-          if (currentUser === userId) setVis(!modalVis);
-        }}
-      >
+      <div className="pfp">
         <ProfilePicture
           size={"250px"}
           src={pfpSrc}
@@ -186,9 +192,12 @@ function ProfileHeader(props) {
           needsUpdate={needsUpdate}
           setUpdateStatus={setUpdateStatus}
         />
-        <p className="tool-tip">
-          Click the picture to upload a new profile picture
-        </p>
+        <MdPhotoCamera
+          className="pfp-edit-icon"
+          onClick={() => {
+            if (currentUser === userId) setVis(!modalVis);
+          }}
+        />
       </div>
       <div className="name-wrap">
         <h2>{userName || <Skeleton width={150} />}</h2>
