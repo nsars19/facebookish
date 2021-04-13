@@ -89,7 +89,6 @@ const StyledStatusForm = styled.div`
   .post-types {
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: repeat(3, 1fr)
     margin-top: 10px;
   }
 
