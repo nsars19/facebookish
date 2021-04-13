@@ -180,7 +180,7 @@ function UploadHandler({ user, toggleOff, setBannerSrc }) {
         <p className="banner-upload-txt">Upload an image</p>
       </label>
       <img src={src} alt="preview" className="banner-preview" />
-      <input type="submit" value="Submit" />
+      <input type="submit" value="Change cover photo" />
       <button id="esc" onClick={clearHandler}>
         <span />
         <span />
