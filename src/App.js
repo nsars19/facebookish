@@ -106,6 +106,10 @@ const GlobalStyle = createGlobalStyle`
     #notif-item:active {
       background: ${({ light }) => (light ? "#d8d8d8" : "#707070")};
     }
+
+    div.post-comments {
+      color: ${({ light }) => (light ? black : white)}cc;
+    }
   }
 
   button,

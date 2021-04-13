@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 const StyledMetrics = styled.div`
   font-size: 15px;
-  color: #aaa;
   display: flex;
   padding: 0 10px;
   margin-top: 5px;
