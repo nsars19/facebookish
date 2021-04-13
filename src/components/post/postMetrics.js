@@ -15,6 +15,7 @@ const StyledMetrics = styled.div`
     justify-content: start;
   }
   .post-comments {
+    display: ${({ commentCount }) => (commentCount ? "flex" : "none")};
     justify-content: end;
     margin-right: 4px;
 
@@ -27,7 +28,7 @@ const StyledMetrics = styled.div`
 
 function PostMetrics({ likeCount, commentCount, toggleComments }) {
   return (
-    <StyledMetrics>
+    <StyledMetrics commentCount={commentCount}>
       <div className="likes">
         {likeCount > 0 ? <LikeDisplay likeCount={likeCount} /> : <div />}
       </div>
