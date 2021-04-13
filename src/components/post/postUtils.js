@@ -7,8 +7,10 @@ const StyledUtils = styled.div`
   grid-auto-flow: column;
   column-gap: 4px;
   border-bottom: 1px solid gray;
+  border-top: 1px solid gray;
   padding: 4px 0;
-
+  margin-left: 10px;
+  margin-right: 10px;
   & button {
     font-weight: bold;
     font-size: 14px;

@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import getCommentCount from "./../../utils/getCommentCount";
 
 const StyledForm = styled.form`
+  margin: 0 10px;
+  padding-bottom: 10px;
+
   .wrap {
     display: flex;
     justify-content: space-between;

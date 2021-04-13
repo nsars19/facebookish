@@ -14,7 +14,7 @@ import EditForm from "./editForm";
 
 const StyledPost = styled.div`
   width: 100%;
-  padding: 10px;
+  // padding: 10px;
   border-radius: 5px;
   margin: 20px 0px;
   box-shadow: 0 0.1px 0.8px rgba(0, 0, 0, 0.02),
@@ -33,6 +33,7 @@ const StyledPost = styled.div`
     grid-template-columns: 60px auto;
     grid-template-rows: 15px auto;
     row-gap: 10px;
+    padding: 6px 5px 0px;
     margin-bottom: 10px;
 
     p {
@@ -55,7 +56,7 @@ const StyledPost = styled.div`
     position: relative;
     padding: 5px 0;
     padding-bottom: 10px;
-    border-bottom: 1px solid gray;
+    // border-bottom: 1px solid gray;
     position: relative;
 
     .pfp-link {
