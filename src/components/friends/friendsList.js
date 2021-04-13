@@ -79,7 +79,7 @@ function FriendsList({ friends, lightMode }) {
 
   return (
     <StyledFriends lm={lightMode} className="grid-friend-list">
-      <h3 className="count">Friends ( {friends.length} )</h3>
+      <h4 className="count">Friends ( {friends.length} )</h4>
       {friends.length === 0 ? loader : mapFriends}
     </StyledFriends>
   );
