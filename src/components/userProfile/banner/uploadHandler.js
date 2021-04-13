@@ -10,7 +10,7 @@ const StyledHandler = styled.form`
   position: relative;
   z-index: 10;
   width: 100%;
-  max-width: 500px;
+  max-width: 400px;
   max-height: 90vh;
   padding-bottom: 15px;
   border-radius: 8px;
