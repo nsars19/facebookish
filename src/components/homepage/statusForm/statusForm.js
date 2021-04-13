@@ -50,9 +50,8 @@ const StyledStatusForm = styled.div`
   .txt-form {
     padding-bottom: 10px;
     border-bottom: 1px solid gray;
-    border-bottom: ${({ fromProfile }) =>
-      fromProfile ? "none" : "1px solid gray"};
-    margin-bottom: ${({ fromProfile }) => (fromProfile ? "0px" : "7px")};
+    border-bottom: 1px solid gray;
+    margin-bottom: 7px;
   }
 
   .placeholder {
@@ -177,7 +176,6 @@ function StatusForm({
         g={gray}
         w={white}
         lm={lightMode}
-        fromProfile={fromProfile}
         textIsEmpty={textIsEmpty()}
         className="grid-status-form"
       >
@@ -189,16 +187,13 @@ function StatusForm({
           text={text}
           postRef={postRef}
         />
-        {fromProfile ? (
-          <div />
-        ) : (
-          <PostIcons toggleImgModal={toggleImgModal} focusRef={focusRef} />
-        )}
+        <PostIcons toggleImgModal={toggleImgModal} focusRef={focusRef} />
         <ImageHandlerModal
           toggle={toggleImgModal}
           user={currentUser}
           vis={modalVis}
           setFeed={setFeed}
+          postInput
         />
       </StyledStatusForm>
     </>

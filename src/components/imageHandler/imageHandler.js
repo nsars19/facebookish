@@ -119,7 +119,14 @@ const StyledHandler = styled.form`
   }
 `;
 
-function ImageHandler({ user, toggleOff, profile, setFeed, setUpdateStatus }) {
+function ImageHandler({
+  user,
+  toggleOff,
+  profile,
+  setFeed,
+  setUpdateStatus,
+  postInput,
+}) {
   const [imgFile, setImage] = useState(null);
   const [src, setSrc] = useState(null);
   const [text, setText] = useState("");
@@ -171,12 +178,12 @@ function ImageHandler({ user, toggleOff, profile, setFeed, setUpdateStatus }) {
     >
       <input
         type="file"
-        name="file"
-        id="file"
+        name={postInput ? "post-file" : "file"}
+        id={postInput ? "post-file" : "file"}
         accept=".png, .jpeg, .jpg"
         onChange={handleImgInput}
       />
-      <label htmlFor="file">
+      <label htmlFor={postInput ? "post-file" : "file"}>
         <AiFillPicture className="upload-icon icon" />
         <p className="upload-txt">Upload an image</p>
       </label>

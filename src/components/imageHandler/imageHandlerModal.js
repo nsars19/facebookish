@@ -27,6 +27,7 @@ function ImageHandlerModal({
   profile,
   setFeed,
   setUpdateStatus,
+  postInput,
 }) {
   return (
     <StyledModal vis={vis}>
@@ -36,6 +37,7 @@ function ImageHandlerModal({
         profile={profile}
         setFeed={setFeed}
         setUpdateStatus={setUpdateStatus}
+        postInput={postInput}
       />
     </StyledModal>
   );
