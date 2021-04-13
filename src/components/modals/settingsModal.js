@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import colors from "./../../colors";
 import getCommentCount from "./../../utils/getCommentCount";
-import { BiEdit } from "react-icons/bi";
+import { AiFillEdit } from "react-icons/ai";
 import { RiChatDeleteFill } from "react-icons/ri";
 
 const StyledModal = styled.div`
@@ -135,7 +135,7 @@ function SettingsModal(props) {
             toggleModal();
           }}
         >
-          <BiEdit />
+          <AiFillEdit />
           <button>Edit {isPost ? "post" : "comment"}</button>
         </li>
         <li
