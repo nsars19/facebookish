@@ -15,6 +15,7 @@ function UserProfile({ colors, lightMode, user, currentUser, pfp, postRef }) {
   const [pfpSrc, setPfpSrc] = useState(null);
   const [friends, setFriends] = useState([]);
   const [alreadyFriends, setAlreadyFriends] = useState(null);
+  const [bannerSrc, setBannerSrc] = useState(null);
 
   useEffect(() => {
     (async function fetchUserData() {
@@ -24,6 +25,7 @@ function UserProfile({ colors, lightMode, user, currentUser, pfp, postRef }) {
       setFriendStatus(data.pendingFriends.includes(currentUser));
       setUserName(data.firstName + " " + data.lastName);
       setPfpSrc(data.profilePhotoSrc);
+      setBannerSrc(data.bannerSrc);
       setFriends(data.friends);
       setAlreadyFriends(data.friends.map((fr) => fr._id).includes(currentUser));
     })();
@@ -52,6 +54,8 @@ function UserProfile({ colors, lightMode, user, currentUser, pfp, postRef }) {
         userName={userName}
         friendshipPending={friendshipPending}
         alreadyFriends={alreadyFriends}
+        bannerSrc={bannerSrc}
+        setBannerSrc={setBannerSrc}
       />
       <FriendsList friends={friends} lightMode={lightMode} />
       <StatusForm

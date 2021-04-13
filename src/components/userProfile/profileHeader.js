@@ -2,15 +2,17 @@ import styled from "styled-components";
 import ProfilePicture from "./profilePicture";
 import FriendshipButton from "./../friendshipButton/friendshipButton";
 import ImageHandlerModal from "./../imageHandler/imageHandlerModal";
-import Skeleton from "react-loading-skeleton";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { useState } from "react";
+import { BsThreeDots } from "react-icons/bs";
+import BannerModal from "./banner/bannerModal";
 
 const StyledHeader = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: end;
   align-items: center;
-  min-height: 45vh;
+  min-height: 50vh;
 
   .tool-tip {
     display: none;
@@ -39,6 +41,8 @@ const StyledHeader = styled.div`
   .name-wrap {
     max-width: fit-content;
     font-size: 18px;
+    margin-top: 22px;
+    margin-bottom: 15px;
   }
 
   form {
@@ -67,6 +71,50 @@ const StyledHeader = styled.div`
       opacity: 0;
     }
   }
+
+  .loader {
+    background: #c0c0c0;
+    height: 100%;
+    width: 100%;
+  }
+
+  .banner {
+    position: absolute;
+    top: 0;
+    max-height: 35vh;
+    height: 100%;
+    width: 100%;
+
+    img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+
+    &-upload {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 26px;
+      cursor: pointer;
+      text-shadow: 1px 1px 1px #222;
+
+      &:hover,
+      &:active {
+        opacity: 60%;
+      }
+    }
+  }
+
+  @media (min-width: 1024px) {
+    & {
+      min-height: 65vh;
+    }
+
+    .banner {
+      min-height: 48vh;
+    }
+  }
 `;
 
 function ProfileHeader(props) {
@@ -80,16 +128,48 @@ function ProfileHeader(props) {
     userName,
     friendshipPending,
     alreadyFriends,
+    bannerSrc,
+    setBannerSrc,
   } = props;
 
   const [modalVis, setVis] = useState(false);
+  const [bannerVis, setBannerVis] = useState(false);
+
+  const toggleBannerModal = () => setBannerVis(!bannerVis);
+
+  const loader = (
+    <SkeletonTheme color={"#dadada"} highlightColor={"#e0e0e0"}>
+      <Skeleton height={"37vh"} />
+    </SkeletonTheme>
+  );
+
+  const banner = (
+    <img src={"http://localhost:3000/" + bannerSrc} alt="profile banner" />
+  );
+
+  const bannerUploader = (
+    <div className="banner-upload" onClick={toggleBannerModal}>
+      <BsThreeDots />
+    </div>
+  );
 
   return (
     <StyledHeader
       lm={lightMode}
       sameUser={currentUser === userId}
       className="grid-prof-head"
+      bg={"http://localhost:3000/" + pfpSrc}
     >
+      <div className="banner">
+        {userId === currentUser ? bannerUploader : <div />}
+        {bannerSrc === null ? loader : banner}
+      </div>
+      <BannerModal
+        vis={bannerVis}
+        toggleOff={toggleBannerModal}
+        user={currentUser}
+        setBannerSrc={setBannerSrc}
+      />
       <div
         className="pfp"
         onClick={() => {
