@@ -127,10 +127,10 @@ const GlobalStyle = createGlobalStyle`
     .grid-wrap {
       display: grid;
       grid-template-areas:
-        "head head head head"
-        "list form form form"
-        "list feed feed feed"
-        ".... feed feed feed";
+        "head head head head head head head head head"
+        "list form form form form .... .... .... ...."
+        "list feed feed feed feed .... .... .... ...."
+        ".... feed feed feed feed .... .... .... ....";
     }
 
     .grid-prof-head {
