@@ -33,7 +33,13 @@ function PostMetrics({ likeCount, commentCount, toggleComments }) {
         {likeCount > 0 ? <LikeDisplay likeCount={likeCount} /> : <div />}
       </div>
       <div className="post-comments" onClick={toggleComments}>
-        {commentCount > 0 ? commentCount + " Comments" : <div />}
+        {commentCount === 1 ? (
+          commentCount + " Comment"
+        ) : commentCount > 0 ? (
+          commentCount + " Comments"
+        ) : (
+          <div />
+        )}
       </div>
     </StyledMetrics>
   );
