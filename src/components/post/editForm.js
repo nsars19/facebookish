@@ -6,7 +6,7 @@ const StyledEditForm = styled.form`
   margin-left: 10px;
   padding-right: 10px;
   input[type="text"] {
-    width: 100%;
+    width: 97%;
     flex: 1;
     height: 35px;
     padding-left: 10px;
