@@ -2,12 +2,11 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { BsThreeDots } from "react-icons/bs";
 import Settings from "./../modals/settingsModal";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import ProfilePicture from "./../userProfile/profilePicture";
 import CommentUtils from "./commentUtils";
 import CommentMetrics from "./commentMetrics";
 import SubCommentForm from "./../commentForm/subCommentForm";
-import Skeleton from "react-loading-skeleton";
 import EditForm from "./editForm";
 
 const StyledComment = styled.div`
