@@ -8,7 +8,7 @@ const StyledStatusForm = styled.div`
   background: ${({ lm, g }) => (lm ? "#eee" : g)};
   border: 1px solid ${({ lm, g, w }) => (lm ? g : w)}11;
   padding: 18px;
-  padding-bottom: 8px;
+  padding-bottom: 6px;
   border-radius: 8px;
   margin: 10px auto;
   margin-bottom: 0;
@@ -51,7 +51,6 @@ const StyledStatusForm = styled.div`
     padding-bottom: 10px;
     border-bottom: 1px solid gray;
     border-bottom: 1px solid gray;
-    margin-bottom: 7px;
   }
 
   .placeholder {
@@ -89,7 +88,7 @@ const StyledStatusForm = styled.div`
   .post-types {
     display: grid;
     grid-auto-flow: column;
-    margin-top: 10px;
+    margin-top: 7px;
   }
 
   .post-icon {
