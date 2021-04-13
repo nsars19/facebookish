@@ -14,7 +14,6 @@ import EditForm from "./editForm";
 
 const StyledPost = styled.div`
   width: 100%;
-  // padding: 10px;
   border-radius: 5px;
   margin: 20px 0px;
   box-shadow: 0 0.1px 0.8px rgba(0, 0, 0, 0.02),
