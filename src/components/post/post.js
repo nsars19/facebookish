@@ -75,8 +75,8 @@ const StyledPost = styled.div`
 
   .post-settings {
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 6px;
+    right: 10px;
     cursor: pointer;
     font-size: 24px;
 
