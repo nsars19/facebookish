@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import colors from "./../../colors";
 import getCommentCount from "./../../utils/getCommentCount";
+import { BiEdit } from "react-icons/bi";
+import { RiChatDeleteFill } from "react-icons/ri";
 
 const StyledModal = styled.div`
   display: ${({ vis }) => (vis ? "flex" : "none")};
@@ -21,9 +23,14 @@ const StyledModal = styled.div`
       0 3.7px 9.9px rgba(0, 0, 0, 0.139), 0 10px 27px rgba(0, 0, 0, 0.19);
   }
   li {
+    display: flex;
+    align-items: center;
     padding: 8px;
     border-top: 1px solid gray;
 
+    svg {
+      font-size: 18px;
+    }
     &:first-child {
       border-top: none;
       border-radius: 6px 6px 0 0;
@@ -128,6 +135,7 @@ function SettingsModal(props) {
             toggleModal();
           }}
         >
+          <BiEdit />
           <button>Edit {isPost ? "post" : "comment"}</button>
         </li>
         <li
@@ -137,6 +145,7 @@ function SettingsModal(props) {
             toggleModal();
           }}
         >
+          <RiChatDeleteFill />
           <button>Delete {isPost ? "post" : "comment"}</button>
         </li>
       </ul>

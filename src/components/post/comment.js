@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { AiFillSetting } from "react-icons/ai";
+import { BsThreeDots } from "react-icons/bs";
 import Settings from "./../modals/settingsModal";
 import { useState, useRef } from "react";
 import ProfilePicture from "./../userProfile/profilePicture";
@@ -54,6 +54,11 @@ const StyledComment = styled.div`
     top: 5px;
     right: 10px;
     cursor: pointer;
+    font-size: 18px;
+
+    &:hover {
+      color: #777;
+    }
   }
 
   &:hover .comment-settings {
@@ -132,7 +137,7 @@ function Comment({
           </Link>
           {editingComment ? EditComponent() : postContent()}
           {isAuthor ? (
-            <AiFillSetting
+            <BsThreeDots
               className="comment-settings"
               onClick={toggleModalVisibility}
             />

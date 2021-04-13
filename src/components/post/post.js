@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Comment from "./comment";
 import CommentForm from "./../commentForm/commentForm";
-import { AiFillSetting } from "react-icons/ai";
+import { BsThreeDots } from "react-icons/bs";
 import Settings from "./../modals/settingsModal";
 import { useState, useRef, useEffect } from "react";
 import ProfilePicture from "./../userProfile/profilePicture";
@@ -77,6 +77,11 @@ const StyledPost = styled.div`
     top: 5px;
     right: 5px;
     cursor: pointer;
+    font-size: 24px;
+
+    &:hover {
+      color: #777;
+    }
   }
 
   .post:hover .post-settings {
@@ -182,7 +187,7 @@ function Post({ post, setFeed, homeFeed, src, currentUser, pfp }) {
           toggleComments={() => setCommentsVisible(!commentsVisible)}
         />
         {isAuthor ? (
-          <AiFillSetting
+          <BsThreeDots
             className="post-settings"
             onClick={toggleModalVisibility}
           />
