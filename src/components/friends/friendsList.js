@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import FriendCard from "./friendCard";
 import colors from "./../../colors";
+import Skeleton from "react-loading-skeleton";
 
 const StyledFriends = styled.ul`
   list-style: none;
@@ -69,10 +70,17 @@ function FriendsList({ friends, lightMode }) {
     );
   });
 
+  const loader = (
+    <div>
+      <Skeleton height={100} />
+      <Skeleton />
+    </div>
+  );
+
   return (
     <StyledFriends lm={lightMode} className="grid-friend-list">
       <h3 className="count">Friends ( {friends.length} )</h3>
-      {mapFriends}
+      {friends.length === 0 ? loader : mapFriends}
     </StyledFriends>
   );
 }
