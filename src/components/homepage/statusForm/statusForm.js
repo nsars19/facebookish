@@ -40,6 +40,7 @@ const StyledStatusForm = styled.div`
     height: 37px;
     width: 100%;
     opacity: 60%;
+    font-size: 15px;
     color: ${({ lm }) => (lm ? "#000" : "#fff")};
 
     &:focus {
