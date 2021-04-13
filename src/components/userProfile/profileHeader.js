@@ -153,6 +153,8 @@ function ProfileHeader(props) {
     </div>
   );
 
+  const noBanner = bannerSrc === null || bannerSrc === undefined;
+
   return (
     <StyledHeader
       lm={lightMode}
@@ -162,7 +164,7 @@ function ProfileHeader(props) {
     >
       <div className="banner">
         {userId === currentUser ? bannerUploader : <div />}
-        {bannerSrc === null ? loader : banner}
+        {noBanner ? loader : banner}
       </div>
       <BannerModal
         vis={bannerVis}
