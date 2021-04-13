@@ -4,7 +4,7 @@ import FriendshipButton from "./../friendshipButton/friendshipButton";
 import ImageHandlerModal from "./../imageHandler/imageHandlerModal";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { useState } from "react";
-import { BsThreeDots } from "react-icons/bs";
+import { MdPhotoCamera } from "react-icons/md";
 import BannerModal from "./banner/bannerModal";
 
 const StyledHeader = styled.div`
@@ -149,7 +149,7 @@ function ProfileHeader(props) {
 
   const bannerUploader = (
     <div className="banner-upload" onClick={toggleBannerModal}>
-      <BsThreeDots />
+      <MdPhotoCamera />
     </div>
   );
 
