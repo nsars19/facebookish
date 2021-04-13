@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import colors from "./../../colors";
 import getCommentCount from "./../../utils/getCommentCount";
 import { AiFillEdit } from "react-icons/ai";
 import { RiChatDeleteFill } from "react-icons/ri";
@@ -25,25 +24,17 @@ const StyledModal = styled.div`
   li {
     display: flex;
     align-items: center;
-    padding: 8px;
-    border-top: 1px solid gray;
+    padding: 5px;
 
     svg {
       font-size: 18px;
     }
     &:first-child {
-      border-top: none;
       border-radius: 6px 6px 0 0;
     }
 
     &:last-child {
       border-radius: 0 0 6px 6px;
-    }
-
-    &:hover,
-    &:active {
-      background: ${colors.white};
-      color: ${colors.black};
     }
 
     button {
@@ -55,9 +46,23 @@ const StyledModal = styled.div`
     }
   }
 
-  .del:hover,
-  .del:active {
-    background: ${colors.red}cc;
+  li.spacer {
+    border-bottom: 1px solid gray;
+    height: 0;
+    padding: 0;
+    margin: 0 5px;
+  }
+
+  li .content {
+    display: flex;
+    align-items: center;
+    padding: 6px;
+    width: 100%;
+    border-radius: 6px;
+  }
+
+  li .content.del {
+    margin-top: 0;
   }
 `;
 
@@ -135,18 +140,22 @@ function SettingsModal(props) {
             toggleModal();
           }}
         >
-          <AiFillEdit />
-          <button>Edit {isPost ? "post" : "comment"}</button>
+          <div className="content">
+            <AiFillEdit />
+            <button>Edit {isPost ? "post" : "comment"}</button>
+          </div>
         </li>
+        <li className="spacer" />
         <li
-          className="del"
           onClick={(e) => {
             isPost ? deletePost() : deleteComment(e);
             toggleModal();
           }}
         >
-          <RiChatDeleteFill />
-          <button>Delete {isPost ? "post" : "comment"}</button>
+          <div className="content del">
+            <RiChatDeleteFill />
+            <button>Delete {isPost ? "post" : "comment"}</button>
+          </div>
         </li>
       </ul>
     </StyledModal>

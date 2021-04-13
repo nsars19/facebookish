@@ -9,7 +9,7 @@ import HomePage from "./components/homepage/homepage";
 import Profile from "./components/profile/profile";
 import { createGlobalStyle } from "styled-components";
 
-const { black, gray, white, yellow, blue } = colors;
+const { black, gray, white, yellow, blue, red } = colors;
 const GlobalStyle = createGlobalStyle`
   body {
     margin-bottom: 50px;
@@ -28,9 +28,19 @@ const GlobalStyle = createGlobalStyle`
       background: ${({ light }) => (light ? "#d8d8d8" : "#707070")}
     }
     ul.menu {
-      background: ${({ light }) => (light ? "#d8d8d8" : gray)};
+      background: ${({ light }) => (light ? white : gray)};
       color: ${({ light }) => (light ? black : white)};
       border: 1px solid ${({ light }) => (light ? "#aaa" : "#444")};
+
+      li .content:hover,
+      li .content:active {
+        background: ${({ light }) => (light ? gray : white)}33;
+      }
+
+      li .content.del:hover,
+      li .content.del:active {
+        background: ${red}${({ light }) => (light ? "cc" : "aa")};
+      }
     }
     #comment-input {
       background: ${({ light }) => (light ? "#d8d8d8" : "#707070")};
