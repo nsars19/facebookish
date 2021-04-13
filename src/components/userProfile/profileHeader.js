@@ -101,7 +101,7 @@ const StyledHeader = styled.div`
 
       &:hover,
       &:active {
-        opacity: 60%;
+        filter: brightness(1.2);
       }
     }
   }
