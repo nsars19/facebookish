@@ -7,6 +7,7 @@ const StyledFriends = styled.ul`
   display: grid;
   grid-auto-flow: column;
   grid-template-rows: 30px 30px 30px repeat(auto-fit, 1fr);
+  justify-content: start;
   gap: 8px;
   width: 95%;
   max-width: 750px;
