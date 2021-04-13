@@ -58,14 +58,18 @@ function UserProfile({ colors, lightMode, user, currentUser, pfp, postRef }) {
         setBannerSrc={setBannerSrc}
       />
       <FriendsList friends={friends} lightMode={lightMode} />
-      <StatusForm
-        colors={colors}
-        currentUser={currentUser}
-        lightMode={lightMode}
-        setFeed={setPosts}
-        src={pfp}
-        postRef={postRef}
-      />
+      {currentUser === userId ? (
+        <StatusForm
+          colors={colors}
+          currentUser={currentUser}
+          lightMode={lightMode}
+          setFeed={setPosts}
+          src={pfp}
+          postRef={postRef}
+        />
+      ) : (
+        <div />
+      )}
       <Feed
         user={userId}
         posts={posts}
