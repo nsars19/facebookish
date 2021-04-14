@@ -38,7 +38,7 @@ const StyledNotifs = styled.ul`
   font-weight: 400;
   position: absolute;
   bottom: 55px;
-  right: 5vw;
+  right: 15vw;
   width: 75vw;
   max-width: 360px;
   max-height: 40vh;
@@ -78,6 +78,7 @@ const StyledNotifs = styled.ul`
   @media (max-width: 540px) {
     & {
       width: 90vw;
+      right: 5vw;
     }
   }
 `;
