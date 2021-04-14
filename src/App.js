@@ -169,7 +169,8 @@ function App() {
   cookies.set("light", cookies.get("light"));
   const isLight = cookies.get("light") === "true" ? true : false;
   const [lightMode, setLightMode] = useState(isLight);
-  const [currentUser, setCurrentUser] = useState("60524b11581676421e9c7302");
+  const [currentUser, setCurrentUser] = useState(null);
+  const [token, setToken] = useState(null);
   const [pfp, setPfp] = useState(null);
   const postRef = useRef(null);
   const focusRef = () => {
