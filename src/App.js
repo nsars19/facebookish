@@ -8,6 +8,7 @@ import Cookies from "universal-cookie";
 import HomePage from "./components/homepage/homepage";
 import Profile from "./components/profile/profile";
 import { createGlobalStyle } from "styled-components";
+import LoginPage from "./components/login/login";
 
 const { black, gray, white, yellow, blue, red } = colors;
 const GlobalStyle = createGlobalStyle`
@@ -191,55 +192,58 @@ function App() {
     if (currentUser) fetchData();
   }, [currentUser]);
 
-  return (
-    <>
-      <GlobalStyle light={lightMode} />
-      <Router>
-        <Nav
-          setLightMode={setLightMode}
-          lightMode={lightMode}
-          currentUser={currentUser}
-          setCurrentUser={setCurrentUser}
-          focusRef={focusRef}
-        />
-        <Switch>
-          <Route path="/users">
-            <Users currentUser={currentUser} />
-          </Route>
-          <Route path="/user/:userId">
-            <div className="grid-wrap">
-              <UserProfile
-                colors={colors}
-                lightMode={lightMode}
+  if (!currentUser)
+    return <LoginPage setCurrentUser={setCurrentUser} setToken={setToken} />;
+  else
+    return (
+      <>
+        <GlobalStyle light={lightMode} user={currentUser} />
+        <Router>
+          <Nav
+            setLightMode={setLightMode}
+            lightMode={lightMode}
+            currentUser={currentUser}
+            setCurrentUser={setCurrentUser}
+            focusRef={focusRef}
+          />
+          <Switch>
+            <Route path="/users">
+              <Users currentUser={currentUser} />
+            </Route>
+            <Route path="/user/:userId">
+              <div className="grid-wrap">
+                <UserProfile
+                  colors={colors}
+                  lightMode={lightMode}
+                  currentUser={currentUser}
+                  pfp={pfp}
+                  postRef={postRef}
+                />
+              </div>
+            </Route>
+            <Route path="/profile">
+              <div className="grid-wrap">
+                <Profile
+                  user={currentUser}
+                  colors={colors}
+                  lightMode={lightMode}
+                  pfp={pfp}
+                  postRef={postRef}
+                />
+              </div>
+            </Route>
+            <Route path="/">
+              <HomePage
                 currentUser={currentUser}
-                pfp={pfp}
-                postRef={postRef}
-              />
-            </div>
-          </Route>
-          <Route path="/profile">
-            <div className="grid-wrap">
-              <Profile
-                user={currentUser}
-                colors={colors}
                 lightMode={lightMode}
-                pfp={pfp}
                 postRef={postRef}
+                pfp={pfp}
               />
-            </div>
-          </Route>
-          <Route path="/">
-            <HomePage
-              currentUser={currentUser}
-              lightMode={lightMode}
-              postRef={postRef}
-              pfp={pfp}
-            />
-          </Route>
-        </Switch>
-      </Router>
-    </>
-  );
+            </Route>
+          </Switch>
+        </Router>
+      </>
+    );
 }
 
 export default App;
