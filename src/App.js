@@ -188,7 +188,7 @@ function App() {
       setPfp(data.profilePhotoSrc);
     }
 
-    fetchData();
+    if (currentUser) fetchData();
   }, [currentUser]);
 
   return (
