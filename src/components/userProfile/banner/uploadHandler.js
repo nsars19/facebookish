@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { AiFillPicture } from "react-icons/ai";
 import colors from "./../../../colors";
 import { useState } from "react";
+import Cookies from "universal-cookie";
 
 const StyledHandler = styled.form`
   flex-direction: row;
@@ -126,9 +127,12 @@ const StyledHandler = styled.form`
   }
 `;
 
+const cookies = new Cookies();
+
 function UploadHandler({ user, toggleOff, setBannerSrc }) {
   const [imgFile, setImage] = useState(null);
   const [src, setSrc] = useState(null);
+  const token = cookies.get("token");
 
   const handleImgInput = (files) => {
     setImage(files[0]);
@@ -145,15 +149,20 @@ function UploadHandler({ user, toggleOff, setBannerSrc }) {
 
     const url = `http://localhost:3000/upload/banner/${user}`;
 
-    const res = await fetch(url, {
+    await fetch(url, {
       method: "post",
       body: formData,
-    });
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then(async (res) => {
+        const data = await res.json();
 
-    const data = await res.json();
-
-    setBannerSrc(data.src);
-    clearHandler();
+        setBannerSrc(data.src);
+        clearHandler();
+      })
+      .catch((err) => console.error(err));
   };
 
   const clearHandler = () => {
