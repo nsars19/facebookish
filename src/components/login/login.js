@@ -74,7 +74,7 @@ const StyledLoginPage = styled.div`
   }
 `;
 
-function LoginPage({ setCurrentUser, setToken }) {
+function LoginPage({ setCurrentUser }) {
   return (
     <>
       <LoginBody />
@@ -84,7 +84,7 @@ function LoginPage({ setCurrentUser, setToken }) {
           <h3>personalize your space and connect with others</h3>
         </span>
         <div className="form">
-          <Form setActiveUser={setCurrentUser} setToken={setToken} />
+          <Form setActiveUser={setCurrentUser} />
         </div>
         <div className="links">
           <a

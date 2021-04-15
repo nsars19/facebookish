@@ -169,13 +169,11 @@ const cookies = new Cookies();
 function App() {
   cookies.set("light", cookies.get("light") || true);
   const userCookie = cookies.get("currentUser");
-  const userToken = cookies.get("token");
   const isLight = cookies.get("light") === "true" ? true : false;
   const [lightMode, setLightMode] = useState(isLight);
   const [currentUser, setCurrentUser] = useState(
     userCookie === "null" ? null : userCookie
   );
-  const [token, setToken] = useState(userToken === "null" ? null : userToken);
   const [pfp, setPfp] = useState(null);
   const postRef = useRef(null);
 
@@ -197,8 +195,7 @@ function App() {
     if (currentUser) fetchData();
   }, [currentUser]);
 
-  if (!currentUser)
-    return <LoginPage setCurrentUser={setCurrentUser} setToken={setToken} />;
+  if (!currentUser) return <LoginPage setCurrentUser={setCurrentUser} />;
   else
     return (
       <>

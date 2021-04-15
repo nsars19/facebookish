@@ -92,7 +92,7 @@ const StlyedForm = styled.form`
 
 const cookies = new Cookies();
 
-function Form({ setActiveUser, setToken }) {
+function Form({ setActiveUser }) {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [errorModalVis, setErrorVis] = useState(false);
@@ -121,7 +121,6 @@ function Form({ setActiveUser, setToken }) {
           const { token, user } = await res.json();
 
           setErrorVis(false);
-          setToken(token);
           setActiveUser(user);
 
           cookies.set("token", token);
@@ -168,7 +167,6 @@ function Form({ setActiveUser, setToken }) {
         vis={accountCreationVis}
         toggle={toggleAccountCreator}
         setActiveUser={setActiveUser}
-        setToken={setToken}
       />
     </>
   );

@@ -89,7 +89,7 @@ const StyledForm = styled.form`
 
 const cookies = new Cookies();
 
-function CreateAccountForm({ vis, toggle, setActiveUser, setToken }) {
+function CreateAccountForm({ vis, toggle, setActiveUser }) {
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -120,7 +120,6 @@ function CreateAccountForm({ vis, toggle, setActiveUser, setToken }) {
         const { token, user } = await res.json();
 
         setActiveUser(user);
-        setToken(token);
 
         cookies.set("token", token);
         cookies.set("currentUser", user);
