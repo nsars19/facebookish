@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { AiFillPicture } from "react-icons/ai";
 import colors from "./../../colors";
+import Cookies from "universal-cookie";
 
 const StyledHandler = styled.form`
   flex-direction: row;
@@ -118,6 +119,7 @@ const StyledHandler = styled.form`
     }
   }
 `;
+const cookies = new Cookies();
 
 function ImageHandler({
   user,
@@ -130,6 +132,7 @@ function ImageHandler({
   const [imgFile, setImage] = useState(null);
   const [src, setSrc] = useState(null);
   const [text, setText] = useState("");
+  const token = cookies.get("token");
 
   const handleImgInput = (e) => {
     setImage(e.target.files[0]);
@@ -149,16 +152,21 @@ function ImageHandler({
       profile ? "profile" : "posts"
     }/${user}`;
 
-    const res = await fetch(url, {
+    await fetch(url, {
       method: "post",
       body: formData,
-    });
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then(async (res) => {
+        const data = await res.json();
+        if (!profile) setFeed(data);
+        if (profile) setUpdateStatus(true);
 
-    const data = await res.json();
-
-    if (!profile) setFeed(data);
-    if (profile) setUpdateStatus(true);
-    clearHandler();
+        clearHandler();
+      })
+      .catch((err) => console.error(err));
   };
 
   const clearHandler = () => {
