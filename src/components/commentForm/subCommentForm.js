@@ -3,6 +3,7 @@ import colors from "./../../colors";
 import ProfilePicture from "./../userProfile/profilePicture";
 import { Link } from "react-router-dom";
 import getCommentCount from "./../../utils/getCommentCount";
+import Cookies from "universal-cookie";
 
 const StyledForm = styled.form`
   opacity: ${({ vis }) => (vis ? "100%" : "0")};
@@ -43,6 +44,8 @@ const StyledForm = styled.form`
   }
 `;
 
+const cookies = new Cookies();
+
 function SubCommentForm({
   subFormVis,
   toggleVis,
@@ -57,6 +60,8 @@ function SubCommentForm({
   parentId,
   src,
 }) {
+  const token = cookies.get("token");
+
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -77,7 +82,10 @@ function SubCommentForm({
     const commentRes = await fetch(`http://localhost:3000/comments/child/new`, {
       method: "POST",
       type: "cors",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
       body: requestBody,
     });
     const commentData = await commentRes.json();

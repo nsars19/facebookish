@@ -3,6 +3,7 @@ import colors from "./../../colors";
 import ProfilePicture from "./../userProfile/profilePicture";
 import { Link } from "react-router-dom";
 import getCommentCount from "./../../utils/getCommentCount";
+import Cookies from "universal-cookie";
 
 const StyledForm = styled.form`
   margin: 0 10px;
@@ -41,6 +42,8 @@ const StyledForm = styled.form`
   }
 `;
 
+const cookies = new Cookies();
+
 function CommentForm({
   postId,
   setFeed,
@@ -53,6 +56,8 @@ function CommentForm({
   src,
   pfp,
 }) {
+  const token = cookies.get("token");
+
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -71,8 +76,11 @@ function CommentForm({
     const commentRes = await fetch(`http://localhost:3000/comments/new`, {
       method: "POST",
       type: "cors",
-      headers: { "Content-Type": "application/json" },
       body: requestBody,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     });
     const commentData = await commentRes.json();
 
