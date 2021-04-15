@@ -52,6 +52,7 @@ const StyledSettings = styled.div`
       gap: 5px;
       align-content: space between;
       align-self: center;
+      word-break: break-word;
     }
 
     &:hover,
