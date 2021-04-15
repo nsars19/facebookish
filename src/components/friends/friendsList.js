@@ -50,6 +50,7 @@ const StyledFriends = styled.ul`
       grid-auto-flow: row;
       height: min-content;
       max-height: 100vh;
+      max-width: 300px;
       overflow-x: hidden;
       overflow-y: scroll;
 
