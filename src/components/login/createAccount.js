@@ -66,6 +66,14 @@ const StyledForm = styled.form`
     }
   }
 
+  .spacer {
+    border-top: 1px solid ${gray}33;
+    border-radius: 0;
+    margin-top: 24px;
+    width: 100%;
+    background: none;
+  }
+
   @media (min-width: 540px) {
     & {
       width: 400px;
@@ -106,28 +114,50 @@ function CreateAccountForm({ vis, toggle, setActiveUser, setToken }) {
       .catch((err) => console.error(err));
   };
 
+  const clearFields = () => {
+    setEmail("");
+    setPass("");
+    setFirstName("");
+    setLastName("");
+  };
+
+  const handleCancel = () => {
+    clearFields();
+    toggle();
+  };
+
   return (
     <StyledForm vis={vis} onSubmit={handleAccountCreation}>
       <input
         type="text"
         placeholder="First Name"
         onChange={handleFirstNameChange}
+        value={firstName}
       />
       <input
         type="text"
         placeholder="Last Name"
         onChange={handleLastNameChange}
+        value={lastName}
       />
-      <input type="email" placeholder="Email" onChange={handleEmailChange} />
+      <input
+        type="email"
+        placeholder="Email"
+        onChange={handleEmailChange}
+        value={email}
+      />
       <input
         type="password"
         onChange={handlePassChange}
         placeholder="Password"
         minLength="8"
         maxLength="50"
+        value={password}
       />
       <div className="btns">
         <input type="submit" value="Create Your Account!" />
+        <div className="spacer" />
+        <button onClick={handleCancel}>Cancel</button>
       </div>
     </StyledForm>
   );
