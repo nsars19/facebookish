@@ -130,9 +130,15 @@ function Form({ setActiveUser, setToken }) {
         errVis={errorModalVis}
         createVis={accountCreationVis}
       >
-        <input type="email" placeholder="Email" onChange={handleEmailChange} />
+        <input
+          type="email"
+          value={email}
+          placeholder="Email"
+          onChange={handleEmailChange}
+        />
         <input
           type="password"
+          value={pass}
           onChange={handlePassChange}
           placeholder="Password"
           minLength="8"
