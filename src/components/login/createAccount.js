@@ -92,10 +92,13 @@ function CreateAccountForm({ vis, toggle, setActiveUser, setToken }) {
   const handleFirstNameChange = (e) => setFirstName(e.target.value);
   const handleLastNameChange = (e) => setLastName(e.target.value);
 
+  const fieldsEmpty =
+    email === "" || password === "" || firstName === "" || lastName === "";
+
   const handleAccountCreation = async (e) => {
     e.preventDefault();
 
-    if (email === "" || password === "") return;
+    if (fieldsEmpty) return;
     if (!emailRegex.test(email)) return;
 
     const userData = { firstName, lastName, email, password };
