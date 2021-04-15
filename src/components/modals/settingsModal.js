@@ -2,6 +2,7 @@ import styled from "styled-components";
 import getCommentCount from "./../../utils/getCommentCount";
 import { AiFillEdit } from "react-icons/ai";
 import { RiChatDeleteFill } from "react-icons/ri";
+import Cookies from "universal-cookie";
 
 const StyledModal = styled.div`
   display: ${({ vis }) => (vis ? "flex" : "none")};
@@ -66,6 +67,8 @@ const StyledModal = styled.div`
   }
 `;
 
+const cookies = new Cookies();
+
 function SettingsModal(props) {
   const {
     modalVisible,
@@ -81,6 +84,8 @@ function SettingsModal(props) {
     togglePostEdit,
     toggleCommentEditStatus,
   } = props;
+
+  const token = cookies.get("token");
 
   async function refreshFeed() {
     let response;
@@ -110,19 +115,21 @@ function SettingsModal(props) {
   }
 
   async function deleteComment(e) {
-    const [post, author, commentId, parentId] = [
+    const [post, commentId, parentId] = [
       commentItem.post,
-      commentItem.author._id,
       commentItem._id,
       commentItem.parentId,
     ];
     const reqBodyData = parentId
-      ? { post, author, commentId, parentId }
-      : { post, author, commentId };
+      ? { post, commentId, parentId }
+      : { post, commentId };
     const reqBody = JSON.stringify(reqBodyData);
     const res = await fetch("http://localhost:3000/comments/delete", {
       method: "delete",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
       body: reqBody,
     });
     const data = await res.json();
