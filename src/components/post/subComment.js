@@ -76,6 +76,7 @@ function SubComment({
   homeFeed,
   postAuthor,
   setCommentCount,
+  pfp,
 }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [likeCount, setLikeCount] = useState(comment.likes.length);
@@ -167,6 +168,7 @@ function SubComment({
         postAuthor={postAuthor}
         setCommentCount={setCommentCount}
         src={comment.author.profilePhotoSrc}
+        pfp={pfp}
       />
     </StyledComment>
   );

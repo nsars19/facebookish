@@ -86,6 +86,7 @@ function Comment({
   homeFeed,
   postAuthor,
   setCommentCount,
+  pfp,
 }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [likeCount, setLikeCount] = useState(comment.likes.length);
@@ -177,7 +178,7 @@ function Comment({
           homeFeed={homeFeed}
           postAuthor={postAuthor}
           setCommentCount={setCommentCount}
-          src={comment.author.profilePhotoSrc}
+          pfp={pfp}
         />
       </StyledComment>
       <div className="sub-comments">
@@ -191,6 +192,7 @@ function Comment({
               setFeed={setFeed}
               homeFeed={homeFeed}
               setCommentCount={setCommentCount}
+              pfp={pfp}
             />
           </div>
         ))}

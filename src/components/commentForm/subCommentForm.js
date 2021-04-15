@@ -58,7 +58,7 @@ function SubCommentForm({
   currentUser,
   setCommentCount,
   parentId,
-  src,
+  pfp,
 }) {
   const token = cookies.get("token");
 
@@ -110,7 +110,7 @@ function SubCommentForm({
     <StyledForm onSubmit={handleSubmit} vis={subFormVis}>
       <div className="wrap">
         <Link to="/profile">
-          <ProfilePicture src={src} size={"25px"} userId={currentUser} />
+          <ProfilePicture src={pfp} size={"25px"} userId={currentUser} />
         </Link>
         <input
           type="text"

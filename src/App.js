@@ -121,6 +121,10 @@ const GlobalStyle = createGlobalStyle`
     div.post-comments {
       color: ${({ light }) => (light ? black : white)}cc;
     }
+
+    #post-loader {
+      background: ${({ light }) => (light ? white : gray)};
+    }
   }
 
   button,

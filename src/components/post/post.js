@@ -223,6 +223,7 @@ function Post({ post, setFeed, homeFeed, src, currentUser, pfp }) {
               homeFeed={homeFeed}
               postAuthor={post.author._id}
               setCommentCount={setCommentCount}
+              pfp={pfp}
             />
           </div>
         ))}
