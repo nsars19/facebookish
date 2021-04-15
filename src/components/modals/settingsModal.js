@@ -111,7 +111,7 @@ function SettingsModal(props) {
         Authorization: `Bearer ${token}`,
       },
       body: reqBody,
-    });
+    }).catch((err) => console.error(err));
 
     refreshFeed();
   }
@@ -133,7 +133,8 @@ function SettingsModal(props) {
         Authorization: `Bearer ${token}`,
       },
       body: reqBody,
-    });
+    }).catch((err) => console.error(err));
+
     const data = await res.json();
 
     setCommentCount(getCommentCount(data.comments));
