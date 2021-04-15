@@ -94,7 +94,8 @@ function Notifications({ currentUser }) {
       );
       const data = await res.json();
 
-      setNotifs(data);
+      if (Array.isArray(data)) setNotifs(data);
+      else setNotifs([]);
     }
 
     fetchNotifications();
