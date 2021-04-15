@@ -141,6 +141,7 @@ function CreateAccountForm({ vis, toggle, setActiveUser, setToken }) {
         placeholder="First Name"
         onChange={handleFirstNameChange}
         value={firstName}
+        maxLength="50"
         required
       />
       <input
@@ -148,6 +149,7 @@ function CreateAccountForm({ vis, toggle, setActiveUser, setToken }) {
         placeholder="Last Name"
         onChange={handleLastNameChange}
         value={lastName}
+        maxLength="50"
         required
       />
       <input
@@ -155,6 +157,7 @@ function CreateAccountForm({ vis, toggle, setActiveUser, setToken }) {
         placeholder="Email"
         onChange={handleEmailChange}
         value={email}
+        maxLength="100"
         required
       />
       <input
