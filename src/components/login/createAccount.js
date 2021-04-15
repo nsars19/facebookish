@@ -141,18 +141,21 @@ function CreateAccountForm({ vis, toggle, setActiveUser, setToken }) {
         placeholder="First Name"
         onChange={handleFirstNameChange}
         value={firstName}
+        required
       />
       <input
         type="text"
         placeholder="Last Name"
         onChange={handleLastNameChange}
         value={lastName}
+        required
       />
       <input
         type="email"
         placeholder="Email"
         onChange={handleEmailChange}
         value={email}
+        required
       />
       <input
         type="password"
@@ -161,8 +164,8 @@ function CreateAccountForm({ vis, toggle, setActiveUser, setToken }) {
         minLength="8"
         maxLength="50"
         value={password}
-      />
         required
+      />
       <div className="btns">
         <input type="submit" value="Create Your Account!" />
         <div className="spacer" />
