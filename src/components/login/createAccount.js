@@ -157,6 +157,7 @@ function CreateAccountForm({ vis, toggle, setActiveUser, setToken }) {
         maxLength="50"
         value={password}
       />
+        required
       <div className="btns">
         <input type="submit" value="Create Your Account!" />
         <div className="spacer" />
