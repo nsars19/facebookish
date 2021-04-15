@@ -88,7 +88,7 @@ function SubCommentForm({
       },
       body: requestBody,
     }).catch((err) => console.error(err));
-    
+
     const commentData = await commentRes.json();
 
     let response;
