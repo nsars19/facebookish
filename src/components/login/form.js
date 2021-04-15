@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import CreateAccountForm from "./createAccount";
 import colors from "./../../colors";
+import Cookies from "universal-cookie";
 const { white, gray, lightBlue, lightBlueHover, red } = colors;
 
 const StlyedForm = styled.form`
@@ -89,6 +90,8 @@ const StlyedForm = styled.form`
   }
 `;
 
+const cookies = new Cookies();
+
 function Form({ setActiveUser, setToken }) {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
@@ -120,6 +123,9 @@ function Form({ setActiveUser, setToken }) {
           setErrorVis(false);
           setToken(token);
           setActiveUser(user);
+
+          cookies.set("token", token);
+          cookies.set("currentUser", user);
         }
       })
       .catch((err) => console.error(err));
