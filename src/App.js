@@ -209,7 +209,6 @@ function App() {
             setLightMode={setLightMode}
             lightMode={lightMode}
             currentUser={currentUser}
-            setCurrentUser={setCurrentUser}
             focusRef={focusRef}
           />
           <Switch>

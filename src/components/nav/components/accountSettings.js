@@ -105,7 +105,6 @@ function AccountSettings({
   toggleVis,
   light,
   changeColorMode,
-  setCurrentUser,
 }) {
   const [fullName, setFullName] = useState(null);
   const [pfpSrc, setSrc] = useState(null);
@@ -121,7 +120,6 @@ function AccountSettings({
   }, [currentUser]);
 
   const handleLogout = () => {
-    setCurrentUser(null);
     cookies.set("currentUser", null);
     cookies.set("token", null);
     window.location.href = window.location.origin;
