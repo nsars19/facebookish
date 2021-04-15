@@ -3,6 +3,7 @@ import styled from "styled-components";
 import PostIcons from "./postIcons";
 import ImageHandlerModal from "./../../imageHandler/imageHandlerModal";
 import Form from "./form";
+import Cookies from "universal-cookie";
 
 const StyledStatusForm = styled.div`
   background: ${({ lm, g }) => (lm ? "#eee" : g)};
@@ -117,6 +118,7 @@ const StyledStatusForm = styled.div`
     }
   }
 `;
+const cookies = new Cookies();
 
 function StatusForm({
   colors,
@@ -131,6 +133,7 @@ function StatusForm({
   const [text, setText] = useState("");
   const [modalVis, setImgModalVis] = useState(false);
   const { black, gray, white, red, yellow } = colors;
+  const token = cookies.get("token");
 
   const focusRef = () => postRef.current.focus();
 
@@ -142,14 +145,17 @@ function StatusForm({
     // Prevent posting empty content
     if (!text) return;
 
-    const formData = { homeFeed, text, author: currentUser };
+    const formData = { homeFeed, text };
     const reqBody = JSON.stringify(formData);
 
     // Response returns the updated posts from the create method of the post controller.
     // This is to help minimize requests.
     const res = await fetch(`http://localhost:3000/posts/new`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
       body: reqBody,
     });
 
