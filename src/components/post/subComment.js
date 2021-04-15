@@ -11,6 +11,7 @@ import EditForm from "./editForm";
 
 const StyledComment = styled.div`
   padding: 5px;
+  padding-right: 15px;
   margin-left: 25px;
   position: relative;
   display: grid;
