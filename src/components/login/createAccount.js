@@ -103,7 +103,7 @@ function CreateAccountForm({ vis, toggle, setActiveUser, setToken }) {
   const handleAccountCreation = async (e) => {
     e.preventDefault();
 
-    if (checkIfFieldsEmpty) return;
+    if (fieldsEmpty) return;
     if (!emailRegex.test(email)) return;
 
     const userData = { firstName, lastName, email, password };
