@@ -123,6 +123,7 @@ function AccountSettings({
   const handleLogout = () => {
     setCurrentUser(null);
     cookies.set("currentUser", null);
+    cookies.set("token", null);
   };
 
   return (
