@@ -102,12 +102,14 @@ function SettingsModal(props) {
   }
 
   async function deletePost() {
-    const [postId, userId] = [postItem._id, user];
-    const reqBody = JSON.stringify({ postId, userId });
+    const reqBody = JSON.stringify({ postId: postItem._id });
 
     await fetch(`http://localhost:3000/posts/delete`, {
       method: "delete",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
       body: reqBody,
     });
 
