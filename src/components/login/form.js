@@ -41,7 +41,7 @@ const StlyedForm = styled.form`
     border: 1px solid #43df36;
     box-shadow: 0 0 2px #43df36;
   }
-  
+
   .btns {
     width: 100%;
 
@@ -140,6 +140,7 @@ function Form({ setActiveUser, setToken }) {
           value={email}
           placeholder="Email"
           onChange={handleEmailChange}
+          required
         />
         <input
           type="password"
@@ -148,6 +149,7 @@ function Form({ setActiveUser, setToken }) {
           placeholder="Password"
           minLength="8"
           maxLength="50"
+          required
         />
         <p className="error">{errorMsg}</p>
         <div className="btns">
