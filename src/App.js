@@ -167,13 +167,18 @@ const GlobalStyle = createGlobalStyle`
 const cookies = new Cookies();
 
 function App() {
-  cookies.set("light", cookies.get("light"));
+  cookies.set("light", cookies.get("light") || true);
+  const userCookie = cookies.get("currentUser");
+  const userToken = cookies.get("token");
   const isLight = cookies.get("light") === "true" ? true : false;
   const [lightMode, setLightMode] = useState(isLight);
-  const [currentUser, setCurrentUser] = useState(null);
-  const [token, setToken] = useState(null);
+  const [currentUser, setCurrentUser] = useState(
+    userCookie === "null" ? null : userCookie
+  );
+  const [token, setToken] = useState(userToken === "null" ? null : userToken);
   const [pfp, setPfp] = useState(null);
   const postRef = useRef(null);
+
   const focusRef = () => {
     if (postRef.current) postRef.current.focus();
   };
