@@ -87,7 +87,8 @@ function SubCommentForm({
         Authorization: `Bearer ${token}`,
       },
       body: requestBody,
-    });
+    }).catch((err) => console.error(err));
+    
     const commentData = await commentRes.json();
 
     let response;
