@@ -124,6 +124,7 @@ function AccountSettings({
     setCurrentUser(null);
     cookies.set("currentUser", null);
     cookies.set("token", null);
+    window.location.href = window.location.origin;
   };
 
   return (
