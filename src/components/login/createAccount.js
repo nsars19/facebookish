@@ -40,7 +40,7 @@ const StyledForm = styled.form`
     }
   }
 
-  input:valid {
+  input:valid:not(input[type="submit"]) {
     border: 1px solid #43df36;
     box-shadow: 0 0 2px #43df36;
   }
