@@ -81,7 +81,8 @@ function CommentForm({
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-    });
+    }).catch((err) => console.error(err));
+
     const commentData = await commentRes.json();
 
     let response;
