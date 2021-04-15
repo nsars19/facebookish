@@ -40,6 +40,11 @@ const StyledForm = styled.form`
     }
   }
 
+  input:valid {
+    border: 1px solid #43df36;
+    box-shadow: 0 0 2px #43df36;
+  }
+
   .btns {
     width: 100%;
 
@@ -98,7 +103,7 @@ function CreateAccountForm({ vis, toggle, setActiveUser, setToken }) {
   const handleAccountCreation = async (e) => {
     e.preventDefault();
 
-    if (fieldsEmpty) return;
+    if (checkIfFieldsEmpty) return;
     if (!emailRegex.test(email)) return;
 
     const userData = { firstName, lastName, email, password };
