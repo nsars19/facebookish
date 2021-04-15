@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import { useState } from "react";
+import CreateAccountForm from "./createAccount";
 import colors from "./../../colors";
 const { white, gray, lightBlue, lightBlueHover, red } = colors;
 
 const StlyedForm = styled.form`
-  display: grid;
+  display: ${({ createVis }) => (createVis ? "none" : "grid")};
   gap: 20px;
   width: 300px;
   padding: 18px;
@@ -88,6 +89,9 @@ function Form({ setActiveUser, setToken }) {
   const [pass, setPass] = useState("");
   const [errorModalVis, setErrorVis] = useState(false);
   const [errorMsg, setMsg] = useState("");
+  const [accountCreationVis, setAccCreationVis] = useState(false);
+
+  const toggleAccountCreator = () => setAccCreationVis(!accountCreationVis);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -116,28 +120,38 @@ function Form({ setActiveUser, setToken }) {
       .catch((err) => console.error(err));
   };
 
-  const handleAccountCreation = () => {};
-
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePassChange = (e) => setPass(e.target.value);
 
   return (
-    <StlyedForm onSubmit={handleLogin} errVis={errorModalVis}>
-      <input type="email" placeholder="Email" onChange={handleEmailChange} />
-      <input
-        type="password"
-        onChange={handlePassChange}
-        placeholder="Password"
-        minLength="8"
-        maxLength="50"
+    <>
+      <StlyedForm
+        onSubmit={handleLogin}
+        errVis={errorModalVis}
+        createVis={accountCreationVis}
+      >
+        <input type="email" placeholder="Email" onChange={handleEmailChange} />
+        <input
+          type="password"
+          onChange={handlePassChange}
+          placeholder="Password"
+          minLength="8"
+          maxLength="50"
+        />
+        <p className="error">{errorMsg}</p>
+        <div className="btns">
+          <input type="submit" value="Log In" />
+          <div className="spacer" />
+          <button onClick={toggleAccountCreator}>Create New Account</button>
+        </div>
+      </StlyedForm>
+      <CreateAccountForm
+        vis={accountCreationVis}
+        toggle={toggleAccountCreator}
+        setActiveUser={setActiveUser}
+        setToken={setToken}
       />
-      <p className="error">{errorMsg}</p>
-      <div className="btns">
-        <input type="submit" value="Log In" />
-        <div className="spacer" />
-        <button onClick={handleAccountCreation}>Create New Account</button>
-      </div>
-    </StlyedForm>
+    </>
   );
 }
 
