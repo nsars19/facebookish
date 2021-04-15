@@ -11,7 +11,7 @@ const StyledStatusForm = styled.div`
   padding-bottom: 6px;
   border-radius: 8px;
   margin: 10px auto;
-  margin-bottom: 0;
+  margin-bottom: 20px;
   position: relative;
   width: 95%;
   max-width: 750px;
