@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { AiFillPicture } from "react-icons/ai";
 import colors from "./../../colors";
 import Cookies from "universal-cookie";
+import Spinner from "./../spinner/spinner";
 
 const StyledHandler = styled.form`
   flex-direction: row;
@@ -118,6 +119,23 @@ const StyledHandler = styled.form`
       opacity: 70%;
     }
   }
+
+  .spinner {
+    position: absolute;
+    bottom: 26px;
+    left: 33%;
+  }
+
+  @media (min-width: 420px) {
+    .spinner {
+      left: 36%;
+    }
+  }
+  @media (min-width: 520px) {
+    .spinner {
+      left: 150px;
+    }
+  }
 `;
 const cookies = new Cookies();
 
@@ -132,6 +150,7 @@ function ImageHandler({
   const [imgFile, setImage] = useState(null);
   const [src, setSrc] = useState(null);
   const [text, setText] = useState("");
+  const [spinnerVis, setSpinnerVis] = useState(false);
   const token = cookies.get("token");
 
   const handleImgInput = (e) => {
@@ -143,6 +162,8 @@ function ImageHandler({
     e.preventDefault();
 
     if (!imgFile) return;
+
+    setSpinnerVis(true);
 
     const formData = new FormData();
     formData.append("file", imgFile);
@@ -165,6 +186,7 @@ function ImageHandler({
         if (profile) setUpdateStatus(true);
 
         clearHandler();
+        setSpinnerVis(false);
       })
       .catch((err) => console.error(err));
   };
@@ -211,6 +233,7 @@ function ImageHandler({
         type="submit"
         value={profile ? "Change profile picture" : "Post"}
       />
+      <Spinner className="spinner" vis={spinnerVis} />
       <button id="esc" onClick={clearHandler}>
         <span />
         <span />

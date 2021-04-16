@@ -125,6 +125,10 @@ const GlobalStyle = createGlobalStyle`
     #post-loader {
       background: ${({ light }) => (light ? white : gray)};
     }
+
+    #spinner {
+      color: ${white};
+    }
   }
 
   button,

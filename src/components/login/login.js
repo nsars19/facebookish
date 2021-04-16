@@ -2,6 +2,7 @@ import styled, { createGlobalStyle } from "styled-components";
 import Form from "./form";
 import colors from "./../../colors";
 import { AiFillGithub } from "react-icons/ai";
+import { useState } from "react";
 const { white, black, lightBlue } = colors;
 
 const LoginBody = createGlobalStyle`
@@ -75,10 +76,51 @@ const StyledLoginPage = styled.div`
 `;
 
 function LoginPage({ setCurrentUser }) {
+  const [img, setImg] = useState(null);
+  const [src, setSrc] = useState(null);
+
+  const handleChange = (e) => {
+    setImg(e.target.files[0]);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!img) return;
+
+    const formData = new FormData();
+    formData.append("file", img);
+
+    const url = "http://localhost:3000/s3/upload/s3Test/123456";
+
+    const res = await fetch(url, {
+      mode: "cors",
+      method: "post",
+      body: formData,
+      formData,
+    });
+
+    const data = await res.json();
+    console.log(data);
+    setSrc(`http://localhost:3000/images/${data.key}`);
+  };
+
   return (
     <>
       <LoginBody />
       <StyledLoginPage>
+        <img src={src} alt="" />
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="uploader">
+            <input
+              id="uploader"
+              name="uploader"
+              type="file"
+              onChange={handleChange}
+            />
+            <input type="submit" value="Submit" />
+          </label>
+        </form>
         <span>
           <h1>facespace</h1>
           <h3>personalize your space and connect with others</h3>
