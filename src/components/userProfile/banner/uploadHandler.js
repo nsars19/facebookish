@@ -3,6 +3,7 @@ import { AiFillPicture } from "react-icons/ai";
 import colors from "./../../../colors";
 import { useState } from "react";
 import Cookies from "universal-cookie";
+import Spinner from "./../../spinner/spinner";
 
 const StyledHandler = styled.form`
   flex-direction: row;
@@ -125,6 +126,23 @@ const StyledHandler = styled.form`
       opacity: 70%;
     }
   }
+
+  .spinner {
+    position: absolute;
+    bottom: 25px;
+    left: 35px;
+  }
+
+  @media (min-width: 400px) {
+    .spinner {
+      left: 17%;
+    }
+  }
+  @media (min-width: 450px) {
+    .spinner {
+      left: 20%;
+    }
+  }
 `;
 
 const cookies = new Cookies();
@@ -132,6 +150,7 @@ const cookies = new Cookies();
 function UploadHandler({ user, toggleOff, setBannerSrc }) {
   const [imgFile, setImage] = useState(null);
   const [src, setSrc] = useState(null);
+  const [spinnerVis, setSpinnerVis] = useState(false);
   const token = cookies.get("token");
 
   const handleImgInput = (files) => {
@@ -143,6 +162,8 @@ function UploadHandler({ user, toggleOff, setBannerSrc }) {
     e.preventDefault();
 
     if (!imgFile) return;
+
+    setSpinnerVis(true);
 
     const formData = new FormData();
     formData.append("file", imgFile);
@@ -161,6 +182,7 @@ function UploadHandler({ user, toggleOff, setBannerSrc }) {
 
         setBannerSrc(data.src);
         clearHandler();
+        setSpinnerVis(false);
       })
       .catch((err) => console.error(err));
   };
@@ -190,6 +212,7 @@ function UploadHandler({ user, toggleOff, setBannerSrc }) {
       </label>
       <img src={src} alt="preview" className="banner-preview" />
       <input type="submit" value="Change cover photo" />
+      <Spinner className="spinner" vis={spinnerVis} />
       <button id="esc" onClick={clearHandler}>
         <span />
         <span />
