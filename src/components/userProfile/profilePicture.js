@@ -55,7 +55,7 @@ function ProfilePicture({
   return (
     <StyledProfile lm={lightMode} black={black} size={size}>
       <div className="frame">
-        {!src && <Skeleton />}
+        {!src && <Skeleton circle={true} height={size} width={size} />}
         {src && <img src={imgSrc || fullSrc} alt="profile" loading="lazy" />}
       </div>
     </StyledProfile>
