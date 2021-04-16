@@ -6,7 +6,7 @@ const StyledSpinner = styled.div`
 
   .spinner {
     font-size: ${({ size }) => size || 20}px;
-    animation: spin 1s ease infinite;
+    animation: spin 1s cubic-bezier(0.18, 0.89, 0.32, 1.28) infinite;
   }
 
   @keyframes spin {
