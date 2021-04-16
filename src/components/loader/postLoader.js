@@ -8,6 +8,9 @@ const StyledLoader = styled.div`
   padding: 18px;
   border-radius: 8px;
   margin-bottom: 10px;
+  box-shadow: 0 0.1px 0.8px rgba(0, 0, 0, 0.02),
+    0 0.1px 1.9px rgba(0, 0, 0, 0.028), 0 0.3px 3.5px rgba(0, 0, 0, 0.035),
+    0 0.4px 6.3px rgba(0, 0, 0, 0.042), 0 0.8px 11.7px rgba(0, 0, 0, 0.05);
 
   .post-detail {
     display: flex;
