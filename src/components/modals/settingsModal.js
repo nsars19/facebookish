@@ -3,6 +3,8 @@ import getCommentCount from "./../../utils/getCommentCount";
 import { AiFillEdit } from "react-icons/ai";
 import { RiChatDeleteFill } from "react-icons/ri";
 import Cookies from "universal-cookie";
+import Spinner from "./../spinner/spinner";
+import { useState } from "react";
 
 const StyledModal = styled.div`
   display: ${({ vis }) => (vis ? "flex" : "none")};
@@ -65,6 +67,10 @@ const StyledModal = styled.div`
   li .content.del {
     margin-top: 0;
   }
+
+  .icon {
+    display: ${({ spinnerVis }) => (spinnerVis ? "none" : "flex")};
+  }
 `;
 
 const cookies = new Cookies();
@@ -85,6 +91,7 @@ function SettingsModal(props) {
     toggleCommentEditStatus,
   } = props;
 
+  const [spinnerVis, setSpinnerVis] = useState(false);
   const token = cookies.get("token");
 
   async function refreshFeed() {
@@ -111,7 +118,12 @@ function SettingsModal(props) {
         Authorization: `Bearer ${token}`,
       },
       body: reqBody,
-    }).catch((err) => console.error(err));
+    })
+      .then(() => {
+        setSpinnerVis(false);
+        toggleModal();
+      })
+      .catch((err) => console.error(err));
 
     refreshFeed();
   }
@@ -142,7 +154,7 @@ function SettingsModal(props) {
   }
 
   return (
-    <StyledModal vis={modalVisible}>
+    <StyledModal vis={modalVisible} spinnerVis={spinnerVis}>
       <ul className="menu">
         <li
           onClick={() => {
@@ -158,12 +170,13 @@ function SettingsModal(props) {
         <li className="spacer" />
         <li
           onClick={(e) => {
+            setSpinnerVis(true);
             isPost ? deletePost() : deleteComment(e);
-            toggleModal();
           }}
         >
           <div className="content del">
-            <RiChatDeleteFill />
+            <RiChatDeleteFill className="icon" />
+            <Spinner className="spinner" vis={spinnerVis} />
             <button>Delete {isPost ? "post" : "comment"}</button>
           </div>
         </li>
