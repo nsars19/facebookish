@@ -10,6 +10,13 @@ const StyledNotifications = styled.button`
   align-items: center;
   cursor: pointer;
   position: relative;
+
+  &:hover,
+  &:active {
+    color: ${colors.black};
+    transition: color 50ms ease;
+  }
+
   &::after {
     content: "${({ notifLength }) =>
       notifLength > 9 ? "9+" : notifLength > 0 ? notifLength : ""}";
