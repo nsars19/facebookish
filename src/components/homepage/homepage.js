@@ -1,12 +1,7 @@
-import styled from "styled-components";
 import StatusForm from "./statusForm/statusForm";
 import colors from "./../../colors";
 import Feed from "./../feed/feed";
 import { useEffect, useState } from "react";
-
-const StyledHomePage = styled.div`
-  // color: black;
-`;
 
 function HomePage({ currentUser, lightMode, postRef, pfp }) {
   const [posts, setPosts] = useState(null);
@@ -35,7 +30,7 @@ function HomePage({ currentUser, lightMode, postRef, pfp }) {
   }, [currentUser]);
 
   return (
-    <StyledHomePage>
+    <>
       <StatusForm
         colors={colors}
         postRef={postRef}
@@ -53,7 +48,7 @@ function HomePage({ currentUser, lightMode, postRef, pfp }) {
         setPosts={setPosts}
         homeFeed
       />
-    </StyledHomePage>
+    </>
   );
 }
 
