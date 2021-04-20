@@ -3,7 +3,7 @@ import { useState } from "react";
 import emailRegex from "./../../utils/emailRegex";
 import colors from "./../../colors";
 import Cookies from "universal-cookie";
-const { gray, lightBlue, lightBlueHover, white } = colors;
+const { gray, lightBlue, lightBlueHover, white, red } = colors;
 
 const StyledForm = styled.form`
   position: absolute;
@@ -80,6 +80,26 @@ const StyledForm = styled.form`
     background: none;
   }
 
+  .err-empty {
+    display: none;
+  }
+  .err-text {
+    position: absolute;
+    bottom: 240px;
+    left: 27px;
+    text-align: start;
+    color: ${red};
+    font-size: 12px;
+    animation: appear 0.3s ease;
+  }
+
+  @keyframes appear {
+    from {
+      opacity: 0;
+      left: 0;
+    }
+  }
+
   @media (min-width: 540px) {
     & {
       width: 400px;
@@ -94,6 +114,7 @@ function CreateAccountForm({ vis, toggle, setActiveUser }) {
   const [password, setPass] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePassChange = (e) => setPass(e.target.value);
@@ -117,12 +138,16 @@ function CreateAccountForm({ vis, toggle, setActiveUser }) {
       body: JSON.stringify(userData),
     })
       .then(async (res) => {
-        const { token, user } = await res.json();
+        const data = await res.json();
+        const { token, user } = data;
 
-        setActiveUser(user);
-
-        cookies.set("token", token);
-        cookies.set("currentUser", user);
+        if (data.error) {
+          setErrorMsg(data.message);
+        } else {
+          setActiveUser(user);
+          cookies.set("token", token);
+          cookies.set("currentUser", user);
+        }
       })
       .catch((err) => console.error(err));
   };
@@ -132,6 +157,7 @@ function CreateAccountForm({ vis, toggle, setActiveUser }) {
     setPass("");
     setFirstName("");
     setLastName("");
+    setErrorMsg("");
   };
 
   const handleCancel = () => {
@@ -174,6 +200,11 @@ function CreateAccountForm({ vis, toggle, setActiveUser }) {
         value={password}
         required
       />
+      {errorMsg ? (
+        <p className="err-text">{errorMsg}</p>
+      ) : (
+        <div className="err-empty" />
+      )}
       <div className="btns">
         <input type="submit" value="Create Your Account!" />
         <div className="spacer" />
