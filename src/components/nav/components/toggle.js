@@ -37,9 +37,9 @@ function Toggle({ colors, light }) {
 
   return (
     <StyledToggle gray={gray} white={white} light={light}>
-      <div className="toggle">
-        <div className="rail" />
-        <div className="ball" />
+      <div className="toggle modal-component">
+        <div className="rail modal-component" />
+        <div className="ball modal-component" />
       </div>
     </StyledToggle>
   );

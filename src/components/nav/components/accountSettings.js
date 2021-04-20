@@ -166,7 +166,7 @@ function AccountSettings({
           <div className="icon">
             <Toggle colors={colors} light={light} />
           </div>
-          <p>Toggle color mode</p>
+          <p className="modal-component">Toggle color mode</p>
         </li>
         <li onClick={handleLogout} className="logout modal-component">
           <div className="icon">
