@@ -10,7 +10,6 @@ const StyledHomePage = styled.div`
 
 function HomePage({ currentUser, lightMode, postRef, pfp }) {
   const [posts, setPosts] = useState(null);
-  const [userData, setUserData] = useState(null);
   const [pfpSrc, setSrc] = useState(null);
 
   useEffect(() => {
@@ -31,7 +30,6 @@ function HomePage({ currentUser, lightMode, postRef, pfp }) {
       );
 
       const data = await response.json();
-      setUserData(data);
       setSrc(data.profilePhotoSrc);
     })();
   }, [currentUser]);
