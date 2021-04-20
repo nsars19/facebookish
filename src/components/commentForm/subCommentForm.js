@@ -79,24 +79,29 @@ function SubCommentForm({
     };
     const requestBody = JSON.stringify(bodyData);
 
-    const commentRes = await fetch(`http://localhost:3000/comments/child/new`, {
-      method: "POST",
-      type: "cors",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: requestBody,
-    }).catch((err) => console.error(err));
+    const commentRes = await fetch(
+      `https://frozen-thicket-71687.herokuapp.com/comments/child/new`,
+      {
+        method: "POST",
+        type: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: requestBody,
+      }
+    ).catch((err) => console.error(err));
 
     const commentData = await commentRes.json();
 
     let response;
     if (homeFeed) {
-      response = await fetch(`http://localhost:3000/posts/feed/${currentUser}`);
+      response = await fetch(
+        `https://frozen-thicket-71687.herokuapp.com/posts/feed/${currentUser}`
+      );
     } else {
       response = await fetch(
-        `http://localhost:3000/posts/byuser/${postAuthor}`
+        `https://frozen-thicket-71687.herokuapp.com/posts/byuser/${postAuthor}`
       );
     }
     const data = await response.json();

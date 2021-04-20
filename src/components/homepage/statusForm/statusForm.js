@@ -150,14 +150,17 @@ function StatusForm({
 
     // Response returns the updated posts from the create method of the post controller.
     // This is to help minimize requests.
-    const res = await fetch(`http://localhost:3000/posts/new`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: reqBody,
-    });
+    const res = await fetch(
+      `https://frozen-thicket-71687.herokuapp.com/posts/new`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: reqBody,
+      }
+    );
 
     const data = await res.json();
     setFeed(data);

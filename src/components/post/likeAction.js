@@ -12,7 +12,9 @@ function LikeAction({ user, post, comment, setLikeCount }) {
       : JSON.stringify({ user, comment });
 
     const res = await fetch(
-      `http://localhost:3000/likes/like-${post ? "post" : "comment"}`,
+      `https://frozen-thicket-71687.herokuapp.com/likes/like-${
+        post ? "post" : "comment"
+      }`,
       {
         method: "post",
         headers: { "Content-Type": "application/json" },

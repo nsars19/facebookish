@@ -25,7 +25,7 @@ function Users({ currentUser }) {
 
   useEffect(() => {
     (async function fetchUsers() {
-      const url = "http://localhost:3000";
+      const url = "https://frozen-thicket-71687.herokuapp.com";
       const currentUserObj = await fetch(`${url}/users/${currentUser}`);
       const users = await fetch(`${url}/users/find-users/${currentUser}`);
       const received = await fetch(`${url}/friends/pending/${currentUser}`);

@@ -110,7 +110,7 @@ function Notifications({ currentUser }) {
   useEffect(() => {
     async function fetchNotifications() {
       const res = await fetch(
-        `http://localhost:3000/notifications/${currentUser}`
+        `https://frozen-thicket-71687.herokuapp.com/notifications/${currentUser}`
       );
       const data = await res.json();
 
@@ -127,11 +127,14 @@ function Notifications({ currentUser }) {
     return async () => {
       const body = JSON.stringify({ notifId, userId: currentUser });
 
-      const res = await fetch("http://localhost:3000/notifications/complete", {
-        method: "put",
-        headers: { "Content-Type": "application/json" },
-        body,
-      });
+      const res = await fetch(
+        "https://frozen-thicket-71687.herokuapp.com/notifications/complete",
+        {
+          method: "put",
+          headers: { "Content-Type": "application/json" },
+          body,
+        }
+      );
 
       const data = await res.json();
       setNotifs(data);

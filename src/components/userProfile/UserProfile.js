@@ -19,7 +19,9 @@ function UserProfile({ colors, lightMode, user, currentUser, pfp, postRef }) {
 
   useEffect(() => {
     (async function fetchUserData() {
-      const dataResponse = await fetch(`http://localhost:3000/users/${userId}`);
+      const dataResponse = await fetch(
+        `https://frozen-thicket-71687.herokuapp.com/users/${userId}`
+      );
       const data = await dataResponse.json();
 
       setFriendStatus(data.pendingFriends.includes(currentUser));
@@ -34,7 +36,7 @@ function UserProfile({ colors, lightMode, user, currentUser, pfp, postRef }) {
   useEffect(() => {
     (async function fetchPosts() {
       const response = await fetch(
-        `http://localhost:3000/posts/byuser/${userId}`
+        `https://frozen-thicket-71687.herokuapp.com/posts/byuser/${userId}`
       );
 
       const data = await response.json();

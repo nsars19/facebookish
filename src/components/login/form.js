@@ -106,8 +106,9 @@ function Form({ setActiveUser }) {
 
     if (email === "" || pass === "") return;
 
-    await fetch("http://localhost:3000/login", {
+    await fetch("https://frozen-thicket-71687.herokuapp.com/login", {
       method: "post",
+      mode: "cors",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, pass }),
     })

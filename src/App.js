@@ -195,7 +195,9 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
-      const res = await fetch(`http://localhost:3000/users/${currentUser}`);
+      const res = await fetch(
+        `https://frozen-thicket-71687.herokuapp.com/users/${currentUser}`
+      );
       const data = await res.json();
       setPfp(data.profilePhotoSrc);
     }

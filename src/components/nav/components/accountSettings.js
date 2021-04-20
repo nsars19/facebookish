@@ -126,7 +126,9 @@ function AccountSettings({
 
   useEffect(() => {
     (async function fetchUserData() {
-      const res = await fetch(`http://localhost:3000/users/${currentUser}`);
+      const res = await fetch(
+        `https://frozen-thicket-71687.herokuapp.com/users/${currentUser}`
+      );
       const data = await res.json();
 
       setFullName(`${data.firstName} ${data.lastName}`);

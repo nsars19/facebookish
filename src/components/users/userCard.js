@@ -94,7 +94,7 @@ function UserCard({ user, amtCommon, currentUser, requested }) {
     const accepterId = currentUser;
     const body = JSON.stringify({ senderId, accepterId });
 
-    await fetch("http://localhost:3000/friends/accept", {
+    await fetch("https://frozen-thicket-71687.herokuapp.com/friends/accept", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body,
@@ -109,7 +109,7 @@ function UserCard({ user, amtCommon, currentUser, requested }) {
     const denierId = currentUser;
     const body = JSON.stringify({ senderId, denierId });
 
-    await fetch("http://localhost:3000/friends/deny", {
+    await fetch("https://frozen-thicket-71687.herokuapp.com/friends/deny", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body,

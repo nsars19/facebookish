@@ -109,10 +109,12 @@ function SettingsModal(props) {
   async function refreshFeed() {
     let response;
     if (homeFeed) {
-      response = await fetch(`http://localhost:3000/posts/feed/${user}`);
+      response = await fetch(
+        `https://frozen-thicket-71687.herokuapp.com/posts/feed/${user}`
+      );
     } else {
       response = await fetch(
-        `http://localhost:3000/posts/byuser/${postAuthor}`
+        `https://frozen-thicket-71687.herokuapp.com/posts/byuser/${postAuthor}`
       );
     }
     const data = await response.json();
@@ -123,7 +125,7 @@ function SettingsModal(props) {
   async function deletePost() {
     const reqBody = JSON.stringify({ postId: postItem._id });
 
-    await fetch(`http://localhost:3000/posts/delete`, {
+    await fetch(`https://frozen-thicket-71687.herokuapp.com/posts/delete`, {
       method: "delete",
       headers: {
         "Content-Type": "application/json",
@@ -150,14 +152,17 @@ function SettingsModal(props) {
       ? { post, commentId, parentId }
       : { post, commentId };
     const reqBody = JSON.stringify(reqBodyData);
-    const res = await fetch("http://localhost:3000/comments/delete", {
-      method: "delete",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: reqBody,
-    }).catch((err) => console.error(err));
+    const res = await fetch(
+      "https://frozen-thicket-71687.herokuapp.com/comments/delete",
+      {
+        method: "delete",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: reqBody,
+      }
+    ).catch((err) => console.error(err));
 
     const data = await res.json();
 
