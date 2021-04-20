@@ -109,6 +109,21 @@ function AccountSettings({
   const [fullName, setFullName] = useState(null);
   const [pfpSrc, setSrc] = useState(null);
 
+  const toggleModalOff = (e) => {
+    if ([...e.target.classList].includes("modal-component")) return;
+    if (modalVis) toggleVis();
+  };
+
+  useEffect(() => {
+    document.querySelector("body").addEventListener("click", toggleModalOff);
+
+    return () => {
+      document
+        .querySelector("body")
+        .removeEventListener("click", toggleModalOff);
+    };
+  });
+
   useEffect(() => {
     (async function fetchUserData() {
       const res = await fetch(`http://localhost:3000/users/${currentUser}`);
@@ -126,25 +141,34 @@ function AccountSettings({
   };
 
   return (
-    <StyledSettings vis={modalVis} light={light} id="settings-modal">
-      <Link to="/profile" className="name-container" onClick={toggleVis}>
+    <StyledSettings
+      vis={modalVis}
+      light={light}
+      id="settings-modal"
+      className="modal-component"
+    >
+      <Link
+        to="/profile"
+        className="name-container modal-component"
+        onClick={toggleVis}
+      >
         <div className="pfp">
           <ProfilePicture src={pfpSrc} userId={currentUser} size={"60px"} />
         </div>
-        <div className="name-container-right">
+        <div className="name-container-right modal-component">
           <h3>{fullName}</h3>
           <p>See your profile</p>
         </div>
       </Link>
-      <div className="spacer" />
-      <ul>
-        <li onClick={changeColorMode}>
+      <div className="spacer modal-component" />
+      <ul className="modal-component">
+        <li onClick={changeColorMode} className="modal-component">
           <div className="icon">
             <Toggle colors={colors} light={light} />
           </div>
           <p>Toggle color mode</p>
         </li>
-        <li onClick={handleLogout} className="logout">
+        <li onClick={handleLogout} className="logout modal-component">
           <div className="icon">
             <IoLogOutOutline />
           </div>
