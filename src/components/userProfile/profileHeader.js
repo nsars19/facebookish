@@ -171,7 +171,6 @@ function ProfileHeader(props) {
       lm={lightMode}
       sameUser={currentUser === userId}
       className="grid-prof-head"
-      bg={"http://localhost:3000/" + pfpSrc}
     >
       <div className="banner">
         {userId === currentUser ? bannerUploader : <div />}
