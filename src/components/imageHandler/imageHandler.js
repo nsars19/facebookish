@@ -123,17 +123,17 @@ const StyledHandler = styled.form`
   .spinner {
     position: absolute;
     bottom: 26px;
-    left: 33%;
+    left: ${({ pfp }) => (pfp ? "10%" : "33%")};
   }
 
   @media (min-width: 420px) {
     .spinner {
-      left: 36%;
+      left: ${({ pfp }) => (pfp ? "16%" : "36%")};
     }
   }
   @media (min-width: 520px) {
     .spinner {
-      left: 150px;
+      left: ${({ pfp }) => (pfp ? "20%" : "150px")};
     }
   }
 `;
@@ -206,6 +206,7 @@ function ImageHandler({
       onSubmit={handleSubmit}
       encType="multipart/form-data"
       className="modal-component"
+      pfp={profile}
     >
       <input
         type="file"
