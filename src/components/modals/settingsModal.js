@@ -4,7 +4,7 @@ import { AiFillEdit } from "react-icons/ai";
 import { RiChatDeleteFill } from "react-icons/ri";
 import Cookies from "universal-cookie";
 import Spinner from "./../spinner/spinner";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const StyledModal = styled.div`
   display: ${({ vis }) => (vis ? "flex" : "none")};
@@ -93,6 +93,18 @@ function SettingsModal(props) {
 
   const [spinnerVis, setSpinnerVis] = useState(false);
   const token = cookies.get("token");
+
+  const toggleSettingsOff = () => {
+    if (modalVisible) toggleModal();
+  };
+
+  useEffect(() => {
+    window.addEventListener("click", toggleSettingsOff);
+
+    return () => {
+      window.removeEventListener("click", toggleSettingsOff);
+    };
+  });
 
   async function refreshFeed() {
     let response;
