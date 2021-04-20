@@ -205,6 +205,7 @@ function ImageHandler({
       id="img-form"
       onSubmit={handleSubmit}
       encType="multipart/form-data"
+      className="modal-component"
     >
       <input
         type="file"
@@ -212,10 +213,14 @@ function ImageHandler({
         id={postInput ? "post-file" : "file"}
         accept=".png, .jpeg, .jpg"
         onChange={handleImgInput}
+        className="modal-component"
       />
-      <label htmlFor={postInput ? "post-file" : "file"}>
-        <AiFillPicture className="upload-icon icon" />
-        <p className="upload-txt">Upload an image</p>
+      <label
+        htmlFor={postInput ? "post-file" : "file"}
+        className="modal-component"
+      >
+        <AiFillPicture className="upload-icon icon modal-component" />
+        <p className="upload-txt modal-component">Upload an image</p>
       </label>
       {profile ? (
         <div />
@@ -226,15 +231,17 @@ function ImageHandler({
           placeholder="What's on your mind?"
           onChange={handleInputChange}
           value={text}
+          className="modal-component"
         />
       )}
-      <img src={src} alt="" />
+      <img src={src} alt="" className="modal-component" />
       <input
         type="submit"
         value={profile ? "Change profile picture" : "Post"}
+        className="modal-component"
       />
       <Spinner className="spinner" vis={spinnerVis} />
-      <button id="esc" onClick={clearHandler}>
+      <button id="esc" onClick={clearHandler} className="modal-component">
         <span />
         <span />
       </button>

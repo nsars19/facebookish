@@ -30,7 +30,9 @@ function ImageHandlerModal({
   setUpdateStatus,
   postInput,
 }) {
-  const toggleModalOff = () => {
+  const toggleModalOff = (e) => {
+    if (e.target.tagName === "path") return;
+    if ([...e.target.classList].includes("modal-component")) return;
     if (vis) toggle();
   };
 
