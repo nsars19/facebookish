@@ -155,7 +155,10 @@ function ProfileHeader(props) {
   );
 
   const banner = (
-    <img src={"http://localhost:3000/" + bannerSrc} alt="profile banner" />
+    <img
+      src={"http://localhost:3000/images/" + bannerSrc}
+      alt="profile banner"
+    />
   );
 
   const bannerUploader = (

@@ -133,9 +133,11 @@ function Post({ post, setFeed, homeFeed, src, currentUser, pfp }) {
   useEffect(() => {
     (async function getImg() {
       if (post.photo) {
-        const path = post.photo.path;
-        const res = await fetch(`http://localhost:3000/${path}`);
-        setImg(res.url);
+        // const path = post.photo.path;
+        // const res = await fetch(`http://localhost:3000/${path}`);
+        // setImg(res.url);
+        const key = post.photo.key;
+        setImg(`http://localhost:3000/images/${key}`);
       } else {
         return;
       }

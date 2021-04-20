@@ -60,7 +60,7 @@ const StyledCard = styled.div`
 `;
 
 function FriendCard({ friend, lightMode }) {
-  const src = "http://localhost:3000/" + friend.profilePhotoSrc;
+  const src = "http://localhost:3000/images/" + friend.profilePhotoSrc;
 
   return (
     <StyledCard lightMode={lightMode}>

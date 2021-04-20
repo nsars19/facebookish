@@ -38,7 +38,7 @@ function ProfilePicture({
   userId,
 }) {
   const [imgSrc, setSrc] = useState(null);
-  const fullSrc = "http://localhost:3000/" + src;
+  const fullSrc = "http://localhost:3000/images/" + src;
 
   useEffect(() => {
     if (needsUpdate) {
