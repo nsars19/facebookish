@@ -48,14 +48,18 @@ function Notification({ notif, user, markRead }) {
   };
 
   return (
-    <StyledNotification id="notif-item" onClick={markRead(notif._id)}>
+    <StyledNotification
+      id="notif-item"
+      onClick={markRead(notif._id)}
+      className="modal-component"
+    >
       <ProfilePicture size={"60px"} src={notif.sender.profilePhotoSrc} />
-      <div className="notif-detail">
-        <p>
+      <div className="notif-detail modal-component">
+        <p className="modal-component">
           <b>{sender}</b>
           {formatSentence(notif.notificationType)}
         </p>
-        <p>{moment(notif.createdAt).fromNow()}</p>
+        <p className="modal-component">{moment(notif.createdAt).fromNow()}</p>
       </div>
     </StyledNotification>
   );

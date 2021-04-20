@@ -87,6 +87,19 @@ function Notifications({ currentUser }) {
   const [notifsModal, setNotifsVis] = useState(false);
   const [notifs, setNotifs] = useState([]);
 
+  const toggleOffNotifs = (e) => {
+    if ([...e.target.classList].includes("modal-component")) return;
+    if (notifsModal) setNotifsVis(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener("click", toggleOffNotifs);
+
+    return () => {
+      window.removeEventListener("click", toggleOffNotifs);
+    };
+  });
+
   useEffect(() => {
     async function fetchNotifications() {
       const res = await fetch(
@@ -119,7 +132,7 @@ function Notifications({ currentUser }) {
   };
 
   const mapNotifs = notifs.map((notif) => (
-    <li key={notif._id}>
+    <li key={notif._id} className="modal-component">
       <Notification notif={notif} user={currentUser} markRead={markRead} />
     </li>
   ));
@@ -129,10 +142,14 @@ function Notifications({ currentUser }) {
       <StyledNotifications onClick={toggle} notifLength={notifs.length}>
         <IoNotifications />
       </StyledNotifications>
-      <StyledNotifs vis={notifsModal} id="notif-modal">
-        <div className="notif-top">
-          <h1>Notifications</h1>
-          <p>click to mark as read</p>
+      <StyledNotifs
+        vis={notifsModal}
+        id="notif-modal"
+        className="modal-component"
+      >
+        <div className="notif-top modal-component">
+          <h1 className="modal-component">Notifications</h1>
+          <p className="modal-component">click to mark as read</p>
         </div>
         {mapNotifs}
       </StyledNotifs>
