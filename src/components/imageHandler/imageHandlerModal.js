@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 import ImageHandler from "./imageHandler";
 
@@ -29,6 +30,18 @@ function ImageHandlerModal({
   setUpdateStatus,
   postInput,
 }) {
+  const toggleModalOff = () => {
+    if (vis) toggle();
+  };
+
+  useEffect(() => {
+    window.addEventListener("click", toggleModalOff);
+
+    return () => {
+      window.removeEventListener("click", toggleModalOff);
+    };
+  });
+
   return (
     <StyledModal vis={vis}>
       <ImageHandler
