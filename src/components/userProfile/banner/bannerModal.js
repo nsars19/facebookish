@@ -23,6 +23,7 @@ const StyledBanner = styled.div`
 
 function BannerModal({ vis, toggleOff, user, setBannerSrc }) {
   const toggleModalOff = (e) => {
+    if (e.target.tagName === "path") return;
     if ([...e.target.classList].includes("modal-component")) return;
     if (vis) toggleOff();
   };
