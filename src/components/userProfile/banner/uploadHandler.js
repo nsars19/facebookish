@@ -198,6 +198,7 @@ function UploadHandler({ user, toggleOff, setBannerSrc }) {
       id="img-form"
       onSubmit={handleSubmit}
       encType="multipart/form-data"
+      className="modal-component"
     >
       <input
         type="file"
@@ -205,15 +206,20 @@ function UploadHandler({ user, toggleOff, setBannerSrc }) {
         id="banner-file"
         accept=".png, .jpeg, .jpg"
         onChange={(e) => handleImgInput([...e.target.files])}
+        className="modal-component"
       />
-      <label htmlFor="banner-file">
-        <AiFillPicture className="banner-upload-icon banner-icon" />
-        <p className="banner-upload-txt">Upload an image</p>
+      <label htmlFor="banner-file" className="modal-component">
+        <AiFillPicture className="banner-upload-icon banner-icon modal-component" />
+        <p className="banner-upload-txt modal-component">Upload an image</p>
       </label>
-      <img src={src} alt="preview" className="banner-preview" />
-      <input type="submit" value="Change cover photo" />
+      <img src={src} alt="preview" className="banner-preview modal-component" />
+      <input
+        type="submit"
+        value="Change cover photo"
+        className="modal-component"
+      />
       <Spinner className="spinner" vis={spinnerVis} />
-      <button id="esc" onClick={clearHandler}>
+      <button id="esc" onClick={clearHandler} className="modal-component">
         <span />
         <span />
       </button>
