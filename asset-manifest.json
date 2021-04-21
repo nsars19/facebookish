@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/facebookish/static/js/main.4642e0b8.chunk.js",
-    "main.js.map": "/facebookish/static/js/main.4642e0b8.chunk.js.map",
+    "main.js": "/facebookish/static/js/main.62b3ff4f.chunk.js",
+    "main.js.map": "/facebookish/static/js/main.62b3ff4f.chunk.js.map",
     "runtime-main.js": "/facebookish/static/js/runtime-main.9bd45406.js",
     "runtime-main.js.map": "/facebookish/static/js/runtime-main.9bd45406.js.map",
     "static/js/2.d34c4341.chunk.js": "/facebookish/static/js/2.d34c4341.chunk.js",
@@ -12,6 +12,6 @@
   "entrypoints": [
     "static/js/runtime-main.9bd45406.js",
     "static/js/2.d34c4341.chunk.js",
-    "static/js/main.4642e0b8.chunk.js"
+    "static/js/main.62b3ff4f.chunk.js"
   ]
 }
