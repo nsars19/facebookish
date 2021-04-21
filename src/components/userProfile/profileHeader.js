@@ -15,16 +15,6 @@ const StyledHeader = styled.div`
   align-items: center;
   min-height: 50vh;
 
-  .tool-tip {
-    display: none;
-    width: max-content;
-    position: absolute;
-    bottom: -20px;
-    left: 0;
-    font-size: 12px;
-    animation: comeFromBottom 0.2s ease-in-out;
-  }
-
   .pfp {
     position: relative;
   }
