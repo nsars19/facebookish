@@ -38,14 +38,13 @@ function ProfilePicture({
   userId,
 }) {
   const [imgSrc, setSrc] = useState(null);
-  const fullSrc =
-    "https://frozen-thicket-71687.herokuapp.com:3000/images/" + src;
+  const fullSrc = "https://frozen-thicket-71687.herokuapp.com/images/" + src;
 
   useEffect(() => {
     if (needsUpdate) {
       (async function fetchUpdatedUserInfo() {
         const res = await fetch(
-          `https://frozen-thicket-71687.herokuapp.com:3000/profileData/${userId}`
+          `https://frozen-thicket-71687.herokuapp.com/profileData/${userId}`
         );
         const data = await res.text();
         setSrc(data);

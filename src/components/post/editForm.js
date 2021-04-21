@@ -52,7 +52,7 @@ function EditForm(props) {
     const body = JSON.stringify(bodyData);
 
     const res = await fetch(
-      `https://frozen-thicket-71687.herokuapp.com:3000/${
+      `https://frozen-thicket-71687.herokuapp.com/${
         isPost ? "posts" : "comments"
       }/update`,
       {

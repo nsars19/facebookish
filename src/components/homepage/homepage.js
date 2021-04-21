@@ -10,7 +10,7 @@ function HomePage({ currentUser, lightMode, postRef, pfp }) {
   useEffect(() => {
     (async function fetchPosts() {
       const response = await fetch(
-        `https://frozen-thicket-71687.herokuapp.com:3000/posts/feed/${currentUser}`
+        `https://frozen-thicket-71687.herokuapp.com/posts/feed/${currentUser}`
       );
 
       const data = await response.json();
@@ -21,7 +21,7 @@ function HomePage({ currentUser, lightMode, postRef, pfp }) {
   useEffect(() => {
     (async function fetchPosts() {
       const response = await fetch(
-        `https://frozen-thicket-71687.herokuapp.com:3000/users/${currentUser}`
+        `https://frozen-thicket-71687.herokuapp.com/users/${currentUser}`
       );
 
       const data = await response.json();

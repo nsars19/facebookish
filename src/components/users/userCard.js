@@ -94,14 +94,11 @@ function UserCard({ user, amtCommon, currentUser, requested }) {
     const accepterId = currentUser;
     const body = JSON.stringify({ senderId, accepterId });
 
-    await fetch(
-      "https://frozen-thicket-71687.herokuapp.com:3000/friends/accept",
-      {
-        method: "post",
-        headers: { "Content-Type": "application/json" },
-        body,
-      }
-    );
+    await fetch("https://frozen-thicket-71687.herokuapp.com/friends/accept", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body,
+    });
 
     setResId("responded");
     setResponse(true);
@@ -112,14 +109,11 @@ function UserCard({ user, amtCommon, currentUser, requested }) {
     const denierId = currentUser;
     const body = JSON.stringify({ senderId, denierId });
 
-    await fetch(
-      "https://frozen-thicket-71687.herokuapp.com:3000/friends/deny",
-      {
-        method: "post",
-        headers: { "Content-Type": "application/json" },
-        body,
-      }
-    );
+    await fetch("https://frozen-thicket-71687.herokuapp.com/friends/deny", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body,
+    });
 
     setResId("responded");
     setResponse(true);
