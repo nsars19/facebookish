@@ -12,6 +12,8 @@ const StyledMetrics = styled.div`
     margin-top: 5px;
     flex: 1;
     display: flex;
+  }
+  .likes {
     justify-content: start;
   }
   .post-comments {
