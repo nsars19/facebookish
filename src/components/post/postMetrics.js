@@ -18,8 +18,8 @@ const StyledMetrics = styled.div`
   }
   .post-comments {
     display: ${({ commentCount }) => (commentCount ? "flex" : "none")};
-    justify-content: end;
-    -webkit-justify-content: end;
+    justify-content: flex-end;
+    -webkit-justify-content: flex-end;
     margin-right: 4px;
 
     &:hover {
