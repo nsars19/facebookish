@@ -11,7 +11,7 @@ import colors from "./../../colors";
 const StyledHeader = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   min-height: 50vh;
 
