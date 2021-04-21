@@ -132,7 +132,7 @@ function CreateAccountForm({ vis, toggle, setActiveUser }) {
 
     const userData = { firstName, lastName, email, password };
 
-    await fetch("https://frozen-thicket-71687.herokuapp.com/users/new", {
+    await fetch("https://frozen-thicket-71687.herokuapp.com:3000/users/new", {
       method: "post",
       mode: "cors",
       headers: { "Content-Type": "application/json" },

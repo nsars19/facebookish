@@ -33,7 +33,7 @@ function FriendshipButton({ receiverId, currentUser, isPending, sameUser }) {
   async function addPendingFriendship() {
     const body = JSON.stringify({ receiverId, senderId: currentUser });
 
-    await fetch("https://frozen-thicket-71687.herokuapp.com/friends/add", {
+    await fetch("https://frozen-thicket-71687.herokuapp.com:3000/friends/add", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body,

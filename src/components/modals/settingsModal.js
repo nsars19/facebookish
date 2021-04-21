@@ -110,11 +110,11 @@ function SettingsModal(props) {
     let response;
     if (homeFeed) {
       response = await fetch(
-        `https://frozen-thicket-71687.herokuapp.com/posts/feed/${user}`
+        `https://frozen-thicket-71687.herokuapp.com:3000/posts/feed/${user}`
       );
     } else {
       response = await fetch(
-        `https://frozen-thicket-71687.herokuapp.com/posts/byuser/${postAuthor}`
+        `https://frozen-thicket-71687.herokuapp.com:3000/posts/byuser/${postAuthor}`
       );
     }
     const data = await response.json();
@@ -125,14 +125,17 @@ function SettingsModal(props) {
   async function deletePost() {
     const reqBody = JSON.stringify({ postId: postItem._id });
 
-    await fetch(`https://frozen-thicket-71687.herokuapp.com/posts/delete`, {
-      method: "delete",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: reqBody,
-    })
+    await fetch(
+      `https://frozen-thicket-71687.herokuapp.com:3000/posts/delete`,
+      {
+        method: "delete",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: reqBody,
+      }
+    )
       .then(() => {
         setSpinnerVis(false);
         toggleModal();
@@ -153,7 +156,7 @@ function SettingsModal(props) {
       : { post, commentId };
     const reqBody = JSON.stringify(reqBodyData);
     const res = await fetch(
-      "https://frozen-thicket-71687.herokuapp.com/comments/delete",
+      "https://frozen-thicket-71687.herokuapp.com:3000/comments/delete",
       {
         method: "delete",
         headers: {

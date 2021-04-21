@@ -169,7 +169,7 @@ function ImageHandler({
     formData.append("file", imgFile);
     formData.append("text", text);
 
-    const url = `https://frozen-thicket-71687.herokuapp.com/upload/${
+    const url = `https://frozen-thicket-71687.herokuapp.com:3000/upload/${
       profile ? "profile" : "posts"
     }/${user}`;
 

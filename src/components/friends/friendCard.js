@@ -61,7 +61,7 @@ const StyledCard = styled.div`
 
 function FriendCard({ friend, lightMode }) {
   const src =
-    "https://frozen-thicket-71687.herokuapp.com/images/" +
+    "https://frozen-thicket-71687.herokuapp.com:3000/images/" +
     friend.profilePhotoSrc;
 
   return (

@@ -20,7 +20,7 @@ function UserProfile({ colors, lightMode, user, currentUser, pfp, postRef }) {
   useEffect(() => {
     (async function fetchUserData() {
       const dataResponse = await fetch(
-        `https://frozen-thicket-71687.herokuapp.com/users/${userId}`
+        `https://frozen-thicket-71687.herokuapp.com:3000/users/${userId}`
       );
       const data = await dataResponse.json();
 
@@ -36,7 +36,7 @@ function UserProfile({ colors, lightMode, user, currentUser, pfp, postRef }) {
   useEffect(() => {
     (async function fetchPosts() {
       const response = await fetch(
-        `https://frozen-thicket-71687.herokuapp.com/posts/byuser/${userId}`
+        `https://frozen-thicket-71687.herokuapp.com:3000/posts/byuser/${userId}`
       );
 
       const data = await response.json();

@@ -134,10 +134,10 @@ function Post({ post, setFeed, homeFeed, src, currentUser, pfp }) {
     (async function getImg() {
       if (post.photo) {
         // const path = post.photo.path;
-        // const res = await fetch(`https://frozen-thicket-71687.herokuapp.com/${path}`);
+        // const res = await fetch(`https://frozen-thicket-71687.herokuapp.com:3000/${path}`);
         // setImg(res.url);
         const key = post.photo.key;
-        setImg(`https://frozen-thicket-71687.herokuapp.com/images/${key}`);
+        setImg(`https://frozen-thicket-71687.herokuapp.com:3000/images/${key}`);
       } else {
         return;
       }

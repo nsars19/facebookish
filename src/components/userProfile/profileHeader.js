@@ -156,7 +156,9 @@ function ProfileHeader(props) {
 
   const banner = (
     <img
-      src={"https://frozen-thicket-71687.herokuapp.com/images/" + bannerSrc}
+      src={
+        "https://frozen-thicket-71687.herokuapp.com:3000/images/" + bannerSrc
+      }
       alt="profile banner"
     />
   );
