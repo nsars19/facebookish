@@ -62,7 +62,7 @@ const StyledHeader = styled.div`
   .banner {
     position: absolute;
     top: 0;
-    max-height: 35vh;
+    max-height: 30vh;
     height: 100%;
     width: 100%;
 
