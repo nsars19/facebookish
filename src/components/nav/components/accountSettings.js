@@ -139,7 +139,7 @@ function AccountSettings({
   const handleLogout = () => {
     cookies.set("currentUser", null);
     cookies.set("token", null);
-    window.location.href = window.location.origin;
+    window.location.href = window.location.origin + "/facebookish"
   };
 
   return (
