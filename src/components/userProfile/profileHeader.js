@@ -102,7 +102,6 @@ const StyledHeader = styled.div`
     position: absolute;
     right: 15px;
     bottom: 10px;
-    // font-size: 24px;
     border-radius: 50%;
     background: ${({ lm }) => (lm ? colors.white : colors.gray)};
     height: 40px;
