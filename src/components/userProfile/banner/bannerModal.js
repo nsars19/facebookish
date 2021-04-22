@@ -15,7 +15,6 @@ const StyledBanner = styled.div`
 
   @keyframes comeFromTop {
     from {
-      opacity: 0;
       top: -50px;
     }
   }
