@@ -44,7 +44,7 @@ function ProfilePicture({
     if (needsUpdate) {
       (async function fetchUpdatedUserInfo() {
         const res = await fetch(
-          `https://frozen-thicket-71687.herokuapp.com/profileData/${userId}`
+          `https://frozen-thicket-71687.herokuapp.com/profiledata/${userId}`
         );
         const data = await res.text();
 
