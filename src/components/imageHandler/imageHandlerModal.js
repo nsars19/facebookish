@@ -28,6 +28,7 @@ function ImageHandlerModal({
   setFeed,
   setUpdateStatus,
   postInput,
+  fromProfile,
 }) {
   const toggleModalOff = (e) => {
     if (e.target.tagName === "path") return;
@@ -52,6 +53,7 @@ function ImageHandlerModal({
         setFeed={setFeed}
         setUpdateStatus={setUpdateStatus}
         postInput={postInput}
+        fromProfile={fromProfile}
       />
     </StyledModal>
   );

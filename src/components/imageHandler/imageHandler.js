@@ -146,6 +146,7 @@ function ImageHandler({
   setFeed,
   setUpdateStatus,
   postInput,
+  fromProfile,
 }) {
   const [imgFile, setImage] = useState(null);
   const [src, setSrc] = useState(null);
@@ -169,9 +170,10 @@ function ImageHandler({
     formData.append("file", imgFile);
     formData.append("text", text);
 
-    const url = `https://frozen-thicket-71687.herokuapp.com/upload/${
-      profile ? "profile" : "posts"
+    const endPoint = `${profile ? "profile" : "posts"}/${
+      fromProfile ? "profile" : "home"
     }/${user}`;
+    const url = `https://frozen-thicket-71687.herokuapp.com/upload/${endPoint}`;
 
     await fetch(url, {
       method: "post",

@@ -77,6 +77,7 @@ function UserProfile({
           setFeed={setPosts}
           src={pfp}
           postRef={postRef}
+          fromProfile
         />
       ) : (
         <div />

@@ -202,6 +202,7 @@ function StatusForm({
           vis={modalVis}
           setFeed={setFeed}
           postInput
+          fromProfile={fromProfile}
         />
       </StyledStatusForm>
     </>
