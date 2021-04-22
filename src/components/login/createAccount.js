@@ -3,15 +3,17 @@ import { useState } from "react";
 import emailRegex from "./../../utils/emailRegex";
 import colors from "./../../colors";
 import Cookies from "universal-cookie";
+import Spinner from "./../spinner/spinner";
 const { gray, lightBlue, lightBlueHover, white, red } = colors;
 
 const StyledForm = styled.form`
   position: absolute;
   top: 0px;
   display: ${({ vis }) => (vis ? "grid" : "none")};
-  gap: 20px;
+  gap: 18px;
   width: 300px;
   padding: 18px;
+  padding-bottom: ${({ spinnerVis }) => (spinnerVis ? "0px" : "18px")};
   margin: 0 auto;
   background: #fff;
   border-radius: 8px;
@@ -85,12 +87,19 @@ const StyledForm = styled.form`
   }
   .err-text {
     position: absolute;
-    bottom: 240px;
+    bottom: 238px;
     left: 27px;
     text-align: start;
     color: ${red};
     font-size: 12px;
     animation: appear 0.3s ease;
+  }
+
+  .spinner {
+    position: absolute;
+    bottom: 132px;
+    left: 30px;
+    color: ${white};
   }
 
   @keyframes appear {
@@ -104,6 +113,9 @@ const StyledForm = styled.form`
     & {
       width: 400px;
     }
+    .spinner {
+      left: 77px;
+    }
   }
 `;
 
@@ -115,6 +127,7 @@ function CreateAccountForm({ vis, toggle, setActiveUser }) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+  const [spinnerVis, setSpinnerVis] = useState(false);
 
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePassChange = (e) => setPass(e.target.value);
@@ -130,6 +143,8 @@ function CreateAccountForm({ vis, toggle, setActiveUser }) {
     if (fieldsEmpty) return;
     if (!emailRegex.test(email)) return;
 
+    setSpinnerVis(true);
+
     const userData = { firstName, lastName, email, password };
 
     await fetch("https://frozen-thicket-71687.herokuapp.com/users/new", {
@@ -144,6 +159,7 @@ function CreateAccountForm({ vis, toggle, setActiveUser }) {
 
         if (data.error) {
           setErrorMsg(data.message);
+          setSpinnerVis(false);
         } else {
           setActiveUser(user);
           cookies.set("token", token);
@@ -167,7 +183,11 @@ function CreateAccountForm({ vis, toggle, setActiveUser }) {
   };
 
   return (
-    <StyledForm vis={vis} onSubmit={handleAccountCreation}>
+    <StyledForm
+      vis={vis}
+      onSubmit={handleAccountCreation}
+      spinnerVis={spinnerVis}
+    >
       <input
         type="text"
         placeholder="First Name"
@@ -211,6 +231,7 @@ function CreateAccountForm({ vis, toggle, setActiveUser }) {
         <div className="spacer" />
         <button onClick={handleCancel}>Cancel</button>
       </div>
+      <Spinner vis={spinnerVis} className="spinner" />
     </StyledForm>
   );
 }

@@ -3,13 +3,15 @@ import { useState } from "react";
 import CreateAccountForm from "./createAccount";
 import colors from "./../../colors";
 import Cookies from "universal-cookie";
+import Spinner from "./../spinner/spinner";
 const { white, gray, lightBlue, lightBlueHover, red } = colors;
 
 const StlyedForm = styled.form`
   display: ${({ createVis }) => (createVis ? "none" : "grid")};
-  gap: 20px;
+  gap: 18px;
   width: 300px;
   padding: 18px;
+  padding-bottom: ${({ spinnerVis }) => (spinnerVis ? "0px" : "18px")};
   margin: 0 auto;
   background: #fff;
   border-radius: 8px;
@@ -83,9 +85,19 @@ const StlyedForm = styled.form`
     color: ${red};
   }
 
+  .spinner {
+    position: absolute;
+    bottom: 132px;
+    left: 90px;
+    color: ${white};
+  }
+
   @media (min-width: 540px) {
     & {
       width: 400px;
+    }
+    .spinner {
+      left: 140px;
     }
   }
 `;
@@ -98,6 +110,7 @@ function Form({ setActiveUser }) {
   const [errorModalVis, setErrorVis] = useState(false);
   const [errorMsg, setMsg] = useState("");
   const [accountCreationVis, setAccCreationVis] = useState(false);
+  const [spinnerVis, setSpinnerVis] = useState(false);
 
   const toggleAccountCreator = () => setAccCreationVis(!accountCreationVis);
 
@@ -105,6 +118,8 @@ function Form({ setActiveUser }) {
     e.preventDefault();
 
     if (email === "" || pass === "") return;
+
+    setSpinnerVis(true);
 
     await fetch("https://frozen-thicket-71687.herokuapp.com/login", {
       method: "post",
@@ -118,6 +133,7 @@ function Form({ setActiveUser }) {
           const msg = data.error;
           setMsg(msg);
           setErrorVis(true);
+          setSpinnerVis(false);
         } else {
           const { token, user } = await res.json();
 
@@ -140,6 +156,7 @@ function Form({ setActiveUser }) {
         onSubmit={handleLogin}
         errVis={errorModalVis}
         createVis={accountCreationVis}
+        spinnerVis={spinnerVis}
       >
         <input
           type="email"
@@ -163,6 +180,7 @@ function Form({ setActiveUser }) {
           <div className="spacer" />
           <button onClick={toggleAccountCreator}>Create New Account</button>
         </div>
+        <Spinner vis={spinnerVis} className="spinner" />
       </StlyedForm>
       <CreateAccountForm
         vis={accountCreationVis}
