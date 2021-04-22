@@ -184,8 +184,8 @@ function ImageHandler({
     })
       .then(async (res) => {
         const data = await res.json();
-        if (!profile) setFeed(data);
         if (profile) setUpdateStatus(true);
+        else setFeed(data);
 
         clearHandler();
         setSpinnerVis(false);
