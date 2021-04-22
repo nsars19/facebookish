@@ -217,6 +217,7 @@ function UploadHandler({ user, toggleOff, setBannerSrc }) {
         type="submit"
         value="Change cover photo"
         className="modal-component"
+        disabled={spinnerVis}
       />
       <Spinner className="spinner" vis={spinnerVis} />
       <button id="esc" onClick={clearHandler} className="modal-component">

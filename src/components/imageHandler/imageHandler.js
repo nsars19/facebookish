@@ -240,6 +240,7 @@ function ImageHandler({
         type="submit"
         value={profile ? "Change profile picture" : "Post"}
         className="modal-component"
+        disabled={spinnerVis}
       />
       <Spinner className="spinner" vis={spinnerVis} />
       <button id="esc" onClick={clearHandler} className="modal-component">
