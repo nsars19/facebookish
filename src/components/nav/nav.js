@@ -83,7 +83,14 @@ const StyledNav = styled.div`
 `;
 
 function Nav(props) {
-  const { setLightMode, lightMode, currentUser, focusRef } = props;
+  const {
+    setLightMode,
+    lightMode,
+    currentUser,
+    focusRef,
+    userName,
+    pfp,
+  } = props;
 
   function changeColorMode() {
     setLightMode(!lightMode);
@@ -99,6 +106,8 @@ function Nav(props) {
         currentUser={currentUser}
         lightMode={lightMode}
         changeColorMode={changeColorMode}
+        userName={userName}
+        pfp={pfp}
       />
     </StyledNav>
   );

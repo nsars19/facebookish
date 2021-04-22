@@ -47,9 +47,9 @@ function ProfilePicture({
           `https://frozen-thicket-71687.herokuapp.com/profileData/${userId}`
         );
         const data = await res.text();
-        setSrc(data);
+
+        setSrc("https://frozen-thicket-71687.herokuapp.com/images/" + data);
         setUpdateStatus(false);
-        window.location.reload();
       })();
     }
   }, [needsUpdate, userId, setUpdateStatus]);

@@ -1,6 +1,14 @@
 import UserProfile from "./../userProfile/UserProfile";
 
-function Profile({ user, lightMode, colors, pfp, postRef }) {
+function Profile({
+  user,
+  lightMode,
+  colors,
+  pfp,
+  postRef,
+  needsUpdate,
+  setUpdateStatus,
+}) {
   return (
     <UserProfile
       currentUser={user}
@@ -9,6 +17,8 @@ function Profile({ user, lightMode, colors, pfp, postRef }) {
       lightMode={lightMode}
       pfp={pfp}
       postRef={postRef}
+      needsUpdate={needsUpdate}
+      setUpdateStatus={setUpdateStatus}
     />
   );
 }

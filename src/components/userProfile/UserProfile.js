@@ -5,13 +5,22 @@ import ProfileHeader from "./profileHeader";
 import StatusForm from "./../homepage/statusForm/statusForm";
 import FriendsList from "./../friends/friendsList";
 
-function UserProfile({ colors, lightMode, user, currentUser, pfp, postRef }) {
+function UserProfile({
+  colors,
+  lightMode,
+  user,
+  currentUser,
+  pfp,
+  postRef,
+  needsUpdate,
+  setUpdateStatus,
+}) {
   const match = useRouteMatch();
   const userId = user || match.params.userId;
   const [userName, setUserName] = useState(null);
   const [posts, setPosts] = useState([]);
   const [friendshipPending, setFriendStatus] = useState(null);
-  const [needsUpdate, setUpdateStatus] = useState(false);
+  // const [needsUpdate, setUpdateStatus] = useState(false);
   const [pfpSrc, setPfpSrc] = useState(null);
   const [friends, setFriends] = useState([]);
   const [alreadyFriends, setAlreadyFriends] = useState(null);

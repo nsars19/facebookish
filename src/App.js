@@ -183,6 +183,8 @@ function App() {
     userCookie === "null" ? null : userCookie
   );
   const [pfp, setPfp] = useState(null);
+  const [needsUpdate, setUpdateStatus] = useState(false);
+  const [userName, setName] = useState("");
   const postRef = useRef(null);
 
   const focusRef = () => {
@@ -200,10 +202,11 @@ function App() {
       );
       const data = await res.json();
       setPfp(data.profilePhotoSrc);
+      setName(`${data.firstName} ${data.lastName}`);
     }
 
     if (currentUser) fetchData();
-  }, [currentUser]);
+  }, [currentUser, needsUpdate]);
 
   if (!currentUser) return <LoginPage setCurrentUser={setCurrentUser} />;
   else
@@ -216,6 +219,8 @@ function App() {
             lightMode={lightMode}
             currentUser={currentUser}
             focusRef={focusRef}
+            userName={userName}
+            pfp={pfp}
           />
           <Switch>
             <Route path="/users">
@@ -229,6 +234,8 @@ function App() {
                   currentUser={currentUser}
                   pfp={pfp}
                   postRef={postRef}
+                  needsUpdate={needsUpdate}
+                  setUpdateStatus={setUpdateStatus}
                 />
               </div>
             </Route>
@@ -240,6 +247,8 @@ function App() {
                   lightMode={lightMode}
                   pfp={pfp}
                   postRef={postRef}
+                  needsUpdate={needsUpdate}
+                  setUpdateStatus={setUpdateStatus}
                 />
               </div>
             </Route>

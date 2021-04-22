@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import ProfilePicture from "./../../userProfile/profilePicture";
@@ -105,10 +105,9 @@ function AccountSettings({
   toggleVis,
   light,
   changeColorMode,
+  userName,
+  pfp,
 }) {
-  const [fullName, setFullName] = useState(null);
-  const [pfpSrc, setSrc] = useState(null);
-
   const toggleModalOff = (e) => {
     if ([...e.target.classList].includes("modal-component")) return;
     if (modalVis) toggleVis();
@@ -123,18 +122,6 @@ function AccountSettings({
         .removeEventListener("click", toggleModalOff);
     };
   });
-
-  useEffect(() => {
-    (async function fetchUserData() {
-      const res = await fetch(
-        `https://frozen-thicket-71687.herokuapp.com/users/${currentUser}`
-      );
-      const data = await res.json();
-
-      setFullName(`${data.firstName} ${data.lastName}`);
-      setSrc(data.profilePhotoSrc);
-    })();
-  }, [currentUser]);
 
   const handleLogout = () => {
     cookies.set("currentUser", null);
@@ -155,10 +142,10 @@ function AccountSettings({
         onClick={toggleVis}
       >
         <div className="pfp">
-          <ProfilePicture src={pfpSrc} userId={currentUser} size={"60px"} />
+          <ProfilePicture src={pfp} userId={currentUser} size={"60px"} />
         </div>
         <div className="name-container-right modal-component">
-          <h3>{fullName}</h3>
+          <h3>{userName}</h3>
           <p>See your profile</p>
         </div>
       </Link>
