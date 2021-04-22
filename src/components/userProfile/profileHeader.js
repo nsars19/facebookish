@@ -139,7 +139,7 @@ function ProfileHeader(props) {
 
   const loader = (
     <SkeletonTheme color={"#dadada"} highlightColor={"#e0e0e0"}>
-      <Skeleton height={"37vh"} />
+      <Skeleton height={"30vh"} />
     </SkeletonTheme>
   );
 
