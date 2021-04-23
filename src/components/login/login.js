@@ -55,7 +55,7 @@ const StyledLoginPage = styled.div`
   .links {
     position: fixed;
     bottom: 4px;
-    left: 12px;
+    left: 6px;
     font-size: 32px;
 
     a {
