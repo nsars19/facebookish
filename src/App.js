@@ -1,14 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import colors from "./colors";
 import Nav from "./components/nav/nav";
-import UserProfile from "./components/userProfile/UserProfile";
-import Users from "./components/users/Users";
 import Cookies from "universal-cookie";
-import HomePage from "./components/homepage/homepage";
-import Profile from "./components/profile/profile";
 import { createGlobalStyle } from "styled-components";
 import LoginPage from "./components/login/login";
+
+const UserProfile = lazy(() => import("./components/userProfile/UserProfile"));
+const Profile = lazy(() => import("./components/profile/profile"));
+const HomePage = lazy(() => import("./components/homepage/homepage"));
+const Users = lazy(() => import("./components/users/Users"));
 
 const { black, gray, white, yellow, blue, red } = colors;
 const GlobalStyle = createGlobalStyle`
@@ -227,45 +228,47 @@ function App() {
             userName={userName}
             pfp={pfp}
           />
-          <Switch>
-            <Route path="/users">
-              <Users currentUser={currentUser} />
-            </Route>
-            <Route path="/user/:userId">
-              <div className="grid-wrap">
-                <UserProfile
-                  colors={colors}
-                  lightMode={lightMode}
+          <Suspense fallback={<div></div>}>
+            <Switch>
+              <Route path="/users">
+                <Users currentUser={currentUser} />
+              </Route>
+              <Route path="/user/:userId">
+                <div className="grid-wrap">
+                  <UserProfile
+                    colors={colors}
+                    lightMode={lightMode}
+                    currentUser={currentUser}
+                    pfp={pfp}
+                    postRef={postRef}
+                    needsUpdate={needsUpdate}
+                    setUpdateStatus={setUpdateStatus}
+                  />
+                </div>
+              </Route>
+              <Route path="/profile">
+                <div className="grid-wrap">
+                  <Profile
+                    user={currentUser}
+                    colors={colors}
+                    lightMode={lightMode}
+                    pfp={pfp}
+                    postRef={postRef}
+                    needsUpdate={needsUpdate}
+                    setUpdateStatus={setUpdateStatus}
+                  />
+                </div>
+              </Route>
+              <Route path="/">
+                <HomePage
                   currentUser={currentUser}
-                  pfp={pfp}
-                  postRef={postRef}
-                  needsUpdate={needsUpdate}
-                  setUpdateStatus={setUpdateStatus}
-                />
-              </div>
-            </Route>
-            <Route path="/profile">
-              <div className="grid-wrap">
-                <Profile
-                  user={currentUser}
-                  colors={colors}
                   lightMode={lightMode}
-                  pfp={pfp}
                   postRef={postRef}
-                  needsUpdate={needsUpdate}
-                  setUpdateStatus={setUpdateStatus}
+                  pfp={pfp}
                 />
-              </div>
-            </Route>
-            <Route path="/">
-              <HomePage
-                currentUser={currentUser}
-                lightMode={lightMode}
-                postRef={postRef}
-                pfp={pfp}
-              />
-            </Route>
-          </Switch>
+              </Route>
+            </Switch>
+          </Suspense>
         </Router>
       </>
     );
