@@ -127,6 +127,14 @@ const StyledHandler = styled.form`
     }
   }
 
+  .img-error {
+    display: ${({ imgError }) => (imgError ? "flex" : "none")};
+    padding: 5px;
+    padding-top: 20px;
+    font-size: 14px;
+    text-align: center;
+  }
+
   .spinner {
     position: absolute;
     bottom: 25px;
@@ -151,17 +159,26 @@ function UploadHandler({ user, toggleOff, setBannerSrc }) {
   const [imgFile, setImage] = useState(null);
   const [src, setSrc] = useState(null);
   const [spinnerVis, setSpinnerVis] = useState(false);
+  const [imgError, setImgError] = useState(false);
   const token = cookies.get("token");
 
   const handleImgInput = (files) => {
     setImage(files[0]);
     setSrc(URL.createObjectURL(files[0]));
+
+    if (imgError) {
+      setImgError(false);
+    }
+
+    if (files[0].size > 6000000) {
+      setImgError(true);
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!imgFile) return;
+    if (!imgFile || imgError) return;
 
     setSpinnerVis(true);
 
@@ -191,6 +208,7 @@ function UploadHandler({ user, toggleOff, setBannerSrc }) {
     toggleOff();
     setImage(null);
     setSrc(null);
+    setImgError(false);
   };
 
   return (
@@ -199,6 +217,7 @@ function UploadHandler({ user, toggleOff, setBannerSrc }) {
       onSubmit={handleSubmit}
       encType="multipart/form-data"
       className="modal-component"
+      imgError={imgError}
     >
       <input
         type="file"
@@ -213,6 +232,10 @@ function UploadHandler({ user, toggleOff, setBannerSrc }) {
         <p className="banner-upload-txt modal-component">Upload an image</p>
       </label>
       <img src={src} alt="preview" className="banner-preview modal-component" />
+      <p className="img-error">
+        This image is too large! If you really want to post it, please compress
+        it.
+      </p>
       <input
         type="submit"
         value="Change cover photo"

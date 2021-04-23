@@ -120,6 +120,14 @@ const StyledHandler = styled.form`
     }
   }
 
+  .img-error {
+    display: ${({ imgError }) => (imgError ? "flex" : "none")};
+    padding: 5px;
+    padding-top: 20px;
+    font-size: 14px;
+    text-align: center;
+  }
+
   .spinner {
     position: absolute;
     bottom: 26px;
@@ -152,17 +160,26 @@ function ImageHandler({
   const [src, setSrc] = useState(null);
   const [text, setText] = useState("");
   const [spinnerVis, setSpinnerVis] = useState(false);
+  const [imgError, setImgError] = useState(false);
   const token = cookies.get("token");
 
   const handleImgInput = (e) => {
     setImage(e.target.files[0]);
     setSrc(URL.createObjectURL(e.target.files[0]));
+
+    if (imgError) {
+      setImgError(false);
+    }
+
+    if (e.target.files[0].size > 6000000) {
+      setImgError(true);
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!imgFile) return;
+    if (!imgFile || imgError) return;
 
     setSpinnerVis(true);
 
@@ -198,6 +215,7 @@ function ImageHandler({
     setImage(null);
     setSrc(null);
     setText("");
+    setImgError(false);
   };
 
   const handleInputChange = (e) => setText(e.target.value);
@@ -209,6 +227,7 @@ function ImageHandler({
       encType="multipart/form-data"
       className="modal-component"
       pfp={profile}
+      imgError={imgError}
     >
       <input
         type="file"
@@ -238,6 +257,10 @@ function ImageHandler({
         />
       )}
       <img src={src} alt="" className="modal-component" />
+      <p className="img-error">
+        This image is too large! If you really want to post it, please compress
+        it.
+      </p>
       <input
         type="submit"
         value={profile ? "Change profile picture" : "Post"}
