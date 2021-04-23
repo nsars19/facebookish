@@ -171,7 +171,7 @@ function ImageHandler({
       setImgError(false);
     }
 
-    if (e.target.files[0].size > 6000000) {
+    if (e.target.files[0].size > 1000000) {
       setImgError(true);
     }
   };

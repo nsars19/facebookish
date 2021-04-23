@@ -170,7 +170,7 @@ function UploadHandler({ user, toggleOff, setBannerSrc }) {
       setImgError(false);
     }
 
-    if (files[0].size > 6000000) {
+    if (files[0].size > 1000000) {
       setImgError(true);
     }
   };
