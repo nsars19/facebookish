@@ -131,7 +131,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
   }
-  
+
   ::placeholder {
     color: ${({ light }) => (light ? black : white)};
   }
