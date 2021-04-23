@@ -6,6 +6,7 @@ import Cookies from "universal-cookie";
 import { createGlobalStyle } from "styled-components";
 import LoginPage from "./components/login/login";
 import Spinner from "./components/spinner/spinner";
+import ErrorBoundary from "./components/errorBoundary/errorBoundary";
 
 const UserProfile = lazy(() => import("./components/userProfile/UserProfile"));
 const Profile = lazy(() => import("./components/profile/profile"));
@@ -227,63 +228,65 @@ function App() {
     return (
       <>
         <GlobalStyle light={lightMode} user={currentUser} />
-        <Router>
-          <Nav
-            setLightMode={setLightMode}
-            lightMode={lightMode}
-            currentUser={currentUser}
-            focusRef={focusRef}
-            userName={userName}
-            pfp={pfp}
-          />
-          <Suspense
-            fallback={
-              <div className="load-spinner">
-                <Spinner size={150} vis={true} />
-              </div>
-            }
-          >
-            <Switch>
-              <Route path="/users">
-                <Users currentUser={currentUser} />
-              </Route>
-              <Route path="/user/:userId">
-                <div className="grid-wrap">
-                  <UserProfile
-                    colors={colors}
-                    lightMode={lightMode}
+        <ErrorBoundary>
+          <Router>
+            <Nav
+              setLightMode={setLightMode}
+              lightMode={lightMode}
+              currentUser={currentUser}
+              focusRef={focusRef}
+              userName={userName}
+              pfp={pfp}
+            />
+            <Suspense
+              fallback={
+                <div className="load-spinner">
+                  <Spinner size={150} vis={true} />
+                </div>
+              }
+            >
+              <Switch>
+                <Route path="/users">
+                  <Users currentUser={currentUser} />
+                </Route>
+                <Route path="/user/:userId">
+                  <div className="grid-wrap">
+                    <UserProfile
+                      colors={colors}
+                      lightMode={lightMode}
+                      currentUser={currentUser}
+                      pfp={pfp}
+                      postRef={postRef}
+                      needsUpdate={needsUpdate}
+                      setUpdateStatus={setUpdateStatus}
+                    />
+                  </div>
+                </Route>
+                <Route path="/profile">
+                  <div className="grid-wrap">
+                    <Profile
+                      user={currentUser}
+                      colors={colors}
+                      lightMode={lightMode}
+                      pfp={pfp}
+                      postRef={postRef}
+                      needsUpdate={needsUpdate}
+                      setUpdateStatus={setUpdateStatus}
+                    />
+                  </div>
+                </Route>
+                <Route path="/">
+                  <HomePage
                     currentUser={currentUser}
-                    pfp={pfp}
-                    postRef={postRef}
-                    needsUpdate={needsUpdate}
-                    setUpdateStatus={setUpdateStatus}
-                  />
-                </div>
-              </Route>
-              <Route path="/profile">
-                <div className="grid-wrap">
-                  <Profile
-                    user={currentUser}
-                    colors={colors}
                     lightMode={lightMode}
-                    pfp={pfp}
                     postRef={postRef}
-                    needsUpdate={needsUpdate}
-                    setUpdateStatus={setUpdateStatus}
+                    pfp={pfp}
                   />
-                </div>
-              </Route>
-              <Route path="/">
-                <HomePage
-                  currentUser={currentUser}
-                  lightMode={lightMode}
-                  postRef={postRef}
-                  pfp={pfp}
-                />
-              </Route>
-            </Switch>
-          </Suspense>
-        </Router>
+                </Route>
+              </Switch>
+            </Suspense>
+          </Router>
+        </ErrorBoundary>
       </>
     );
 }
