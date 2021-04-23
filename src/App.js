@@ -129,6 +129,11 @@ const GlobalStyle = createGlobalStyle`
     #spinner {
       color: ${white};
     }
+
+  }
+  
+  ::placeholder {
+    color: ${({ light }) => (light ? black : white)};
   }
 
   button,
