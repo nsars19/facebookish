@@ -168,7 +168,7 @@ function UploadHandler({ user, toggleOff, setBannerSrc }) {
     const formData = new FormData();
     formData.append("file", imgFile);
 
-    const url = `https://frozen-thicket-71687.herokuapp.com/upload/banner/${user}`;
+    const url = `https://frozen-thicket-71687.herokuapp.com/upload/banner/no-feed/${user}`;
 
     await fetch(url, {
       method: "post",
