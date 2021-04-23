@@ -56,7 +56,7 @@ const StyledStatusForm = styled.div`
   }
 
   .placeholder {
-    color: ${({ lm, g, w }) => (lm ? g : w)}aa;
+    color: ${({ lm, g, w }) => (lm ? g : w)};
     position: absolute;
     top: 28px;
     left: 75px;
