@@ -5,13 +5,14 @@ import Nav from "./components/nav/nav";
 import Cookies from "universal-cookie";
 import { createGlobalStyle } from "styled-components";
 import LoginPage from "./components/login/login";
+import Spinner from "./components/spinner/spinner";
 
 const UserProfile = lazy(() => import("./components/userProfile/UserProfile"));
 const Profile = lazy(() => import("./components/profile/profile"));
 const HomePage = lazy(() => import("./components/homepage/homepage"));
 const Users = lazy(() => import("./components/users/Users"));
 
-const { black, gray, white, yellow, blue, red } = colors;
+const { black, gray, white, yellow, blue, lightBlue, red } = colors;
 const GlobalStyle = createGlobalStyle`
   body {
     margin-bottom: 50px;
@@ -128,13 +129,20 @@ const GlobalStyle = createGlobalStyle`
     }
 
     #spinner {
-      color: ${white};
+      color: ${({ light }) => (light ? lightBlue : white)};
     }
 
   }
 
   ::placeholder {
     color: ${({ light }) => (light ? black : white)};
+  }
+
+  .load-spinner {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    place-items: center;
   }
 
   button,
@@ -228,7 +236,13 @@ function App() {
             userName={userName}
             pfp={pfp}
           />
-          <Suspense fallback={<div></div>}>
+          <Suspense
+            fallback={
+              <div className="load-spinner">
+                <Spinner size={150} vis={true} />
+              </div>
+            }
+          >
             <Switch>
               <Route path="/users">
                 <Users currentUser={currentUser} />
