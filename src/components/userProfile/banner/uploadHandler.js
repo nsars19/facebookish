@@ -209,6 +209,7 @@ function UploadHandler({ user, toggleOff, setBannerSrc }) {
     setImage(null);
     setSrc(null);
     setImgError(false);
+    setSpinnerVis(false);
   };
 
   return (

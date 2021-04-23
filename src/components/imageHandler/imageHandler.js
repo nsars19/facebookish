@@ -216,6 +216,7 @@ function ImageHandler({
     setSrc(null);
     setText("");
     setImgError(false);
+    setSpinnerVis(false);
   };
 
   const handleInputChange = (e) => setText(e.target.value);
