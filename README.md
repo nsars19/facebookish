@@ -1,5 +1,7 @@
 <h1>facespace</h1>
 
+View it live [here](https://nsars19.github.io/facebookish/)
+
 The api that this UI relies on can be found [here](https://github.com/nsars19/facebookish-api)
 
 This project is the final project in The Odin Project's javascript curriculum.
