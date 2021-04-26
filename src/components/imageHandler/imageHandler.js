@@ -4,6 +4,7 @@ import { AiFillPicture } from "react-icons/ai";
 import colors from "./../../colors";
 import Cookies from "universal-cookie";
 import Spinner from "./../spinner/spinner";
+import compressImage from "./../../utils/compressImage";
 
 const StyledHandler = styled.form`
   flex-direction: row;
@@ -171,7 +172,7 @@ function ImageHandler({
       setImgError(false);
     }
 
-    if (e.target.files[0].size > 1000000) {
+    if (e.target.files[0].size > 6000000) {
       setImgError(true);
     }
   };
@@ -183,8 +184,10 @@ function ImageHandler({
 
     setSpinnerVis(true);
 
+    const compressedImg = await compressImage(imgFile);
+
     const formData = new FormData();
-    formData.append("file", imgFile);
+    formData.append("file", compressedImg);
     formData.append("text", text);
 
     const endPoint = `${profile ? "profile" : "posts"}/${
