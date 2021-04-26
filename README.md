@@ -1,70 +1,17 @@
-# Getting Started with Create React App
+<h2>facespace</h2>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The api that this UI relies on can be found [here](https://github.com/nsars19/facebookish-api)
 
-## Available Scripts
+This project is the final project in The Odin Project's javascript curriculum.
+A link to the project requirements can be found [here](https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/javascript/lessons/final-project-116ff273-1e55-4055-bd7f-146c17d0ec9c)
 
-In the project directory, you can run:
+This project was built with React, Node, Express, MongoDB, and AWS S3.
+The data is stored in a mongodb collection, and fetched from the express app. The React UI calls the various RESTful endpoints of the express app, and formats the JSON payloads into something the user can (hopefully) enjoy looking at.
 
-### `yarn start`
+Users are authenticated via token, using jsonwebtoken, and all but GET requests require a user's token in order to proceed. 
 
-Runs the app in the development mode.\
-Open [https://frozen-thicket-71687.herokuapp.com](https://frozen-thicket-71687.herokuapp.com) to view it in the browser.
+Static assets (only images in this case) are handled pass-through. Images are first processed, and then stored in an S3 bucket, and piped directly through S3 to the UI via express & the S3 SDK. The uploading & processing of images was done via Multer and Sharp, respectively. 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+In detail: When a user uploads an image, Multer creates a file for it, Sharp then uses that file to convert it to jpeg, compresses it, and creates a file for the newly processed image. This newly processed image is uploaded to S3, with the returned data assigned to a database object for later retrieval. After processing both image files are deleted. To retrieve the images, img elements are given a src attribute that calls the api's endpoint for fetching images from S3, and then the image data is piped through to the UI.
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project was, to date, the most enjoyable thing I've built. It was (at the time of my writing this) the perfect level of challenging for my abilities. This was my first (big) project built using express, which I've come to thoroughly enjoy. Much of what I have built in the past has used rails as a backend, so the transition was very smooth given I used an MVC architecture, which is what rails uses, for the express app.
