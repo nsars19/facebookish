@@ -1,4 +1,4 @@
-<h2>facespace</h2>
+<h1>facespace</h1>
 
 The api that this UI relies on can be found [here](https://github.com/nsars19/facebookish-api)
 
