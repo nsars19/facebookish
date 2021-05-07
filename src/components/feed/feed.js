@@ -1,6 +1,8 @@
 import Post from "./../post/post";
 import styled from "styled-components";
 import PostLoader from "../loader/postLoader";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { useState } from "react";
 
 const StyledFeed = styled.div`
   display: flex;
@@ -21,27 +23,37 @@ const loader = (
 );
 
 function Feed({ homeFeed, posts, setPosts, src, currentUser, pfp }) {
+  const [visibilePosts, setVisiblePosts] = useState(5);
+
+  const addPosts = () => setVisiblePosts(visibilePosts + 5);
+
   return (
-    <StyledFeed className="grid-feed">
-      {posts ? (
-        <div className="wrap">
-          {posts.map((post) => (
-            <div key={post._id} className="post-wrap">
-              <Post
-                post={post}
-                setFeed={setPosts}
-                homeFeed={homeFeed}
-                src={src}
-                currentUser={currentUser}
-                pfp={pfp}
-              />
-            </div>
-          ))}
-        </div>
-      ) : (
-        loader
-      )}
-    </StyledFeed>
+    <InfiniteScroll
+      dataLength={visibilePosts}
+      next={addPosts}
+      hasMore={posts?.length !== visibilePosts}
+    >
+      <StyledFeed className="grid-feed">
+        {posts ? (
+          <div className="wrap">
+            {posts.slice(0, visibilePosts).map((post) => (
+              <div key={post._id} className="post-wrap">
+                <Post
+                  post={post}
+                  setFeed={setPosts}
+                  homeFeed={homeFeed}
+                  src={src}
+                  currentUser={currentUser}
+                  pfp={pfp}
+                />
+              </div>
+            ))}
+          </div>
+        ) : (
+          loader
+        )}
+      </StyledFeed>
+    </InfiniteScroll>
   );
 }
 
