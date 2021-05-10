@@ -1,15 +1,15 @@
 {
   "files": {
-    "static/js/0.46172e9e.chunk.js": "/facebookish/static/js/0.46172e9e.chunk.js",
-    "static/js/0.46172e9e.chunk.js.map": "/facebookish/static/js/0.46172e9e.chunk.js.map",
+    "static/js/0.a9a6e3d7.chunk.js": "/facebookish/static/js/0.a9a6e3d7.chunk.js",
+    "static/js/0.a9a6e3d7.chunk.js.map": "/facebookish/static/js/0.a9a6e3d7.chunk.js.map",
     "static/js/1.6ae6c09c.chunk.js": "/facebookish/static/js/1.6ae6c09c.chunk.js",
     "static/js/1.6ae6c09c.chunk.js.map": "/facebookish/static/js/1.6ae6c09c.chunk.js.map",
     "static/js/2.241202db.chunk.js": "/facebookish/static/js/2.241202db.chunk.js",
     "static/js/2.241202db.chunk.js.map": "/facebookish/static/js/2.241202db.chunk.js.map",
     "main.js": "/facebookish/static/js/main.272ace59.chunk.js",
     "main.js.map": "/facebookish/static/js/main.272ace59.chunk.js.map",
-    "runtime-main.js": "/facebookish/static/js/runtime-main.73510373.js",
-    "runtime-main.js.map": "/facebookish/static/js/runtime-main.73510373.js.map",
+    "runtime-main.js": "/facebookish/static/js/runtime-main.f73948ce.js",
+    "runtime-main.js.map": "/facebookish/static/js/runtime-main.f73948ce.js.map",
     "static/js/5.a265379a.chunk.js": "/facebookish/static/js/5.a265379a.chunk.js",
     "static/js/5.a265379a.chunk.js.map": "/facebookish/static/js/5.a265379a.chunk.js.map",
     "static/js/6.5eaa7405.chunk.js": "/facebookish/static/js/6.5eaa7405.chunk.js",
@@ -24,7 +24,7 @@
     "static/js/5.a265379a.chunk.js.LICENSE.txt": "/facebookish/static/js/5.a265379a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.73510373.js",
+    "static/js/runtime-main.f73948ce.js",
     "static/js/5.a265379a.chunk.js",
     "static/js/main.272ace59.chunk.js"
   ]
