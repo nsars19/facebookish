@@ -28,32 +28,34 @@ function Feed({ homeFeed, posts, setPosts, src, currentUser, pfp }) {
   const addPosts = () => setVisiblePosts(visibilePosts + 5);
 
   return (
-    <InfiniteScroll
-      dataLength={visibilePosts}
-      next={addPosts}
-      hasMore={posts?.length !== visibilePosts}
-    >
-      <StyledFeed className="grid-feed">
-        {posts ? (
-          <div className="wrap">
-            {posts.slice(0, visibilePosts).map((post) => (
-              <div key={post._id} className="post-wrap">
-                <Post
-                  post={post}
-                  setFeed={setPosts}
-                  homeFeed={homeFeed}
-                  src={src}
-                  currentUser={currentUser}
-                  pfp={pfp}
-                />
-              </div>
-            ))}
-          </div>
-        ) : (
-          loader
-        )}
-      </StyledFeed>
-    </InfiniteScroll>
+    <div className="grid-feed">
+      <InfiniteScroll
+        dataLength={visibilePosts}
+        next={addPosts}
+        hasMore={posts?.length !== visibilePosts}
+      >
+        <StyledFeed className="grid-feed">
+          {posts ? (
+            <div className="wrap">
+              {posts.slice(0, visibilePosts).map((post) => (
+                <div key={post._id} className="post-wrap">
+                  <Post
+                    post={post}
+                    setFeed={setPosts}
+                    homeFeed={homeFeed}
+                    src={src}
+                    currentUser={currentUser}
+                    pfp={pfp}
+                  />
+                </div>
+              ))}
+            </div>
+          ) : (
+            loader
+          )}
+        </StyledFeed>
+      </InfiniteScroll>
+    </div>
   );
 }
 
