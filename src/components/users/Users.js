@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import ReceivedRequests from "./receivedRequests";
 import UnrequestedUsers from "./unrequestedUsers";
+import SearchBar from "./searchBar";
 
 const StyledUsers = styled.ul`
   margin-top: 10px;
@@ -18,7 +19,7 @@ const StyledUsers = styled.ul`
   }
 `;
 
-function Users({ currentUser }) {
+function Users({ currentUser, lightMode }) {
   const [users, setUsers] = useState(null);
   const [receivedReqs, setReceivedReqs] = useState(null);
   const [userObject, setUserObject] = useState(null);
@@ -48,20 +49,23 @@ function Users({ currentUser }) {
   };
 
   return (
-    <StyledUsers>
-      <ReceivedRequests
-        currentUser={currentUser}
-        reqs={receivedReqs}
-        userData={userObject}
-        getMutualCount={getCommonFriendCount}
-      />
-      <UnrequestedUsers
-        currentUser={currentUser}
-        users={users}
-        userData={userObject}
-        getMutualCount={getCommonFriendCount}
-      />
-    </StyledUsers>
+    <>
+      <SearchBar lightMode={lightMode} />
+      <StyledUsers>
+        <ReceivedRequests
+          currentUser={currentUser}
+          reqs={receivedReqs}
+          userData={userObject}
+          getMutualCount={getCommonFriendCount}
+        />
+        <UnrequestedUsers
+          currentUser={currentUser}
+          users={users}
+          userData={userObject}
+          getMutualCount={getCommonFriendCount}
+        />
+      </StyledUsers>
+    </>
   );
 }
 
