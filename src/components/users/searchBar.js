@@ -120,7 +120,7 @@ export default function SearchBar({ lightMode }) {
   }, []);
 
   const fetchUserNames = (e) => {
-    const results = trie.search(e.target.value);
+    const results = trie.search(e.target.value.toLowerCase());
     setResults(results);
     setInputText(e.target.value);
   };
