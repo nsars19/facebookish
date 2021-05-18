@@ -247,7 +247,7 @@ function App() {
             >
               <Switch>
                 <Route path="/users">
-                  <Users currentUser={currentUser} />
+                  <Users currentUser={currentUser} lightMode={lightMode} />
                 </Route>
                 <Route path="/user/:userId">
                   <div className="grid-wrap">
