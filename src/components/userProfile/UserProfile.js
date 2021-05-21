@@ -20,7 +20,6 @@ function UserProfile({
   const [userName, setUserName] = useState(null);
   const [posts, setPosts] = useState([]);
   const [friendshipPending, setFriendStatus] = useState(null);
-  // const [needsUpdate, setUpdateStatus] = useState(false);
   const [pfpSrc, setPfpSrc] = useState(null);
   const [friends, setFriends] = useState([]);
   const [alreadyFriends, setAlreadyFriends] = useState(null);
