@@ -30,18 +30,6 @@ const StyledFriends = styled.ul`
     top: 12px;
     left: 18px;
   }
-
-  @media (min-width: 1024px) {
-    & {
-      align-content: start;
-      grid-auto-flow: row;
-      height: min-content;
-      max-height: 100vh;
-      max-width: 300px;
-      overflow-x: hidden;
-      overflow-y: scroll;
-    }
-  }
 `;
 
 function FriendsList({ friends, lightMode }) {

@@ -9,6 +9,7 @@ const StyledCard = styled.div`
     ${({ lightMode }) => (lightMode ? colors.gray : colors.white)}22;
   height: 100%;
   width: 160px;
+  min-width: 160px;
   box-shadow: 0 2.6px 1.3px rgba(0, 0, 0, 0.07),
     0 3.7px 4.3px rgba(0, 0, 0, 0.036), 0 4px 15px rgba(0, 0, 0, 0.027);
 

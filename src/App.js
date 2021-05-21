@@ -191,9 +191,10 @@ const GlobalStyle = createGlobalStyle`
       width: 99vw;
       display: grid;
       grid-template-areas:
-        "form form form list"
-        "feed feed feed list"
-        "feed feed feed ....";
+        "list list list"
+        "form form form"
+        "feed feed feed"
+        "feed feed feed";
     }
   }
 `;
