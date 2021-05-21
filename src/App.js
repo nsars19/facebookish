@@ -164,6 +164,7 @@ const GlobalStyle = createGlobalStyle`
   @media (min-width: 1024px) {
     .grid-wrap {
       display: grid;
+      justify-content: center;
       grid-template-areas:
         "head head head head head head head head"
         "list form form form .... .... .... ...."
@@ -173,6 +174,7 @@ const GlobalStyle = createGlobalStyle`
 
     .grid-prof-head {
       grid-area: head;
+      margin-bottom: 30px;
     }
     .grid-friend-list {
       grid-area: list;
@@ -183,6 +185,15 @@ const GlobalStyle = createGlobalStyle`
     }
     .grid-status-form {
       grid-area: form;
+    }
+
+    .prof-content-wrap {
+      width: 99vw;
+      display: grid;
+      grid-template-areas:
+        "form form form list"
+        "feed feed feed list"
+        "feed feed feed ....";
     }
   }
 `;

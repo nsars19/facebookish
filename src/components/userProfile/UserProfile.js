@@ -67,28 +67,30 @@ function UserProfile({
         bannerSrc={bannerSrc}
         setBannerSrc={setBannerSrc}
       />
-      <FriendsList friends={friends} lightMode={lightMode} />
-      {currentUser === userId ? (
-        <StatusForm
-          colors={colors}
+      <div className="prof-content-wrap">
+        <FriendsList friends={friends} lightMode={lightMode} />
+        {currentUser === userId ? (
+          <StatusForm
+            colors={colors}
+            currentUser={currentUser}
+            lightMode={lightMode}
+            setFeed={setPosts}
+            src={pfp}
+            postRef={postRef}
+            fromProfile
+          />
+        ) : (
+          <div />
+        )}
+        <Feed
+          user={userId}
+          posts={posts}
+          setPosts={setPosts}
+          src={pfpSrc}
           currentUser={currentUser}
-          lightMode={lightMode}
-          setFeed={setPosts}
-          src={pfp}
-          postRef={postRef}
-          fromProfile
+          pfp={pfp}
         />
-      ) : (
-        <div />
-      )}
-      <Feed
-        user={userId}
-        posts={posts}
-        setPosts={setPosts}
-        src={pfpSrc}
-        currentUser={currentUser}
-        pfp={pfp}
-      />
+      </div>
     </>
   );
 }
