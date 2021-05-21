@@ -55,7 +55,6 @@ const StyledPost = styled.div`
     position: relative;
     padding: 5px 0;
     padding-bottom: 10px;
-    // border-bottom: 1px solid gray;
     position: relative;
 
     .pfp-link {
