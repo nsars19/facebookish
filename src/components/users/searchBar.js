@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 
 const StyledSearchBar = styled.div`
   position: relative;
-  // width: 100%;
   margin: 10px;
   margin-bottom: 20px;
 
