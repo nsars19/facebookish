@@ -9,6 +9,7 @@ import CommentMetrics from "./commentMetrics";
 import SubCommentForm from "./../commentForm/subCommentForm";
 import SubComment from "./subComment";
 import EditForm from "./editForm";
+import { useCurrentUserContext } from "../userContext/userContext";
 
 const StyledComment = styled.div`
   padding: 0 5px;
@@ -81,13 +82,13 @@ const StyledComment = styled.div`
 
 function Comment({
   comment,
-  currentUser,
   setFeed,
   homeFeed,
   postAuthor,
   setCommentCount,
   pfp,
 }) {
+  const currentUser = useCurrentUserContext();
   const [modalVisible, setModalVisible] = useState(false);
   const [likeCount, setLikeCount] = useState(comment.likes.length);
   const [subFormVis, setSubFormVis] = useState(false);
@@ -162,12 +163,10 @@ function Comment({
         </div>
         <CommentUtils
           comment={comment._id}
-          user={currentUser}
           setLikeCount={setLikeCount}
           focusRef={focusSubCommentForm}
         />
         <SubCommentForm
-          currentUser={currentUser}
           subFormVis={subFormVis}
           toggleVis={setSubFormVis}
           inputRef={subCommentRef}
@@ -188,7 +187,6 @@ function Comment({
               postAuthor={postAuthor}
               comment={subComment}
               parentId={subComment.parentId}
-              currentUser={currentUser}
               setFeed={setFeed}
               homeFeed={homeFeed}
               setCommentCount={setCommentCount}

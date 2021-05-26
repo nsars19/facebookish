@@ -1,9 +1,11 @@
+import { useCurrentUserContext } from "../userContext/userContext";
 import UserProfile from "./../userProfile/UserProfile";
 
-function Profile({ user, colors, pfp, postRef, needsUpdate, setUpdateStatus }) {
+function Profile({ colors, pfp, postRef, needsUpdate, setUpdateStatus }) {
+  const user = useCurrentUserContext();
+
   return (
     <UserProfile
-      currentUser={user}
       user={user}
       colors={colors}
       pfp={pfp}

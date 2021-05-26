@@ -4,6 +4,7 @@ import CreateAccountForm from "./createAccount";
 import colors from "./../../colors";
 import Cookies from "universal-cookie";
 import Spinner from "./../spinner/spinner";
+import { useUpdateCurrentUser } from "../userContext/userContext";
 const { white, gray, lightBlue, lightBlueHover, red } = colors;
 
 const StlyedForm = styled.form`
@@ -111,6 +112,7 @@ function Form({ setActiveUser }) {
   const [errorMsg, setMsg] = useState("");
   const [accountCreationVis, setAccCreationVis] = useState(false);
   const [spinnerVis, setSpinnerVis] = useState(false);
+  const setUser = useUpdateCurrentUser();
 
   const toggleAccountCreator = () => setAccCreationVis(!accountCreationVis);
 
@@ -139,7 +141,7 @@ function Form({ setActiveUser }) {
 
           setErrorVis(false);
           setActiveUser(user);
-
+          setUser(user);
           cookies.set("token", token);
           cookies.set("currentUser", user);
         }

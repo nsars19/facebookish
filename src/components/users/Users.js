@@ -4,6 +4,7 @@ import ReceivedRequests from "./receivedRequests";
 import UnrequestedUsers from "./unrequestedUsers";
 import SearchBar from "./searchBar";
 import { useThemeColor } from "./../themeContext/themeContext";
+import { useCurrentUserContext } from "./../userContext/userContext";
 
 const StyledUsers = styled.ul`
   margin-top: 10px;
@@ -20,11 +21,12 @@ const StyledUsers = styled.ul`
   }
 `;
 
-function Users({ currentUser }) {
+function Users() {
   const [users, setUsers] = useState(null);
   const [receivedReqs, setReceivedReqs] = useState(null);
   const [userObject, setUserObject] = useState(null);
   const lightMode = useThemeColor();
+  const currentUser = useCurrentUserContext();
 
   useEffect(() => {
     (async function fetchUsers() {
@@ -55,13 +57,11 @@ function Users({ currentUser }) {
       <SearchBar lightMode={lightMode} />
       <StyledUsers>
         <ReceivedRequests
-          currentUser={currentUser}
           reqs={receivedReqs}
           userData={userObject}
           getMutualCount={getCommonFriendCount}
         />
         <UnrequestedUsers
-          currentUser={currentUser}
           users={users}
           userData={userObject}
           getMutualCount={getCommonFriendCount}

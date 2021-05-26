@@ -1,6 +1,6 @@
 import UserCard from "./userCard";
 
-function ReceivedRequests({ currentUser, reqs, userData, getMutualCount }) {
+function ReceivedRequests({ reqs, userData, getMutualCount }) {
   return (
     <>
       {reqs &&
@@ -9,7 +9,6 @@ function ReceivedRequests({ currentUser, reqs, userData, getMutualCount }) {
             <UserCard
               user={user}
               amtCommon={getMutualCount(userData, user)}
-              currentUser={currentUser}
               requested
             />
           </li>

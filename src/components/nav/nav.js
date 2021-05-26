@@ -84,7 +84,7 @@ const StyledNav = styled.div`
 `;
 
 function Nav(props) {
-  const { currentUser, focusRef, userName, pfp } = props;
+  const { focusRef, userName, pfp } = props;
   const lightMode = useThemeColor();
 
   return (
@@ -92,12 +92,8 @@ function Nav(props) {
       <HomeLink />
       <UsersLink />
       <CreatePost focusRef={focusRef} />
-      <Notifications currentUser={currentUser} />
-      <MainAccountSettings
-        currentUser={currentUser}
-        userName={userName}
-        pfp={pfp}
-      />
+      <Notifications />
+      <MainAccountSettings userName={userName} pfp={pfp} />
     </StyledNav>
   );
 }

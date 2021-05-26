@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Notification from "./notification";
 import colors from "./../../../colors";
+import { useCurrentUserContext } from "./../../userContext/userContext";
 
 const StyledNotifications = styled.button`
   font-size: 24px;
@@ -90,9 +91,10 @@ const StyledNotifs = styled.ul`
   }
 `;
 
-function Notifications({ currentUser }) {
+function Notifications() {
   const [notifsModal, setNotifsVis] = useState(false);
   const [notifs, setNotifs] = useState([]);
+  const currentUser = useCurrentUserContext();
 
   const toggleOffNotifs = (e) => {
     if ([...e.target.classList].includes("modal-component")) return;
@@ -143,7 +145,7 @@ function Notifications({ currentUser }) {
 
   const mapNotifs = notifs.map((notif) => (
     <li key={notif._id} className="modal-component">
-      <Notification notif={notif} user={currentUser} markRead={markRead} />
+      <Notification notif={notif} markRead={markRead} />
     </li>
   ));
 

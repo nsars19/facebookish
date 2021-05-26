@@ -1,11 +1,14 @@
 import styled from "styled-components";
+import { useCurrentUserContext } from "../userContext/userContext";
 
 const StyledAction = styled.button`
   font-weight: bold;
   font-size: 14px;
 `;
 
-function LikeAction({ user, post, comment, setLikeCount }) {
+function LikeAction({ post, comment, setLikeCount }) {
+  const user = useCurrentUserContext();
+
   async function processLike() {
     const body = post
       ? JSON.stringify({ user, post })

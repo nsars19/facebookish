@@ -5,6 +5,7 @@ import { RiChatDeleteFill } from "react-icons/ri";
 import Cookies from "universal-cookie";
 import Spinner from "./../spinner/spinner";
 import { useEffect, useState } from "react";
+import { useCurrentUserContext } from "../userContext/userContext";
 
 const StyledModal = styled.div`
   display: ${({ vis }) => (vis ? "flex" : "none")};
@@ -84,7 +85,6 @@ function SettingsModal(props) {
     toggleModal,
     setFeed,
     homeFeed,
-    user,
     postAuthor,
     setCommentCount,
     togglePostEdit,
@@ -93,6 +93,7 @@ function SettingsModal(props) {
 
   const [spinnerVis, setSpinnerVis] = useState(false);
   const token = cookies.get("token");
+  const user = useCurrentUserContext();
 
   const toggleSettingsOff = () => {
     if (modalVisible) toggleModal();

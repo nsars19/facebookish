@@ -2,10 +2,12 @@ import StatusForm from "./statusForm/statusForm";
 import colors from "./../../colors";
 import Feed from "./../feed/feed";
 import { useEffect, useState } from "react";
+import { useCurrentUserContext } from "../userContext/userContext";
 
-function HomePage({ currentUser, postRef, pfp }) {
+function HomePage({ postRef, pfp }) {
   const [posts, setPosts] = useState(null);
   const [pfpSrc, setSrc] = useState(null);
+  const currentUser = useCurrentUserContext();
 
   useEffect(() => {
     (async function fetchPosts() {
@@ -34,19 +36,11 @@ function HomePage({ currentUser, postRef, pfp }) {
       <StatusForm
         colors={colors}
         postRef={postRef}
-        currentUser={currentUser}
         setFeed={setPosts}
         src={pfpSrc}
         homeFeed
       ></StatusForm>
-      <Feed
-        currentUser={currentUser}
-        src={pfpSrc}
-        pfp={pfp}
-        posts={posts}
-        setPosts={setPosts}
-        homeFeed
-      />
+      <Feed src={pfpSrc} pfp={pfp} posts={posts} setPosts={setPosts} homeFeed />
     </>
   );
 }

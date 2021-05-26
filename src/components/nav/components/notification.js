@@ -19,7 +19,7 @@ const StyledNotification = styled.div`
   }
 `;
 
-function Notification({ notif, user, markRead }) {
+function Notification({ notif, markRead }) {
   const sender = notif.sender.firstName + " " + notif.sender.lastName;
   const formatSentence = (type) => {
     let [receiver, action] = type.split("/");

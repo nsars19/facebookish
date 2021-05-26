@@ -4,6 +4,7 @@ import emailRegex from "./../../utils/emailRegex";
 import colors from "./../../colors";
 import Cookies from "universal-cookie";
 import Spinner from "./../spinner/spinner";
+import { useUpdateCurrentUser } from "../userContext/userContext";
 const { gray, lightBlue, lightBlueHover, white, red } = colors;
 
 const StyledForm = styled.form`
@@ -128,6 +129,7 @@ function CreateAccountForm({ vis, toggle, setActiveUser }) {
   const [lastName, setLastName] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [spinnerVis, setSpinnerVis] = useState(false);
+  const setUser = useUpdateCurrentUser();
 
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePassChange = (e) => setPass(e.target.value);
@@ -162,6 +164,7 @@ function CreateAccountForm({ vis, toggle, setActiveUser }) {
           setSpinnerVis(false);
         } else {
           setActiveUser(user);
+          setUser(user);
           cookies.set("token", token);
           cookies.set("currentUser", user);
         }

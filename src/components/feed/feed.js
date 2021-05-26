@@ -22,7 +22,7 @@ const loader = (
   </>
 );
 
-function Feed({ homeFeed, posts, setPosts, src, currentUser, pfp }) {
+function Feed({ homeFeed, posts, setPosts, src, pfp }) {
   const [visibilePosts, setVisiblePosts] = useState(5);
 
   const addPosts = () => setVisiblePosts(visibilePosts + 5);
@@ -44,7 +44,6 @@ function Feed({ homeFeed, posts, setPosts, src, currentUser, pfp }) {
                     setFeed={setPosts}
                     homeFeed={homeFeed}
                     src={src}
-                    currentUser={currentUser}
                     pfp={pfp}
                   />
                 </div>

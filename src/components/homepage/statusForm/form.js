@@ -1,14 +1,9 @@
+import { useCurrentUserContext } from "../../userContext/userContext";
 import ProfilePicture from "./../../userProfile/profilePicture";
 
 function Form(props) {
-  const {
-    handleSubmit,
-    src,
-    currentUser,
-    handleInputChange,
-    text,
-    postRef,
-  } = props;
+  const { handleSubmit, src, handleInputChange, text, postRef } = props;
+  const currentUser = useCurrentUserContext();
 
   return (
     <form onSubmit={handleSubmit} className="txt-form">

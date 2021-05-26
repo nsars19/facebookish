@@ -11,6 +11,7 @@ import PostUtils from "./postUtils";
 import PostMetrics from "./postMetrics";
 import getCommentCount from "./../../utils/getCommentCount";
 import EditForm from "./editForm";
+import { useCurrentUserContext } from "../userContext/userContext";
 
 const StyledPost = styled.div`
   width: 100%;
@@ -115,7 +116,8 @@ const StyledPost = styled.div`
   }
 `;
 
-function Post({ post, setFeed, homeFeed, src, currentUser, pfp }) {
+function Post({ post, setFeed, homeFeed, src, pfp }) {
+  const currentUser = useCurrentUserContext();
   const [modalVisible, setModalVisible] = useState(false);
   const [likeCount, setLikeCount] = useState(post.likes.length);
   const [commentCount, setCommentCount] = useState(
@@ -195,7 +197,6 @@ function Post({ post, setFeed, homeFeed, src, currentUser, pfp }) {
           modalVisible={modalVisible}
           toggleModal={setModalVisible}
           postItem={post}
-          user={currentUser}
           setFeed={setFeed}
           homeFeed={homeFeed}
           setCommentCount={setCommentCount}
@@ -205,7 +206,6 @@ function Post({ post, setFeed, homeFeed, src, currentUser, pfp }) {
         />
       </div>
       <PostUtils
-        user={currentUser}
         post={post._id}
         setLikeCount={setLikeCount}
         focusRef={() => inputRef.current.focus()}
@@ -215,7 +215,6 @@ function Post({ post, setFeed, homeFeed, src, currentUser, pfp }) {
           <div key={comment._id}>
             <Comment
               comment={comment}
-              currentUser={currentUser}
               setFeed={setFeed}
               homeFeed={homeFeed}
               postAuthor={post.author._id}
@@ -226,7 +225,6 @@ function Post({ post, setFeed, homeFeed, src, currentUser, pfp }) {
         ))}
       </div>
       <CommentForm
-        currentUser={currentUser}
         postId={post._id}
         postAuthor={post.author._id}
         setFeed={setFeed}

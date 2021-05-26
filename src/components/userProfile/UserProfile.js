@@ -5,11 +5,11 @@ import ProfileHeader from "./profileHeader";
 import StatusForm from "./../homepage/statusForm/statusForm";
 import FriendsList from "./../friends/friendsList";
 import { useThemeColor } from "./../themeContext/themeContext";
+import { useCurrentUserContext } from "../userContext/userContext";
 
 function UserProfile({
   colors,
   user,
-  currentUser,
   pfp,
   postRef,
   needsUpdate,
@@ -25,6 +25,7 @@ function UserProfile({
   const [alreadyFriends, setAlreadyFriends] = useState(null);
   const [bannerSrc, setBannerSrc] = useState(null);
   const lightMode = useThemeColor();
+  const currentUser = useCurrentUserContext();
 
   useEffect(() => {
     (async function fetchUserData() {
@@ -56,7 +57,6 @@ function UserProfile({
   return (
     <>
       <ProfileHeader
-        currentUser={currentUser}
         userId={userId}
         pfpSrc={pfpSrc}
         lightMode={lightMode}
@@ -73,7 +73,6 @@ function UserProfile({
         {currentUser === userId ? (
           <StatusForm
             colors={colors}
-            currentUser={currentUser}
             lightMode={lightMode}
             setFeed={setPosts}
             src={pfp}

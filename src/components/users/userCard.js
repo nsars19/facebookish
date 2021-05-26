@@ -5,6 +5,7 @@ import colors from "./../../colors";
 import FriendshipButton from "./../friendshipButton/friendshipButton";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useCurrentUserContext } from "./../userContext/userContext";
 
 const StyledCard = styled.div`
   display: flex;
@@ -84,10 +85,11 @@ const StyledCard = styled.div`
   }
 `;
 
-function UserCard({ user, amtCommon, currentUser, requested }) {
+function UserCard({ user, amtCommon, requested }) {
   const [responded, setResponse] = useState(false);
   const [resId, setResId] = useState("not-responded");
   const fullName = `${user.firstName} ${user.lastName}`;
+  const currentUser = useCurrentUserContext();
 
   async function handleFriendAcceptance() {
     const senderId = user._id;

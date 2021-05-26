@@ -5,6 +5,7 @@ import ImageHandlerModal from "./../../imageHandler/imageHandlerModal";
 import Form from "./form";
 import Cookies from "universal-cookie";
 import { useThemeColor } from "./../../themeContext/themeContext";
+import { useCurrentUserContext } from "../../userContext/userContext";
 
 const StyledStatusForm = styled.div`
   background: ${({ lm, g }) => (lm ? "#eee" : g)};
@@ -120,20 +121,13 @@ const StyledStatusForm = styled.div`
 `;
 const cookies = new Cookies();
 
-function StatusForm({
-  colors,
-  postRef,
-  currentUser,
-  setFeed,
-  homeFeed,
-  src,
-  fromProfile,
-}) {
+function StatusForm({ colors, postRef, setFeed, homeFeed, src, fromProfile }) {
   const [text, setText] = useState("");
   const [modalVis, setImgModalVis] = useState(false);
   const { black, gray, white, red, yellow } = colors;
   const token = cookies.get("token");
   const lightMode = useThemeColor();
+  const currentUser = useCurrentUserContext();
 
   const focusRef = () => postRef.current.focus();
 
@@ -190,7 +184,6 @@ function StatusForm({
         <Form
           handleSubmit={handleSubmit}
           src={src}
-          currentUser={currentUser}
           handleInputChange={handleInputChange}
           text={text}
           postRef={postRef}

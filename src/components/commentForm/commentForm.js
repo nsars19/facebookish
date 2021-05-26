@@ -4,6 +4,7 @@ import ProfilePicture from "./../userProfile/profilePicture";
 import { Link } from "react-router-dom";
 import getCommentCount from "./../../utils/getCommentCount";
 import Cookies from "universal-cookie";
+import { useCurrentUserContext } from "../userContext/userContext";
 
 const StyledForm = styled.form`
   margin: 0 10px;
@@ -50,13 +51,12 @@ function CommentForm({
   homeFeed,
   postAuthor,
   inputRef,
-  currentUser,
   setCommentCount,
   setCommentsVisible,
-  src,
   pfp,
 }) {
   const token = cookies.get("token");
+  const currentUser = useCurrentUserContext();
 
   async function handleSubmit(e) {
     e.preventDefault();

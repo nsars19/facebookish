@@ -7,6 +7,7 @@ import LoginPage from "./components/login/login";
 import Spinner from "./components/spinner/spinner";
 import ErrorBoundary from "./components/errorBoundary/errorBoundary";
 import ThemeContext from "./components/themeContext/themeContext";
+import UserContext from "./components/userContext/userContext";
 
 const UserProfile = lazy(() => import("./components/userProfile/UserProfile"));
 const Profile = lazy(() => import("./components/profile/profile"));
@@ -42,66 +43,60 @@ function App() {
     if (currentUser) fetchData();
   }, [currentUser, needsUpdate]);
 
-  if (!currentUser) return <LoginPage setCurrentUser={setCurrentUser} />;
-  else
-    return (
-      <ErrorBoundary>
-        <ThemeContext>
-          <Router>
-            <Nav
-              currentUser={currentUser}
-              focusRef={focusRef}
-              userName={userName}
-              pfp={pfp}
-            />
-            <Suspense
-              fallback={
-                <div className="load-spinner">
-                  <Spinner size={150} vis={true} />
-                </div>
-              }
-            >
-              <Switch>
-                <Route path="/users">
-                  <Users currentUser={currentUser} />
-                </Route>
-                <Route path="/user/:userId">
-                  <div className="grid-wrap">
-                    <UserProfile
-                      colors={colors}
-                      currentUser={currentUser}
-                      pfp={pfp}
-                      postRef={postRef}
-                      needsUpdate={needsUpdate}
-                      setUpdateStatus={setUpdateStatus}
-                    />
+  return (
+    <ErrorBoundary>
+      <ThemeContext>
+        <UserContext>
+          {!currentUser ? (
+            <LoginPage setCurrentUser={setCurrentUser} />
+          ) : (
+            <Router>
+              <Nav focusRef={focusRef} userName={userName} pfp={pfp} />
+              <Suspense
+                fallback={
+                  <div className="load-spinner">
+                    <Spinner size={150} vis={true} />
                   </div>
-                </Route>
-                <Route path="/profile">
-                  <div className="grid-wrap">
-                    <Profile
-                      user={currentUser}
-                      colors={colors}
-                      pfp={pfp}
-                      postRef={postRef}
-                      needsUpdate={needsUpdate}
-                      setUpdateStatus={setUpdateStatus}
-                    />
-                  </div>
-                </Route>
-                <Route path="/">
-                  <HomePage
-                    currentUser={currentUser}
-                    postRef={postRef}
-                    pfp={pfp}
-                  />
-                </Route>
-              </Switch>
-            </Suspense>
-          </Router>
-        </ThemeContext>
-      </ErrorBoundary>
-    );
+                }
+              >
+                <Switch>
+                  <Route path="/users">
+                    <Users />
+                  </Route>
+                  <Route path="/user/:userId">
+                    <div className="grid-wrap">
+                      <UserProfile
+                        colors={colors}
+                        pfp={pfp}
+                        postRef={postRef}
+                        needsUpdate={needsUpdate}
+                        setUpdateStatus={setUpdateStatus}
+                      />
+                    </div>
+                  </Route>
+                  <Route path="/profile">
+                    <div className="grid-wrap">
+                      <Profile
+                        colors={colors}
+                        pfp={pfp}
+                        postRef={postRef}
+                        needsUpdate={needsUpdate}
+                        setUpdateStatus={setUpdateStatus}
+                      />
+                    </div>
+                  </Route>
+                  <Route path="/">
+                    <HomePage postRef={postRef} pfp={pfp} />
+                  </Route>
+                </Switch>
+              </Suspense>
+            </Router>
+          )}
+        </UserContext>
+      </ThemeContext>
+    </ErrorBoundary>
+  );
+  // }
 }
 
 export default App;

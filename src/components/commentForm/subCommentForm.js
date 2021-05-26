@@ -4,6 +4,7 @@ import ProfilePicture from "./../userProfile/profilePicture";
 import { Link } from "react-router-dom";
 import getCommentCount from "./../../utils/getCommentCount";
 import Cookies from "universal-cookie";
+import { useCurrentUserContext } from "../userContext/userContext";
 
 const StyledForm = styled.form`
   opacity: ${({ vis }) => (vis ? "100%" : "0")};
@@ -55,12 +56,12 @@ function SubCommentForm({
   homeFeed,
   postAuthor,
   inputRef,
-  currentUser,
   setCommentCount,
   parentId,
   pfp,
 }) {
   const token = cookies.get("token");
+  const currentUser = useCurrentUserContext();
 
   async function handleSubmit(e) {
     e.preventDefault();

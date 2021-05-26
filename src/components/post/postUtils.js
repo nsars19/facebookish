@@ -25,10 +25,10 @@ const StyledUtils = styled.div`
   }
 `;
 
-function PostUtils({ user, post, setLikeCount, focusRef }) {
+function PostUtils({ post, setLikeCount, focusRef }) {
   return (
     <StyledUtils>
-      <LikeAction user={user} post={post} setLikeCount={setLikeCount} />
+      <LikeAction post={post} setLikeCount={setLikeCount} />
       <button onClick={focusRef} className="util">
         Comment
       </button>

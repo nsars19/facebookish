@@ -10,6 +10,7 @@ import {
   useUpdateTheme,
   useThemeColor,
 } from "./../../themeContext/themeContext";
+import { useCurrentUserContext } from "./../../userContext/userContext";
 const { black, gray, white } = colors;
 
 const StyledSettings = styled.div`
@@ -103,9 +104,10 @@ const StyledSettings = styled.div`
 
 const cookies = new Cookies();
 
-function AccountSettings({ modalVis, currentUser, toggleVis, userName, pfp }) {
+function AccountSettings({ modalVis, toggleVis, userName, pfp }) {
   const toggleTheme = useUpdateTheme();
   const lightMode = useThemeColor();
+  const currentUser = useCurrentUserContext();
 
   const toggleModalOff = (e) => {
     if ([...e.target.classList].includes("modal-component")) return;

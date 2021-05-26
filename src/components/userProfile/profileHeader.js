@@ -7,6 +7,7 @@ import { useState } from "react";
 import { MdPhotoCamera } from "react-icons/md";
 import BannerModal from "./banner/bannerModal";
 import colors from "./../../colors";
+import { useCurrentUserContext } from "./../userContext/userContext";
 
 const StyledHeader = styled.div`
   display: flex;
@@ -119,7 +120,6 @@ const StyledHeader = styled.div`
 
 function ProfileHeader(props) {
   const {
-    currentUser,
     userId,
     pfpSrc,
     lightMode,
@@ -134,6 +134,7 @@ function ProfileHeader(props) {
 
   const [modalVis, setVis] = useState(false);
   const [bannerVis, setBannerVis] = useState(false);
+  const currentUser = useCurrentUserContext();
 
   const toggleBannerModal = () => setBannerVis(!bannerVis);
 
