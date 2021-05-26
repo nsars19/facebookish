@@ -45,8 +45,8 @@ function App() {
   if (!currentUser) return <LoginPage setCurrentUser={setCurrentUser} />;
   else
     return (
-      <ThemeContext>
-        <ErrorBoundary>
+      <ErrorBoundary>
+        <ThemeContext>
           <Router>
             <Nav
               currentUser={currentUser}
@@ -99,8 +99,8 @@ function App() {
               </Switch>
             </Suspense>
           </Router>
-        </ErrorBoundary>
-      </ThemeContext>
+        </ThemeContext>
+      </ErrorBoundary>
     );
 }
 
