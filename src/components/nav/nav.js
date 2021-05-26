@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { useTheme } from "styled-components";
+import styled from "styled-components";
 import colors from "../../colors";
 import MainAccountSettings from "./components/mainAccountSettings";
 import CreatePost from "./components/createPost";
