@@ -4,6 +4,7 @@ import PostIcons from "./postIcons";
 import ImageHandlerModal from "./../../imageHandler/imageHandlerModal";
 import Form from "./form";
 import Cookies from "universal-cookie";
+import { useThemeColor } from "./../../themeContext/themeContext";
 
 const StyledStatusForm = styled.div`
   background: ${({ lm, g }) => (lm ? "#eee" : g)};
@@ -123,7 +124,6 @@ function StatusForm({
   colors,
   postRef,
   currentUser,
-  lightMode,
   setFeed,
   homeFeed,
   src,
@@ -133,6 +133,7 @@ function StatusForm({
   const [modalVis, setImgModalVis] = useState(false);
   const { black, gray, white, red, yellow } = colors;
   const token = cookies.get("token");
+  const lightMode = useThemeColor();
 
   const focusRef = () => postRef.current.focus();
 

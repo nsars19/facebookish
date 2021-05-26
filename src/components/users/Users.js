@@ -3,6 +3,7 @@ import styled from "styled-components";
 import ReceivedRequests from "./receivedRequests";
 import UnrequestedUsers from "./unrequestedUsers";
 import SearchBar from "./searchBar";
+import { useThemeColor } from "./../themeContext/themeContext";
 
 const StyledUsers = styled.ul`
   margin-top: 10px;
@@ -19,10 +20,11 @@ const StyledUsers = styled.ul`
   }
 `;
 
-function Users({ currentUser, lightMode }) {
+function Users({ currentUser }) {
   const [users, setUsers] = useState(null);
   const [receivedReqs, setReceivedReqs] = useState(null);
   const [userObject, setUserObject] = useState(null);
+  const lightMode = useThemeColor();
 
   useEffect(() => {
     (async function fetchUsers() {

@@ -3,7 +3,7 @@ import colors from "./../../colors";
 import Feed from "./../feed/feed";
 import { useEffect, useState } from "react";
 
-function HomePage({ currentUser, lightMode, postRef, pfp }) {
+function HomePage({ currentUser, postRef, pfp }) {
   const [posts, setPosts] = useState(null);
   const [pfpSrc, setSrc] = useState(null);
 
@@ -34,7 +34,6 @@ function HomePage({ currentUser, lightMode, postRef, pfp }) {
       <StatusForm
         colors={colors}
         postRef={postRef}
-        lightMode={lightMode}
         currentUser={currentUser}
         setFeed={setPosts}
         src={pfpSrc}

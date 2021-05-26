@@ -1,11 +1,12 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 import colors from "../../colors";
 import MainAccountSettings from "./components/mainAccountSettings";
 import CreatePost from "./components/createPost";
 import Notifications from "./components/notifications";
 import HomeLink from "./components/home";
 import UsersLink from "./components/users";
+import { useThemeColor } from "./../themeContext/themeContext";
 
 const { black, white, blue } = colors;
 
@@ -83,18 +84,8 @@ const StyledNav = styled.div`
 `;
 
 function Nav(props) {
-  const {
-    setLightMode,
-    lightMode,
-    currentUser,
-    focusRef,
-    userName,
-    pfp,
-  } = props;
-
-  function changeColorMode() {
-    setLightMode(!lightMode);
-  }
+  const { currentUser, focusRef, userName, pfp } = props;
+  const lightMode = useThemeColor();
 
   return (
     <StyledNav light={lightMode}>
@@ -104,8 +95,6 @@ function Nav(props) {
       <Notifications currentUser={currentUser} />
       <MainAccountSettings
         currentUser={currentUser}
-        lightMode={lightMode}
-        changeColorMode={changeColorMode}
         userName={userName}
         pfp={pfp}
       />

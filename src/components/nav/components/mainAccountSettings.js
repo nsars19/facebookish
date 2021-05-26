@@ -3,14 +3,7 @@ import { BsThreeDots } from "react-icons/bs";
 import AccountSettings from "./accountSettings";
 
 function MainAccountSettings(props) {
-  const {
-    currentUser,
-    lightMode,
-    changeColorMode,
-    setCurrentUser,
-    userName,
-    pfp,
-  } = props;
+  const { currentUser, setCurrentUser, userName, pfp } = props;
   const [settingsModalVis, setSettingsVis] = useState(false);
 
   const toggleSettingsModal = () => setSettingsVis(!settingsModalVis);
@@ -34,8 +27,6 @@ function MainAccountSettings(props) {
         modalVis={settingsModalVis}
         currentUser={currentUser}
         toggleVis={toggleSettingsModal}
-        light={lightMode}
-        changeColorMode={changeColorMode}
         setCurrentUser={setCurrentUser}
         userName={userName}
         pfp={pfp}

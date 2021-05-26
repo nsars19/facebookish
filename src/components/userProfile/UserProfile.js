@@ -4,10 +4,10 @@ import Feed from "./../feed/feed";
 import ProfileHeader from "./profileHeader";
 import StatusForm from "./../homepage/statusForm/statusForm";
 import FriendsList from "./../friends/friendsList";
+import { useThemeColor } from "./../themeContext/themeContext";
 
 function UserProfile({
   colors,
-  lightMode,
   user,
   currentUser,
   pfp,
@@ -24,6 +24,7 @@ function UserProfile({
   const [friends, setFriends] = useState([]);
   const [alreadyFriends, setAlreadyFriends] = useState(null);
   const [bannerSrc, setBannerSrc] = useState(null);
+  const lightMode = useThemeColor();
 
   useEffect(() => {
     (async function fetchUserData() {

@@ -6,6 +6,10 @@ import Toggle from "./toggle";
 import { IoLogOutOutline } from "react-icons/io5";
 import colors from "./../../../colors";
 import Cookies from "universal-cookie";
+import {
+  useUpdateTheme,
+  useThemeColor,
+} from "./../../themeContext/themeContext";
 const { black, gray, white } = colors;
 
 const StyledSettings = styled.div`
@@ -99,15 +103,10 @@ const StyledSettings = styled.div`
 
 const cookies = new Cookies();
 
-function AccountSettings({
-  modalVis,
-  currentUser,
-  toggleVis,
-  light,
-  changeColorMode,
-  userName,
-  pfp,
-}) {
+function AccountSettings({ modalVis, currentUser, toggleVis, userName, pfp }) {
+  const toggleTheme = useUpdateTheme();
+  const lightMode = useThemeColor();
+
   const toggleModalOff = (e) => {
     if ([...e.target.classList].includes("modal-component")) return;
     if (modalVis) toggleVis();
@@ -132,7 +131,7 @@ function AccountSettings({
   return (
     <StyledSettings
       vis={modalVis}
-      light={light}
+      light={lightMode}
       id="settings-modal"
       className="modal-component"
     >
@@ -151,9 +150,9 @@ function AccountSettings({
       </Link>
       <div className="spacer modal-component" />
       <ul className="modal-component">
-        <li onClick={changeColorMode} className="modal-component">
+        <li onClick={toggleTheme} className="modal-component">
           <div className="icon">
-            <Toggle colors={colors} light={light} />
+            <Toggle colors={colors} light={lightMode} />
           </div>
           <p className="modal-component">Toggle color mode</p>
         </li>
