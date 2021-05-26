@@ -37,6 +37,7 @@ const StyledFriends = styled.ul`
   }
 
   button {
+    display: ${({ count }) => (count < 3 ? "none" : "block")};
     color: ${colors.black};
     font-size: 45px;
     position: sticky;
@@ -74,7 +75,12 @@ function FriendsList({ friends, lightMode }) {
 
   return (
     <>
-      <StyledFriends ref={listRef} lm={lightMode} className="grid-friend-list">
+      <StyledFriends
+        ref={listRef}
+        lm={lightMode}
+        count={friends.length}
+        className="grid-friend-list"
+      >
         <button onClick={shiftLeft}>
           <BsChevronLeft />
         </button>
